@@ -50,5 +50,8 @@ export const plano15 = {
     "📝 **Estruturação Lógica do Registro:** O aluno explica com precisão o caminho lógico percorrido pela mensagem, utilizando argumentos claros e condicionais para justificar o impacto do ruído (ex: 'A mensagem foi corrompida no meio do caminho, logo a instrução condicional do final falhou e o canhão apontou para o lugar errado').",
     "📐 **Organização Viso-espacial de Dados:** O aluno alinha e compara visualmente os blocos tangíveis de programação com o registro oficial anotado na lousa de forma organizada, mapeando rapidamente a sequência de passos para identificar onde o encadeamento lógico foi quebrado.",
     "🐛 **Rastreamento e Análise de Informação:** O aluno executa o fact-checking e o debugging com autonomia: ele aponta o exato momento e elo da corrente em que a alteração foi inserida (a Fake News), além de propor voluntariamente estratégias preventivas de checagem para o seu dia a dia digital (como pesquisar a veracidade antes de compartilhar conteúdos)."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/15-fake-news.pdf"
 };

@@ -54,5 +54,8 @@ export const plano03 = {
     "🧩 **Sequenciamento Lógico (Algoritmo):** O aluno organiza os blocos tangíveis de comando no quadro criando uma rota autossuficiente e perfeita. Ele antecipa mentalmente a rotação correta (girar à esquerda vs. direita) e a contagem de passos no eixo X e Y, garantindo que o 'robô' chegue à pegada sem esbarrar nos obstáculos, sem precisar testar a rota com os próprios pés antes de codificar.",
     "🐛 **Depuração Prática (Debugging):** Ao perceber que o colega robô pisou fora do plano cartesiano ou bateu em um obstáculo, o aluno grita 'Bug!', vai imediatamente até a lousa e identifica exatamente qual bloco causou a falha temporal/espacial. Ele realiza uma correção 'cirúrgica', trocando apenas a seta defeituosa e retomando a execução, em vez de desmontar o código inteiro em frustração.",
     "🤝 **Execução de Papéis e Colaboração:** O aluno demonstra inteligência emocional e respeito aos protocolos do sistema. Se pertence ao Esquadrão A (Dinossauros), esconde a peça e não dá 'spoilers' ou interfere na lógica do grupo adversário. Se é o programador do Esquadrão B, escuta ativamente as sugestões dos pares antes de montar o código, e respeita o corpo do colega que está atuando como o 'robô' no chão, não tentando andar pela malha em seu lugar."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/03-navegacao-por-coordenadas.pdf"
 };

@@ -54,5 +54,8 @@ export const plano14 = {
     "📝 **Estruturação Lógica do Registro:** O grupo articula a explicação do mapa e do gráfico com clareza causal, utilizando conectivos lógicos consistentes para explicar o fenômeno (ex: 'Concluímos que se a cidade expande sua área de concreto, então o espaço do tatu-bola é reduzido às margens').",
     "📐 **Organização Viso-espacial de Dados:** A disposição física dos elementos no papel pardo e a estruturação do gráfico de post-its são intuitivas e limpas. O aluno organiza as eras (pegadas, canhões e tatus) e os dados visuais de forma que qualquer leitor compreende imediatamente a cronologia e a perda progressiva da área verde.",
     "🐛 **Rastreamento e Análise de Informação:** O aluno vai além da constatação visual básica: ele extrai o padrão computacional de correlação inversa dos dados gerados, identifica a tendência de desmatamento ao longo do tempo e propõe de forma autônoma hipóteses ou soluções práticas de preservação (como corredores ecológicos)."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/14-cidades-de-concreto.pdf"
 };

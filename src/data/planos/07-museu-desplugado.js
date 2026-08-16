@@ -54,5 +54,8 @@ export const plano07 = {
     "📝 **Estruturação Lógica do Registro (A Lógica dos Loops):** O aluno compreende que não precisa gerar comandos redundantes. Ele estrutura a exposição utilizando corretamente os blocos tangíveis (ex: unindo o bloco Repetir 3x ao agrupamento das pegadas de dinossauro). O arranjo final na mesa é lógico, autossuficiente e sintetiza a linha do tempo histórica perfeitamente, sem embaralhar as eras.",
     "📐 **Organização Viso-espacial de Dados (A Mesa de Exposição):** O aluno utiliza o espaço da mesa e da cartolina de forma altamente estratégica. Ele preenche a ficha catalográfica com letra legível e capricho visual. Na mesa, ele cria uma separação física clara e delimitada entre o acervo Paleontológico e o acervo do Império, posicionando os artefatos 3D e os blocos de programação como verdadeiras legendas de museu.",
     "🐛 **Rastreamento e Análise de Informação (Classificação e Debugging de Dados):** O aluno analisa os artefatos detalhadamente e registra dados precisos (época, material, significado) na ficha, demonstrando domínio histórico. Se durante a montagem da exposição um 'Canhão' for parar por engano na seção do 'Loop Paleontológico', ele realiza o debugging de dados instantaneamente: rastreia a falha de classificação histórica, retira a peça do agrupamento incorreto e a realoca no ciclo cronológico correto do Império."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/07-museu-desplugado.pdf"
 };

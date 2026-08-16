@@ -54,5 +54,8 @@ export const plano11 = {
     "🎥 **Abstração de Propriedades (O Enquadramento e a Micro-Ação):** O aluno planeja o algoritmo visual perfeitamente com os blocos na mesa. Na hora da captura, ele isola o movimento de forma milimétrica (ex: avança a cauda do jacaré ou o Tatu-bola apenas um centímetro por vez). Ele não move o artefato abruptamente de um lado para o outro, demonstrando compreender a propriedade essencial do quadro a quadro (frame rate).",
     "🐛 **Iteração e Manuseio do Artefato (Debugging Fotográfico):** Ao revisar a animação no tablet e perceber que a cena deu um 'pulo' estranho (bug de continuidade) ou que a mão do colega saiu na foto, o aluno não se frustra nem apaga todo o projeto. Ele demonstra inteligência iterativa: rastreia exatamente o frame corrompido, exclui apenas aquela imagem e reposiciona o artefato 3D com extremo cuidado para refazer a captura e garantir a fluidez do filme.",
     "📱 **Transposição Físico-Digital (A Ilusão Algorítmica):** O aluno domina a relação entre o objeto tátil e a tecnologia artística. Ao final da atividade, ele consegue articular e explicar aos colegas que a persistência da visão no vídeo (o digital) só funcionou porque eles organizaram e executaram um algoritmo perfeitamente ordenado de capturas estáticas no mundo real (o físico)."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/11-stop-motion.pdf"
 };

@@ -54,5 +54,8 @@ export const plano09 = {
     "🧩 **Sequenciamento e Lógica (A Condicional Biológica):** O aluno elabora uma condicional autossuficiente e com exatidão biológica. Ele organiza os blocos físicos ao lado do artefato 3D de forma lógica, garantindo que o gatilho ('SE o predador chegar perto') gere uma consequência real e coerente com a anatomia do animal ('ENTÃO o tatu-bola aciona a carapaça'). Ele não cria regras mágicas ou sem sentido para o ecossistema.",
     "🐛 **Depuração Prática (Debugging Ecológico):** Quando o professor decreta que o lago secou (o bug no sistema), o aluno não paralisa nem assume que o jogo acabou. Ele vai direto à 'linha de código' (os blocos na mesa), compreende que a condição inicial falhou e substitui a instrução do 'ENTÃO' para garantir a sobrevivência da espécie, demonstrando resiliência e raciocínio analítico rápido.",
     "🤝 **Execução de Papéis e Colaboração:** Durante o choque dos ecossistemas (quando o jacaré 'ataca' o tatu-bola), o aluno não usa a peça 3D para brincar de 'lutinha' caótica. Ele respeita a execução do código ao pé da letra: só movimenta ou fecha a peça física do Tatu-bola no exato momento em que o gatilho da equipe adversária aciona a sua condicional, dialogando com os colegas para que a simulação seja cientificamente correta."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/09-teia-alimentar.pdf"
 };

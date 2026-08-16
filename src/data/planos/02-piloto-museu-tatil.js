@@ -1,7 +1,7 @@
 // src/data/planos/piloto-02-museu-tatil.js
 // Dados extraídos do Manual IFMaker - Aula Piloto Validada
 
-export const piloto02 = {
+export const plano02 = {
   id: "piloto-02-museu-tatil",
   tipo: "piloto",
   ano: "5º Ano",
@@ -88,5 +88,8 @@ export const piloto02 = {
         criterioAvaliador: "Marcar SIM se o grupo respeitou a Regra de Ouro (não misturou as cores do bloco inteiro) e se os três alunos participaram ativamente."
       }
     ]
-  }
+  },
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/02-piloto-museu-tatil.pdf"
 };

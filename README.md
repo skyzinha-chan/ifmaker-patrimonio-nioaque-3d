@@ -39,8 +39,8 @@ O objetivo é apoiar professores na implementação dos eixos da computação (P
 ## 🚀 Roadmap de Desenvolvimento
 
 - [x] ****Fase 1:**** Configuração do Ambiente, Layout Base e Estrutura Modular.  
-- [ ] ****Fase 2:**** Estruturação da Base de Dados (`planosDeAula.js`).  
-- [ ] ****Fase 3:**** Desenvolvimento da View de Detalhes e Sistema de Abas.  
+- [x] ****Fase 2:**** Estruturação da Base de Dados (`planosDeAula.js`).  
+- [x] ****Fase 3:**** Desenvolvimento da View de Detalhes e Sistema de Abas.  
 - [ ] ****Fase 4:**** Interatividade Avançada (Rubricas e Avaliação de Turmas).  
 - [ ] ****Fase 5:**** Polimento de UI/UX e Configuração exata de Impressão em PDF A4.
 

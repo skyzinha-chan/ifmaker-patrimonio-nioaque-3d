@@ -54,5 +54,8 @@ export const plano05 = {
     "🧩 **Sequenciamento Lógico (Decomposição do Algoritmo Balístico):** O aluno não tenta girar o Canhão 3D a 'olho nu'. Ele segue rigorosamente a lógica da decomposição: posiciona o transferidor corretamente na base do canhão, realiza a leitura precisa do alvo (identificando se a abertura é de um ângulo agudo, reto ou obtuso) e seleciona o bloco tangível de 'Girar' acompanhado da anotação exata (ex: 45º ou 120º) antes de chamar o professor para o teste físico.",
     "🐛 **Depuração Prática (Debugging Matemático):** Se o 'tiro' errar o alvo, o aluno não se frustra nem movimenta o canhão aleatoriamente. Ele grita 'Bug!', paralisa a ação e investiga o próprio algoritmo para descobrir a raiz do erro. Ele consegue argumentar logicamente onde ocorreu a falha: se foi um erro de classificação matemática (ex: mediu um ângulo agudo em vez de obtuso) ou se o post-it foi preenchido com a graduação incorreta, corrigindo apenas esse detalhe para refazer o teste.",
     "🤝 **Execução de Papéis e Colaboração:** O aluno compartilha os materiais de forma equilibrada, respeitando as funções não ditas da engenharia em grupo. Ele não monopoliza o Canhão 3D; em vez disso, atua em sincronia com os colegas—enquanto um segura a base do artefato, o outro alinha o transferidor e um terceiro redige o comando no bloco tangível. Eles dialogam sobre a matemática envolvida (ex: 'Acho que está um pouco mais aberto que 90 graus, vamos medir de novo')."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/05-artilharia-dos-angulos.pdf"
 };

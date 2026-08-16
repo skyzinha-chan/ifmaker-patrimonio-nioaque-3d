@@ -1,7 +1,7 @@
 // src/data/planos/piloto-01-estrategistas.js
 // Dados extraídos do Manual IFMaker - Aula Piloto Validada
 
-export const piloto01 = {
+export const plano01 = {
   id: "piloto-01-estrategistas",
   tipo: "piloto",
   ano: "5º Ano",
@@ -89,8 +89,8 @@ export const piloto01 = {
         criterioAvaliador: "Marcar SIM se os alunos respeitaram as funções (Mestre do Código, Robô, etc) e se o grupo conseguiu resolver conflitos de opinião sobre o trajeto de forma pacífica (Modo Furtivo)."
       }
     ]
-  }
+  },
 
   // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/01-estrategistas-da-retirada.pdf"
+  pdfUrl: "/pdfs/01-piloto-estrategistas-da-retirada.pdf"
 };

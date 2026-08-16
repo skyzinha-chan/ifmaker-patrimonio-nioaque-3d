@@ -53,5 +53,8 @@ export const plano10 = {
     "📝 **Estruturação Lógica do Registro (A Hipótese Científica):** O aluno elabora uma justificativa autossuficiente e encadeada. Ele não escreve apenas respostas curtas como 'come planta'. Ele constrói a relação de causa e efeito formalmente: 'Se o Padrão B tem a pegada redonda, ele era herbívoro. Logo, precisava de dentes planos para amassar as plantas e um estômago enorme funcionando como câmara de fermentação'.",
     "📐 **Organização Viso-espacial de Dados (O Laboratório na Mesa):** O aluno organiza a mesa de trabalho como um verdadeiro analista forense. Ele usa as lupas e separa fisicamente as réplicas 3D do 'Padrão A' (terópodes) e 'Padrão B' (ornitópodes) em grupos distintos antes de registrar os dados. Na ficha CSI, utiliza o espaço de forma metódica, com letra legível, podendo até desenhar croquis das pegadas ou do formato deduzido dos dentes para ilustrar seu laudo.",
     "🐛 **Rastreamento e Análise de Informação (A Dedução Morfológica):** O aluno domina a extração de dados sem recorrer à adivinhação. Ele rastreia e consolida o padrão exato de forma infalível: garras afiadas = rasgar carne = trato digestório rápido e curto. Durante o debate, ele também argumenta de forma coerente sobre a fossilização, demonstrando compreender exatamente como a lama do passado reteve a 'impressão digital' para se transformar em rocha."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/10-csi-nioaque.pdf"
 };

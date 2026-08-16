@@ -54,5 +54,8 @@ export const plano06 = {
     "📝 **Estruturação Lógica do Registro (A Bifurcação Escrita):** O aluno elabora uma narrativa autossuficiente e lógica. Ele escreve a introdução e, no momento do clímax, cria dois parágrafos alternativos perfeitamente coesos para a condição exigida. Ele garante que a consequência (o 'ENTÃO' - atirar com o canhão) e a alternativa (o 'SENÃO' - atravessar em silêncio) gerem desfechos que façam sentido com o resto da história, sem perder a continuidade temporal do texto.",
     "📐 **Organização Viso-espacial de Dados (Mapeamento do Conto):** O aluno utiliza a cartolina de forma estratégica, criando um verdadeiro fluxograma literário. O texto não é um bloco confuso; a estrutura ramificada é visível e hierárquica. Ele posiciona o bloco tangível de 'Se/Então' no exato ponto de ruptura visual e pode até mesmo utilizar setas desenhadas ou espaçamentos claros para guiar o leitor para o parágrafo da opção A ou da opção B.",
     "🐛 **Rastreamento e Análise de Informação (Debugging Literário):** Durante a troca de histórias, o aluno assume a postura de um verdadeiro 'compilador'. Ao ler o texto do outro grupo e interagir com as peças 3D, ele rastreia a lógica da escolha. Se ele escolher a opção 'SENÃO' (fugir em silêncio) e o parágrafo seguinte descrever um estrondo de pólvora, ele paralisa a leitura, aponta o 'Bug Literário' e explica à equipe autora onde a conexão lógica entre os parágrafos falhou."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/06-bifurcacoes-narrativas.pdf"
 };

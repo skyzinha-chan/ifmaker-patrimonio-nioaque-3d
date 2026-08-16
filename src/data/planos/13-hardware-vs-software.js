@@ -53,5 +53,8 @@ export const plano13 = {
     "⚙️ **Abstração de Propriedades:** O aluno foca a sua atenção e o seu desenho esquemático nas propriedades estruturais fundamentais do objeto (as camadas de impressão e o espaçamento milimétrico das articulações), ignorando características supérfluas (como a cor ou textura externa do plástico) para representar a lógica interna do projeto 3D.",
     "🐛 **Iteração e Manuseio do Artefato:** Durante a atividade de engenharia reversa no papel, o grupo manipula o Tatu-bola físico repetidas vezes (girando, dobrando as articulações) e, ao perceber que seu primeiro esboço não explicava o mecanismo de encaixe, refaz o desenho com paciência, ajustando as linhas para que o 'Software simulado' realmente faça sentido físico.",
     "💻 **Transposição Físico-Digital:** O aluno explica com total clareza a conexão entre os mundos: ele verbaliza que o Tatu de plástico nas suas mãos (Hardware) é apenas a consequência material de um arquivo de computador invisível (Software), compreendendo que qualquer instrução corrompida no código geraria uma falha física real na impressora."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/13-hardware-vs-software.pdf"
 };

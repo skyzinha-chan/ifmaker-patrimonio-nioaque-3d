@@ -54,5 +54,8 @@ export const plano12 = {
     "🎨 **Abstração de Propriedades:** O aluno consegue justificar sua escolha de textura. Ele ignora a forma total do tatu ou do dinossauro e explica que 'o relevo é um dado importante da pele do animal'. Ele não tenta desenhar o animal; ele foca estritamente na padronagem rítmica ou irregular da textura capturada.",
     "🐛 **Iteração e Manuseio do Artefato:** O aluno aplica a técnica de frottage com controle de pressão. Se o primeiro resultado sai 'borrado' (falha no dado), ele não desiste ou abandona a atividade; ele reposiciona o papel com precisão, ajusta a inclinação do giz e repete a extração até obter uma amostra nítida e legível do padrão (debugging de captura).",
     "📱 **Transposição Físico-Digital:** O aluno compreende que o papel com o desenho não é apenas uma 'imagem bonita', mas um 'mapa de dados' do objeto 3D. Ele articula que a textura no papel é a tradução (ou representação) da característica física do artefato, correlacionando o relevo tátil (Hardware) com o registro visual (representação de dados)."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/12-textura-do-tempo.pdf"
 };

@@ -1,20 +1,41 @@
-import React from 'react';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
 
-function App() {
+// IMPORTAÇÃO DA NOSSA NOVA PÁGINA
+import Catalogo from "./pages/Catalogo";
+import PlanoDetalhe from "./pages/PlanoDetalhe";
+
+// Componentes Placeholders restantes (Ainda vamos construir o Dashboard, Sobre e Detalhe)
+const Dashboard = () => (
+  <div className='p-8'>
+    <h1 className='text-3xl font-bold'>Dashboard</h1>
+  </div>
+);
+const Sobre = () => (
+  <div className='p-8'>
+    <h1 className='text-3xl font-bold'>Expediente</h1>
+  </div>
+);
+
+
+export default function App() {
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1">
-        <Header />
-        <main className="p-6">
-          <h2 className="text-2xl font-bold">Bem-vindo ao Guia Prático</h2>
-          <p className="mt-4">Selecione um módulo no menu lateral para começar.</p>
+    <Router>
+      <div className='flex h-screen bg-gray-50 font-sans text-gray-900'>
+        <Sidebar />
+        <main className='flex-1 overflow-y-auto'>
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/capitulos/sobre' element={<Sobre />} />
+
+            {/* ROTA ATUALIZADA COM O COMPONENTE REAL */}
+            <Route path='/planos' element={<Catalogo />} />
+
+            <Route path='/planos/:id' element={<PlanoDetalhe />} />
+          </Routes>
         </main>
       </div>
-    </div>
+    </Router>
   );
 }
-
-export default App;

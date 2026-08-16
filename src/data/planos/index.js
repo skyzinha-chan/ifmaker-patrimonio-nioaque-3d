@@ -1,7 +1,7 @@
 // src/data/planos/index.js
 
-import { plano01 } from './01-estrategistas-da-retirada.js';
-import { plano02 } from './02-museu-tatil.js';
+import { plano01 } from './01-piloto-estrategistas-da-retirada.js';
+import { plano02 } from './02-piloto-museu-tatil.js';
 import { plano03 } from './03-navegacao-por-coordenadas.js';
 import { plano04 } from './04-manual-de-sobrevivencia.js';
 import { plano05 } from './05-artilharia-dos-angulos.js';

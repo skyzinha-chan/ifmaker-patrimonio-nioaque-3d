@@ -54,5 +54,8 @@ export const plano08 = {
     "🧩 **Lógica e Sequenciamento (O Algoritmo Tático):** O aluno não move a peça do exército de forma impulsiva, um quadrado por vez. Ele antecipa o trajeto no mapa, identifica visualmente os gargalos (como rios ou banhados originais do tabuleiro) e constrói a linha de código completa na mesa (a sequência de setas) garantindo que a tropa chegue a Nioaque de forma autônoma e segura.",
     "🐛 **Depuração de Erros (Debugging da Rota Histórica):** Quando o jacaré é colocado em seu caminho, o aluno não demonstra frustração, não desmonta o código inteiro e não tenta simplesmente 'pular' o artefato. Ele grita 'Bug na rota histórica!', pausa a execução, rastreia a sequência de setas até o ponto exato da interrupção e substitui apenas os comandos necessários para criar um desvio pela direita ou pela esquerda, otimizando o esforço.",
     "🤝 **Trabalho em Equipe e Papéis:** O aluno atua de forma sistêmica e respeita as funções dentro do esquadrão tático. Ele não monopoliza as peças 3D; em vez disso, enquanto atua como 'programador', escuta os alertas dos colegas que estão monitorando o mapa (ex: 'Atenção, se formos por aí o canhão vai atolar'). Ele debate as opções lógicas fundamentadas no terreno histórico antes de alterar o algoritmo."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/08-rota-da-retirada.pdf"
 };

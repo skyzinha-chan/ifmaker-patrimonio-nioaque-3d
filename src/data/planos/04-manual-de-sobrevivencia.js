@@ -54,5 +54,8 @@ export const plano04 = {
     "📝 **Estruturação Lógica do Registro:** O aluno elabora um texto instrucional autossuficiente. Ele escreve instruções diretas utilizando o imperativo de forma precisa (ex: 'segure', 'puxe', 'gire'), garantindo que o sequenciamento lógico (início, meio e fim da montagem do Tatu-bola) esteja perfeitamente estruturado, sem pular etapas estruturais do brinquedo.",
     "📐 **Organização Viso-espacial de Dados:** O aluno utiliza o espaço da folha de maneira estratégica, não escrevendo um bloco de texto denso e confuso. Ele diagramará o manual utilizando numeração em lista (Passo 1, Passo 2), espaçamentos claros ou até mesmo criando legendas visuais ao lado do texto para facilitar a rápida leitura e execução pelo colega robô.",
     "🐛 **Rastreamento e Análise de Informação (Debugging Textual):** Ao perceber que o robô executou um movimento errado com o Tatu-bola, o aluno não culpa o colega. Ele assume uma postura analítica, rastreia a falha até a instrução escrita, identifica exatamente a palavra ou frase ambígua (ex: 'mexa o negócio') e realiza o 'bug de comunicação', apagando e reescrevendo o comando com total clareza técnica."
-  ]
+  ],
+
+  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
+  pdfUrl: "/pdfs/04-manual-de-sobrevivencia.pdf"
 };
