@@ -1,0 +1,23 @@
+// src/data/planos/index.js
+
+import { plano01 } from './01-estrategistas-da-retirada.js';
+import { plano02 } from './02-museu-tatil.js';
+import { plano03 } from './03-navegacao-por-coordenadas.js';
+import { plano04 } from './04-manual-de-sobrevivencia.js';
+import { plano05 } from './05-artilharia-dos-angulos.js';
+import { plano06 } from './06-bifurcacoes-narrativas.js';
+import { plano07 } from './07-museu-desplugado.js';
+import { plano08 } from './08-rota-da-retirada.js';
+import { plano09 } from './09-teia-alimentar.js';
+import { plano10 } from './10-csi-nioaque.js';
+import { plano11 } from './11-stop-motion.js';
+import { plano12 } from './12-textura-do-tempo.js';
+import { plano13 } from './13-hardware-vs-software.js';
+import { plano14 } from './14-cidades-de-concreto.js';
+import { plano15 } from './15-fake-news.js';
+
+export const planosDeAula = [
+  plano01, plano02, plano03, plano04, plano05,
+  plano06, plano07, plano08, plano09, plano10,
+  plano11, plano12, plano13, plano14, plano15
+];
