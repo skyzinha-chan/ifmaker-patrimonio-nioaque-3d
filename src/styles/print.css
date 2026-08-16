@@ -1,0 +1,12 @@
+@media print {
+  header, aside, .no-print {
+    display: none !important;
+  }
+  body {
+    background-color: white;
+    color: black;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
