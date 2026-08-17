@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=22&duration=4000&pause=1000&color=3B82F6&center=true&vCenter=true&width=700&lines=Cultura+Maker+na+Educação;Pensamento+Computacional;Patrimônio+de+Nioaque+em+3D;React+%2B+Tailwind+CSS;Licenciatura+em+Computação+•+IFMS" alt="Typing SVG"/>
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=22&duration=4000&pause=1000&color=10B981&center=true&vCenter=true&width=700&lines=Cultura+Maker+na+Educação;Pensamento+Computacional;Patrimônio+de+Nioaque+em+3D;React+%2B+Tailwind+CSS;Licenciatura+em+Ciência+da+Computação+•+IFMS" alt="Typing SVG"/>
   </a>
 </p>
 
@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <img alt="Status do Projeto" src="https://img.shields.io/badge/status-fase%201%20concluída-green">
+  <img alt="Status do Projeto" src="https://img.shields.io/badge/status-Fase%204%20Concluída-10b981?style=flat">
   <img alt="Último Commit" src="https://img.shields.io/github/last-commit/skyzinha-chan/ifmaker-patrimonio-nioaque-3d?style=flat">
   <img alt="Licença" src="https://img.shields.io/badge/license-Dupla-blue">
 </p>
@@ -41,8 +41,8 @@ O objetivo é apoiar professores na implementação dos eixos da computação (P
 - [x] ****Fase 1:**** Configuração do Ambiente, Layout Base e Estrutura Modular.  
 - [x] ****Fase 2:**** Estruturação da Base de Dados (`planosDeAula.js`).  
 - [x] ****Fase 3:**** Desenvolvimento da View de Detalhes e Sistema de Abas.  
-- [ ] ****Fase 4:**** Interatividade Avançada (Rubricas e Avaliação de Turmas).  
-- [ ] ****Fase 5:**** Polimento de UI/UX e Configuração exata de Impressão em PDF A4.
+- [x] ****Fase 4:**** Interatividade Avançada (Rubricas e Avaliação de Turmas).  
+- [x] ****Fase 5:**** Polimento de UI/UX e Configuração exata de Impressão em PDF A4.
 
 ---
 
@@ -102,15 +102,17 @@ Este projeto possui um licenciamento duplo para separar o código-fonte do conte
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/767616/LeonardoVinicius767616">
-        <img src="https://github.com/skyzinha-chan/Criador-de-Mini-Jogos-Didaticos/blob/main/assets/leonardo-vinicius.jpg?raw=true" width="100px;" alt="Foto de Leonardo Vinicius da Costa Gomes"/>
+      <a href="https://github.com/leonardo-vinicius77/leonardo-vinicius77">
+        <img src="https://github.com/leonardo-vinicius77.png" width="120px;" style="border-radius: 50%; border: 4px solid #10b981;" alt="Foto de Leonardo Vinicius da Costa Gomes"/>
+        <br />
         <br />
         <sub><b>Leonardo Vinicius da Costa Gomes</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/skyzinha-chan">
-        <img src="https://github.com/skyzinha-chan/Criador-de-Mini-Jogos-Didaticos/blob/main/assets/talita-mendonca.jpg?raw=true" width="100px;" alt="Foto de Talita Mendonça Marques"/>
+        <img src="https://github.com/skyzinha-chan.png" width="120px;" style="border-radius: 50%; border: 4px solid #10b981;" alt="Foto de Talita Mendonça Marques"/>
+        <br />
         <br />
         <sub><b>Talita Mendonça Marques</b></sub>
       </a>
