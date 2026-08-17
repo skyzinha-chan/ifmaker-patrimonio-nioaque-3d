@@ -59,7 +59,7 @@ export default function Navbar() {
                 isActive ? activeStyle : inactiveStyle
               }
             >
-              📖 Manual Pedagógico
+              Manual Pedagógico
             </NavLink>
 
             {/* O Dropdown do Catálogo para Desktop */}
