@@ -48,6 +48,33 @@ export const plano13 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno nomeia as partes do processo tecnológico, identificando o Tatu-bola em mãos e o modelo no computador. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir os termos básicos. (Ex: 'A parte que a gente toca, como o tatu de plástico, é o hardware. O arquivo que a gente não pode tocar no computador é o software')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende a relação de dependência entre as duas partes do sistema. ",
+      respostaEsperada: "Resposta Esperada: O aluno explica essa dependência com suas próprias palavras. (Ex: 'A impressora precisa do software para saber o formato certo de derreter o plástico e criar a articulação do tatu')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno transpõe o modelo físico que está segurando para uma representação em papel (desenho esquemático em camadas). ",
+      respostaEsperada: "Resposta Esperada: O grupo desenha o tatu de forma abstrata, focando nas partes articuladas e nas 'fatias' que a impressora faz."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga a estrutura física do artefato 3D para deduzir as decisões lógicas que foram tomadas no computador. ",
+      respostaEsperada: "Resposta Esperada: O aluno analisa e decompõe. (Ex: 'Eu percebi que a articulação dele é solta porque no software o designer deixou um espaço vazio milimétrico entre as escamas')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno elabora uma hipótese sobre o impacto de erros de código sobre os componentes físicos. ",
+      respostaEsperada: "Resposta Esperada: O grupo deduz a consequência de falhas lógicas no mundo real. (Ex: 'Se o software estivesse com a informação corrompida, o hardware da impressora ia imprimir uma pata torta ou ia travar')."
+    }
+  ],
   rubricaId: "tipo-b",
   ajusteFinoRubrica: [
     "⚙️ **Abstração de Propriedades:** O aluno foca a sua atenção e o seu desenho esquemático nas propriedades estruturais fundamentais do objeto (as camadas de impressão e o espaçamento milimétrico das articulações), ignorando características supérfluas (como a cor ou textura externa do plástico) para representar a lógica interna do projeto 3D.",
@@ -55,6 +82,8 @@ export const plano13 = {
     "💻 **Transposição Físico-Digital:** O aluno explica com total clareza a conexão entre os mundos: ele verbaliza que o Tatu de plástico nas suas mãos (Hardware) é apenas a consequência material de um arquivo de computador invisível (Software), compreendendo que qualquer instrução corrompida no código geraria uma falha física real na impressora."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/13-hardware-vs-software.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-13.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-13.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-b-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/13-hardware-vs-software.pdf"
 };

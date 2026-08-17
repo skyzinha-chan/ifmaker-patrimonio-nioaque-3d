@@ -49,6 +49,33 @@ export const plano14 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica as peças 3D e nomeia as eras históricas e de uso do solo que cada uma representa no mapa. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir, com suas próprias palavras, a relação de cada objeto com o tempo. (Ex: 'A pegada representa o passado onde só tinha natureza, o canhão é a época que a cidade começou a ser construída e o tatu-bola é a natureza de hoje')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende o impacto ambiental causado pela expansão urbana. ",
+      respostaEsperada: "Resposta Esperada: O aluno explica a relação de causa e efeito da atividade. (Ex: 'Para a cidade de concreto crescer e colocarmos as casas e o canhão, precisamos apagar as árvores, então sobra menos espaço para os animais morarem')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno transpõe o conceito de urbanização para a prática, mapeando e alterando o cenário físico (papel pardo) ao longo das três eras propostas. ",
+      respostaEsperada: "Resposta Esperada: O aluno desenha a floresta inicial com as pegadas, depois apaga parte dela para inserir o contorno urbano e os canhões, e por fim agrupa os tatus-bola apenas nas margens verdes que restaram no mapa."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga o mapa final e o gráfico de post-its para extrair e comprovar o padrão computacional de correlação inversa (Reconhecimento de Padrões).",
+      respostaEsperada: "Resposta Esperada: O aluno observa os dados gerados e identifica a tendência histórica. (Ex: 'Olhando o nosso gráfico, descobrimos um padrão: toda vez que o espaço da cidade aumenta, o espaço da floresta diminui')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno formula hipóteses e propõe soluções de preservação ambiental baseadas na análise dos dados históricos levantados. ",
+      respostaEsperada: "Resposta Esperada: O grupo sugere regras de planejamento urbano para Nioaque. (Ex: 'Como percebemos o padrão de desmatamento, sugerimos criar uma lei onde cada rua nova precise ter um 'corredor verde' para o tatu-bola não perder todo o seu habitat')."
+    }
+  ],
   rubricaId: "tipo-c",
   ajusteFinoRubrica: [
     "📝 **Estruturação Lógica do Registro:** O grupo articula a explicação do mapa e do gráfico com clareza causal, utilizando conectivos lógicos consistentes para explicar o fenômeno (ex: 'Concluímos que se a cidade expande sua área de concreto, então o espaço do tatu-bola é reduzido às margens').",
@@ -56,6 +83,8 @@ export const plano14 = {
     "🐛 **Rastreamento e Análise de Informação:** O aluno vai além da constatação visual básica: ele extrai o padrão computacional de correlação inversa dos dados gerados, identifica a tendência de desmatamento ao longo do tempo e propõe de forma autônoma hipóteses ou soluções práticas de preservação (como corredores ecológicos)."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/14-cidades-de-concreto.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-14.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-14.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/14-cidades-de-concreto.pdf"
 };

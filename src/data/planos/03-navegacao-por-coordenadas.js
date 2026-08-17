@@ -49,6 +49,33 @@ export const plano03 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica e nomeia os elementos básicos do plano cartesiano e os blocos de comando.",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir, com suas próprias palavras, o que é o Eixo X, o Eixo Y e o que cada seta tangível representa. (Ex: \"Essa seta significa avançar uma casa no eixo Y para chegar perto do fóssil\")."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende a importância da sequenciação lógica para a localização espacial.",
+      respostaEsperada: "Resposta Esperada: O aluno explica por que a ordem das instruções importa. (Ex: \"Se eu colocar o bloco 'Avançar' antes de 'Girar', o Paleontólogo Robô vai passar reto e perder a coordenada da pegada\")."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno executa a tarefa transpondo as coordenadas para o movimento físico no tabuleiro. ",
+      respostaEsperada: "Resposta Esperada: O aluno organiza os blocos tangíveis no quadro para montar o algoritmo completo que guiará o \"robô\" até a coordenada exata (X, Y) da pegada escondida."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga a estrutura do algoritmo em execução para identificar onde ocorreu uma falha lógica (Debugging). ",
+      respostaEsperada: "Resposta Esperada: Ao ver o colega pisar fora da rota, o aluno localiza exatamente qual passo causou o erro. (Ex: \"Achamos o bug! O erro está no terceiro cartão; ele precisava ter girado 90º à esquerda, e não à direita\")."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno planeja e constrói novas rotas ou regras para aumentar a complexidade da missão. ",
+      respostaEsperada: "Resposta Esperada: O aluno propõe novos desafios para a turma. (Ex: \"Vamos colocar um obstáculo na coordenada (2,3) para obrigar o Paleontólogo a criar um algoritmo maior com desvios\")."
+    }
+  ],
   rubricaId: "tipo-a",
   ajusteFinoRubrica: [
     "🧩 **Sequenciamento Lógico (Algoritmo):** O aluno organiza os blocos tangíveis de comando no quadro criando uma rota autossuficiente e perfeita. Ele antecipa mentalmente a rotação correta (girar à esquerda vs. direita) e a contagem de passos no eixo X e Y, garantindo que o 'robô' chegue à pegada sem esbarrar nos obstáculos, sem precisar testar a rota com os próprios pés antes de codificar.",
@@ -56,6 +83,8 @@ export const plano03 = {
     "🤝 **Execução de Papéis e Colaboração:** O aluno demonstra inteligência emocional e respeito aos protocolos do sistema. Se pertence ao Esquadrão A (Dinossauros), esconde a peça e não dá 'spoilers' ou interfere na lógica do grupo adversário. Se é o programador do Esquadrão B, escuta ativamente as sugestões dos pares antes de montar o código, e respeita o corpo do colega que está atuando como o 'robô' no chão, não tentando andar pela malha em seu lugar."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/03-navegacao-por-coordenadas.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-03.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-03.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/03-navegacao-por-coordenadas.pdf"
 };

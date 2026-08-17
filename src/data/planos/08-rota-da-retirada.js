@@ -49,6 +49,33 @@ export const plano08 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao:"Ação: O aluno identifica os elementos históricos no mapa (tropas, terreno) e reconhece a função das setas de comando tangíveis.",
+      respostaEsperada: " Resposta Esperada: O aluno consegue definir, com suas próprias palavras, quem a peça representa e o que cada seta direcional faz no simulador. (Ex: 'O canhão é o exército do Guia Lopes, e essa seta indica que a tropa deve avançar um espaço no mapa')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao:"Ação: O aluno compreende as dificuldades geográficas e táticas da Retirada da Laguna e como a ordem lógica dos comandos determina a segurança da tropa. ",
+      respostaEsperada: "Resposta Esperada: O aluno explica por que a sequência precisa ser rigorosa para evitar perigos históricos. (Ex: 'Se eu colocar o bloco de 'Avançar' antes do de 'Virar', o exército vai marchar direto para o banhado e ficar preso')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao:"Ação: O aluno utiliza as setas físicas sobre a mesa para planejar e executar a rota de fuga através do mapa com grid (simulador). ",
+      respostaEsperada: "Resposta Esperada: O aluno sequencia e posiciona corretamente os cartões direcionais, construindo um algoritmo completo que guia a peça do canhão do ponto de partida até a cidade de Nioaque, evitando os obstáculos originais do tabuleiro."
+    },
+    {
+      nivel: "4. Análise",
+      acao:"Ação: O aluno investiga a rota para realizar a depuração (debugging tático) imediata quando o cenário sofre uma intervenção não prevista (adição do jacaré 3D). ",
+      respostaEsperada: "Resposta Esperada: O aluno localiza rapidamente onde a rota tornou-se perigosa. (Ex: 'Bug na rota histórica! O professor colocou um jacaré na frente. O erro agora está na terceira seta, precisamos tirá-la e desviar a tropa pela direita')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno propõe cenários táticos novos, alterando as posições de risco para desafiar os algoritmos de planejamento de outras equipes. ",
+      respostaEsperada: "Resposta Esperada: O grupo cria desafios extras baseados na narrativa. (Ex: 'Vamos colocar dois jacarés bloqueando a ponte do rio Apa para obrigar a outra equipe a construir um algoritmo mais longo dando a volta no mapa')."
+    }
+  ],
   rubricaId: "tipo-a",
   ajusteFinoRubrica: [
     "🧩 **Lógica e Sequenciamento (O Algoritmo Tático):** O aluno não move a peça do exército de forma impulsiva, um quadrado por vez. Ele antecipa o trajeto no mapa, identifica visualmente os gargalos (como rios ou banhados originais do tabuleiro) e constrói a linha de código completa na mesa (a sequência de setas) garantindo que a tropa chegue a Nioaque de forma autônoma e segura.",
@@ -56,6 +83,8 @@ export const plano08 = {
     "🤝 **Trabalho em Equipe e Papéis:** O aluno atua de forma sistêmica e respeita as funções dentro do esquadrão tático. Ele não monopoliza as peças 3D; em vez disso, enquanto atua como 'programador', escuta os alertas dos colegas que estão monitorando o mapa (ex: 'Atenção, se formos por aí o canhão vai atolar'). Ele debate as opções lógicas fundamentadas no terreno histórico antes de alterar o algoritmo."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/08-rota-da-retirada.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-08.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-08.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/08-rota-da-retirada.pdf"
 };

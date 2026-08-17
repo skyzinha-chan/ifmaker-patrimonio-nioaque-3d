@@ -49,6 +49,33 @@ export const plano12 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica os elementos visuais e táteis (textura e relevo) presentes nos artefatos 3D. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue reconhecer e descrever, com suas próprias palavras, as diferenças de superfície dos objetos. (Ex: 'A carapaça do tatu-bola é cheia de escamas ásperas e a pegada do dinossauro tem linhas e buracos fundos')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende o conceito de Abstração, entendendo que é possível isolar uma única propriedade (a textura) e ignorar o resto da forma. ",
+      respostaEsperada: "Resposta Esperada: O aluno explica a lógica por trás da técnica proposta. (Ex: 'Nós não vamos desenhar o corpo ou a cabeça do animal, vamos abstrair e pegar apenas a informação da pele dele para colocar no papel')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno executa a técnica de frottage de forma independente, utilizando os materiais para transpor o dado tátil (3D) para o suporte visual (2D). ",
+      respostaEsperada: "Resposta Esperada: O aluno posiciona corretamente o papel fino sobre o artefato e esfrega o giz de cera ou grafite com a inclinação e pressão adequadas, capturando o padrão visual sem rasgar a folha."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga e compara as amostras de textura extraídas para selecionar as mais nítidas, descartando aquelas que sofreram falhas na captura (debugging artístico). ",
+      respostaEsperada: "Resposta Esperada: O aluno examina suas capturas e toma decisões com base na qualidade. (Ex: 'Essa amostra ficou muito borrada porque o papel saiu do lugar, mas essa aqui capturou as escamas perfeitamente. Vou recortar e usar só a que deu certo')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno organiza, recorta e integra os dados visuais extraídos (texturas) para compor uma obra abstrata coletiva. ",
+      respostaEsperada: "Resposta Esperada: O aluno cola os padrões capturados no mural da turma, criando e consolidando uma composição artística inédita que representa as diferentes eras e naturezas de Nioaque de forma puramente textural e abstrata."
+    }
+  ],
   rubricaId: "tipo-b",
   ajusteFinoRubrica: [
     "🎨 **Abstração de Propriedades:** O aluno consegue justificar sua escolha de textura. Ele ignora a forma total do tatu ou do dinossauro e explica que 'o relevo é um dado importante da pele do animal'. Ele não tenta desenhar o animal; ele foca estritamente na padronagem rítmica ou irregular da textura capturada.",
@@ -56,6 +83,8 @@ export const plano12 = {
     "📱 **Transposição Físico-Digital:** O aluno compreende que o papel com o desenho não é apenas uma 'imagem bonita', mas um 'mapa de dados' do objeto 3D. Ele articula que a textura no papel é a tradução (ou representação) da característica física do artefato, correlacionando o relevo tátil (Hardware) com o registro visual (representação de dados)."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/12-textura-do-tempo.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-12.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-12.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-b-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/12-textura-do-tempo.pdf"
 };

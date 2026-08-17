@@ -49,6 +49,33 @@ export const plano05 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica e nomeia os diferentes tipos de ângulos e os instrumentos de medida. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir, com suas próprias palavras, a diferença entre os ângulos apresentados. (Ex: 'Um ângulo reto tem 90 graus, o agudo é mais fechado e o obtuso é mais aberto, e usamos o transferidor para medi-los')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende o pilar da decomposição e como ele se aplica ao problema complexo da artilharia. ",
+      respostaEsperada: "Resposta Esperada: O aluno explica por que não basta apenas 'apontar' a peça a olho nu. (Ex: 'Para proteger o forte e acertar o alvo, precisamos dividir o problema em duas partes menores: primeiro medir a abertura do ângulo, depois medir a distância')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno utiliza os instrumentos de medição na prática e formaliza a instrução de rotação utilizando a linguagem tangível. ",
+      respostaEsperada: "Resposta Esperada: O aluno posiciona corretamente o transferidor na base do canhão 3D, faz a medição até o alvo de papel e monta o comando físico sobre a mesa (Ex: junta o Bloco de 'Girar' com um post-it escrito 'Ângulo Agudo 45º')."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga a falha no teste físico para depurar (debug) se o erro ocorreu na medição do ângulo ou na direção do giro. ",
+      respostaEsperada: "Resposta Esperada: Ao ver a régua do professor errar o alvo, o aluno refaz o processo para encontrar a falha. (Ex: 'Achamos o bug! O canhão precisava ter girado em um ângulo obtuso de 120º, mas nós medimos errado e programamos para 60º')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno planeja novos cenários balísticos, criando posições de alvo mais complexas para testar o algoritmo dos colegas. ",
+      respostaEsperada: "Resposta Esperada: O grupo propõe um novo desafio na mesa. (Ex: 'Vamos colocar o alvo no canto da ilha e adicionar uma regra em que a outra equipe precisa usar a régua duas vezes e calcular dois ângulos diferentes para conseguir acertar')."
+    }
+  ],
   rubricaId: "tipo-a",
   ajusteFinoRubrica: [
     "🧩 **Sequenciamento Lógico (Decomposição do Algoritmo Balístico):** O aluno não tenta girar o Canhão 3D a 'olho nu'. Ele segue rigorosamente a lógica da decomposição: posiciona o transferidor corretamente na base do canhão, realiza a leitura precisa do alvo (identificando se a abertura é de um ângulo agudo, reto ou obtuso) e seleciona o bloco tangível de 'Girar' acompanhado da anotação exata (ex: 45º ou 120º) antes de chamar o professor para o teste físico.",
@@ -56,6 +83,8 @@ export const plano05 = {
     "🤝 **Execução de Papéis e Colaboração:** O aluno compartilha os materiais de forma equilibrada, respeitando as funções não ditas da engenharia em grupo. Ele não monopoliza o Canhão 3D; em vez disso, atua em sincronia com os colegas—enquanto um segura a base do artefato, o outro alinha o transferidor e um terceiro redige o comando no bloco tangível. Eles dialogam sobre a matemática envolvida (ex: 'Acho que está um pouco mais aberto que 90 graus, vamos medir de novo')."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/05-artilharia-dos-angulos.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-05.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-05.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/05-artilharia-dos-angulos.pdf"
 };

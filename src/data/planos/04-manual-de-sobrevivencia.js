@@ -49,6 +49,33 @@ export const plano04 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica as partes móveis do artefato e lista os verbos de ação adequados para manipulá-lo. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue identificar e listar verbos de ação no imperativo necessários para dar uma ordem. (Ex: \"Vire, puxe, feche, encaixe\")."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende a relação direta entre a clareza de um texto instrucional e a lógica de execução de um algoritmo. ",
+      respostaEsperada: "Resposta Esperada: O aluno compreende que um texto instrucional funciona como um algoritmo. (Ex: \"Se eu não escrever exatamente o que é para fazer, o colega que é o 'robô' vai montar o tatu-bola errado\")."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno transcreve o sequenciamento físico para o papel, redigindo o primeiro rascunho de instruções. ",
+      respostaEsperada: "Resposta Esperada: O aluno redige o rascunho do manual, transpondo os movimentos físicos que fez com o artefato 3D para frases estruturadas no papel usando os blocos tangíveis de suporte."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga a estrutura do seu próprio texto para localizar ambiguidades quando a instrução falha na prática (debugging textual). ",
+      respostaEsperada: "Resposta Esperada: O aluno realiza o debugging textual. Ao ver a dupla falhar na execução, ele identifica onde a comunicação falhou. (Ex: \"Achamos o bug! A frase 'mexa o negócio' ficou confusa, precisamos trocar por 'puxe a cauda'\")."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno reconstrói e aprimora o manual de instruções, gerando um documento autossuficiente e livre de erros lógicos. ",
+      respostaEsperada: "Resposta Esperada: O aluno reescreve e consolida o manual final com total clareza lógica, garantindo que qualquer pessoa consiga executar as instruções com sucesso."
+    }
+  ],
   rubricaId: "tipo-c",
   ajusteFinoRubrica: [
     "📝 **Estruturação Lógica do Registro:** O aluno elabora um texto instrucional autossuficiente. Ele escreve instruções diretas utilizando o imperativo de forma precisa (ex: 'segure', 'puxe', 'gire'), garantindo que o sequenciamento lógico (início, meio e fim da montagem do Tatu-bola) esteja perfeitamente estruturado, sem pular etapas estruturais do brinquedo.",
@@ -56,6 +83,8 @@ export const plano04 = {
     "🐛 **Rastreamento e Análise de Informação (Debugging Textual):** Ao perceber que o robô executou um movimento errado com o Tatu-bola, o aluno não culpa o colega. Ele assume uma postura analítica, rastreia a falha até a instrução escrita, identifica exatamente a palavra ou frase ambígua (ex: 'mexa o negócio') e realiza o 'bug de comunicação', apagando e reescrevendo o comando com total clareza técnica."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/04-manual-de-sobrevivencia.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-04.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-04.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/04-manual-de-sobrevivencia.pdf"
 };

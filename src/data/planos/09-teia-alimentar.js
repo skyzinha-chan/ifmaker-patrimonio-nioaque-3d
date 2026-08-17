@@ -49,6 +49,33 @@ export const plano09 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica os animais do bioma local, suas dietas e reconhece a função do bloco lógico condicional. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir, com suas próprias palavras, a posição do animal na teia e a regra do bloco. (Ex: 'O jacaré é o predador e o tatu-bola é a presa. O bloco 'Se/Então' serve para dar uma ordem do que o animal vai fazer quando algo acontecer')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende o pilar da Decomposição, entendendo como o comportamento instintivo funciona como um 'código' biológico.",
+      respostaEsperada: " Resposta Esperada: O aluno explica a relação de causa e efeito da natureza. (Ex: 'Para entender o Pantanal inteiro, dividimos em partes menores. A regra de sobrevivência do tatu é simples: se tem perigo, ele não ataca, ele se fecha para se proteger')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno utiliza os blocos tangíveis para programar as regras de interação alimentar e executa fisicamente o mecanismo de defesa nos artefatos 3D. ",
+      respostaEsperada: "Resposta Esperada: O aluno estrutura o comando condicional sobre a mesa e manipula a peça corretamente durante o encontro. (Ex: Posiciona os blocos 'SE o jacaré atacar, ENTÃO ative a carapaça' e, no momento da simulação, fecha fisicamente o tatu-bola 3D)."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno investiga o ecossistema para realizar uma 'depuração ecológica' (debugging ambiental) quando o professor introduz um fator de desequilíbrio (como a seca). ",
+      respostaEsperada: "Resposta Esperada: Ao perceber que a regra original falhou devido à mudança no ambiente, o aluno localiza o impacto na cadeia. (Ex: 'Achamos um bug na teia alimentar! Como a lagoa secou no 'SE', a regra do 'ENTÃO' precisa mudar: o jacaré não pode caçar peixes, vai ter que caçar tatus ou vai morrer de fome')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno formula e propõe novas lógicas condicionais para outros elementos da flora ou fauna, expandindo a complexidade do ecossistema simulado. ",
+      respostaEsperada: "Resposta Esperada: O grupo cria regras inéditas conectando novos cartões com o barbante. (Ex: 'Vamos colocar o cartão da onça-pintada e criar uma nova regra tripla: SE a onça aparecer, ENTÃO o jacaré foge para a água e o tatu se enrola na terra')."
+    }
+  ],
   rubricaId: "tipo-a",
   ajusteFinoRubrica: [
     "🧩 **Sequenciamento e Lógica (A Condicional Biológica):** O aluno elabora uma condicional autossuficiente e com exatidão biológica. Ele organiza os blocos físicos ao lado do artefato 3D de forma lógica, garantindo que o gatilho ('SE o predador chegar perto') gere uma consequência real e coerente com a anatomia do animal ('ENTÃO o tatu-bola aciona a carapaça'). Ele não cria regras mágicas ou sem sentido para o ecossistema.",
@@ -56,6 +83,8 @@ export const plano09 = {
     "🤝 **Execução de Papéis e Colaboração:** Durante o choque dos ecossistemas (quando o jacaré 'ataca' o tatu-bola), o aluno não usa a peça 3D para brincar de 'lutinha' caótica. Ele respeita a execução do código ao pé da letra: só movimenta ou fecha a peça física do Tatu-bola no exato momento em que o gatilho da equipe adversária aciona a sua condicional, dialogando com os colegas para que a simulação seja cientificamente correta."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/09-teia-alimentar.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-09.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-09.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/09-teia-alimentar.pdf"
 };

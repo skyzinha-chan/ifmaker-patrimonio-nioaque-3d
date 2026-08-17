@@ -48,6 +48,33 @@ export const plano10 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica e descreve as características visuais das pegadas impressas em 3D. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir, com suas próprias palavras, as diferenças físicas entre os moldes. (Ex: 'Essa pegada tem três pontas afiadas como garras, e a outra é mais arredondada e gordinha')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende a relação direta entre a forma externa (morfologia da pegada) e a função biológica (dieta e nutrição). ",
+      respostaEsperada: "Resposta Esperada: O aluno explica a lógica evolutiva por trás daquele formato. (Ex: 'Se o dinossauro tem garras afiadas no pé para caçar e segurar presas, significa que ele comia carne')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno utiliza os instrumentos de observação (lupas) e o princípio computacional de Reconhecimento de Padrões para agrupar e classificar os artefatos sobre a mesa. ",
+      respostaEsperada: "Resposta Esperada: O aluno separa fisicamente as pegadas do 'Padrão A' (terópodes/carnívoros) das do 'Padrão B' (ornitópodes/herbívoros), iniciando o preenchimento da ficha de investigação CSI."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno deduz características internas e invisíveis (o formato dos dentes e o sistema digestório) a partir das evidências físicas limitadas que analisou. ",
+      respostaEsperada: "Resposta Esperada: O aluno relaciona logicamente a dieta descoberta ao trato digestório. (Ex: 'Como descobrimos que ele é herbívoro por causa da pegada redonda, os dentes eram retos para amassar plantas e o estômago dele precisava ser muito grande e longo para conseguir fazer a digestão')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno formula, justifica e consolida uma hipótese científica completa na ficha CSI, integrando biologia, paleontologia e propriedades dos materiais. ",
+      respostaEsperada: "Resposta Esperada: O aluno entrega o 'relatório do detetive' concluído, argumentando cientificamente sobre o comportamento do animal extinto e compreendendo como a lama do passado se transformou em rocha (fossilização) para preservar aquela prova até os dias de hoje."
+    }
+  ],
   rubricaId: "tipo-c",
   ajusteFinoRubrica: [
     "📝 **Estruturação Lógica do Registro (A Hipótese Científica):** O aluno elabora uma justificativa autossuficiente e encadeada. Ele não escreve apenas respostas curtas como 'come planta'. Ele constrói a relação de causa e efeito formalmente: 'Se o Padrão B tem a pegada redonda, ele era herbívoro. Logo, precisava de dentes planos para amassar as plantas e um estômago enorme funcionando como câmara de fermentação'.",
@@ -55,6 +82,8 @@ export const plano10 = {
     "🐛 **Rastreamento e Análise de Informação (A Dedução Morfológica):** O aluno domina a extração de dados sem recorrer à adivinhação. Ele rastreia e consolida o padrão exato de forma infalível: garras afiadas = rasgar carne = trato digestório rápido e curto. Durante o debate, ele também argumenta de forma coerente sobre a fossilização, demonstrando compreender exatamente como a lama do passado reteve a 'impressão digital' para se transformar em rocha."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/10-csi-nioaque.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-10.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-10.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/10-csi-nioaque.pdf"
 };

@@ -91,6 +91,8 @@ export const plano01 = {
     ]
   },
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/01-piloto-estrategistas-da-retirada.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-piloto1.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-piloto1.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-piloto-tipo-a-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/01-piloto-estrategistas-da-retirada.pdf"
 };

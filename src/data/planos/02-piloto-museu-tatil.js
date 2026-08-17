@@ -89,7 +89,8 @@ export const plano02 = {
       }
     ]
   },
-
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/02-piloto-museu-tatil.pdf"
+    atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-piloto2.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-piloto2.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-piloto-tipo-b-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/02-piloto-museu-tatil.pdf"
 };

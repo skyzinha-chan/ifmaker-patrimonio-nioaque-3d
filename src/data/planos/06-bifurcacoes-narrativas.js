@@ -49,6 +49,33 @@ export const plano06 = {
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
+  taxonomiaBloom: [
+    {
+      nivel: "1. Conhecimento",
+      acao: "Ação: O aluno identifica os elementos básicos de um texto narrativo e reconhece a função de um comando lógico condicional. ",
+      respostaEsperada: "Resposta Esperada: O aluno consegue definir, com suas próprias palavras, o que é o conflito da história e como funciona a regra do bloco físico. (Ex: 'A história precisa de um problema, e o bloco 'Se/Então' serve para dar duas opções de escolha para o soldado enfrentar o jacaré')."
+    },
+    {
+      nivel: "2. Compreensão",
+      acao: "Ação: O aluno compreende como a lógica condicional altera a progressão temporal e a coesão do texto. ",
+      respostaEsperada: "Resposta Esperada: O aluno explica por que cada escolha precisa de uma consequência lógica diferente. (Ex: 'Se o soldado escolher atirar com o canhão, o parágrafo seguinte precisa mostrar que o barulho espantou os animais, senão a história perde o sentido')."
+    },
+    {
+      nivel: "3. Aplicação",
+      acao: "Ação: O aluno transpõe o planejamento abstrato (o esqueleto da história) para a produção escrita, utilizando os artefatos 3D como guias físicos no papel. ",
+      respostaEsperada: "Resposta Esperada: O aluno estrutura a introdução do conto no papel pardo, posiciona o bloco tangível 'Se/Então' no momento do clímax e redige corretamente os dois parágrafos alternativos correspondentes a cada decisão."
+    },
+    {
+      nivel: "4. Análise",
+      acao: "Ação: O aluno revisa a lógica e a coesão textual da narrativa ramificada durante a leitura interativa cruzada (debugging literário). ",
+      respostaEsperada: "Resposta Esperada: Ao jogar a história do outro grupo, o aluno percebe se as transições fazem sentido ou se há falhas lógicas. (Ex: 'Achamos um bug na história! O leitor escolheu atravessar em silêncio no 'SENÃO', mas o texto continua como se o canhão tivesse disparado. Precisamos corrigir essa parte')."
+    },
+    {
+      nivel: "5. Síntese (Criação)",
+      acao: "Ação: O aluno elabora uma narrativa ficcional de aventura interativa completa, integrando harmoniosamente elementos do patrimônio histórico local, a fauna e o pensamento computacional. ",
+      respostaEsperada: "Resposta Esperada: O aluno consolida o 'Livro-Jogo', entregando um conto com introdução envolvente, um momento de bifurcação lógica perfeitamente sinalizado e desfechos coerentes para quem for interagir com o texto."
+    }
+  ],
   rubricaId: "tipo-c",
   ajusteFinoRubrica: [
     "📝 **Estruturação Lógica do Registro (A Bifurcação Escrita):** O aluno elabora uma narrativa autossuficiente e lógica. Ele escreve a introdução e, no momento do clímax, cria dois parágrafos alternativos perfeitamente coesos para a condição exigida. Ele garante que a consequência (o 'ENTÃO' - atirar com o canhão) e a alternativa (o 'SENÃO' - atravessar em silêncio) gerem desfechos que façam sentido com o resto da história, sem perder a continuidade temporal do texto.",
@@ -56,6 +83,8 @@ export const plano06 = {
     "🐛 **Rastreamento e Análise de Informação (Debugging Literário):** Durante a troca de histórias, o aluno assume a postura de um verdadeiro 'compilador'. Ao ler o texto do outro grupo e interagir com as peças 3D, ele rastreia a lógica da escolha. Se ele escolher a opção 'SENÃO' (fugir em silêncio) e o parágrafo seguinte descrever um estrondo de pólvora, ele paralisa a leitura, aponta o 'Bug Literário' e explica à equipe autora onde a conexão lógica entre os parágrafos falhou."
   ],
 
-  // NOVA CHAVE: Link direto para o seu PDF original salvo na pasta public
-  pdfUrl: "/pdfs/06-bifurcacoes-narrativas.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-06.pdf",
+  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-06.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
+  pdfUrl: "/pdfs/planoAula/06-bifurcacoes-narrativas.pdf"
 };
