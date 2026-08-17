@@ -4,6 +4,7 @@ export const plano11 = {
   id: "stop-motion",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Plugada",
   titulo: "Algoritmos Visuais e Depuração: Stop Motion Patrimonial",
   contexto: "Contexto Interdisciplinar: Artes Visuais",
   duracao: "50min/aula",

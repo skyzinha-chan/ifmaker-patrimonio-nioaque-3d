@@ -4,6 +4,7 @@ export const plano09 = {
   id: "teia-alimentar",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Decomposição e Lógica Condicional: O Código da Natureza na Teia Alimentar",
   contexto: "Contexto Interdisciplinar: Ciências da Natureza",
   duracao: "50min/aula",

@@ -4,6 +4,7 @@ export const plano10 = {
   id: "csi-nioaque",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Reconhecimento de Padrões: Investigação CSI do Formato dos Dentes Fósseis",
   contexto: "Contexto Interdisciplinar: Ciências da Natureza",
   duracao: "50min/aula",

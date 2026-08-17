@@ -4,6 +4,7 @@ export const plano06 = {
   id: "bifurcacoes-narrativas",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Lógica Condicional e Abstração: Caminhos Alternativos na Retirada da Laguna",
   contexto: "Contexto Interdisciplinar: Língua Portuguesa",
   duracao: "50min/aula",

@@ -4,6 +4,7 @@ export const plano05 = {
   id: "artilharia-dos-angulos",
   ano: "5º Ano",
   eixo: "CULTURA MAKER",
+  tipo: "Desplugada",
   titulo: "Decomposição de Problemas: A Artilharia dos Ângulos",
   contexto: "Contexto Interdisciplinar: Matemática e História Local",
   duracao: "50min/aula",

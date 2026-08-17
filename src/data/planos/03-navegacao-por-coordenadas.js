@@ -4,6 +4,7 @@ export const plano03 = {
   id: "navegacao-por-coordenadas",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Algoritmos e Depuração: O Tesouro Perdido do Vale dos Dinossauros",
   contexto: "Contexto Interdisciplinar: Matemática",
   duracao: "50min/aula",

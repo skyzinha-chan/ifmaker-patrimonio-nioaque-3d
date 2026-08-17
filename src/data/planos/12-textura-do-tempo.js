@@ -4,6 +4,7 @@ export const plano12 = {
   id: "textura-do-tempo",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Abstração: A Textura do Tempo através da Frottage",
   contexto: "Contexto Interdisciplinar: Artes Visuais",
   duracao: "50min/aula",

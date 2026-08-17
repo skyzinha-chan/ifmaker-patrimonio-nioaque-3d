@@ -4,6 +4,7 @@ export const plano08 = {
   id: "rota-da-retirada",
   ano: "5º Ano",
   eixo: "MUNDO DIGITAL",
+  tipo: "Desplugada",
   titulo: "Algoritmos e Depuração: Rota Desplugada da Retirada da Laguna",
   contexto: "Contexto Interdisciplinar: História (Ciências Humanas)",
   duracao: "50min/aula",

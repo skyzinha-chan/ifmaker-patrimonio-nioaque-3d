@@ -4,6 +4,7 @@ export const plano15 = {
   id: "fake-news-mitos-guerra",
   ano: "5º Ano",
   eixo: "CULTURA DIGITAL",
+  tipo: "Desplugada",
   titulo: "Segurança da Informação e Depuração: 'Fake News' e os Mitos da Guerra",
   contexto: "Contexto Interdisciplinar: História",
   duracao: "50min/aula",

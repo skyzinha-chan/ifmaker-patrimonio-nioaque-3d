@@ -4,6 +4,7 @@ export const plano13 = {
   id: "hardware-vs-software",
   ano: "5º Ano",
   eixo: "MUNDO DIGITAL",
+  tipo: "Desplugada",
   titulo: "Hardware e Software: Como a Máquina Pensa?",
   contexto: "Contexto Interdisciplinar: Cultura Maker / Ciências da Natureza",
   duracao: "50min/aula",

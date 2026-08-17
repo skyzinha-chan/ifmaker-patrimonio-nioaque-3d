@@ -4,6 +4,7 @@ export const plano07 = {
   id: "museu-desplugado",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Reconhecimento de Padrões e Repetição (Loops): O Museu Desplugado de Nioaque",
   contexto: "Contexto Interdisciplinar: História",
   duracao: "50min/aula",

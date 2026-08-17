@@ -4,6 +4,7 @@ export const plano04 = {
   id: "manual-de-sobrevivencia",
   ano: "5º Ano",
   eixo: "PENSAMENTO COMPUTACIONAL",
+  tipo: "Desplugada",
   titulo: "Algoritmos Textuais e Depuração: O Manual de Sobrevivência do Tatu-bola Robô",
   contexto: "Contexto Interdisciplinar: Língua Portuguesa",
   duracao: "50min/aula",

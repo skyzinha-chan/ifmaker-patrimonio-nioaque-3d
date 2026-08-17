@@ -4,6 +4,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { planosDeAula } from "../data/planos";
 import { rubricas } from "../data/rubricas";
 
+import ComentariosPedagogicos from "../components/ComentariosPedagogicos"; //TESTANDO COMENTARIOS DE USUARIOS
+
 // Função auxiliar de cores da BNCC
 const getCorDoEixo = (eixo) => {
   const eixoNormalizado = eixo?.toUpperCase() || "";
@@ -105,7 +107,6 @@ export default function PlanoDetalhe() {
           Plano {currentIndex + 1} de {planosDeAula.length}
         </span>
       </div>
-
       {/* ========================================================= */}
       {/* CABEÇALHO DO PLANO (RESTAURO DAS TAGS E TÍTULO) */}
       {/* ========================================================= */}
@@ -146,7 +147,6 @@ export default function PlanoDetalhe() {
           </p>
         </div>
       </header>
-
       {/* ========================================================= */}
       {/* NOVO SISTEMA DE ABAS INTERATIVAS (TABS) */}
       {/* ========================================================= */}
@@ -186,7 +186,6 @@ export default function PlanoDetalhe() {
           3. Rubrica de Avaliação
         </button>
       </div>
-
       {/* ÁREA DE CONTEÚDO DINÂMICO DAS ABAS */}
       <div className='min-h-[400px]'>
         {/* ==================== ABA 1: VISÃO GERAL ==================== */}
@@ -220,26 +219,27 @@ export default function PlanoDetalhe() {
                   ))}
                 </ul>
               </section>
-            ) }
+            )}
 
-            <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <h3 className="font-bold text-xs uppercase text-slate-400 tracking-wider mb-3">
-                      Recursos Necessários
-                    </h3>
-                    <ul className="text-sm text-slate-700 list-disc list-inside space-y-2">
-                      {/* O mapeamento mágico do React acontece aqui */}
-                      {plano.recursos && plano.recursos.length > 0 ? (
-                        plano.recursos.map((item, index) => (
-                          <li key={index} className="pl-1">
-                            {item}
-                          </li>
-                        ))
-                      ) : (
-                        <li className="italic text-slate-500">Nenhum recurso específico cadastrado.</li>
-                      )}
-                    </ul>
-                  </div>
-                
+            <div className='bg-slate-50 p-5 rounded-xl border border-slate-100'>
+              <h3 className='font-bold text-xs uppercase text-slate-400 tracking-wider mb-3'>
+                Recursos Necessários
+              </h3>
+              <ul className='text-sm text-slate-700 list-disc list-inside space-y-2'>
+                {/* O mapeamento mágico do React acontece aqui */}
+                {plano.recursos && plano.recursos.length > 0 ? (
+                  plano.recursos.map((item, index) => (
+                    <li key={index} className='pl-1'>
+                      {item}
+                    </li>
+                  ))
+                ) : (
+                  <li className='italic text-slate-500'>
+                    Nenhum recurso específico cadastrado.
+                  </li>
+                )}
+              </ul>
+            </div>
 
             {/* Ideia Prática */}
             {plano.ideiaPratica && (
@@ -474,7 +474,6 @@ export default function PlanoDetalhe() {
           </div>
         )}
       </div>
-
       {/* ÁREA DE DOWNLOADS E PDFs (Visível em todas as abas) */}
       <section className='mt-12 print:hidden border-t pt-8 border-gray-200'>
         <h3 className='text-lg font-bold text-gray-900 mb-6 text-center'>
@@ -616,8 +615,11 @@ export default function PlanoDetalhe() {
           </div>
         )}
       </section>
-      {/* ========================================================= */}
+      {/* ========================================================= */ }
+      
+      <ComentariosPedagogicos planoId={ plano.id } /> {/*TESTANDO COMENTARIOS DE  USUARIOS */ }
 
+      
       {/* BARRA DE NAVEGAÇÃO SEQUENCIAL (PRÓXIMO / ANTERIOR) */}
       <footer className='mt-16 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 print:hidden'>
         {planoAnterior ? (

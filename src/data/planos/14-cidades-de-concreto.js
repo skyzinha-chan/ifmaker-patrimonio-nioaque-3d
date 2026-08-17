@@ -4,6 +4,7 @@ export const plano14 = {
   id: "cidades-de-concreto",
   ano: "5º Ano",
   eixo: "MUNDO DIGITAL",
+  tipo: "Desplugada",
   titulo: "Reconhecimento de Padrões de Dados: Cidades de Concreto vs. Cidades de Escamas",
   contexto: "Contexto Interdisciplinar: Geografia",
   duracao: "50min/aula",
