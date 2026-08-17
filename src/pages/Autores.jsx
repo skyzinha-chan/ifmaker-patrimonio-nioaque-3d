@@ -47,16 +47,35 @@ export default function Autores() {
               Talita Mendonça Marques
             </h2>
             <p className='text-emerald-700 font-bold text-sm mb-4 uppercase tracking-wider'>
-              Pesquisadora Autora e Idealizadora
+              Pesquisadora e Desenvolvedora
             </p>
-            <p className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
-              Acadêmica do 8º semestre de Licenciatura em Computação no IFMS
-              Campus Jardim. Atua como Bolsista de Iniciação Tecnológica e
-              Extensão no projeto IFMAKER Educador. Especialista em metodologias
-              ativas, foi a responsável por desenhar a estrutura pedagógica e as
-              missões desplugadas que conectam o patrimônio local à BNCC
-              Computação.
-            </p>
+            <div className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
+              <p className='mb-3'>
+                Acadêmica de Licenciatura em Ciência da Computação no IFMS
+                Campus Jardim e graduada em Gestão Empreendedora de Serviços
+                (UNINTER, 2023). Possui forte atuação na área de programação e
+                trabalha profissionalmente com o treinamento e avaliação de
+                modelos de Inteligência Artificial a partir de feedback humano
+                (RLHF).
+              </p>
+              <p className='mb-3'>
+                Sua trajetória na extensão e pesquisa iniciou-se como voluntária
+                no projeto IDIS (Inclusão Digital para Inclusão Social), voltado
+                ao ensino de informática básica para pessoas em situação de
+                vulnerabilidade. Pela sua Iniciação Científica em Visão
+                Computacional para Educação Inclusiva (Edital 033/2024),
+                conquistou o 3º lugar na FECIOESTE 2024 e, em parceria, o 2º
+                lugar na edição de 2025.
+              </p>
+              <p>
+                No projeto IFMAKER (Edital 054/2025), participou da curadoria de
+                modelos 3D e do desenho da estrutura pedagógica que conecta o
+                patrimônio de Nioaque à BNCC. Sua formação inclui ainda um
+                intercâmbio acadêmico no Canadá (Edital 060/2025), além de
+                experiências como estágio na Compass UOL e bootcamps Mulheres na
+                Computação, Santander Code Girls e Best Minds.
+              </p>
+            </div>
 
             {/* LINKS SOCIAIS (Ajustados para Acessibilidade e Tamanho) */}
             <div className='flex flex-wrap items-center gap-2 mt-2'>
@@ -155,16 +174,34 @@ export default function Autores() {
               Leonardo Vinicius da Costa Gomes
             </h2>
             <p className='text-emerald-700 font-bold text-sm mb-4 uppercase tracking-wider'>
-              Pesquisador Co-autor e Apoio Técnico
+              Pesquisador e Coautor
             </p>
-            <p className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
-              Acadêmico do 8º semestre de Licenciatura em Computação no IFMS
-              Campus Jardim. Além da atuação como Bolsista no projeto IFMAKER,
-              integra o Programa Institucional de Bolsas de Iniciação à Docência
-              (PIBID). É o responsável pela logística, suporte de infraestrutura
-              técnica e modelagem que asseguram a viabilidade da aplicação das
-              aulas em escolas públicas.
-            </p>
+            <div className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
+              <p className='mb-3'>
+                Acadêmico de Licenciatura em Ciência da Computação no IFMS
+                Campus Jardim. Atua como coautor com participação igualitária
+                nos projetos, desde a concepção metodológica até a prática.
+                Iniciou sua trajetória no IFMS como bolsista no projeto IDIS
+                (Inclusão Digital para Inclusão Social), promovendo o ensino de
+                computação básica para comunidades em vulnerabilidade.
+              </p>
+              <p className='mb-3'>
+                Em 2025, passou a integrar o projeto de Iniciação Científica em
+                Visão Computacional (Edital 033/2024), conquistando, junto com
+                Talita, o 2º lugar na FECIOESTE. Nesse mesmo projeto, foi o
+                responsável pela apresentação que garantiu o 2º lugar (Menção
+                Honrosa - CET) na SEMICT 2025.
+              </p>
+              <p>
+                Atualmente, além de integrar o Programa Institucional de Bolsas
+                de Iniciação à Docência (PIBID - Edital 23/2026), é bolsista
+                voluntário no projeto IFMAKER (Edital 054/2025). Nele, participa
+                ativamente da construção dos planos de aula, além de ser
+                responsável pela logística e infraestrutura técnica que
+                viabilizam a aplicação de aulas desplugadas e com uso de modelos
+                3D em escolas públicas.
+              </p>
+            </div>
 
             {/* LINKS SOCIAIS (Ajustados para Acessibilidade e Tamanho) */}
             <div className='flex flex-wrap items-center gap-2 mt-2'>
