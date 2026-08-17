@@ -220,7 +220,26 @@ export default function PlanoDetalhe() {
                   ))}
                 </ul>
               </section>
-            )}
+            ) }
+
+            <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h3 className="font-bold text-xs uppercase text-slate-400 tracking-wider mb-3">
+                      Recursos Necessários
+                    </h3>
+                    <ul className="text-sm text-slate-700 list-disc list-inside space-y-2">
+                      {/* O mapeamento mágico do React acontece aqui */}
+                      {plano.recursos && plano.recursos.length > 0 ? (
+                        plano.recursos.map((item, index) => (
+                          <li key={index} className="pl-1">
+                            {item}
+                          </li>
+                        ))
+                      ) : (
+                        <li className="italic text-slate-500">Nenhum recurso específico cadastrado.</li>
+                      )}
+                    </ul>
+                  </div>
+                
 
             {/* Ideia Prática */}
             {plano.ideiaPratica && (

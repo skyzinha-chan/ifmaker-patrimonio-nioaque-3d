@@ -53,6 +53,15 @@ export default function Navbar() {
               Expediente
             </NavLink>
 
+            <NavLink
+              to='/manual'
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              📖 Manual Pedagógico
+            </NavLink>
+
             {/* O Dropdown do Catálogo para Desktop */}
             <div className='relative group'>
               <NavLink

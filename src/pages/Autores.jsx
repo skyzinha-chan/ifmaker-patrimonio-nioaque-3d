@@ -50,7 +50,7 @@ export default function Autores() {
               Pesquisadora Autora e Idealizadora
             </p>
             <p className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
-              Acadêmica do 7º semestre de Licenciatura em Computação no IFMS
+              Acadêmica do 8º semestre de Licenciatura em Computação no IFMS
               Campus Jardim. Atua como Bolsista de Iniciação Tecnológica e
               Extensão no projeto IFMAKER Educador. Especialista em metodologias
               ativas, foi a responsável por desenhar a estrutura pedagógica e as
@@ -158,7 +158,7 @@ export default function Autores() {
               Pesquisador Co-autor e Apoio Técnico
             </p>
             <p className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
-              Acadêmico do 7º semestre de Licenciatura em Computação no IFMS
+              Acadêmico do 8º semestre de Licenciatura em Computação no IFMS
               Campus Jardim. Além da atuação como Bolsista no projeto IFMAKER,
               integra o Programa Institucional de Bolsas de Iniciação à Docência
               (PIBID). É o responsável pela logística, suporte de infraestrutura
