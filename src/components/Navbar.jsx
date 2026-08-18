@@ -105,7 +105,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className='bg-green-900 inline-flex items-center justify-center p-2 rounded-md text-green-100 hover:text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-white'
               aria-label='Abrir menu principal'
-              expanded={isOpen}
+              aria-expanded={isOpen}
               aria-controls='mobile-menu'
             >
               <span className='sr-only'>

@@ -1,9 +1,12 @@
 // src/pages/PlanoDetalhe.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { doc, setDoc, getDoc, increment } from "firebase/firestore";
+import { db } from "../services/firebase";
+
+
 import { planosDeAula } from "../data/planos";
 import { rubricas } from "../data/rubricas";
-
 import ComentariosPedagogicos from "../components/ComentariosPedagogicos"; //TESTANDO COMENTARIOS DE USUARIOS
 
 // Função auxiliar de cores da BNCC
@@ -30,7 +33,33 @@ export default function PlanoDetalhe() {
   const plano = planosDeAula[currentIndex];
 
   const [avisoPdf, setAvisoPdf] = useState(null);
-  const [verificandoPdf, setVerificandoPdf] = useState(false);
+  const [ verificandoPdf, setVerificandoPdf ] = useState( false );
+  
+  const [metricas, setMetricas] = useState({ visualizacoes: 0, downloads: 0 });
+
+  useEffect(() => {
+    if (!plano) return;
+
+    // Registra +1 visualização assim que o componente monta
+    const registrarVisualizacao = async () => {
+      const metricaRef = doc(db, "metricas_planos", plano.id);
+      try {
+        await setDoc(
+          metricaRef,
+          { visualizacoes: increment(1) },
+          { merge: true },
+        );
+        const docSnap = await getDoc(metricaRef);
+        if (docSnap.exists()) {
+          setMetricas(docSnap.data());
+        }
+      } catch (error) {
+        console.error("Erro ao registrar métrica de view:", error);
+      }
+    };
+
+    registrarVisualizacao();
+  }, [plano]);
 
   // Intercepta e valida se o arquivo físico existe no /public antes de abrir
   const abrirPdfComChecagem = async (e, url, nomeMaterial) => {
@@ -51,6 +80,19 @@ export default function PlanoDetalhe() {
         contentType &&
         contentType.includes("application/pdf")
       ) {
+        // Conta +1 download no Firebase quando o PDF é confirmado
+        try {
+          const metricaRef = doc(db, "metricas_planos", plano.id);
+          await setDoc(
+            metricaRef,
+            { downloads: increment(1) },
+            { merge: true },
+          );
+          setMetricas((prev) => ({ ...prev, downloads: prev.downloads + 1 }));
+        } catch (error) {
+          console.error("Erro ao registrar download no Firebase:", error);
+        }
+
         window.open(url, "_blank", "noopener,noreferrer");
       } else {
         // Se caiu aqui, é porque deu 404 real, OU o Vite devolveu um HTML falso
@@ -111,15 +153,31 @@ export default function PlanoDetalhe() {
       {/* CABEÇALHO DO PLANO (RESTAURO DAS TAGS E TÍTULO) */}
       {/* ========================================================= */}
       <header className='border-b-4 border-green-800 pb-6 mt-6 mb-8'>
-        <div className='flex flex-wrap gap-3 mb-4'>
-          <span className='bg-gray-100 text-gray-800 border border-gray-300 px-3 py-1 rounded-full text-xs font-bold tracking-wide shadow-sm'>
-            {plano.ano || "5º Ano (Ensino Fundamental)"}
-          </span>
-          <span
-            className={`px-4 py-1 rounded-full text-xs font-bold border-2 shadow-sm uppercase tracking-wide ${getCorDoEixo(plano.eixo)}`}
-          >
-            {plano.eixo}
-          </span>
+        <div className='flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4'>
+          
+          <div className='flex flex-wrap gap-3'>
+            <span className='bg-gray-100 text-gray-800 border border-gray-300 px-3 py-1 rounded-full text-xs font-bold tracking-wide shadow-sm'>
+              {plano.ano || "5º Ano (Ensino Fundamental)"}
+            </span>
+            <span
+              className={`px-4 py-1 rounded-full text-xs font-bold border-2 shadow-sm uppercase tracking-wide ${getCorDoEixo(plano.eixo)}`}
+            >
+              {plano.eixo}
+            </span>
+          </div>
+
+          {/* PAINEL DE MÉTRICAS (Agora no fluxo normal, sem sobrepor o conteúdo abaixo) */}
+          <div className='flex gap-4 text-xs font-bold text-slate-500 bg-white p-2 px-4 rounded-full border border-gray-200 shadow-sm print:hidden'>
+            <div className='flex items-center gap-1.5'>
+              <span className='text-sm' aria-hidden='true'>👁️</span>
+              <span>{metricas.visualizacoes} Views</span>
+            </div>
+            <div className='flex items-center gap-1.5 border-l border-gray-200 pl-4'>
+              <span className='text-sm' aria-hidden='true'>📥</span>
+              <span>{metricas.downloads} Downloads</span>
+            </div>
+          </div>
+          
         </div>
 
         <h1 className='text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight'>
@@ -615,11 +673,10 @@ export default function PlanoDetalhe() {
           </div>
         )}
       </section>
-      {/* ========================================================= */ }
-      
-      <ComentariosPedagogicos planoId={ plano.id } /> {/*TESTANDO COMENTARIOS DE  USUARIOS */ }
 
-      
+      {/* COMPONENTE DE COMENTÁRIOS E AVALIAÇÃO INTEGRADO COM O TÍTULO */}
+      <ComentariosPedagogicos planoId={plano.id} planoTitulo={plano.titulo} />
+
       {/* BARRA DE NAVEGAÇÃO SEQUENCIAL (PRÓXIMO / ANTERIOR) */}
       <footer className='mt-16 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 print:hidden'>
         {planoAnterior ? (

@@ -1,14 +1,69 @@
 // src/pages/Dashboard.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../services/firebase";
 import { planosDeAula } from "../data/planos";
 
 export default function Dashboard() {
   // 1. Calculando apenas métricas dinâmicas reais que podem crescer
   const totalPlanos = planosDeAula.length;
 
-  // A métrica de Eixos permanece estática (Hardcoded), respeitando a regra de negócio da BNCC (3 Eixos).
+  // 2. Métricas Dinâmicas (Firebase Analytics)
+  const [metricasGlobais, setMetricasGlobais] = useState({
+    views: 0,
+    downloads: 0,
+    avaliacoes: 0,
+    mediaEstrelas: 0
+  });
+  const [loadingMetricas, setLoadingMetricas] = useState(true);
 
+  // 3. Efeito para buscar e agregar os dados em tempo real
+  useEffect(() => {
+    const fetchMetricas = async () => {
+      try {
+        // Busca agregações de Visualizações e Downloads
+        const metricasSnap = await getDocs(collection(db, 'metricas_planos'));
+        let totalViews = 0;
+        let totalDownloads = 0;
+        
+        metricasSnap.forEach(doc => {
+          const data = doc.data();
+          totalViews += data.visualizacoes || 0;
+          totalDownloads += data.downloads || 0;
+        });
+
+        // Busca agregações do Diário de Bordo (Comentários e Estrelas)
+        const avaliacoesSnap = await getDocs(collection(db, 'diario_de_bordo'));
+        let totalAvaliacoes = 0;
+        let somaEstrelas = 0;
+        
+        avaliacoesSnap.forEach(doc => {
+          const data = doc.data();
+          totalAvaliacoes++;
+          somaEstrelas += data.estrelas || 5; // Fallback para 5 caso antigo não tenha estrela
+        });
+
+        // Calcula a média (com segurança para evitar divisão por zero)
+        const media = totalAvaliacoes > 0 ? (somaEstrelas / totalAvaliacoes).toFixed(1) : 0;
+
+        setMetricasGlobais({
+          views: totalViews,
+          downloads: totalDownloads,
+          avaliacoes: totalAvaliacoes,
+          mediaEstrelas: media
+        });
+      } catch (error) {
+        console.error("Erro ao buscar métricas da nuvem:", error);
+      } finally {
+        setLoadingMetricas(false);
+      }
+    };
+
+    fetchMetricas();
+  }, []);
+
+  // A métrica de Eixos permanece estática (Hardcoded), respeitando a regra de negócio da BNCC (3 Eixos).
   return (
     <div className='p-6 md:p-10 max-w-7xl mx-auto animate-fadeIn'>
       {/* ========================================== */}
@@ -62,9 +117,76 @@ export default function Dashboard() {
       </section>
 
       {/* ========================================== */}
+      {/* NOVO: PAINEL DE IMPACTO EM TEMPO REAL (Firebase) */}
+      {/* Escondido na impressão (print:hidden) para foco pedagógico */}
+      {/* ========================================== */}
+      {!loadingMetricas && (
+        <section className='mb-12 print:hidden' aria-live='polite'>
+          <div className='flex items-center gap-3 mb-6'>
+            <div className='w-3 h-3 bg-red-500 rounded-full animate-pulse'></div>
+            <h2 className='text-xl font-bold text-gray-800 uppercase tracking-wider text-sm'>
+              Impacto da Plataforma ao Vivo
+            </h2>
+          </div>
+
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+            {/* Card Views */}
+            <div className='bg-slate-800 text-white p-4 rounded-2xl shadow-lg border border-slate-700 flex items-center gap-5 transform hover:-translate-y-1 transition-transform'>
+              <div
+                className='bg-slate-700 p-4 rounded-xl text-3xl'
+                aria-hidden='true'
+              >
+                👁️
+              </div>
+              <div>
+                <p className='text-slate-400 font-bold uppercase tracking-wider text-xs mb-1'>
+                  Páginas Visualizadas
+                </p>
+                <h3 className='text-3xl font-black'>{metricasGlobais.views}</h3>
+              </div>
+            </div>
+
+            {/* Card Downloads */}
+            <div className='bg-slate-800 text-white p-4 rounded-2xl shadow-lg border border-slate-700 flex items-center gap-5 transform hover:-translate-y-1 transition-transform'>
+              <div
+                className='bg-slate-700 p-4 rounded-xl text-3xl'
+                aria-hidden='true'
+              >
+                📥
+              </div>
+              <div>
+                <p className='text-slate-400 font-bold uppercase tracking-wider text-xs mb-1'>
+                  Materiais Baixados
+                </p>
+                <h3 className='text-3xl font-black'>
+                  {metricasGlobais.downloads}
+                </h3>
+              </div>
+            </div>
+
+            {/* Card Avaliações */}
+            <div className='bg-amber-50 p-4 rounded-2xl shadow-sm border border-amber-200 flex items-center gap-5 transform hover:-translate-y-1 transition-transform'>
+              <div className='bg-amber-100 text-amber-600 p-4 rounded-xl text-3xl font-bold'>
+                {metricasGlobais.mediaEstrelas}
+              </div>
+              <div>
+                <p className='text-amber-700 font-bold uppercase tracking-wider text-xs mb-1'>
+                  Média de Avaliação
+                </p>
+                <h3 className='text-sm font-medium text-amber-900'>
+                  Baseado em <strong>{metricasGlobais.avaliacoes}</strong>{" "}
+                  relatos docentes
+                </h3>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ========================================== */}
       {/* CARDS DE MÉTRICAS RÁPIDAS (Data-Driven + Regra BNCC) */}
       {/* ========================================== */}
-      <section className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-16'>
+      <section className='grid grid-cols-1 md:grid-cols-3 4 mb-16'>
         <div className='bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow border-b-4 border-b-amber-500 flex flex-col items-center text-center'>
           <div className='text-amber-500 text-4xl mb-3' aria-hidden='true'>
             🎯
