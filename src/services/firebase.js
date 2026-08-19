@@ -1,20 +1,21 @@
 // Arquivo: src/config/firebase.js
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
-// Objeto de configuração fornecido por você
 const firebaseConfig = {
-  apiKey: "AIzaSyAC2s0YvzQIlYNZlEIldnQksMiWzeSNS2c",
-  authDomain: "ifmaker-educador.firebaseapp.com",
-  projectId: "ifmaker-educador",
-  storageBucket: "ifmaker-educador.firebasestorage.app",
-  messagingSenderId: "595545822993",
-  appId: "1:595545822993:web:20ca17d0055f4679d1deb0",
-  measurementId: "G-4B3EYC41K6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
 
 // Inicializa e exporta a instância do banco de dados Firestore
-export const db = getFirestore(app);
+export const db = getFirestore( app )
+export const auth = getAuth(app);

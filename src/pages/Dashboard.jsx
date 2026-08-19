@@ -186,7 +186,7 @@ export default function Dashboard() {
       {/* ========================================== */}
       {/* CARDS DE MÉTRICAS RÁPIDAS (Data-Driven + Regra BNCC) */}
       {/* ========================================== */}
-      <section className='grid grid-cols-1 md:grid-cols-3 4 mb-16'>
+      <section className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-16'>
         <div className='bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow border-b-4 border-b-amber-500 flex flex-col items-center text-center'>
           <div className='text-amber-500 text-4xl mb-3' aria-hidden='true'>
             🎯

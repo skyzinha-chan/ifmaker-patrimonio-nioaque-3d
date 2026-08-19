@@ -7,8 +7,16 @@ import {
   query,
   where,
   serverTimestamp,
+  doc,
+  deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
-import { db } from "../services/firebase"; // Ajuste o caminho se necessário
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth"; // Importes de Segurança
+import { db, auth } from "../services/firebase"; 
 
 export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
   const [formData, setFormData] = useState({ autor: "", turma: "", texto: "" });
@@ -16,8 +24,20 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
   const [comentarios, setComentarios] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // Estado de controle do Modo Administrador
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const comentariosRef = collection(db, "diario_de_bordo");
 
+  // 1. Escuta silenciosa para saber se o Admin já está logado no navegador
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAdmin(!!user); // Se tem usuário logado, isAdmin vira true
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // 2. Carrega os comentários
   useEffect(() => {
     if (!planoId) return;
 
@@ -73,16 +93,91 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
     }
   };
 
+  // ==========================================
+  // FUNÇÕES DE MODERAÇÃO (COM AUTENTICAÇÃO REAL)
+  // ==========================================
+
+  const handleToggleAdmin = async () => {
+    if (isAdmin) {
+      // Se já está logado, desloga
+      await signOut(auth);
+      alert("🔒 Modo Administrador desativado.");
+      return;
+    }
+
+    // Pede as credenciais para logar no Firebase
+    const email = window.prompt("Acesso Restrito: E-mail de Moderação");
+    if (!email) return;
+    const senha = window.prompt("Senha de Acesso");
+    if (!senha) return;
+
+    try {
+      // O Firebase valida a senha no servidor (Segurança máxima)
+      await signInWithEmailAndPassword(auth, email, senha);
+      alert("✅ Bem-vindo! Acesso autorizado pelo servidor.");
+    } catch (error) {
+      alert("❌ Credenciais inválidas ou acesso negado.");
+    }
+  };
+
+  const handleDeletar = async (idDoComentario) => {
+    const confirmacao = window.confirm(
+      "⚠️ Apagar definitivamente este comentário?",
+    );
+    if (confirmacao) {
+      try {
+        await deleteDoc(doc(db, "diario_de_bordo", idDoComentario));
+      } catch (error) {
+        console.error("Erro ao deletar:", error);
+        alert("Erro de permissão: Você não tem direitos para apagar.");
+      }
+    }
+  };
+
+  const handleEditar = async (idDoComentario, textoAtual) => {
+    const novoTexto = window.prompt("Editar o relato:", textoAtual);
+    if (
+      novoTexto !== null &&
+      novoTexto.trim() !== "" &&
+      novoTexto !== textoAtual
+    ) {
+      try {
+        await updateDoc(doc(db, "diario_de_bordo", idDoComentario), {
+          texto: novoTexto,
+        });
+      } catch (error) {
+        console.error("Erro ao editar:", error);
+        alert("Erro de permissão: Acesso negado.");
+      }
+    }
+  };
+
   return (
     <section className='mt-12 pt-8 border-t-4 border-slate-100 print:hidden'>
-      <header className='mb-6'>
-        <h3 className='text-2xl font-bold text-slate-800 flex items-center gap-2'>
-          <span aria-hidden='true'>📝</span> Avaliação e Diário Docente
-        </h3>
-        <p className='text-slate-600 mt-1'>
-          Como foi aplicar esta missão? Deixe sua avaliação para inspirar outros
-          educadores!
-        </p>
+      <header className='mb-6 flex justify-between items-start'>
+        <div>
+          <h3 className='text-2xl font-bold text-slate-800 flex items-center gap-2'>
+            {/* O Gatilho Oculto: Clicar no emoji ativa a verificação de senha */}
+            <span
+              aria-hidden='true'
+              onClick={handleToggleAdmin}
+              className='cursor-pointer hover:scale-110 transition-transform'
+              title='Acesso da Coordenação'
+            >
+              {isAdmin ? "🔓" : "📝"}
+            </span>
+            Avaliação e Diário Docente
+          </h3>
+          <p className='text-slate-600 mt-1'>
+            Como foi aplicar esta missão? Deixe sua avaliação para inspirar
+            outros educadores!
+          </p>
+        </div>
+        {isAdmin && (
+          <span className='bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full border border-red-200'>
+            Modo Admin Ativo
+          </span>
+        )}
       </header>
 
       {/* Formulário */}
@@ -192,8 +287,27 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
             {comentarios.map((nota) => (
               <li
                 key={nota.id}
-                className='p-4 bg-white rounded-lg shadow-sm border border-slate-100'
+                className='p-4 bg-white rounded-lg shadow-sm border border-slate-100 relative group'
               >
+                {/* BOTÕES DE ADMINISTRAÇÃO (Só aparecem se isAdmin for true) */}
+                {isAdmin && (
+                  <div className='absolute top-4 right-4 flex gap-2'>
+                    <button
+                      onClick={() => handleEditar(nota.id, nota.texto)}
+                      className='text-slate-400 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 p-1.5 rounded transition-colors'
+                      title='Editar Comentário'
+                    >
+                      ✏️
+                    </button>
+                    <button
+                      onClick={() => handleDeletar(nota.id)}
+                      className='text-slate-400 hover:text-red-600 bg-slate-50 hover:bg-red-50 p-1.5 rounded transition-colors'
+                      title='Apagar Comentário'
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                )}
                 <div className='flex justify-between items-start mb-2'>
                   <div>
                     <span className='font-bold text-slate-700 text-sm'>
