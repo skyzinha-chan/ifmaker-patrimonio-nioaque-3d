@@ -9,41 +9,46 @@ export const plano01 = {
   titulo: "Plano Piloto 1: Computação Desplugada – Estrategistas da Retirada",
   contexto: "História Local (Nioaque)",
   duracao: "4 HORAS",
-  objetoConhecimento: "Algoritmos, Decomposição e Reconhecimento de Padrões através da história local.",
+  objetoConhecimento: "Algoritmos, Decomposição, Reconhecimento de Padrões através da história local (Retirada da Laguna, transformações territoriais e conflitos em Nioaque). O que forma um povo: do nomadismo aos primeiros povos sedentarizados.",
   habilidades: [
     {
-      codigo: "(EF05CO01)",
-      descricao: "Criar algoritmos simples para resolver problemas do cotidiano, utilizando diferentes linguagens (neste caso, a corporal e a simbólica)."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
     },
     {
-      codigo: "(EF05CO02)",
-      descricao: "Identificar e corrigir erros em algoritmos (depuração) de forma lógica."
+      codigo: "(EF05HI01)",
+      descricao: "Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado."
+    },
+    {
+      codigo: "(PC05AL01)",
+      descricao: "Conhecer e utilizar algoritmos com repetições. Referência CIEB opcional de apoio."
     }
   ],
   recursos: [
     "Sala de aula com carteiras afastadas",
     "Fita crepe para o grid no chão",
     "Cartões de comando impressos",
-    "Imagens do monumento de José Francisco Lopes e do Canhão"
+    "Imagens do monumento de José Francisco Lopes e do Canhão",
+    "Obstáculos 2D plastificados"
   ],
   ideiaPratica: "Os alunos atuam como 'Estrategistas da Retirada', traçando rotas seguras no chão da sala sem uso de GPS, aplicando decomposição e depuração tática.",
   roteiro: [
     {
       parte: "1ª Parte (30 min)",
       titulo: "Contextualização",
-      descricao: "Apresentação dos Professores e da narrativa 'Estrategistas da Retirada'. Sondagem sobre o conhecimento prévio do monumento do Guia Lopes. Indagações sobre como traçar rotas seguras sem uso de GPS ou celular.",
+      descricao: "Reúna a turma em semicírculo e apresente a missão tática dos 'Estrategistas da Retirada'. Narre brevemente o desafio do Guia Lopes e das tropas brasileiras para cruzar o relevo pantaneiro e o Rio Apa sem recursos tecnológicos modernos. Provoque os alunos: 'Se estivéssemos em 1867, sem satélites, telas ou sinal de GPS, como forneceríamos instruções infalíveis para que uma tropa marche com segurança no escuro?'. Estabeleça o 'Modo Furtivo', com comunicação em tom de sussurro estratégico para não alertar o território adversário, e os cuidados com o acervo plastificado.",
       corStatus: "border-computational text-computational"
     },
     {
       parte: "2ª Parte (165 min)",
       titulo: "Experimentação (Intercalado com Lanche e Recreio)",
-      descricao: "Explicação dos cartões de comando (Avançar, Girar) e do conceito de Algoritmo. Divisão das equipes (Sorteio) e definição de papéis (Robô, Mestre, Caçador, Cartógrafo). Execução da missão no tabuleiro de fita crepe com aplicação do 'Modo Furtivo' e 'Sussurro do Bug' para depuração.",
+      descricao: "Apresente os cartões de comando físicos e defina algoritmo como uma lista finita, ordenada e precisa de passos. Explique que o robô não tem vontade própria e executa estritamente a instrução recebida. Divida a sala em esquadrões de até 4 integrantes utilizando as fichas de recrutamento e atribua os papéis: Mestre do Código, Robô Tático, Caçador de Bugs e Cartógrafo. Na Missão 1, as equipes decompõem o percurso, enfileiram as setas no chão, conferem o código e executam a rota. Na Missão 2, insira um obstáculo surpresa no grid, acione o Caçador de Bugs, identifique a seta responsável e depure o código sem desfazer o caminho validado. Gire os papéis em sentido horário a cada rodada.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
-      parte: "3ª Parte (30 min)",
+      parte: "3ª Parte (45 min)",
       titulo: "Avaliação",
-      descricao: "Execução do 'Algoritmo da Limpeza' para organização da sala. Sistematização individual: colagem de emblemas e registro reflexivo no caderno. Roda de conversa final sobre a importância do erro (Bug) no aprendizado tecnológico.",
+      descricao: "Desafie a turma a executar o 'Algoritmo da Limpeza', recolhendo os cartões plastificados, a fita crepe e alinhando as carteiras. Oriente o preenchimento individual da Folha de Missão do Esquadrão, disponível no Apêndice A, e a colagem dos emblemas de mérito lógico no caderno. Finalize com uma roda de conversa socrática sobre a positividade do erro na Ciência da Computação: 'O que o bug nos ensina quando o caminho falha? Por que depurar faz de nós estrategistas melhores?'. Registre as evidências no Guia de Observação.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -91,8 +96,8 @@ export const plano01 = {
     ]
   },
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-piloto1.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-piloto1.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-piloto-tipo-a-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/01-piloto-estrategistas-da-retirada.pdf"
+  atividadesPdfUrl: "/pdfs/atividades/MISSÃO - ESTRATEGISTAS DA RETIRADA (PLANO PILOTO 1).pdf",
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/GUIA DE OBSERVAÇÃO (RUBRICA) - AULA PILOTO 1.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA PILOTO 1 – ESTRATEGISTAS DA RETIRADA.pdf"
 };

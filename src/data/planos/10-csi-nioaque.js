@@ -11,11 +11,11 @@ export const plano10 = {
   objetoConhecimento: "Pilar de Reconhecimento de Padrões. (Aplicação prática em: Sistema digestório/nutrição e propriedades dos materiais na fossilização).",
   habilidades: [
     {
-      codigo: "(EF15C001)",
+      codigo: "(EF15CO01)",
       descricao: "Pilar: Reconhecimento de Padrões - Identificar características morfológicas comuns para classificar e deduzir informações ocultas."
     },
     {
-      codigo: "(EF05CI07)",
+      codigo: "(EF05CI06 / EF05CI07)",
       descricao: "Habilidade de Apoio: Justificar a relação entre o funcionamento do sistema digestório/circulatório e a dieta do organismo (Adaptado para a fisiologia de espécies extintas locais)."
     },
     {
@@ -83,8 +83,8 @@ export const plano10 = {
     "🐛 **Rastreamento e Análise de Informação (A Dedução Morfológica):** O aluno domina a extração de dados sem recorrer à adivinhação. Ele rastreia e consolida o padrão exato de forma infalível: garras afiadas = rasgar carne = trato digestório rápido e curto. Durante o debate, ele também argumenta de forma coerente sobre a fossilização, demonstrando compreender exatamente como a lama do passado reteve a 'impressão digital' para se transformar em rocha."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-10.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-10.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/10-csi-nioaque.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.8 – CSI NIOAQUE.pdf"
 };

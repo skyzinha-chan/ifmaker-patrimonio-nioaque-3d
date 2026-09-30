@@ -11,11 +11,11 @@ export const plano14 = {
   objetoConhecimento: "Reconhecimento de Padrões ao longo do tempo. (Aplicação prática em: Transformações do espaço geográfico, urbanização e impactos ambientais).",
   habilidades: [
     {
-      codigo: "(EF05CO05)",
+      codigo: "(EF15CO01 / EF05CO10)",
       descricao: "Reconhecer que artefatos computacionais (dados visuais, simulações) são criados para atender necessidades ou expressar ideias e fatos."
     },
     {
-      codigo: "(EF15C001)",
+      codigo: "(CD05T501)",
       descricao: "Pilar: Reconhecimento de Padrões - Analisar tendências históricas e dados para prever consequências."
     },
     {
@@ -84,8 +84,8 @@ export const plano14 = {
     "🐛 **Rastreamento e Análise de Informação:** O aluno vai além da constatação visual básica: ele extrai o padrão computacional de correlação inversa dos dados gerados, identifica a tendência de desmatamento ao longo do tempo e propõe de forma autônoma hipóteses ou soluções práticas de preservação (como corredores ecológicos)."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-14.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-14.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/14-cidades-de-concreto.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.4.1 – CIDADES DE CONCRETO.pdf"
 };

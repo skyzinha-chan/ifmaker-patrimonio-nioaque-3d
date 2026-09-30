@@ -9,40 +9,53 @@ export const plano02 = {
   titulo: "Plano Piloto 2: Cultura Maker e Prototipagem – Museu Tátil de Nioaque",
   contexto: "História e Paleontologia",
   duracao: "4 HORAS",
-  objetoConhecimento: "Representação de dados, Prototipagem e Modelagem 3D (Física para Digital).",
+  objetoConhecimento: "Uso de artefatos computacionais (Cultura Digital); Materialidades (Artes Visuais); Os patrimônios materiais e imateriais da humanidade (Foco local: preservação dos marcos de memória e paleontologia de Nioaque).",
   habilidades: [
     {
-      codigo: "(EF05CO05)",
-      descricao: "Reconhecer que artefatos computacionais (como modelos 3D) são criados por seres humanos para atender necessidades ou expressar ideias."
+      codigo: "(EF15CO08)",
+      descricao: "Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas."
     },
     {
-      codigo: "(EF05CO09)",
-      descricao: "Utilizar ferramentas digitais (App de Visualização) para compreender formas espaciais."
+      codigo: "(EF05CO11)",
+      descricao: "Identificar a adequação de diferentes tecnologias computacionais na resolução de problemas."
+    },
+    {
+      codigo: "(EF15AR04)",
+      descricao: "Experimentar diferentes formas de expressão artística, fazendo uso sustentável de materiais, instrumentos, recursos e técnicas convencionais e não convencionais."
+    },
+    {
+      codigo: "(EF05HI10)",
+      descricao: "Inventariar os patrimônios materiais e imateriais da humanidade e analisar mudanças e permanências desses patrimônios ao longo do tempo."
+    },
+    {
+      codigo: "(CD05LD03)",
+      descricao: "Experimentar as mídias digitais e suas convergências. Referência CIEB opcional."
     }
   ],
   recursos: [
-    "Sala de aula",
+    "Sala de aula com mesas forradas",
     "Massinha de modelar de várias cores",
-    "Palitos de dente"
+    "Palitos de dente para estruturas de sustentação",
+    "Réplicas impressas em 3D: Canhão Histórico, Pegadas do Vale dos Dinossauros, Jacaré e Tatu-bola"
   ],
   ideiaPratica: "Modelagem física (massinha e palitos) do patrimônio de Nioaque e transição para o ambiente digital.",
   roteiro: [
     {
       parte: "1ª Parte (45 min)",
       titulo: "Contextualização",
-      descricao: "Sondagem tátil e perguntas ativadoras com peça impressa em 3D sobre o patrimônio paleontológico e histórico de Nioaque. Apresentação da narrativa 'Resgate do Patrimônio' utilizando imagens de referência 2D no quadro negro. Introdução do material (Massa Base de Prototipagem) e pactuação das regras de uso. Organização logística, agrupamento e regras de higiene pré-lanche.",
+      descricao: "Apresente as peças impressas em 3D do projeto: o canhão, a pegada fóssil, o tatu-bola e o jacaré. Permita o manuseio tátil em rodízio e questione a diferença entre observar uma foto e segurar uma peça impressa em 3D. Contextualize Nioaque como um museu a céu aberto, da Pré-História à Retirada da Laguna. Estabeleça a Regra de Ouro da Massinha, orientando o uso das cores para destacar partes funcionais e evitando a mistura total. Oriente a forração das mesas e a higiene pré-lanche.",
       corStatus: "border-computational text-computational"
     },
     {
       parte: "2ª Parte (165 min)",
       titulo: "Experimentação (Intercalado com Lanche e Recreio)",
-      descricao: "Sorteio dos esquadrões e distribuição fracionada dos materiais nas mesas forradas. Execução da modelagem 3D guiada por fases: Decomposição das formas básicas, Estruturação de volume e Texturização com palitos. Mediação ativa gamificada com entrega de emblemas térmicos aos alunos que demonstrarem abstração espacial e resiliência. Aplicação de desafios estruturais (Teste de Gravidade/Esqueleto) para validação física dos protótipos. Criação de 'Ficha Catalográfica' simulando um museu tátil.",
+      descricao: "Organize as ilhas e distribua de forma fracionada a massinha, os palitos e uma peça 3D de referência. Conduza a decomposição geométrica, separando mentalmente esfera, cilindro, cubo e cone antes da montagem. Aplique o teste da gravidade e use os palitos como esqueleto interno para garantir sustentação. Utilize as pontas dos palitos para texturização e compare o protótipo com o modelo digital exibido no aplicativo. Finalize com o preenchimento da Ficha Catalográfica do Esquadrão e desenhos da peça sob três perspectivas: frente, lado e cima.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (30 min)",
       titulo: "Avaliação",
-      descricao: "Avaliação baseada em Reconhecimento de Geometria (reduzir objetos complexos a formas básicas), Proporção e Espacialidade (não achatar a peça), e Engajamento Histórico.",
+      descricao: "Monte a Galeria do Museu Tátil com os protótipos e as Fichas Catalográficas. Cada equipe apresenta o elemento histórico ou paleontológico reproduzido, explica o uso dos palitos e descreve como o objeto seria impresso em 3D. O professor registra as evidências no Guia de Observação do Piloto 2 ou na Rubrica Tipo B, observando persistência estrutural e abstração de volume.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -85,12 +98,12 @@ export const plano02 = {
       {
         nome: "🤝 Colaboração Maker",
         pergunta: "(Dividiu tarefas e não criou 'Cinza-Lixo'?)",
-        criterioAvaliador: "Marcar SIM se o grupo respeitou a Regra de Ouro (não misturou as cores do bloco inteiro) e se os três alunos participaram ativamente."
+        criterioAvaliador: "Marcar SIM se o grupo respeitou a Regra de Ouro, não misturou as cores do bloco inteiro e se os três alunos participaram ativamente."
       }
     ]
   },
-    atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-piloto2.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-piloto2.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-piloto-tipo-b-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/02-piloto-museu-tatil.pdf"
+    atividadesPdfUrl: "/pdfs/atividades/FICHA CATALOGRÁFICA - MUSEU TÁTIL DE NIOAQUE (PLANO PILOTO 2).pdf",
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/GUIA DE OBSERVAÇÃO (RUBRICA) - AULA PILOTO 2.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA PILOTO 2 – MUSEU TÁTIL DE NIOAQUE.pdf"
 };

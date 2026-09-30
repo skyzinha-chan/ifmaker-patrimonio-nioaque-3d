@@ -11,11 +11,11 @@ export const plano15 = {
   objetoConhecimento: "Segurança e confiabilidade da informação. (Aplicação prática em: Transmissão de dados, 'Fake News' e fatos históricos locais).",
   habilidades: [
     {
-      codigo: "(CD05CD01)",
+      codigo: "(EF05CO08 / CD05CD01)",
       descricao: "Identificar, avaliar e diferenciar informações confiáveis de não confiáveis em ambientes digitais e cotidianos."
     },
     {
-      codigo: "(EF05HI09)",
+      codigo: "(EF05CO04 / EF05HI09)",
       descricao: "Habilidade de Apoio: Relacionar fatos históricos locais e regionais (Guerra do Paraguai) à história nacional."
     }
   ],
@@ -80,8 +80,8 @@ export const plano15 = {
     "🐛 **Rastreamento e Análise de Informação:** O aluno executa o fact-checking e o debugging com autonomia: ele aponta o exato momento e elo da corrente em que a alteração foi inserida (a Fake News), além de propor voluntariamente estratégias preventivas de checagem para o seu dia a dia digital (como pesquisar a veracidade antes de compartilhar conteúdos)."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-15.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-15.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/15-fake-news.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.4.2 – FAKE NEWS E OS MITOS DA GUERRA.pdf"
 };

@@ -11,7 +11,7 @@ export const plano11 = {
   objetoConhecimento: "Algoritmos e Depuração. (Aplicação prática em: Animação em Stop Motion, elementos da linguagem visual e uso de tecnologia na arte).",
   habilidades: [
     {
-      codigo: "(EF05CO02)",
+      codigo: "(EF15CO02 / EF05CO04)",
       descricao: "Identificar e corrigir erros em algoritmos (depuração)."
     },
     {
@@ -84,8 +84,8 @@ export const plano11 = {
     "📱 **Transposição Físico-Digital (A Ilusão Algorítmica):** O aluno domina a relação entre o objeto tátil e a tecnologia artística. Ao final da atividade, ele consegue articular e explicar aos colegas que a persistência da visão no vídeo (o digital) só funcionou porque eles organizaram e executaram um algoritmo perfeitamente ordenado de capturas estáticas no mundo real (o físico)."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-11.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-11.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-b-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/11-stop-motion.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.9 – STOP MOTION PATRIMONIAL.pdf"
 };

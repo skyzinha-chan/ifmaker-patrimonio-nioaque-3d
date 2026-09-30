@@ -6,21 +6,25 @@ export const plano07 = {
   eixo: "PENSAMENTO COMPUTACIONAL",
   tipo: "Desplugada",
   titulo: "Reconhecimento de Padrões e Repetição (Loops): O Museu Desplugado de Nioaque",
-  contexto: "Contexto Interdisciplinar: História",
+  contexto: "Contexto Interdisciplinar: Ciências Humanas - História",
   duracao: "50min/aula",
-  objetoConhecimento: "Conceito de Repetição (Loops) e Reconhecimento de Padrões. (Aplicação prática em: Os patrimônios materiais e imateriais da humanidade).",
+  objetoConhecimento: "Conceito de Repetição (Loops), Reconhecimento de Padrões e Organização estruturada de dados. Os patrimônios materiais e imateriais da humanidade (Foco: inventário e critérios de seleção dos marcos de memória de Nioaque).",
   habilidades: [
     {
-      codigo: "(EF15C002)",
+      codigo: "(EF15CO02)",
       descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
     },
     {
-      codigo: "(EF15C001)",
-      descricao: "Pilar: Reconhecimento de Padrões - Identificar características comuns para categorizar dados e informações."
+      codigo: "(EF15CO01)",
+      descricao: "Identificar as principais formas de organizar e representar a informação de maneira estruturada (matrizes, registros, listas e grafos) ou não estruturada (números, palavras, valores verdade)."
+    },
+    {
+      codigo: "(PC05AL01)",
+      descricao: "Conhecer e utilizar algoritmos com repetições."
     },
     {
       codigo: "(EF05HI10)",
-      descricao: "Habilidade de Apoio: Inventariar os patrimônios materiais e imateriais da humanidade e de seu entorno, discutindo em que medida eles refletem os critérios de seleção e a importância histórica dos marcos de memória locais."
+      descricao: "Inventariar os patrimônios materiais e imateriais da humanidade e analisar mudanças e permanências desses patrimônios ao longo do tempo."
     }
   ],
   recursos: [
@@ -29,24 +33,24 @@ export const plano07 = {
     "Blocos de Programação Tangível ('Repetir' / Loops)",
     "Fichas de cartolina (fichas catalográficas) e canetas"
   ],
-  ideiaPratica: "A turma atua como curadora de um museu e aplica o reconhecimento de padrões para classificar as peças 3D nos acervos de 'Patrimônio Paleontológico' e 'Patrimônio Histórico'. Ao construírem a exposição física na mesa, os alunos criam fichas catalográficas e utilizam blocos lógicos tangíveis de 'Repetir' (loops) para estruturar a linha do tempo. Essa organização otimiza a exibição e evita instruções redundantes, demonstrando que a cidade de Nioaque é um ciclo contínuo de descobertas.",
+  ideiaPratica: "A turma atua como curadora de um museu e aplica o reconhecimento de padrões para classificar as peças 3D nos acervos de \"Patrimônio Paleontológico\" e \"Patrimônio Histórico\". Ao construírem a exposição física na mesa, os alunos criam fichas catalográficas e utilizam blocos lógicos tangíveis de \"Repetir\" (loops) para estruturar a linha do tempo. Essa organização otimiza a exibição e evita instruções redundantes, demonstrando que, independentemente da época - de milhões de anos atrás a 1867 -, a cidade de Nioaque é um ciclo contínuo de descobertas e histórias importantes.",
   roteiro: [
     {
       parte: "1ª Parte (15 min)",
       titulo: "Contextualização",
-      descricao: "Introdução Histórica: O professor apresenta o conceito de patrimônio e a importância de Nioaque como um local único que preserva duas eras distintas: a Pré-História (Vale dos Dinossauros) e a História Imperial/Militar (Retirada da Laguna). Desafio do Padrão: Explica-se que um curador de museu precisa encontrar 'padrões' (características semelhantes) para organizar o acervo.",
+      descricao: "Introdução Histórica: O professor apresenta o conceito de patrimônio e a importância de Nioaque como um local único que preserva duas eras distintas: a Pré-História (Vale dos Dinossauros) e a História Imperial/Militar (Retirada da Laguna). Desafio do Padrão: Explica-se que um curador de museu precisa encontrar \"padrões\" (características semelhantes) para organizar o acervo.",
       corStatus: "border-computational text-computational"
     },
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Organização em Grupos: Os alunos manuseiam os Canhões e as Pegadas 3D. Eles criam 'Fichas Catalográficas' em cartolina descrevendo o material, a época presumida e o significado social do objeto. Aplicação do Pensamento Computacional: Os alunos percebem que a história de Nioaque segue um 'padrão cíclico' de descobertas e eventos marcantes.",
+      descricao: "Curadoria e Reconhecimento de Padrões: Organize as bancadas em formato de ateliê de museu. Comande as equipes de curadores: Examinem os artefatos 3D (Canhões e Pegadas) e identifiquem características semelhantes de formato, materialidade e época. Agrupem as peças em dois grandes acervos patrimoniais: Patrimônio Paleontológico (Cretáceo) e Patrimônio Histórico (Retirada da Laguna). Preencham as fichas catalográficas em cartolina, registrando época presumida, material e o significado sociocultural de cada marco de memória de Nioaque.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Lógica de Loops (Repetir): Para montar a exposição na mesa, em vez de criar uma instrução longa para cada século, os alunos usam o bloco tangível 'Repetir' combinado com categorias (Ex: Repetir 3x [Exibir Ficha de Patrimônio Paleontológico], seguido de Repetir 2x [Exibir Ficha de Patrimônio Histórico]). Simulação: A turma valida se a estrutura lógica sintetizou adequadamente a progressão histórica e cronológica da cidade de forma limpa.",
+      descricao: "Estruturação Algorítmica da Exposição (Modo Loop): Comande a montagem da linha do tempo: Organizem a disposição das mesas em ordem cronológica de Nioaque. Otimizem o algoritmo de exibição: em vez de listar cada peça individualmente, apliquem os blocos tangíveis de \"Repetir\" para criar laços lógicos (ex.: Repetir 3x [Exibir Fóssil] seguido de Repetir 2x [Exibir Canhão]). Auditoria Curatorial e Depuração (Debugging): Caso uma peça imperial esteja dentro do laço paleontológico ou o número do loop não coincida com os artefatos da bancada: Interrompam a visitação imediatamente e exclamem: \"Bug no acervo!\". Rastreiem a inconsistência de dados históricos ou a contagem equivocada do laço. Curadores, depurem a exposição: reajustem os blocos de repetição e reposicionem as fichas catalográficas corretas.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +88,8 @@ export const plano07 = {
     "🐛 **Rastreamento e Análise de Informação (Classificação e Debugging de Dados):** O aluno analisa os artefatos detalhadamente e registra dados precisos (época, material, significado) na ficha, demonstrando domínio histórico. Se durante a montagem da exposição um 'Canhão' for parar por engano na seção do 'Loop Paleontológico', ele realiza o debugging de dados instantaneamente: rastreia a falha de classificação histórica, retira a peça do agrupamento incorreto e a realoca no ciclo cronológico correto do Império."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-07.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-07.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/07-museu-desplugado.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.5 – O MUSEU DESPLUGADO.pdf"
 };

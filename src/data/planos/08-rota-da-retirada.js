@@ -3,24 +3,24 @@
 export const plano08 = {
   id: "rota-da-retirada",
   ano: "5º Ano",
-  eixo: "MUNDO DIGITAL",
+  eixo: "PENSAMENTO COMPUTACIONAL",
   tipo: "Desplugada",
   titulo: "Algoritmos e Depuração: Rota Desplugada da Retirada da Laguna",
-  contexto: "Contexto Interdisciplinar: História (Ciências Humanas)",
+  contexto: "Contexto Interdisciplinar: Ciências Humanas - História",
   duracao: "50min/aula",
-  objetoConhecimento: "Sequenciamento e Algoritmos. (Aplicação prática em: Dinâmicas populacionais, migrações e os conflitos na formação do território brasileiro).",
+  objetoConhecimento: "Sequenciamento e Algoritmos. O que forma um povo: as dinâmicas populacionais, o espaço geográfico ocupado e as transformações territoriais decorrentes de conflitos militares ou fluxos migratórios.",
   habilidades: [
     {
-      codigo: "(EF05CO01)",
-      descricao: "Criar algoritmos simples para resolver problemas do cotidiano, utilizando diferentes linguagens (representação simbólica/setas)."
+      codigo: "(EF15CO02)",
+      descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
     },
     {
-      codigo: "(EF05CO02)",
-      descricao: "Identificar e corrigir erros em algoritmos (depuração) de forma lógica."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
     },
     {
       codigo: "(EF05HI01)",
-      descricao: "Habilidade de Apoio: Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado e as transformações territoriais decorrentes de conflitos militares ou fluxos migratórios."
+      descricao: "Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado."
     }
   ],
   recursos: [
@@ -40,13 +40,13 @@ export const plano08 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Mapeamento e Algoritmos: Cada grupo recebe o simulador impresso (mapa com grid). A peça do Canhão 3D representa o exército. Os alunos devem usar os blocos/setas tangíveis de comando sobre a mesa para construir um algoritmo exato que guie a tropa do ponto de partida até a segurança de Nioaque.",
+      descricao: "Distribuição do Simulador e Organização das Ilhas: Entregue a cada equipe o simulador tático com grid (mapa de mesa da Retirada da Laguna), a réplica do Canhão 3D e o conjunto de setas tangíveis de comando. Missão da Marcha Segura (Construção Algorítmica): Comande os estrategistas com ordens no modo imperativo: Examinem o ponto de partida das tropas e o destino em Nioaque, mapeando os banhados e cursos d'água no tabuleiro. Decomponham o trajeto em etapas sequenciais de avanço e giro angular. Enfileirem as setas direcionais sobre a mesa, montando o algoritmo completo antes de tocar no artefato. Validem o código em conjunto: o canhão só pode marchar após a conferência e o consenso da equipe.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Introdução de Variáveis: No meio da execução, o professor adiciona obstáculos físicos no mapa (Ex: posiciona um Jacaré articulado 3D simulando um banhado intransitável ou indica que uma cheia bloqueou o caminho). Depuração In Loco: Os alunos gritam 'Bug na rota histórica!', param o movimento e modificam a sequência de setas tangíveis (depuração) para encontrar um novo caminho tático seguro.",
+      descricao: "Execução Tática e Injeção de Obstáculo: Comande: \"Mexam o Canhão 3D casa por casa no grid executando estritamente uma seta por vez\". No meio da marcha, insira uma barreira física surpresa no caminho (posicione o Jacaré articulado 3D simulando um banhado pantaneiro intransitável ou bloqueio militar). Celebração do Bug e Depuração Tática (Debugging): Diante do bloqueio inesperado: Interrompam o avanço imediatamente e exclamem: \"Bug na rota histórica!\". Rastreiem a sequência de setas e isolem a instrução que colidiria com o jacaré ou a cheia do rio. Substituam pontualmente o comando por novas setas de manobra, contornando a ameaça sem desfazer o trecho seguro já percorrido. Prossigam na execução até alcançar a segurança territorial de Nioaque.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +84,8 @@ export const plano08 = {
     "🤝 **Trabalho em Equipe e Papéis:** O aluno atua de forma sistêmica e respeita as funções dentro do esquadrão tático. Ele não monopoliza as peças 3D; em vez disso, enquanto atua como 'programador', escuta os alertas dos colegas que estão monitorando o mapa (ex: 'Atenção, se formos por aí o canhão vai atolar'). Ele debate as opções lógicas fundamentadas no terreno histórico antes de alterar o algoritmo."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-08.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-08.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/08-rota-da-retirada.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.6 – ROTA DA RETIRADA.pdf"
 };

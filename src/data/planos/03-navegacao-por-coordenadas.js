@@ -11,12 +11,16 @@ export const plano03 = {
   objetoConhecimento: "Algoritmos e lógica de programação desplugada. (Aplicação prática em: Plano Cartesiano e coordenadas geográficas).",
   habilidades: [
     {
-      codigo: "(EF15C002)",
+      codigo: "(EF15CO02)",
       descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
     },
     {
-      codigo: "(EF05CO02)",
-      descricao: "Identificar e corrigir erros em algoritmos (depuração) de forma lógica."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
+    },
+    {
+      codigo: "(PC05AL01)",
+      descricao: "Conhecer e utilizar algoritmos com repetições. Habilidade Integradora de Apoio."
     },
     {
       codigo: "(EF05MA14)",
@@ -40,13 +44,13 @@ export const plano03 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Divisão de Esquadrões: A turma é dividida. O Esquadrão A atua como 'Dinossauro' e esconde as pegadas 3D em coordenadas exatas (ex: X=3, Y=4). Abstração e Algoritmo: O Esquadrão B, como 'Paleontólogos Robôs', deve planejar a rota no quadro negro formando o 'código' com os blocos 3D tangíveis (Avançar 3, Girar 90º à esquerda, Avançar 4). Ninguém pode andar no tabuleiro até o algoritmo estar finalizado.",
+      descricao: "Divida a turma em esquadrões de exploradores. O Esquadrão A define um par ordenado secreto (X, Y) e posiciona a réplica da pegada fóssil 3D exatamente sobre a interseção da malha. O Esquadrão B, formado pelos Paleontólogos, decompõe a trajetória do ponto de origem (0,0) até o fóssil, monta a sequência no quadro com blocos tangíveis e não acessa o tabuleiro antes da validação completa do código.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Teste Físico: Um aluno do Esquadrão B tenta executar, passo a passo, o algoritmo programado no quadro. Debugging: Se o aluno pisar fora da coordenada ou bater em um obstáculo, a equipe grita 'Bug!' e retorna ao ponto zero para alterar o bloco tangível incorreto.",
+      descricao: "Execução do Robô Paleontólogo: Designe um integrante para atuar como robô e avançar casa por casa na malha, executando estritamente uma instrução tangível por vez enquanto o grupo lê o código no quadro. Celebração do Bug e Depuração: se o robô sair da coordenada ou colidir com uma zona de risco, interrompa o deslocamento, isole a instrução responsável pelo desvio, substitua pontualmente o bloco defeituoso e reinicie o teste até atingir a coordenada exata.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +88,8 @@ export const plano03 = {
     "🤝 **Execução de Papéis e Colaboração:** O aluno demonstra inteligência emocional e respeito aos protocolos do sistema. Se pertence ao Esquadrão A (Dinossauros), esconde a peça e não dá 'spoilers' ou interfere na lógica do grupo adversário. Se é o programador do Esquadrão B, escuta ativamente as sugestões dos pares antes de montar o código, e respeita o corpo do colega que está atuando como o 'robô' no chão, não tentando andar pela malha em seu lugar."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-03.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-03.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/03-navegacao-por-coordenadas.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: null,
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.1 – NAVEGAÇÃO POR COORDENADAS.pdf"
 };

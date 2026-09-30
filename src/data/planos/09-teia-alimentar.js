@@ -11,16 +11,20 @@ export const plano09 = {
   objetoConhecimento: "Pilar da Decomposição. (Aplicação prática em: Relações alimentares, cadeia/teia alimentar e desequilíbrios nos ecossistemas).",
   habilidades: [
     {
-      codigo: "(EF15C002)",
-      descricao: "Construir e simular algoritmos que resolvam problemas com uso de sequências, seleções condicionais e repetições de instruções."
+      codigo: "(EF15CO04)",
+      descricao: "Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções."
     },
     {
-      codigo: "(EF15C004)",
-      descricao: "Pilar: Decomposição - Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções."
+      codigo: "(EF15CO02)",
+      descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
     },
     {
-      codigo: "(EF05CI02)",
-      descricao: "Habilidade de Apoio: Aplicar os conhecimentos sobre relações alimentares, teia alimentar e o impacto do desequilíbrio para a manutenção dos ecossistemas locais."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
+    },
+    {
+      codigo: "(EF04CI04)",
+      descricao: "Revisão de conteúdos curriculares (Ciências): Relações de teias e cadeias alimentares nos ecossistemas pantaneiros."
     }
   ],
   recursos: [
@@ -40,13 +44,13 @@ export const plano09 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Decompondo o Ecossistema: Em grupos, os alunos recebem os animais 3D. Em vez de olhar para a floresta inteira, eles 'decompõem' o estudo focando apenas na regra de um animal. Lógica Condicional: Usando os blocos físicos 'Se/Então', o grupo do Jacaré programa seu comportamento biológico: 'SE o jacaré está com fome, ENTÃO ele caça peixes ou tatus'.",
+      descricao: "Organização das Ilhas e Decomposição Biológica: Divida a turma em grupos ecológicos e entregue as peças 3D (Jacaré e Tatu-bola), os blocos tangíveis \"Se/Então\", os cartões ilustrados e o barbante. Comande: Decomponham o ecossistema pantaneiro: não tentem analisar o bioma inteiro de uma vez; isolem e analisem apenas as regras de alimentação e sobrevivência da sua espécie atribuída. Identifiquem os gatilhos: o que o animal come, quem o ameaça e qual resposta instintiva ele dispara para sobreviver. Programação das Regras de Conduta (Modo Se/Então): Comande os biólogos-programadores: Estruturem o algoritmo de comportamento animal utilizando os blocos tangíveis sobre a bancada. Equipe do Jacaré: programem a condição de caça (ex.: SE estiver com fome, ENTÃO caçar peixes ou tatus). Equipe do Tatu-bola: programem a reação de proteção (ex.: SE predador se aproximar, ENTÃO enrolar carapaça).",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Interação de Códigos: O professor promove o encontro dos ecossistemas na mesa. Quando o 'código' do Jacaré ataca o grupo do Tatu-bola, os alunos ativam a defesa usando o artefato: 'SE o predador chegar perto, ENTÃO ative a função enrolar carapaça'. Eles fecham o Tatu-bola 3D fisicamente. Depuração Ecológica: O professor introduz um fator de desequilíbrio (ex: seca ou caça). Os alunos devem reescrever a condicional para mostrar o que acontece com a teia alimentar.",
+      descricao: "Simulação Interativa e Conexão da Teia: Comande: \"Entrelacem os cartões e as peças 3D com o barbante sobre as mesas para materializar visualmente a teia de relações tróficas\". No momento do avanço do predador: Executem a regra condicional fisicamente: ao ser abordada pelo jacaré, a equipe do tatu-bola deve fechar a carapaça do artefato 3D articulado imediatamente. Celebração do Bug e Depuração Ecológica (Debugging): Introduza um elemento surpresa de desequilíbrio (remova a carta de peixes simulando a seca de um açude): Interrompam o fluxo ecológico imediatamente e exclamem: \"Bug na teia alimentar!\". Rastreiem a falha lógica: sem peixes disponíveis, qual instrução do predador entrou em colapso? Biólogos, depurem o sistema: reescrevam a condicional do bloco \"Se/Então\" para prever novas fontes de alimento ou hábitos migratórios, restaurando a sustentabilidade do bioma.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +88,8 @@ export const plano09 = {
     "🤝 **Execução de Papéis e Colaboração:** Durante o choque dos ecossistemas (quando o jacaré 'ataca' o tatu-bola), o aluno não usa a peça 3D para brincar de 'lutinha' caótica. Ele respeita a execução do código ao pé da letra: só movimenta ou fecha a peça física do Tatu-bola no exato momento em que o gatilho da equipe adversária aciona a sua condicional, dialogando com os colegas para que a simulação seja cientificamente correta."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-09.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-09.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/09-teia-alimentar.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.7 – A TEIA ALIMENTAR.pdf"
 };

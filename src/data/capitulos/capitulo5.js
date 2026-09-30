@@ -10,15 +10,15 @@ export const capitulo5 = {
     },
     {
       tipo: "subtitulo",
-      texto: "5.1 Tangibilizando a BNCC: A Mudança de Paradigma na Avaliação"
+      texto: "5.1 Tangibilizando a BNCC: a mudança de paradigma na avaliação"
     },
     {
       tipo: "paragrafo",
-      texto: "Historicamente, o sistema educacional consolidou-se sobre os pilares da avaliação tradicional e somativa. Nesse formato, o foco central recai sobre o resultado exato: o aluno memoriza um conteúdo pré-determinado, realiza uma prova escrita e recebe uma nota que o classifica entre o \"certo\" e o \"errado\". Esse modelo, embora tenha sua utilidade para mensurar a retenção de informações em larga escala, frequentemente falha em capturar e valorizar as habilidades mais urgentes do século XXI, como a criatividade, a resiliência diante da frustração, o pensamento crítico e a capacidade de trabalhar em equipe."
+      texto: "Historicamente, o sistema educacional consolidou-se sobre os pilares da avaliação tradicional e somativa, um modelo que Luckesi (2011) critica por atuar frequentemente como uma mera \"verificação\" de aprendizagem — revestida de caráter classificatório e punitivo — em vez de diagnosticar o processo para promover melhorias inclusivas. Nesse formato, o foco central recai sobre o resultado exato: o aluno memoriza um conteúdo pré-determinado, realiza uma prova escrita e recebe uma nota que o classifica entre o \"certo\" e o \"errado\". Esse modelo, embora tenha sua utilidade para mensurar a retenção de informações em larga escala, frequentemente falha em capturar e valorizar as habilidades mais urgentes do século XXI, como a criatividade, a resiliência diante da frustração, o pensamento crítico e a capacidade de trabalhar em equipe."
     },
     {
       tipo: "paragrafo",
-      texto: "A Avaliação Maker, por sua vez, assume uma postura essencialmente formativa e processual. No universo da cultura maker e do pensamento computacional, o papel do professor não é apenas conferir se o aluno conseguiu chegar do ponto A ao ponto B, mas sim investigar e mediar como ele construiu esse caminho. Enquanto na avaliação tradicional o erro costuma ser punido com a redução da nota e o trabalho individual em silêncio é a regra de ouro, na avaliação maker o erro é celebrado e acolhido como um \"bug\" – uma etapa natural, esperada e fundamental do ciclo de aprendizagem. O barulho gerado pelo debate no grupo, a colaboração espontânea entre as carteiras e o ato de refazer um projeto que não deu certo na primeira tentativa são, na verdade, as maiores evidências de que o aluno está ativamente construindo conhecimento."
+      texto: "A Avaliação Maker, por sua vez, assume uma postura essencialmente formativa e processual, dialogando diretamente com a Avaliação Mediadora proposta por Hoffmann (2014), que defende a constante ação-reflexão-ação do educador, e com a visão de Perrenoud (1999), na qual a avaliação atua como um regulador contínuo das aprendizagens em tempo real. No universo da cultura maker e do pensamento computacional, o papel do professor não é apenas conferir se o aluno conseguiu chegar do ponto A ao ponto B, mas sim investigar e mediar como ele construiu esse caminho. Enquanto na avaliação tradicional o erro costuma ser punido com a redução da nota e o trabalho individual em silêncio é a regra de ouro, na avaliação maker o erro é celebrado e acolhido como um \"bug\" – uma etapa natural, esperada e fundamental do ciclo de aprendizagem, convertendo-se naquilo que Hoffmann (2014) denomina de \"erro construtivo\". O barulho gerado pelo debate no grupo, a colaboração espontânea entre as carteiras e o ato de refazer um projeto que não deu certo na primeira tentativa são, na verdade, as maiores evidências de que o aluno está ativamente construindo conhecimento."
     },
     {
       tipo: "paragrafo",
@@ -26,11 +26,11 @@ export const capitulo5 = {
     },
     {
       tipo: "subtitulo",
-      texto: "5.2 A Cultura do \"Ainda Não\" e as Habilidades Socioemocionais"
+      texto: "5.2 A cultura do \"ainda não\" e as habilidades socioemocionais"
     },
     {
       tipo: "paragrafo",
-      texto: "Avaliar o processo significa também mudar a linguagem dentro da sala de aula, introduzindo o que os pesquisadores chamam de Mentalidade de Crescimento (Growth Mindset). Em uma atividade maker, se um grupo não consegue fazer a estrutura parar em pé ou se o código direcional leva o personagem para o lado errado, o estudante não recebe um \"zero\" ou um atestado de fracasso. O professor intervém com o poder da palavra \"ainda\": o aluno apenas ainda não conseguiu resolver o problema. Essa sutil mudança de vocabulário reduz drasticamente a ansiedade das crianças em relação ao fracasso, encorajando-as a depurar seus próprios erros e a testar novas hipóteses sem medo da punição."
+      texto: "Avaliar o processo significa também mudar a linguagem dentro da sala de aula, introduzindo o que os pesquisadores como Dweck (2017) chamam de Mentalidade de Crescimento (Growth Mindset). Em uma atividade maker, se um grupo não consegue fazer a estrutura parar em pé ou se o código direcional leva o personagem para o lado errado, o estudante não recebe um \"zero\" ou um atestado de fracasso. O professor intervém com o poder da palavra \"ainda\": o aluno apenas ainda não conseguiu resolver o problema. Essa sutil mudança de vocabulário reduz drasticamente a ansiedade das crianças em relação ao fracasso, encorajando-as a depurar seus próprios erros e a testar novas hipóteses sem medo da punição."
     },
     {
       tipo: "paragrafo",
@@ -38,15 +38,15 @@ export const capitulo5 = {
     },
     {
       tipo: "paragrafo",
-      texto: "Para fortalecer ainda mais essa autonomia, o universo maker encoraja fortemente a avaliação por pares e a autoavaliação. Ao invés do professor ser o único detentor do julgamento, os próprios alunos são convidados a testar as criações uns dos outros. Quando um grupo executa o texto instrucional de outra equipe e aponta amigavelmente onde a comunicação falhou, ou quando a criança é questionada no final da aula sobre o que ela acha que fez de melhor e o que precisa melhorar na próxima semana, o aprendizado se torna muito mais significativo e democrático."
+      texto: "Para fortalecer ainda mais essa autonomia, o universo maker encoraja fortemente a avaliação por pares e a autoavaliação. Ao invés do professor ser o único detentor do julgamento, os próprios alunos são convidados a testar as criações uns dos outros. Essas dinâmicas materializam o conceito de \"Avaliação para a Aprendizagem\" (Assessment for Learning) teorizado por Fernandes (2009), provando que critérios transparentes e feedbacks pedagógicos contínuos ajudam o aluno a se tornar corresponsável e intelectualmente autônomo. Quando um grupo executa o texto instrucional de outra equipe e aponta amigavelmente onde a comunicação falhou, ou quando a criança é questionada no final da aula sobre o que ela acha que fez de melhor e o que precisa melhorar na próxima semana, o aprendizado se torna muito mais significativo e democrático."
     },
     {
       tipo: "subtitulo",
-      texto: "5.3 A Taxonomia de Bloom no Chão da Sala de Aula"
+      texto: "5.3 A taxonomia de Bloom no chão da sala de aula"
     },
     {
       tipo: "paragrafo",
-      texto: "Para garantir que a nossa avaliação não dependa de percepções subjetivas ou \"achismos\", toda a estrutura avaliativa deste manual foi desenhada sobre os degraus da Taxonomia de Bloom. Essa classificação, amplamente reconhecida na pedagogia, organiza os objetivos de aprendizagem em uma hierarquia de complexidade cognitiva. Em nossas aulas, o objetivo é que o aluno não estacione no primeiro degrau da memorização, mas que suba a escada cognitiva até alcançar a autonomia da criação. Durante a execução das missões, o professor deve observar o avanço dos alunos através de cinco aspectos progressivos."
+      texto: "Para garantir que a nossa avaliação não dependa de percepções subjetivas ou \"achismos\", toda a estrutura avaliativa deste manual foi desenhada sobre os degraus da Taxonomia de Bloom. Essa classificação, proposta originalmente por Bloom et al. (1956) e amplamente consolidada na estruturação de objetivos educacionais (Ferraz; Belhot, 2010), organiza os objetivos de aprendizagem em uma hierarquia de complexidade cognitiva. Em nossas aulas, o objetivo é que o aluno não estacione no primeiro degrau da memorização, mas que suba a escada cognitiva até alcançar a autonomia da criação. Durante a execução das missões, o professor deve observar o avanço dos alunos através de cinco aspectos progressivos."
     },
     {
       tipo: "paragrafo",
@@ -58,7 +58,7 @@ export const capitulo5 = {
     },
     {
       tipo: "subtitulo",
-      texto: "5.4 As Rubricas Curingas da Prática Maker"
+      texto: "5.4 As rubricas curingas da prática maker"
     },
     {
       tipo: "paragrafo",
@@ -78,7 +78,7 @@ export const capitulo5 = {
     },
     {
       tipo: "subtitulo",
-      texto: "5.5 Instrumentos de Coleta de Evidências: A Validação na Prática"
+      texto: "5.5 Instrumentos de coleta de evidências: a validação na prática"
     },
     {
       tipo: "paragrafo",
@@ -95,13 +95,13 @@ export const capitulo5 = {
     {
       tipo: "lista_marcadores",
       itens: [
-        { titulo: "Para os Planos Piloto 1 e 2 (Capítulo 6.1):", texto: "Utilize as Rubricas Específicas fornecidas logo após os roteiros. Elas mostram como o registro ocorre de forma hiper-focada." },
+        { titulo: "Para os Planos Piloto 1 e 2 (Capítulo 6.1):", texto: "Utilize as Rubricas Específicas fornecidas logo após os roteiros. Elas mostram como o registro ocorre de forma hiperfocada." },
         { titulo: "Para os demais 13 Planos de Aula (Capítulos 6.2 a 6.4):", texto: "Utilize o sistema flexível dos Mapas de Avaliação Maker (Rubricas Curingas A, B ou C), conforme a indicação contida em cada roteiro." }
       ]
     },
     {
       tipo: "paragrafo",
-      texto: "Todos estes documentos – tanto as específicas quanto as curingas – estão prontos para cópia e impressão no nosso \"Kit de Sobrevivência Maker\", no capítulo de ANEXOS."
+      texto: "Todos estes documentos – tanto as específicas quanto as curingas – estão prontos para cópia e impressão no nosso \"Kit de Sobrevivência Maker\", organizado no Apêndice A deste manual"
     }
   ]
 };

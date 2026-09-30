@@ -1,7 +1,7 @@
 // src/pages/Manual.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { manualCapitulos } from '../data/capitulos';
+import { manualCapitulos } from "../data/capitulos";
 
 export default function Manual() {
   // Define o primeiro capítulo como ativo por padrão
@@ -150,25 +150,18 @@ export default function Manual() {
                       key={index}
                       className='flex flex-col md:flex-row gap-6 my-8 p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow print:shadow-none print:border-b print:border-gray-300 print:rounded-none print:break-inside-avoid print:p-4'
                     >
-                      {/* Container da Imagem (Placeholder elegante enquanto os arquivos não sobem) */}
                       <div className='w-full md:w-48 lg:w-64 flex-shrink-0 bg-gray-100 rounded-lg flex flex-col items-center justify-center overflow-hidden min-h-[200px] border border-dashed border-gray-300 print:min-h-0 print:border-solid'>
-                        {/* Ícone de Imagem */}
-                        <svg
-                          className='w-10 h-10 text-gray-400 mb-2'
-                          fill='none'
-                          stroke='currentColor'
-                          viewBox='0 0 24 24'
-                        >
-                          <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth='2'
-                            d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'
-                          ></path>
-                        </svg>
-                        <span className='text-xs font-semibold text-gray-500 uppercase tracking-widest text-center px-2'>
-                          {bloco.alt}
-                        </span>
+                        {bloco.imagemLocal ? (
+                          <img
+                            src={bloco.imagemLocal}
+                            alt={bloco.alt}
+                            className='w-full h-full min-h-[200px] object-contain'
+                          />
+                        ) : (
+                          <span className='text-xs font-semibold text-gray-500 uppercase tracking-widest text-center px-2'>
+                            {bloco.alt}
+                          </span>
+                        )}
                       </div>
 
                       {/* Container do Texto */}
@@ -221,12 +214,24 @@ export default function Manual() {
                     >
                       {bloco.itens.map((item, idx) => (
                         <li key={idx} className='pl-2'>
-                          {item.titulo && (
-                            <strong className='text-green-900'>
-                              {item.titulo}{" "}
-                            </strong>
+                          {item.rota ? (
+                            <Link
+                              to={item.rota}
+                              className='text-green-800 hover:text-green-600 hover:underline focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 rounded-sm'
+                            >
+                              {item.titulo && <strong>{item.titulo} </strong>}
+                              {item.texto}
+                            </Link>
+                          ) : (
+                            <>
+                              {item.titulo && (
+                                <strong className='text-green-900'>
+                                  {item.titulo}{" "}
+                                </strong>
+                              )}
+                              {item.texto}
+                            </>
                           )}
-                          {item.texto}
                         </li>
                       ))}
                     </ul>

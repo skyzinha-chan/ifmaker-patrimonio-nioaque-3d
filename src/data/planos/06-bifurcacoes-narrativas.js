@@ -11,16 +11,16 @@ export const plano06 = {
   objetoConhecimento: "Condicionais lógicos e Abstração. (Aplicação prática em: Produção de textos narrativos (contos de aventura), progressão temporal/espacial).",
   habilidades: [
     {
-      codigo: "(EF15C001)",
-      descricao: "Pilar: Abstração - Isolar características essenciais e ignorar detalhes irrelevantes no planejamento da rota narrativa."
+      codigo: "Pilar Computacional",
+      descricao: "Abstração: isolar características essenciais e ignorar detalhes irrelevantes na rota narrativa."
     },
     {
-      codigo: "(EF15C002)",
-      descricao: "Construir e simular algoritmos que resolvam problemas com uso de sequências, seleções condicionais e repetições de instruções."
+      codigo: "(EF15CO02 / EF05CO04)",
+      descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
     },
     {
       codigo: "(EF35LP25)",
-      descricao: "Habilidade de Apoio: Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto."
+      descricao: "Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens. Habilidade Integradora de Apoio."
     }
   ],
   recursos: [
@@ -40,13 +40,13 @@ export const plano06 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Planejamento do Conto (Abstração): Em cartolinas, os alunos desenham o 'Esqueleto da História'. Usando os Jacarés e Canhões 3D como pontos de interesse, eles chegam no momento do clímax. A Bifurcação Escrita: Nesse ponto crítico, eles inserem fisicamente o Bloco 'Se/Então' sobre o papel. Ex: SE (o soldado avistar o Jacaré), ENTÃO (ele dispara o Canhão para assustar); SENÃO (ele atravessa o rio em silêncio). Eles redigem os parágrafos para os dois finais possíveis.",
+      descricao: "Planejamento do Conto (Abstração do Enredo): Organize as equipes com as cartolinas e as peças 3D do canhão e do jacaré. Oriente os alunos a esboçar no papel o esqueleto do conto, traçando a linha de avanço da tropa pelo Pantanal até o clímax. Posicione os artefatos 3D como marcos físicos do cenário nos momentos de perigo iminente e isole os detalhes secundários, focando no dilema de sobrevivência dos soldados. Na estruturação da bifurcação, insira o bloco tangível 'Se/Então' no instante da decisão, defina a regra condicional e redija dois ramos narrativos autônomos: um para a consequência verdadeira e outro para o caminho alternativo.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Leitura Interativa: Os grupos trocam as histórias. Um grupo lê o conto do outro e, ao chegar no bloco 'Se/Então', deve tomar a decisão manuseando os artefatos 3D. Dependendo da escolha do leitor, um final diferente do texto deve ser lido. Revisão de Coesão: O professor avalia se a transição entre o parágrafo principal e os parágrafos alternativos ('Então' / 'Senão') manteve a coesão temporal do conto.",
+      descricao: "Leitura Interativa do Livro-Jogo: Promova a troca de contos entre as bancadas. Ao chegar à bifurcação do bloco 'Se/Então', cada equipe leitora toma uma decisão manipulando as peças 3D para acionar o final correspondente. Caso perceba incoerência entre a condição escolhida e o parágrafo executado, a equipe interrompe a leitura, identifica a quebra de nexo lógico e os autores depuram o enredo, revisando a redação e ajustando a coesão gramatical das duas ramificações.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +84,8 @@ export const plano06 = {
     "🐛 **Rastreamento e Análise de Informação (Debugging Literário):** Durante a troca de histórias, o aluno assume a postura de um verdadeiro 'compilador'. Ao ler o texto do outro grupo e interagir com as peças 3D, ele rastreia a lógica da escolha. Se ele escolher a opção 'SENÃO' (fugir em silêncio) e o parágrafo seguinte descrever um estrondo de pólvora, ele paralisa a leitura, aponta o 'Bug Literário' e explica à equipe autora onde a conexão lógica entre os parágrafos falhou."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-06.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-06.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/06-bifurcacoes-narrativas.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.4 – BIFURCAÇÕES NARRATIVAS.pdf"
 };

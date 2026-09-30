@@ -18,11 +18,11 @@ export const capitulo4 = {
     },
     {
       tipo: "subtitulo",
-      texto: "4.1 O Motor da Sala de Aula: Entendendo as Metodologias Ativas"
+      texto: "4.1 O motor da sala de aula: entendendo as metodologias ativas"
     },
     {
       tipo: "paragrafo",
-      texto: "Para que os artefatos 3D adquiram significado pedagógico nas mãos dos estudantes do 5º ano, o modelo de ensino tradicional — centrado na transmissão passiva e unidirecional de conteúdo — cede espaço ao protagonismo das Metodologias Ativas. Estas abordagens funcionam como os verdadeiros \"motores\" que colocam o aluno no banco do motorista de sua própria jornada de aprendizagem. Embora algumas nomenclaturas técnicas possam soar inovadoras ou complexas à primeira vista, observa-se que o educador contemporâneo, de forma intuitiva, já aplica muitos desses princípios em sua práxis diária. A chave para o sucesso reside em intencionalizar essas ações, utilizando-as como ferramentas sistemáticas para potencializar o engajamento e garantir a aprendizagem significativa."
+      texto: "Para que os artefatos 3D adquiram significado pedagógico nas mãos dos estudantes do 5º ano, o modelo de ensino tradicional — centrado na transmissão passiva e unidirecional de conteúdo — cede espaço ao protagonismo das Metodologias Ativas. De acordo com Moran (2015), estas abordagens subvertem a lógica transmissiva ao incentivar o estudante a participar de forma colaborativa e intensa, aliando a ação à reflexão. Estas abordagens funcionam como os verdadeiros \"motores\" que colocam o aluno no banco do motorista de sua própria jornada de aprendizagem. Embora algumas nomenclaturas técnicas possam soar inovadoras ou complexas à primeira vista, observa-se que o educador contemporâneo, de forma intuitiva, já aplica muitos desses princípios em sua práxis diária. A chave para o sucesso reside em intencionalizar essas ações, utilizando-as como ferramentas sistemáticas para potencializar o engajamento e garantir a aprendizagem significativa."
     },
     {
       tipo: "paragrafo",
@@ -34,7 +34,7 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "A Cultura Maker fundamenta-se no princípio empírico da aprendizagem através da construção, popularmente conhecido como \"Mão na Massa\" ou Do It Yourself (Faça Você Mesmo). No âmbito educacional, este movimento bebe diretamente das fontes do Construcionismo, teoria desenvolvida pelo eminente matemático e educador Seymour Papert, no Instituto de Tecnologia de Massachusetts (MIT). Papert postulava que a aprendizagem atinge seu grau máximo de efetividade quando o indivíduo está ativamente engajado na construção de um artefato tangível, que possua significado pessoal e social."
+      texto: "A Cultura Maker fundamenta-se no princípio empírico da aprendizagem através da construção, popularmente conhecido como \"Mão na Massa\" ou Do It Yourself (Faça Você Mesmo). No âmbito educacional, este movimento bebe diretamente das fontes do Construcionismo, teoria desenvolvida pelo eminente matemático e educador Seymour Papert, no Instituto de Tecnologia de Massachusetts (MIT). Papert postulava que a aprendizagem atinge seu grau máximo de efetividade quando o indivíduo está ativamente engajado na construção de um artefato tangível, que possua significado pessoal e social, uma vez que, nesta perspectiva, as crianças atuam como construtoras autônomas de suas próprias ferramentas cognitivas e realidades (Papert, 2008)."
     },
     {
       tipo: "paragrafo",
@@ -46,7 +46,7 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "A Aprendizagem Baseada em Projetos (do acrônimo em inglês PBL - Project-Based Learning) configura-se como uma abordagem pedagógica na qual a construção do conhecimento emerge da investigação de um desafio complexo, autêntico e inerentemente envolvente. Nesta dinâmica, subverte-se a lógica tradicional: em vez de o educador fornecer a resposta previamente mastigada, ele apresenta um problema estruturado. O estudante, por sua vez, assume o papel de um pesquisador investigativo, o que estimula o desenvolvimento do pensamento crítico, da colaboração interpessoal e da autogestão do raciocínio."
+      texto: "A Aprendizagem Baseada em Projetos (do acrônimo em inglês PBL - Project-Based Learning) configura-se como uma abordagem pedagógica na qual a construção do conhecimento emerge da investigação de um desafio complexo, autêntico e inerentemente envolvente, conforme estabelecido pelo Buck Institute for Education (BIE, 2008). Nesta dinâmica, subverte-se a lógica tradicional: em vez de o educador fornecer a resposta previamente mastigada, ele apresenta um problema estruturado. O estudante, por sua vez, assume o papel de um pesquisador investigativo, o que estimula o desenvolvimento do pensamento crítico, da colaboração interpessoal e da autogestão do raciocínio."
     },
     {
       tipo: "paragrafo",
@@ -58,7 +58,7 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "A Gamificação consiste na transposição e aplicação de mecânicas, dinâmicas e elementos estruturais orientados a jogos para contextos de não-jogo, com o desígnio expresso de engajar, motivar comportamentos e facilitar a absorção de conceitos complexos. A integração de elementos lúdicos — tais como a definição de regras claras, o estabelecimento de metas tangíveis, a criação de desafios progressivos e a mecânica de tentativa e erro sem penalidade definitiva (o conceito de \"vidas extras\") — transforma o que seria um árduo exercício de sequenciamento em uma missão épica."
+      texto: "A Gamificação consiste na transposição e aplicação de mecânicas, dinâmicas e elementos estruturais orientados a jogos para contextos de não-jogo, com o desígnio expresso de engajar, motivar comportamentos e facilitar a absorção de conceitos complexos (Vianna et al., 2012). A integração de elementos lúdicos — tais como a definição de regras claras, o estabelecimento de metas tangíveis, a criação de desafios progressivos e a mecânica de tentativa e erro sem penalidade definitiva (o conceito de \"vidas extras\") — transforma o que seria um árduo exercício de sequenciamento em uma missão épica."
     },
     {
       tipo: "paragrafo",
@@ -66,11 +66,11 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Rotação por Estações (Otimização de Recursos)"
+      texto: "Rotação por estações (otimização de recursos)"
     },
     {
       tipo: "paragrafo",
-      texto: "A Rotação por Estações é uma modalidade oriunda do ensino híbrido, porém perfeitamente adaptável e altamente eficaz no ecossistema desplugado. Nesta arquitetura pedagógica, o espaço físico da sala de aula é fracionado em diferentes ilhas ou estações de trabalho. Cada estação propõe uma atividade distinta, com início, meio e fim, mas que se articula de forma complementar em torno de uma temática central. Os discentes, divididos em pequenos grupos, circulam obrigatoriamente por todas essas estações após o esgotamento de um limite de tempo predeterminado pelo educador."
+      texto: "A Rotação por Estações é uma modalidade oriunda do ensino híbrido (Blended Learning), amplamente fundamentada por teóricos como Horn e Staker (2015) e Bacich, Tanzi Neto e Trevisani (2015), porém perfeitamente adaptável e altamente eficaz no ecossistema desplugado. Nesta arquitetura pedagógica, o espaço físico da sala de aula é fracionado em diferentes ilhas ou estações de trabalho. Cada estação propõe uma atividade distinta, com início, meio e fim, mas que se articula de forma complementar em torno de uma temática central. Os discentes, divididos em pequenos grupos, circulam obrigatoriamente por todas essas estações após o esgotamento de um limite de tempo predeterminado pelo educador."
     },
     {
       tipo: "paragrafo",
@@ -78,7 +78,7 @@ export const capitulo4 = {
     },
     {
       tipo: "subtitulo",
-      texto: "4.2 Logística Maker: Como organizar as Ilhas e Gerenciar o Tempo"
+      texto: "4.2 Logística maker: como organizar as ilhas e gerenciar o tempo"
     },
     {
       tipo: "paragrafo",
@@ -90,7 +90,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "A Regra de Ouro da Arquitetura Espacial: As Ilhas de Aprendizagem"
+      texto: "A regra de ouro da arquitetura espacial: as ilhas de aprendizagem"
     },
     {
       tipo: "paragrafo",
@@ -106,7 +106,7 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "Para neutralizar o risco de que, em um agrupamento de seis alunos, apenas um ou dois monopolizem a manipulação do artefato enquanto os demais assumem uma postura passiva, recomenda-se a instituição de uma \"Rotação de Papéis\" intragrupo, inspirada diretamente nas metodologias ágeis utilizadas no desenvolvimento de software profissional. Atribuem-se as seguintes funções rotativas:"
+      texto: "Para neutralizar o risco de que, em um agrupamento de seis alunos, apenas um ou dois monopolizem a manipulação do artefato enquanto os demais assumem uma postura passiva, recomenda-se a instituição de uma \"Rotação de Papéis\" intragrupo, inspirada diretamente nas metodologias ágeis utilizadas no desenvolvimento de software profissional e ancorada nos princípios da Aprendizagem Cooperativa (como o método Jigsaw estruturado por Aronson), na qual a responsabilidade individual de cada \"especialista\" é vital para o sucesso coletivo do time (Silva; Cantanhede; Cantanhede, 2020). Atribuem-se as seguintes funções rotativas:"
     },
     {
       tipo: "lista_numerada",
@@ -114,7 +114,7 @@ export const capitulo4 = {
         { titulo: "O Programador:", texto: "Responsável por liderar a seleção e o posicionamento físico dos blocos de programação tangível (setas e comandos lógicos)." },
         { titulo: "O Robô (Testador):", texto: "O único discente autorizado a mover o artefato 3D pelo tabuleiro demarcado, seguindo com rigor cego as instruções dispostas pelo Programador, independentemente de estarem corretas ou não." },
         { titulo: "O Detetive (Depurador):", texto: "Encarregado de realizar a análise preditiva do algoritmo, buscando antecipar falhas de colisão ou loops infinitos antes mesmo da execução." },
-        { titulo: "O Documentador:", texto: "Responsável pelo registro oficial da sequência lógica validada, utilizando as Fichas Catalográficas ou rubricas avaliativas em papel." },
+        { titulo: "O Documentador:", texto: "Responsável pelo registro oficial da sequência lógica validada nos tabuleiros (grids), cadernos da equipe ou folhas de missão (conforme a dinâmica da aula)." },
         { titulo: "Deixe a Regra Clara:", texto: "Antes de entregar as peças 3D, estabeleça combinados de cuidado com o material e respeito ao tempo de fala do colega do grupo." }
       ]
     },
@@ -124,7 +124,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Gestão do Tempo: Desconstruindo o Mito da Atividade Efêmera"
+      texto: "Gestão do tempo: desconstruindo o mito da atividade efêmera"
     },
     {
       tipo: "paragrafo",
@@ -132,7 +132,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Tática 1: A Rotação por Estações (Otimização da Escassez)"
+      texto: "Tática 1: a rotação por estações (otimização da escassez)"
     },
     {
       tipo: "paragrafo",
@@ -144,7 +144,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Tática 2: A Elevação do Nível de Depuração (Debugging Avançado)"
+      texto: "Tática 2: a elevação do nível de depuração (debugging avançado)"
     },
     {
       tipo: "paragrafo",
@@ -156,7 +156,7 @@ export const capitulo4 = {
     },
     {
       tipo: "subtitulo",
-      texto: "4.3 Checklist de Materiais e Preparação Estratégica"
+      texto: "4.3 Checklist de materiais e preparação estratégica"
     },
     {
       tipo: "paragrafo",
@@ -164,45 +164,40 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "A tabela a seguir consolida o inventário material essencial para a condução das aulas de Computação Desplugada, acompanhado das respectivas justificativas pedagógicas e logísticas que fundamentam sua inclusão:"
+      texto: "O Quadro 3 consolida o inventário material essencial para a condução das aulas de Computação Desplugada, acompanhado das respectivas justificativas pedagógicas e logísticas que fundamentam sua inclusão:"
     },
     {
       tipo: "tabela",
-      titulo: "Tabela 3 - Inventário Material Essencial para Aulas de Computação Desplugada",
-      cabecalho: ["Categoria do Recurso", "Item Específico Necessário", "Ação de Conferência", "Justificativa Logística e Relevância Pedagógica"],
+      titulo: "Quadro 3 - Inventário de materiais e justificativas pedagógicas",
+      cabecalho: ["Categoria do Recurso", "Item Específico Necessário", "Justificativa Logística e Relevância Pedagógica"],
       linhas: [
         [
           "Material Central", 
           "Artefatos 3D (Quantidade Exata)", 
-          "[ ]", 
           "Torna-se indispensável separar a quantidade exata de peças, alinhada à projeção de divisão dos grupos. Conforme estabelecido, o quantitativo de artefatos é o norteador da formação de 'ilhas' na sala, assegurando que toda equipe tenha acesso equitativo e tátil aos 'objetos para pensar'."
         ],
         [
           "Material Central", 
           "Blocos de Programação Tangível", 
-          "[ ]", 
           "As peças contendo as setas de comando direcional e as estruturas de repetição (loops) devem ser contadas e acondicionadas em kits individuais para cada ilha, mitigando disputas por recursos e otimizando a recolha ao final do período."
         ],
         [
           "Infraestrutura Maker", 
           "Fita Crepe Grossa", 
-          "[ ]", 
           "Material basilar, versátil e de baixo custo, fundamental para a demarcação rápida de grids, tabuleiros, labirintos ou planos cartesianos improvisados, seja no piso da sala de aula ou na superfície unida das carteiras, sem danificar o mobiliário escolar."
         ],
         [
           "Documentação Pedagógica", 
-          "Fichas Catalográficas e Rubricas", 
-          "[ ]", 
-          "Documentos impressos em quantidade suficiente para as equipes. Atuam como instrumento estruturado para o registro do algoritmo desenvolvido, servindo como base concreta para a avaliação formativa e a observação do progresso do pensamento computacional dos estudantes."
+          "Mapas de Avaliação Maker, Guias e Folhas de Missão", 
+          "Instrumentos pedagógicos essenciais para a sala de aula. Os Mapas de Avaliação Maker (Rubricas Curingas) e os Guias de Observação apoiam a avaliação formativa contínua pelo docente, enquanto as Folhas de Missão e cadernos orientam o registro prático dos estudantes (todos os modelos encontram-se encartados no Apêndice A)."
         ],
         [
           "Insumos de Apoio Prático", 
           "Materiais Extras (Conforme o Plano)", 
-          "[ ]", 
           "Ferramentas adicionais requisitadas por roteiros específicos das aulas, a exemplo de lupas para atividades investigativas (PBL), massas de modelar, transferidores para estudos angulares de giro, réguas e barbantes."
         ]
       ],
-      fonte: "Fonte: Desenvolvido pelos autores (2026)."
+      fonte: "Fonte: Elaborado pelos autores (2026)."
     },
     {
       tipo: "destaque",
@@ -210,7 +205,7 @@ export const capitulo4 = {
     },
     {
       tipo: "subtitulo",
-      texto: "4.4 Dicas de Mediação: O Professor como Guia da Descoberta"
+      texto: "4.4 Dicas de mediação: o professor como guia da descoberta"
     },
     {
       tipo: "paragrafo",
@@ -222,7 +217,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "A Arte de Devolver a Pergunta (O Método Socrático Maker)"
+      texto: "A arte de devolver a pergunta (o método socrático maker)"
     },
     {
       tipo: "paragrafo",
@@ -230,7 +225,7 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "A resposta de um mediador maker proficiente jamais deve se resumir a um pragmático \"Sim\" ou \"Não\". O docente deve aproveitar a oportunidade para instigar o pensamento empírico e analítico, devolvendo a dúvida aos autores da solução por meio de um questionamento de inspiração socrática: \"O que ocorre se procedermos com o teste físico desse caminho? Vamos rodar o algoritmo que vocês idealizaram e observar concretamente onde o artefato 3D irá parar?\"."
+      texto: "A resposta de um mediador maker proficiente jamais deve se resumir a um pragmático \"Sim\" ou \"Não\". O docente deve aproveitar a oportunidade para instigar o pensamento empírico e analítico, devolvendo a dúvida aos autores da solução por meio de um questionamento de inspiração socrática: \"O que ocorre se procedermos com o teste físico desse caminho? Vamos rodar o algoritmo que vocês idealizaram e observar concretamente onde o artefato 3D irá parar?\". Essa postura mediadora dialoga intrinsecamente com o conceito de Zona de Desenvolvimento Proximal (ZDP) de Vygotsky (1980), em que o educador atua como o suporte e o andaime (scaffolding) necessário para que o estudante alcance níveis de elaboração lógica que não atingiria de forma isolada."
     },
     {
       tipo: "paragrafo",
@@ -238,11 +233,15 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Celebre o \"Bug\": A Neurociência da Mentalidade de Crescimento"
+      texto: "Celebre o \"bug\": a neurociência da mentalidade de crescimento"
     },
     {
       tipo: "paragrafo",
-      texto: "Na cultura avaliativa tradicional e punitiva de grande parte dos sistemas escolares, o erro é frequentemente estigmatizado como evidência de fracasso, insuficiência de inteligência ou falta de dedicação, o que gera bloqueios criativos severos. Em contrapartida, no universo da Ciência da Computação e da Cultura Maker, o erro — mundialmente conhecido como Bug — é considerado uma etapa indissociável, previsível e rica em dados dentro do processo de criação e refinamento de qualquer sistema."
+      texto: "Na cultura avaliativa tradicional e punitiva de grande parte dos sistemas escolares, o erro é frequentemente estigmatizado como evidência de fracasso, insuficiência de inteligência ou falta de dedicação, o que gera bloqueios criativos severos. Em contrapartida, no universo da Ciência da Computação e da Cultura Maker, o erro — mundialmente conhecido como Bug — é considerado uma etapa indissociável, previsível e rica em dados dentro do processo de criação e refinamento de qualquer sistema, sendo a depuração (debugging) reconhecida por Papert (2008) como uma oportunidade ímpar para o autoconhecimento cognitivo do aprendiz."
+    },
+    {
+      tipo: "paragrafo",
+      texto: "Essa ressignificação do erro apoia-se também nos achados da renomada psicóloga da Universidade de Stanford, Carol Dweck (2017), que em suas exaustivas pesquisas sobre o construto do Mindset (Mentalidade), demonstra que indivíduos portadores de um \"Mindset de Crescimento\" compreendem visceralmente que suas habilidades e seu raciocínio lógico não são traços genéticos imutáveis, mas sim competências maleáveis que podem e devem ser desenvolvidas através do esforço direcionado e da persistência diante de falhas. Estudos e mapeamentos neurocientíficos apontam que o córtex de um indivíduo com mentalidade de crescimento apresenta uma densa atividade elétrica de sinapses quando confrontado com um erro. Este cérebro engaja-se profundamente com a falha para dissecá-la e tentar solucioná-la, promovendo altíssimos níveis de plasticidade neural, enquanto o cérebro de indivíduos com \"Mentalidade Fixa\" entra em estado de fuga ou paralisia."
     },
     {
       tipo: "paragrafo",
@@ -254,7 +253,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Estabelecimento de Balizas: Os Combinados Maker"
+      texto: "Estabelecimento de balizas: os combinados maker"
     },
     {
       tipo: "paragrafo",
@@ -274,7 +273,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Avaliação Formativa: Observando os Pilares do Pensamento Computacional"
+      texto: "Avaliação formativa: observando os pilares do pensamento computacional"
     },
     {
       tipo: "paragrafo",
@@ -282,11 +281,11 @@ export const capitulo4 = {
     },
     {
       tipo: "paragrafo",
-      texto: "Recomenda-se fortemente a utilização de rubricas de observação comportamental e lógica. Com este instrumento em mãos, o educador, ao circular ativamente entre as ilhas de aprendizagem, é capaz de mapear e documentar o desenvolvimento dos quatro pilares estruturantes do Pensamento Computacional — Decomposição, Reconhecimento de Padrões, Abstração e Algoritmos —, conforme amplamente teorizado por Jeanette Wing e estruturado no Brasil por pesquisadores como Christian Brackmann. A tabela abaixo delineia como esses pilares abstratos se traduzem em comportamentos observáveis na sala de aula do 5º ano:"
+      texto: "Recomenda-se fortemente a utilização de rubricas de observação comportamental e lógica, cujas matrizes descritivas (Tipos A, B e C) encontram-se organizadas no Apêndice A. Com este instrumento em mãos, o educador, ao circular ativamente entre as ilhas de aprendizagem, é capaz de mapear e documentar o desenvolvimento dos quatro pilares estruturantes do Pensamento Computacional — Decomposição, Reconhecimento de Padrões, Abstração e Algoritmos —, conforme amplamente teorizado por Jeanette Wing (2006) e estruturado no Brasil por pesquisadores como Christian Brackmann (2017). O Quadro 4 delineia como esses pilares abstratos se traduzem em comportamentos observáveis na sala de aula do 5º ano:"
     },
     {
       tipo: "tabela",
-      titulo: "Tabela 3 - Pilares e Critérios Formativos",
+      titulo: "Quadro 4 - Pilares do pensamento computacional",
       cabecalho: ["Pilar do Pensamento Computacional", "Evidência Observável pelo Professor na Ilha (Critério Formativo)"],
       linhas: [
         [
@@ -306,11 +305,11 @@ export const capitulo4 = {
           "O grupo é capaz de traduzir a rota mental concebida em um modelo estruturado de blocos tangíveis? Exprimem a solução do problema por meio de uma sintaxe física lógica, ordenada e inequívoca, dotada de um ponto de partida definido, uma progressão coerente e um encerramento?"
         ]
       ],
-      fonte: "Fonte: Desenvolvido pelos autores (2026)."
+      fonte: "Fonte: Elaborado pelos autores (2026) com base em Wing (2006) e Brackmann (2017)."
     },
     {
       tipo: "subtitulo",
-      texto: "4.5 Planos de Contingência Estratégica (Planos B, C e D)"
+      texto: "4.5 Planos de contingência estratégica (planos B, C e D)"
     },
     {
       tipo: "paragrafo",
@@ -322,7 +321,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "⏰ Plano B (O Cenário de Restrição Temporal Aguda)"
+      texto: "⏰ Plano B (o cenário de restrição temporal aguda)"
     },
     {
       tipo: "paragrafo",
@@ -338,7 +337,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "🌪️ Plano C (O Cenário da Dispersão e Agitação Motora)"
+      texto: "🌪️ Plano C (o cenário da dispersão e agitação motora)"
     },
     {
       tipo: "paragrafo",
@@ -354,7 +353,7 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "⚡ Plano D (O Cenário do Blecaute ou Indisponibilidade Tecnológica)"
+      texto: "⚡ Plano D (o cenário do blecaute ou indisponibilidade tecnológica)"
     },
     {
       tipo: "paragrafo",
@@ -370,11 +369,11 @@ export const capitulo4 = {
     },
     {
       tipo: "topico",
-      texto: "Síntese e Considerações Finais para a Jornada Docente"
+      texto: "Síntese e considerações finais para a jornada docente"
     },
     {
       tipo: "paragrafo",
-      texto: "O ecossistema da sala de aula inovadora não deve ser encarado como um sistema de transmissão mecânico, mas sim como um organismo vivo e altamente responsivo. Constata-se que, quando as Metodologias Ativas são fundamentadas teoricamente, quando a logística física dos artefatos é rigorosamente administrada e quando a mediação professoral pauta-se pelo fomento intransigente de um \"Mindset de Crescimento\", o educador transcende sua função original. Ele deixa de figurar apenas como o executor burocrático de um currículo formal e eleva-se à condição de arquiteto e regente de um autêntico laboratório de invenções cognitivas."
+      texto: "O ecossistema da sala de aula inovadora não deve ser encarado como um sistema de transmissão mecânico, mas sim como um organismo vivo e altamente responsivo. Constata-se que, quando as Metodologias Ativas são fundamentadas teoricamente, quando a logística física dos artefatos é rigorosamente administrada e quando a mediação professoral pauta-se pelo fomento intransigente de um \"Mindset de Crescimento\", o educador transcende sua função original. A sala de aula passa a operar sob o amparo da Aprendizagem Significativa de Ausubel, garantindo que os novos saberes tecnológicos sirvam de âncora para os conhecimentos prévios e históricos dos alunos (Moreira, 1999). Aliado a isso, o Sociointeracionismo de Vygotsky materializa-se plenamente, pois o artefato 3D, a colaboração em ilhas e a mediação do professor tornam-se os instrumentos sociais que alavancam o desenvolvimento cognitivo da criança (Vygotsky, 1980). Ele deixa de figurar apenas como o executor burocrático de um currículo formal e eleva-se à condição de arquiteto e regente de um autêntico laboratório de invenções cognitivas."
     },
     {
       tipo: "paragrafo",

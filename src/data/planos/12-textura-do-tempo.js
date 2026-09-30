@@ -11,11 +11,11 @@ export const plano12 = {
   objetoConhecimento: "Pilar da Abstração. (Aplicação prática em: Elementos das artes visuais: ponto, linha, textura).",
   habilidades: [
     {
-      codigo: "(EF15C001)",
+      codigo: "(EF15CO01 / EF15CO08)",
       descricao: "Pilar: Abstração - Filtrar informações complexas para focar em uma propriedade essencial."
     },
     {
-      codigo: "(EF05CO05)",
+      codigo: "(EF15CO08)",
       descricao: "Reconhecer que artefatos computacionais são criados para expressar ideias e fatos."
     },
     {
@@ -84,8 +84,8 @@ export const plano12 = {
     "📱 **Transposição Físico-Digital:** O aluno compreende que o papel com o desenho não é apenas uma 'imagem bonita', mas um 'mapa de dados' do objeto 3D. Ele articula que a textura no papel é a tradução (ou representação) da característica física do artefato, correlacionando o relevo tátil (Hardware) com o registro visual (representação de dados)."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-12.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-12.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-b-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/12-textura-do-tempo.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.10 – A TEXTURA DO TEMPO.pdf"
 };

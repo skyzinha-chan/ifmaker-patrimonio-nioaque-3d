@@ -11,16 +11,12 @@ export const plano04 = {
   objetoConhecimento: "Algoritmos e Depuração (Debugging). (Aplicação prática em: Textos instrucionais, coesão, uso de verbos no imperativo).",
   habilidades: [
     {
-      codigo: "(EF05CO02)",
-      descricao: "Identificar e corrigir erros em algoritmos (depuração) de forma lógica."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
     },
     {
       codigo: "(EF05LP12)",
-      descricao: "Habilidade de Apoio: Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, entre outros, mantendo as características e a estrutura própria desses textos."
-    },
-    {
-      codigo: "(EF15LP05)",
-      descricao: "Habilidade de Apoio: Planejar, com a ajuda do professor, o texto que será produzido, considerando a situação comunicativa e a finalidade do texto."
+      descricao: "Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto. Habilidade Integradora de Apoio."
     }
   ],
   recursos: [
@@ -40,13 +36,13 @@ export const plano04 = {
     {
       parte: "2ª Parte (25 min)",
       titulo: "Experimentação",
-      descricao: "Produção Textual: A turma é dividida em duplas. A Dupla A ('Programadores') pega o Tatu-bola, analisa suas articulações (Decomposição) e escreve um manual no caderno, usando verbos imperativos estritos (Ex: 1. Segure a cabeça. 2. Puxe a cauda para dentro. 3. Gire a carapaça central). A Dupla B não pode ver o objeto sendo manipulado.",
+      descricao: "Divida a turma em duplas de desenvolvedores. A Dupla A, formada pelos Programadores, manipula o Tatu-bola 3D articulado e decompõe seus movimentos em etapas menores, como cabeça, cauda e carapaça central. Em seguida, redige no caderno o Manual de Sobrevivência, estruturando uma sequência finita de passos com verbos no imperativo. A Dupla B não pode ver a peça sendo articulada antes do teste.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Teste do 'Código': Os manuais são trocados. A Dupla B ('Robôs') pega o manual e o Tatu-bola desmontado. Eles devem executar o texto ao pé da letra usando os blocos tangíveis de suporte. Debugging Textual: Se a instrução estiver confusa ('mexa o negócio') e o robô não enrolar, eles gritam 'Bug de Comunicação!'. Os cadernos voltam, e os alunos apagam e reescrevem as frases (coesão gramatical) até a instrução ficar perfeita.",
+      descricao: "Troque os cadernos entre as duplas. A Dupla B, formada pelos Robôs, pega o manual e o Tatu-bola aberto e executa cegamente apenas o que está escrito, sem adivinhar ações ausentes. Se a instrução for imprecisa e o robô não conseguir se enrolar, interrompa o movimento e identifique a linha que gerou a dúvida. A Dupla A deve depurar o código, apagar o termo confuso e reescrever a instrução com clareza técnica até o colega conseguir fechar o tatu-bola.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +80,8 @@ export const plano04 = {
     "🐛 **Rastreamento e Análise de Informação (Debugging Textual):** Ao perceber que o robô executou um movimento errado com o Tatu-bola, o aluno não culpa o colega. Ele assume uma postura analítica, rastreia a falha até a instrução escrita, identifica exatamente a palavra ou frase ambígua (ex: 'mexa o negócio') e realiza o 'bug de comunicação', apagando e reescrevendo o comando com total clareza técnica."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-04.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-04.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-c-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/04-manual-de-sobrevivencia.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: null,
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.2 – O MANUAL DE SOBREVIVÊNCIA.pdf"
 };

@@ -3,24 +3,32 @@
 export const plano05 = {
   id: "artilharia-dos-angulos",
   ano: "5º Ano",
-  eixo: "CULTURA MAKER",
+  eixo: "PENSAMENTO COMPUTACIONAL",
   tipo: "Desplugada",
   titulo: "Decomposição de Problemas: A Artilharia dos Ângulos",
-  contexto: "Contexto Interdisciplinar: Matemática e História Local",
+  contexto: "Matemática",
   duracao: "50min/aula",
   objetoConhecimento: "Decomposição de problemas complexos no Pensamento Computacional. (Aplicação prática em: Ângulos: noções, usos e medidas).",
   habilidades: [
     {
-      codigo: "(EF05CO01)",
-      descricao: "Criar algoritmos simples para resolver problemas do cotidiano, utilizando diferentes linguagens (simbólica e tangível)."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
     },
     {
-      codigo: "(EF05CO02)",
-      descricao: "Identificar e corrigir erros em algoritmos (depuração) de forma lógica."
+      codigo: "(EF15CO04)",
+      descricao: "Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções."
+    },
+    {
+      codigo: "(EF05MA15)",
+      descricao: "Interpretar, descrever e representar a localização ou movimentação de objetos no plano cartesiano (1º quadrante), utilizando coordenadas cartesianas, indicando mudanças de direção e de sentido e giros. Habilidade Integradora de Apoio."
+    },
+    {
+      codigo: "(EF05MA17)",
+      descricao: "Reconhecer, nomear e comparar polígonos, considerando lados, vértices e ângulos, e desenhá-los, utilizando material de desenho ou tecnologias digitais. Habilidade Integradora de Apoio."
     },
     {
       codigo: "(EF05MA18)",
-      descricao: "Habilidade de Apoio: Reconhecer, nomear e comparar ângulos, medindo-os com transferidor, identificando ângulos retos, agudos e obtusos."
+      descricao: "Reconhecer, nomear e comparar ângulos, medindo-os com transferidor, identificando ângulos retos, agudos e obtusos. Habilidade Integradora de Apoio."
     }
   ],
   recursos: [
@@ -34,19 +42,19 @@ export const plano05 = {
     {
       parte: "1ª Parte (15 min)",
       titulo: "Contextualização",
-      descricao: "História Local: Relembra-se a Retirada da Laguna e os Canhões da Praça dos Heróis. Explica-se que a artilharia da época exigia cálculos rigorosos de distância e inclinação. Introdução Matemática: Apresentação conceitual de ângulos (retos de 90º, agudos menores que 90º e obtusos maiores que 90º).",
+      descricao: "Relembre a Retirada da Laguna e os Canhões da Praça dos Heróis. Explique que a artilharia da época exigia cálculos rigorosos de distância e inclinação. Apresente os conceitos de ângulos retos de 90º, agudos menores que 90º e obtusos maiores que 90º.",
       corStatus: "border-computational text-computational"
     },
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação (Decompondo o Tiro)",
-      descricao: "Alunos em 'ilhas' recebem um Canhão 3D e um alvo de papel posicionado pelo professor a uma distância e angulação aleatórias. O aluno não pode apenas 'apontar'. Ele deve decompor o desafio: medir a distância (régua) e medir a abertura do ângulo em relação à base (transferidor).",
+      descricao: "Organize as bancadas conforme a quantidade de canhões 3D disponíveis e fixe um alvo de papel em cada mesa a uma distância e angulação aleatórias. Bloqueie a mira no improviso: é proibido girar o canhão manualmente a olho nu. Decomponha o desafio balístico em duas etapas menores e sequenciais: primeiro determine a rotação angular da peça e depois a distância até o alvo. Meça a angulação exata em relação à base usando o transferidor, identificando se o ângulo é reto, agudo ou obtuso, e meça a extensão do trajeto com a régua. Estruture o comando físico na mesa com os blocos tangíveis, como o bloco de Girar acompanhado de um post-it com \"Ângulo Agudo 45º\".",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação (Lógica Tangível)",
-      descricao: "O grupo formaliza a ação usando os Blocos 3D (ex: bloco de 'Girar' + post-it com 'Ângulo Agudo 45º'). O Teste Físico: O professor aproxima uma régua longa reta a partir da boca do canhão no ângulo estipulado pelos alunos. Se a régua atingir o alvo de papel, o algoritmo matemático está correto. Se errar, devem refazer a medição.",
+      descricao: "Alinhe uma régua longa reta à boca do canhão 3D no ângulo estipulado pela equipe e verifique a trajetória. Se a régua cruzar a área do alvo de papel, a missão está cumprida e o algoritmo matemático foi validado. Caso a régua passe longe do alvo, interrompa o teste e investigue a causa raiz: a medição com o transferidor foi imprecisa ou a equipe confundiu ângulo agudo com obtuso? Recalcule o grau correto e substitua o dado no bloco tangível até que a linha da régua atinja o centro do alvo.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],
@@ -84,8 +92,8 @@ export const plano05 = {
     "🤝 **Execução de Papéis e Colaboração:** O aluno compartilha os materiais de forma equilibrada, respeitando as funções não ditas da engenharia em grupo. Ele não monopoliza o Canhão 3D; em vez disso, atua em sincronia com os colegas—enquanto um segura a base do artefato, o outro alinha o transferidor e um terceiro redige o comando no bloco tangível. Eles dialogam sobre a matemática envolvida (ex: 'Acho que está um pouco mais aberto que 90 graus, vamos medir de novo')."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-05.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-05.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-a-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/05-artilharia-dos-angulos.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.3 – A ARTILHARIA DOS ÂNGULOS.pdf"
 };

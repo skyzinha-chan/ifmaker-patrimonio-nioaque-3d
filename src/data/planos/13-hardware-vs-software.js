@@ -11,15 +11,15 @@ export const plano13 = {
   objetoConhecimento: "Hardware e Software. (Aplicação prática em: Sistemas computacionais, processos de fabricação digital e pensamento abstrato).",
   habilidades: [
     {
-      codigo: "(EF05CO05)",
+      codigo: "(EF05CO05 / EF15CO07)",
       descricao: "Reconhecer que artefatos computacionais são criados para atender necessidades, identificando seus componentes físicos (Hardware) e lógicos (Software)."
     },
     {
-      codigo: "(EF15C004)",
+      codigo: "(EF15CO04 / TD05HS01)",
       descricao: "Pilar: Decomposição - Dividir um sistema complexo (impressão 3D) em partes menores e gerenciáveis para entender seu funcionamento."
     },
     {
-      codigo: "(EF05GE03)",
+      codigo: "(EF05CI01)",
       descricao: "Habilidade de Apoio: Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento."
     }
   ],
@@ -83,8 +83,8 @@ export const plano13 = {
     "💻 **Transposição Físico-Digital:** O aluno explica com total clareza a conexão entre os mundos: ele verbaliza que o Tatu de plástico nas suas mãos (Hardware) é apenas a consequência material de um arquivo de computador invisível (Software), compreendendo que qualquer instrução corrompida no código geraria uma falha física real na impressora."
   ],
 
-  atividadesPdfUrl: "/pdfs/atividades/atividade-aluno-13.pdf",
-  anexosPdfUrl: "/pdfs/anexos/anexos-blocos-13.pdf",
-  rubricaPdfUrl: "/pdfs/rubricas/rubrica-tipo-b-mapa.pdf",
-  pdfUrl: "/pdfs/planoAula/13-hardware-vs-software.pdf"
+  atividadesPdfUrl: null,
+  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+  rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B.pdf",
+  pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.3.1 – HARDWARE VS. SOFTWARE.pdf"
 };
