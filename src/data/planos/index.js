@@ -16,8 +16,31 @@ import { plano13 } from './13-hardware-vs-software.js';
 import { plano14 } from './14-cidades-de-concreto.js';
 import { plano15 } from './15-fake-news.js';
 
-export const planosDeAula = [
+const titulosCatalogo = {
+  "piloto-01-estrategistas": "Estrategistas da Retirada",
+  "piloto-02-museu-tatil": "Museu Tátil de Nioaque",
+  "navegacao-por-coordenadas": "Navegação por Coordenadas",
+  "manual-de-sobrevivencia": "Manual de Sobrevivência",
+  "artilharia-dos-angulos": "Artilharia dos Ângulos",
+  "bifurcacoes-narrativas": "Bifurcações Narrativas",
+  "museu-desplugado": "Museu Desplugado",
+  "rota-da-retirada": "Rota da Retirada",
+  "teia-alimentar": "Teia Alimentar",
+  "csi-nioaque": "CSI Nioaque",
+  "stop-motion": "Stop Motion Patrimonial",
+  "textura-do-tempo": "Textura do Tempo",
+  "hardware-vs-software": "Hardware vs. Software",
+  "cidades-de-concreto": "Cidades de Concreto",
+  "fake-news-mitos-guerra": "Fake News e os Mitos da Guerra"
+};
+
+const planos = [
   plano01, plano02, plano03, plano04, plano05,
   plano06, plano07, plano08, plano09, plano10,
   plano11, plano12, plano13, plano14, plano15
 ];
+
+export const planosDeAula = planos.map((plano) => ({
+  ...plano,
+  tituloCatalogo: titulosCatalogo[plano.id] || plano.titulo
+}));

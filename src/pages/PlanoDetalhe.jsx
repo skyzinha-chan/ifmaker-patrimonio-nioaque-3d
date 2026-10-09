@@ -35,6 +35,10 @@ export default function PlanoDetalhe() {
   const [verificandoPdf, setVerificandoPdf] = useState(false);
 
   const [metricas, setMetricas] = useState({ visualizacoes: 0, downloads: 0 });
+  const [favoritos, setFavoritos] = useState([]);
+  const [materiaisDisponiveis, setMateriaisDisponiveis] = useState([]);
+  const [aplicadoEmSala, setAplicadoEmSala] = useState(false);
+  const [mensagemCompartilhamento, setMensagemCompartilhamento] = useState("");
 
   useEffect(() => {
     if (!plano) return;
@@ -59,6 +63,84 @@ export default function PlanoDetalhe() {
 
     registrarVisualizacao();
   }, [plano]);
+
+  useEffect(() => {
+    if (!plano?.id) return;
+
+    try {
+      setFavoritos(
+        JSON.parse(localStorage.getItem("ifmaker-favoritos") || "[]"),
+      );
+      setMateriaisDisponiveis(
+        JSON.parse(
+          localStorage.getItem(`ifmaker-checklist:${plano.id}`) || "[]",
+        ),
+      );
+      setAplicadoEmSala(
+        localStorage.getItem(`ifmaker-aplicado:${plano.id}`) === "true",
+      );
+    } catch {
+      setFavoritos([]);
+      setMateriaisDisponiveis([]);
+      setAplicadoEmSala(false);
+    }
+  }, [plano?.id]);
+
+  const alternarFavorito = () => {
+    setFavoritos((atuais) => {
+      const atualizados = atuais.includes(plano.id)
+        ? atuais.filter((idFavorito) => idFavorito !== plano.id)
+        : [...atuais, plano.id];
+      localStorage.setItem("ifmaker-favoritos", JSON.stringify(atualizados));
+      return atualizados;
+    });
+  };
+
+  const alternarMaterial = (material) => {
+    setMateriaisDisponiveis((atuais) => {
+      const atualizados = atuais.includes(material)
+        ? atuais.filter((item) => item !== material)
+        : [...atuais, material];
+      localStorage.setItem(
+        `ifmaker-checklist:${plano.id}`,
+        JSON.stringify(atualizados),
+      );
+      return atualizados;
+    });
+  };
+
+  const alternarAplicadoEmSala = () => {
+    setAplicadoEmSala((atual) => {
+      const novoStatus = !atual;
+      localStorage.setItem(`ifmaker-aplicado:${plano.id}`, String(novoStatus));
+      return novoStatus;
+    });
+  };
+
+  const compartilharPlano = async () => {
+    const dadosCompartilhamento = {
+      title: plano.titulo,
+      text: `Plano de aula: ${plano.titulo}`,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(dadosCompartilhamento);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        setMensagemCompartilhamento(
+          "Link copiado para a área de transferência.",
+        );
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        setMensagemCompartilhamento(
+          "Não foi possível compartilhar este plano.",
+        );
+      }
+    }
+  };
 
   // Intercepta e valida se o arquivo físico existe no /public antes de abrir
   const abrirPdfComChecagem = async (e, url, nomeMaterial) => {
@@ -133,6 +215,30 @@ export default function PlanoDetalhe() {
     currentIndex < planosDeAula.length - 1
       ? planosDeAula[currentIndex + 1]
       : null;
+
+  const idsAbas = ["geral", "roteiro", "rubrica"];
+  const handleTabKeyDown = (event, abaAtual) => {
+    const indexAtual = idsAbas.indexOf(abaAtual);
+    let proximaAba;
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      proximaAba = idsAbas[(indexAtual + 1) % idsAbas.length];
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      proximaAba = idsAbas[(indexAtual - 1 + idsAbas.length) % idsAbas.length];
+    } else if (event.key === "Home") {
+      proximaAba = idsAbas[0];
+    } else if (event.key === "End") {
+      proximaAba = idsAbas[idsAbas.length - 1];
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    setAbaAtiva(proximaAba);
+    requestAnimationFrame(() => {
+      document.getElementById(`tab-${proximaAba}`)?.focus();
+    });
+  };
 
   return (
     <article className='p-6 md:p-10 max-w-5xl mx-auto bg-white min-h-screen'>
@@ -250,6 +356,43 @@ export default function PlanoDetalhe() {
           {plano.titulo}
         </h1>
 
+        <div className='flex flex-wrap items-center gap-2 mb-5 print:hidden'>
+          <button
+            type='button'
+            onClick={alternarFavorito}
+            aria-pressed={favoritos.includes(plano.id)}
+            className='inline-flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-bold text-amber-800 transition hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500'
+          >
+            <span aria-hidden='true'>
+              {favoritos.includes(plano.id) ? "★" : "☆"}
+            </span>
+            {favoritos.includes(plano.id)
+              ? "Salvo nos favoritos"
+              : "Salvar plano"}
+          </button>
+          <button
+            type='button'
+            onClick={compartilharPlano}
+            className='inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-bold text-blue-800 transition hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500'
+          >
+            <span aria-hidden='true'>🔗</span> Compartilhar
+          </button>
+          <button
+            type='button'
+            onClick={alternarAplicadoEmSala}
+            aria-pressed={aplicadoEmSala}
+            className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-emerald-500 ${aplicadoEmSala ? "border-emerald-300 bg-emerald-100 text-emerald-900" : "border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100"}`}
+          >
+            <span aria-hidden='true'>{aplicadoEmSala ? "✓" : "□"}</span>
+            {aplicadoEmSala ? "Aplicado em sala" : "Marcar como aplicado"}
+          </button>
+          {mensagemCompartilhamento && (
+            <span role='status' className='text-sm text-gray-600'>
+              {mensagemCompartilhamento}
+            </span>
+          )}
+        </div>
+
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600 bg-gray-50 p-5 rounded-lg border border-gray-200'>
           <p>
             <strong className='text-gray-800 block mb-1'>
@@ -258,9 +401,7 @@ export default function PlanoDetalhe() {
             {plano.contexto}
           </p>
           <p>
-            <strong className='text-gray-800 block mb-1'>
-              Duração / Recursos:
-            </strong>{" "}
+            <strong className='text-gray-800 block mb-1'>Duração:</strong>{" "}
             {plano.duracao}
           </p>
           <p className='md:col-span-2'>
@@ -284,6 +425,8 @@ export default function PlanoDetalhe() {
           aria-selected={abaAtiva === "geral"}
           aria-controls='panel-geral'
           id='tab-geral'
+          tabIndex={abaAtiva === "geral" ? 0 : -1}
+          onKeyDown={(event) => handleTabKeyDown(event, "geral")}
           onClick={() => setAbaAtiva("geral")}
           className={`py-4 px-4 font-bold text-sm border-b-4 transition-colors ${abaAtiva === "geral" ? "border-green-700 text-green-800" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"}`}
         >
@@ -294,6 +437,8 @@ export default function PlanoDetalhe() {
           aria-selected={abaAtiva === "roteiro"}
           aria-controls='panel-roteiro'
           id='tab-roteiro'
+          tabIndex={abaAtiva === "roteiro" ? 0 : -1}
+          onKeyDown={(event) => handleTabKeyDown(event, "roteiro")}
           onClick={() => setAbaAtiva("roteiro")}
           className={`py-4 px-4 font-bold text-sm border-b-4 transition-colors ${abaAtiva === "roteiro" ? "border-green-700 text-green-800" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"}`}
         >
@@ -304,6 +449,8 @@ export default function PlanoDetalhe() {
           aria-selected={abaAtiva === "rubrica"}
           aria-controls='panel-rubrica'
           id='tab-rubrica'
+          tabIndex={abaAtiva === "rubrica" ? 0 : -1}
+          onKeyDown={(event) => handleTabKeyDown(event, "rubrica")}
           onClick={() => setAbaAtiva("rubrica")}
           className={`py-4 px-4 font-bold text-sm border-b-4 transition-colors ${abaAtiva === "rubrica" ? "border-green-700 text-green-800" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"}`}
         >
@@ -397,14 +544,35 @@ export default function PlanoDetalhe() {
 
             <div className='bg-slate-50 p-5 rounded-xl border border-slate-100'>
               <h3 className='font-bold text-xs uppercase text-slate-400 tracking-wider mb-3'>
-                Recursos Necessários
+                Checklist de Preparação e Materiais
               </h3>
-              <ul className='text-sm text-slate-700 list-disc list-inside space-y-2'>
-                {/* O mapeamento mágico do React acontece aqui */}
+              <ul className='space-y-2'>
                 {plano.recursos && plano.recursos.length > 0 ? (
                   plano.recursos.map((item, index) => (
-                    <li key={index} className='pl-1'>
-                      {item}
+                    <li
+                      key={index}
+                      className='flex items-start gap-3 rounded-lg border border-gray-200 bg-white p-3'
+                    >
+                      <input
+                        id={`material-${plano.id}-${index}`}
+                        type='checkbox'
+                        checked={materiaisDisponiveis.includes(item)}
+                        onChange={() => alternarMaterial(item)}
+                        className='mt-1 h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-2 focus:ring-emerald-500'
+                      />
+                      <label
+                        htmlFor={`material-${plano.id}-${index}`}
+                        className='flex-1 cursor-pointer text-sm text-slate-700'
+                      >
+                        <span className='block'>{item}</span>
+                        <span
+                          className={`mt-1 inline-block text-xs font-bold ${materiaisDisponiveis.includes(item) ? "text-emerald-700" : "text-amber-700"}`}
+                        >
+                          {materiaisDisponiveis.includes(item)
+                            ? "Disponível / separado"
+                            : "A providenciar"}
+                        </span>
+                      </label>
                     </li>
                   ))
                 ) : (
@@ -432,52 +600,53 @@ export default function PlanoDetalhe() {
                 <h2 className='text-xl font-bold text-gray-800 mb-5 flex items-center gap-2'>
                   🧠 Progressão Cognitiva da Aula (Taxonomia de Bloom)
                 </h2>
-                <div className='space-y-4'>
+                <div className='space-y-3'>
                   {plano.taxonomiaBloom.map((item, index) => (
-                    <div
+                    <details
                       key={index}
-                      className='flex flex-col sm:flex-row items-start gap-4 p-5 rounded-lg hover:bg-indigo-50/30 transition-colors border-l-4 border-indigo-500 shadow-sm border-y border-r border-gray-100'
+                      className='group rounded-lg border border-gray-200 border-l-4 border-l-indigo-500 bg-white shadow-sm open:bg-indigo-50/20'
                     >
-                      {/* Badge do Nível */}
-                      <div className='flex-shrink-0 bg-indigo-100 text-indigo-800 font-bold px-3 py-1 rounded text-xs uppercase tracking-widest mt-1'>
-                        Nível {index + 1}
-                      </div>
-
-                      <div className='flex-1 w-full'>
-                        {/* Título do Nível (Ex: Compreensão, Análise) */}
-                        <h3 className='font-extrabold text-gray-900 text-sm uppercase tracking-wider mb-3 border-b border-gray-100 pb-2'>
+                      <summary className='flex cursor-pointer list-none items-center gap-4 p-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-inset'>
+                        <span className='flex-shrink-0 bg-indigo-100 text-indigo-800 font-bold px-3 py-1 rounded text-xs uppercase tracking-widest'>
+                          Nível {index + 1}
+                        </span>
+                        <span className='flex-1 font-extrabold text-gray-900 text-sm uppercase tracking-wider'>
                           {item.nivel.replace(/^\d+\.\s*/, "")}
-                        </h3>
+                        </span>
+                        <span
+                          aria-hidden='true'
+                          className='text-indigo-700 transition-transform group-open:rotate-180'
+                        >
+                          ▾
+                        </span>
+                      </summary>
 
-                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                          {/* Coluna 1: Ação do Aluno (Renderização Dinâmica) */}
-                          {item.acao && (
-                            <div className='bg-blue-50/50 p-3 rounded border border-blue-100'>
-                              <span className='text-xs font-bold text-blue-800 uppercase tracking-wider flex items-center gap-1 mb-1'>
-                                🎯 Ação do Aluno
-                              </span>
-                              <p className='text-gray-700 text-sm leading-relaxed'>
-                                {item.acao}
-                              </p>
-                            </div>
-                          )}
-
-                          {/* Coluna 2: Evidência / Resposta Esperada */}
-                          <div
-                            className={`${item.acao ? "bg-emerald-50/50 border-emerald-100" : "bg-gray-50 border-gray-100"} p-3 rounded border`}
-                          >
-                            <span
-                              className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1 mb-1 ${item.acao ? "text-emerald-800" : "text-gray-600"}`}
-                            >
-                              ✔️ Evidência Observável
+                      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 border-t border-gray-200 p-4'>
+                        {item.acao && (
+                          <div className='bg-blue-50/50 p-3 rounded border border-blue-100'>
+                            <span className='text-xs font-bold text-blue-800 uppercase tracking-wider flex items-center gap-1 mb-1'>
+                              🎯 Ação do Aluno
                             </span>
                             <p className='text-gray-700 text-sm leading-relaxed'>
-                              {item.respostaEsperada}
+                              {item.acao}
                             </p>
                           </div>
+                        )}
+
+                        <div
+                          className={`${item.acao ? "bg-emerald-50/50 border-emerald-100" : "bg-gray-50 border-gray-100"} p-3 rounded border`}
+                        >
+                          <span
+                            className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1 mb-1 ${item.acao ? "text-emerald-800" : "text-gray-600"}`}
+                          >
+                            ✔️ Evidência Observável
+                          </span>
+                          <p className='text-gray-700 text-sm leading-relaxed'>
+                            {item.respostaEsperada}
+                          </p>
                         </div>
                       </div>
-                    </div>
+                    </details>
                   ))}
                 </div>
               </section>
@@ -617,7 +786,7 @@ export default function PlanoDetalhe() {
                   </div>
                 )}
 
-                <div className='overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200'>
+                <div className='bg-white rounded-xl shadow-sm border border-gray-200'>
                   <div className='bg-gray-50 p-4 border-b border-gray-200'>
                     <h3 className='font-bold text-lg text-gray-900'>
                       {rubricas[plano.rubricaId].titulo}
@@ -626,47 +795,83 @@ export default function PlanoDetalhe() {
                       {rubricas[plano.rubricaId].foco}
                     </p>
                   </div>
-                  <table className='w-full text-left border-collapse'>
-                    <thead>
-                      <tr className='bg-gray-100 text-gray-700 border-b border-gray-200'>
-                        <th className='p-4 font-bold text-sm w-1/4'>
-                          Critério Avaliativo
-                        </th>
-                        <th className='p-4 font-bold text-sm w-1/4'>
-                          🌱 Em Desenvolvimento
-                        </th>
-                        <th className='p-4 font-bold text-sm w-1/4'>
-                          🌿 Adequado
-                        </th>
-                        <th className='p-4 font-bold text-sm w-1/4'>
-                          🌳 Avançado
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className='divide-y divide-gray-200'>
-                      {rubricas[plano.rubricaId].criterios.map(
-                        (crit, index) => (
-                          <tr
-                            key={index}
-                            className='hover:bg-gray-50 transition-colors'
-                          >
-                            <td className='p-4 font-bold text-gray-800 text-sm'>
-                              {crit.nome}
-                            </td>
-                            <td className='p-4 text-gray-600 text-sm'>
-                              {crit.desenvolvimento}
-                            </td>
-                            <td className='p-4 text-gray-600 text-sm'>
-                              {crit.adequado}
-                            </td>
-                            <td className='p-4 text-green-700 font-medium text-sm bg-green-50/30'>
-                              {crit.avancado}
-                            </td>
-                          </tr>
-                        ),
-                      )}
-                    </tbody>
-                  </table>
+                  <div className='hidden md:block overflow-x-auto'>
+                    <table className='w-full text-left border-collapse'>
+                      <thead>
+                        <tr className='bg-gray-100 text-gray-700 border-b border-gray-200'>
+                          <th className='p-4 font-bold text-sm w-1/4'>
+                            Critério Avaliativo
+                          </th>
+                          <th className='p-4 font-bold text-sm w-1/4'>
+                            🌱 Em Desenvolvimento
+                          </th>
+                          <th className='p-4 font-bold text-sm w-1/4'>
+                            🌿 Adequado
+                          </th>
+                          <th className='p-4 font-bold text-sm w-1/4'>
+                            🌳 Avançado
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className='divide-y divide-gray-200'>
+                        {rubricas[plano.rubricaId].criterios.map(
+                          (crit, index) => (
+                            <tr
+                              key={index}
+                              className='hover:bg-gray-50 transition-colors'
+                            >
+                              <td className='p-4 font-bold text-gray-800 text-sm'>
+                                {crit.nome}
+                              </td>
+                              <td className='p-4 text-gray-600 text-sm'>
+                                {crit.desenvolvimento}
+                              </td>
+                              <td className='p-4 text-gray-600 text-sm'>
+                                {crit.adequado}
+                              </td>
+                              <td className='p-4 text-green-700 font-medium text-sm bg-green-50/30'>
+                                {crit.avancado}
+                              </td>
+                            </tr>
+                          ),
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className='md:hidden divide-y divide-gray-200'>
+                    {rubricas[plano.rubricaId].criterios.map((crit, index) => (
+                      <article key={index} className='p-4 space-y-3'>
+                        <h4 className='font-bold text-gray-900 text-sm'>
+                          {crit.nome}
+                        </h4>
+                        <div className='border-l-4 border-amber-300 bg-amber-50 p-3'>
+                          <strong className='block text-xs uppercase tracking-wide text-amber-900 mb-1'>
+                            🌱 Em Desenvolvimento
+                          </strong>
+                          <p className='text-sm text-gray-700'>
+                            {crit.desenvolvimento}
+                          </p>
+                        </div>
+                        <div className='border-l-4 border-emerald-300 bg-emerald-50 p-3'>
+                          <strong className='block text-xs uppercase tracking-wide text-emerald-900 mb-1'>
+                            🌿 Adequado
+                          </strong>
+                          <p className='text-sm text-gray-700'>
+                            {crit.adequado}
+                          </p>
+                        </div>
+                        <div className='border-l-4 border-green-500 bg-green-50 p-3'>
+                          <strong className='block text-xs uppercase tracking-wide text-green-900 mb-1'>
+                            🌳 Avançado
+                          </strong>
+                          <p className='text-sm text-green-800 font-medium'>
+                            {crit.avancado}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
                 </div>
               </>
             )}

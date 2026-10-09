@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { planosDeAula } from "../data/planos";
+import { readStorage, writeStorage } from "../utils/storage";
 
 // FUNÇÃO AUXILIAR DE UI/UX (Consistência do Design System da BNCC)
 const getCorDoEixo = (eixo) => {
@@ -29,6 +30,12 @@ export default function Catalogo() {
   const [busca, setBusca] = useState("");
   const [filtroEixo, setFiltroEixo] = useState("Todos");
   const [filtroModalidade, setFiltroModalidade] = useState("Todas");
+  const [filtroAno, setFiltroAno] = useState("Todos");
+  const [filtroHabilidade, setFiltroHabilidade] = useState("Todas");
+  const [mostrarFavoritos, setMostrarFavoritos] = useState(false);
+  const [favoritos, setFavoritos] = useState(() =>
+    readStorage("ifmaker-favoritos", []),
+  );
 
   // Arrays auxiliares para renderizar os botões de filtro
   const eixos = [
@@ -38,6 +45,27 @@ export default function Catalogo() {
     "CULTURA DIGITAL",
   ];
   const modalidades = ["Todas", "Desplugadas", "Plugadas"];
+  const anos = [
+    "Todos",
+    ...Array.from(new Set(planosDeAula.map((plano) => plano.ano))).sort(),
+  ];
+  const habilidadesDisponiveis = Array.from(
+    new Map(
+      planosDeAula
+        .flatMap((plano) => plano.habilidades || [])
+        .map((habilidade) => [habilidade.codigo, habilidade]),
+    ).values(),
+  ).sort((a, b) => a.codigo.localeCompare(b.codigo));
+
+  const alternarFavorito = (planoId) => {
+    setFavoritos((atuais) => {
+      const atualizados = atuais.includes(planoId)
+        ? atuais.filter((idFavorito) => idFavorito !== planoId)
+        : [...atuais, planoId];
+      writeStorage("ifmaker-favoritos", atualizados);
+      return atualizados;
+    });
+  };
 
   // ==========================================
   // LÓGICA DE FILTRAGEM DE DADOS (Performance com useMemo)
@@ -47,18 +75,29 @@ export default function Catalogo() {
       const termo = busca.toLowerCase();
 
       // 1. Busca por Texto Livre (Título, Objeto de Conhecimento ou Habilidades)
+      const habilidades = plano.habilidades || [];
+      const textoHabilidades = habilidades
+        .map((hab) => `${hab.codigo} ${hab.descricao}`)
+        .join(" ")
+        .toLowerCase();
       const matchBusca =
+        plano.tituloCatalogo?.toLowerCase().includes(termo) ||
         plano.titulo?.toLowerCase().includes(termo) ||
         plano.objetoConhecimento?.toLowerCase().includes(termo) ||
-        (plano.habilidadesBNCC &&
-          plano.habilidadesBNCC.some((hab) =>
-            hab.toLowerCase().includes(termo),
-          ));
+        textoHabilidades.includes(termo);
 
       // 2. Filtro por Eixo da BNCC
       const matchEixo =
         filtroEixo === "Todos" ||
         plano.eixo?.toUpperCase().includes(filtroEixo);
+
+      const matchAno = filtroAno === "Todos" || plano.ano === filtroAno;
+      const matchHabilidade =
+        filtroHabilidade === "Todas" ||
+        plano.habilidades?.some(
+          (habilidade) => habilidade.codigo === filtroHabilidade,
+        );
+      const matchFavoritos = !mostrarFavoritos || favoritos.includes(plano.id);
 
       // 3. Filtro por Modalidade (Correção do Bug de Substring e Dados Implícitos)
       let matchModalidade = true;
@@ -91,9 +130,24 @@ export default function Catalogo() {
         }
       }
 
-      return matchBusca && matchEixo && matchModalidade;
+      return (
+        matchBusca &&
+        matchEixo &&
+        matchAno &&
+        matchHabilidade &&
+        matchModalidade &&
+        matchFavoritos
+      );
     });
-  }, [busca, filtroEixo, filtroModalidade]); // O array de dependências garante que só recalcule quando estes mudarem
+  }, [
+    busca,
+    filtroEixo,
+    filtroModalidade,
+    filtroAno,
+    filtroHabilidade,
+    mostrarFavoritos,
+    favoritos,
+  ]);
 
   return (
     <main className='p-6 md:p-10 max-w-7xl mx-auto'>
@@ -188,6 +242,48 @@ export default function Catalogo() {
             </div>
           </div>
         </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-6'>
+          <label className='flex flex-col gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider'>
+            Ano / Turma
+            <select
+              value={filtroAno}
+              onChange={(event) => setFiltroAno(event.target.value)}
+              className='normal-case text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500'
+            >
+              {anos.map((ano) => (
+                <option key={ano} value={ano}>
+                  {ano === "Todos" ? "Todos os anos" : ano}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className='flex flex-col gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider'>
+            Habilidade BNCC
+            <select
+              value={filtroHabilidade}
+              onChange={(event) => setFiltroHabilidade(event.target.value)}
+              className='normal-case text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500'
+            >
+              <option value='Todas'>Todas as habilidades</option>
+              {habilidadesDisponiveis.map((habilidade) => (
+                <option key={habilidade.codigo} value={habilidade.codigo}>
+                  {habilidade.codigo}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <button
+            type='button'
+            onClick={() => setMostrarFavoritos((atual) => !atual)}
+            aria-pressed={mostrarFavoritos}
+            className={`self-end min-h-10 rounded-lg px-4 py-2 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 ${mostrarFavoritos ? "bg-amber-500 text-white" : "bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100"}`}
+          >
+            ⭐ {mostrarFavoritos ? "Mostrando favoritos" : "Ver favoritos"}
+          </button>
+        </div>
       </section>
 
       {/* ========================================== */}
@@ -226,6 +322,9 @@ export default function Catalogo() {
                 setBusca("");
                 setFiltroEixo("Todos");
                 setFiltroModalidade("Todas");
+                setFiltroAno("Todos");
+                setFiltroHabilidade("Todas");
+                setMostrarFavoritos(false);
               }}
               className='mt-6 bg-amber-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-amber-700 transition-colors shadow-sm print:hidden'
             >
@@ -238,7 +337,7 @@ export default function Catalogo() {
             {planosFiltrados.map((plano) => (
               <article
                 key={plano.id}
-                className='bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group'
+                className='relative bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group'
               >
                 {/* Faixa superior neutra em verde institucional */}
                 <div className='h-2 bg-green-800 w-full group-hover:bg-green-500 transition-colors'></div>
@@ -264,8 +363,17 @@ export default function Catalogo() {
 
                   {/* TÍTULO E OBJETO DE CONHECIMENTO */}
                   <h2 className='text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-green-800 transition-colors'>
-                    {plano.titulo}
+                    {plano.tituloCatalogo || plano.titulo}
                   </h2>
+                  <button
+                    type='button'
+                    onClick={() => alternarFavorito(plano.id)}
+                    aria-pressed={favoritos.includes(plano.id)}
+                    aria-label={`${favoritos.includes(plano.id) ? "Remover dos" : "Adicionar aos"} favoritos: ${plano.tituloCatalogo || plano.titulo}`}
+                    className='absolute top-5 right-5 text-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 rounded'
+                  >
+                    {favoritos.includes(plano.id) ? "★" : "☆"}
+                  </button>
                   <p className='text-gray-600 text-sm flex-1 mb-6 leading-relaxed line-clamp-3'>
                     {plano.objetoConhecimento}
                   </p>
