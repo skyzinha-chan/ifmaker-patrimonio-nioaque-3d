@@ -27,20 +27,34 @@ export default function Sobre() {
       </div>
 
       <header className='border-b-4 border-green-800 pb-8 mb-10 text-center'>
-        <p className='text-sm font-bold uppercase tracking-[0.2em] text-green-800'>
-          Produto educacional e tecnológico
+        {/* Banner Institucional dos Logos em Largura Total (com Altura Ajustada e Rente aos Logos) */}
+        <div className='w-full flex items-center justify-center gap-8 sm:gap-14 bg-gradient-to-r from-green-950 via-green-900 to-green-950 px-6 py-1 sm:py-2 rounded-2xl shadow-xl mb-8 border border-green-800/80'>
+          <img
+            src='/assets/logo IF.png'
+            alt='Instituto Federal de Mato Grosso do Sul - Câmpus Jardim'
+            className='h-24 sm:h-32 md:h-36 lg:h-40 w-auto object-contain drop-shadow-md transition-transform hover:scale-105 duration-300'
+          />
+          <div className='h-16 sm:h-20 w-px bg-white/25 hidden sm:block' aria-hidden='true' />
+          <img
+            src='/assets/logo IFMaker.png'
+            alt='Laboratório IFMaker'
+            className='h-24 sm:h-32 md:h-36 lg:h-40 w-auto object-contain drop-shadow-md transition-transform hover:scale-105 duration-300'
+          />
+        </div>
+
+        <p className='text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-green-800'>
+          Produto educacional e tecnológico • Edital nº 054/2025 PROPI/IFMS
         </p>
-        <h1 className='text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-4 mb-3'>
+        <h1 className='text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-4 mb-3'>
           Patrimônio de Nioaque em 3D
         </h1>
-        <p className='text-xl font-semibold text-gray-700'>
+        <p className='text-lg sm:text-xl font-semibold text-gray-700 max-w-3xl mx-auto'>
           Manual pedagógico de computação e cultura maker no ensino fundamental
         </p>
-        <div className='mt-6 text-gray-600 leading-relaxed'>
-          <p>Talita Mendonça Marques</p>
-          <p>Leonardo Vinicius da Costa Gomes</p>
-          <p className='mt-4'>Jardim - MS</p>
-          <p>2026</p>
+        <div className='mt-6 text-gray-600 leading-relaxed text-sm sm:text-base'>
+          <p className='font-semibold text-gray-800'>Talita Mendonça Marques • Leonardo Vinicius da Costa Gomes</p>
+          <p className='mt-1 text-xs sm:text-sm text-gray-600'>Coordenação e Orientação: Profª. Ma. Rafaela Chivalski de Oliveira • Prof. Dr. Moacir Juliani</p>
+          <p className='mt-3 text-xs uppercase tracking-wider text-gray-500 font-medium'>IFMS Câmpus Jardim / Nioaque - MS • 2026</p>
         </div>
       </header>
 

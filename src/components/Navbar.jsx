@@ -1,16 +1,39 @@
 // src/components/Navbar.jsx (Que agora funciona como uma Top Navbar)
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { planosDeAula } from "../data/planos";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPlanosOpen, setIsPlanosOpen] = useState(false);
+  const [isDesktopPlanosOpen, setIsDesktopPlanosOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const closeMenu = () => {
     setIsOpen(false);
     setIsPlanosOpen(false);
+    setIsDesktopPlanosOpen(false);
   };
+
+  // Gerenciamento de clique fora e tecla Escape para acessibilidade do dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDesktopPlanosOpen(false);
+      }
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsDesktopPlanosOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   // Estilos limpos para uma barra superior
   const activeStyle =
@@ -21,16 +44,26 @@ export default function Navbar() {
   return (
     <nav className='bg-green-800 text-white shadow-md print:hidden sticky top-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex items-center justify-between h-16'>
-          {/* Logo / Título */}
+        <div className='flex items-center justify-between h-16 sm:h-20'>
+          {/* Título da Obra com Ícone */}
           <div className='flex-shrink-0 flex items-center gap-3'>
             <Link
               to='/'
               onClick={closeMenu}
-              className='font-extrabold text-xl tracking-tight'
+              className='flex items-center gap-2.5 sm:gap-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 rounded-lg group'
+              aria-label='Ir para página inicial - Patrimônio de Nioaque em 3D: Manual pedagógico de computação e cultura maker no ensino fundamental'
             >
-              IFMaker{" "}
-              <span className='font-medium text-green-300'>Educador</span>
+              <span aria-hidden='true' className='text-2xl sm:text-3xl transition-transform group-hover:scale-110 select-none'>
+                🦖
+              </span>
+              <div className='flex flex-col justify-center'>
+                <span className='font-extrabold text-sm sm:text-base md:text-lg tracking-tight text-white leading-tight group-hover:text-green-200 transition-colors'>
+                  Patrimônio de Nioaque em 3D
+                </span>
+                <span className='text-[9px] sm:text-[10px] text-green-200 font-medium tracking-normal leading-tight hidden sm:block'>
+                  Manual pedagógico de computação e cultura maker no ensino fundamental
+                </span>
+              </div>
             </Link>
           </div>
 
@@ -62,26 +95,80 @@ export default function Navbar() {
               Manual Pedagógico
             </NavLink>
 
-            {/* O Dropdown do Catálogo para Desktop */}
-            <div className='relative group'>
-              <NavLink
-                to='/planos'
-                className={({ isActive }) =>
-                  `flex items-center gap-1 ${isActive ? activeStyle : inactiveStyle}`
-                }
+            {/* O Dropdown do Catálogo para Desktop com Acessibilidade (Touch, Clique, Teclado & Hover) */}
+            <div
+              ref={dropdownRef}
+              className='relative'
+              onMouseEnter={() => setIsDesktopPlanosOpen(true)}
+              onMouseLeave={() => setIsDesktopPlanosOpen(false)}
+            >
+              <div className='flex items-center gap-1'>
+                <NavLink
+                  to='/planos'
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `flex items-center gap-1 ${isActive ? activeStyle : inactiveStyle}`
+                  }
+                >
+                  Catálogo de Aulas
+                </NavLink>
+                <button
+                  type='button'
+                  onClick={() => setIsDesktopPlanosOpen((prev) => !prev)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setIsDesktopPlanosOpen((prev) => !prev);
+                    }
+                  }}
+                  aria-haspopup='true'
+                  aria-expanded={isDesktopPlanosOpen}
+                  aria-controls='desktop-planos-menu'
+                  aria-label='Alternar lista suspensa de planos de aula'
+                  className='p-1 text-green-200 hover:text-white rounded focus:outline-none focus:ring-2 focus:ring-white transition'
+                >
+                  <svg
+                    className={`w-4 h-4 transform transition-transform duration-200 ${isDesktopPlanosOpen ? "rotate-180" : ""}`}
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                    aria-hidden='true'
+                  >
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M19 9l-7 7-7-7' />
+                  </svg>
+                </button>
+              </div>
+
+              {/* A lista suspensa flutuante com suporte semântico */}
+              <div
+                id='desktop-planos-menu'
+                role='menu'
+                aria-label='Lista de planos de aula'
+                className={`absolute left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-green-100 transition-all duration-200 z-50 ${
+                  isDesktopPlanosOpen
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                }`}
               >
-                Catálogo de Aulas
-              </NavLink>
-              {/* A lista suspensa flutuante (Hover) no Desktop */}
-              <div className='absolute left-0 mt-2 w-64 bg-white rounded-md shadow-xl border border-green-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50'>
-                <div className='py-2 max-h-96 overflow-y-auto'>
+                <div className='p-2.5 border-b border-gray-100 bg-green-50/60 rounded-t-xl'>
+                  <Link
+                    to='/planos'
+                    onClick={closeMenu}
+                    className='block text-xs font-bold text-green-800 hover:underline px-2 py-0.5'
+                  >
+                    → Abrir catálogo completo (15 aulas)
+                  </Link>
+                </div>
+                <div className='py-2 max-h-96 overflow-y-auto divide-y divide-gray-50'>
                   {planosDeAula.map((p, idx) => (
                     <NavLink
                       key={p.id}
                       to={`/planos/${p.id}`}
-                      className='block px-4 py-2 text-xs text-gray-700 hover:bg-green-50 hover:text-green-800 font-medium border-b border-gray-50 last:border-0'
+                      role='menuitem'
+                      onClick={closeMenu}
+                      className='block px-4 py-2.5 text-xs text-gray-700 hover:bg-green-50 hover:text-green-900 font-medium transition-colors'
                     >
-                      <span className='font-bold mr-1'>{idx + 1}.</span>{" "}
+                      <span className='font-bold text-green-700 mr-1'>{idx + 1}.</span>{" "}
                       {p.titulo}
                     </NavLink>
                   ))}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { planosDeAula } from "../data/planos";
+import GuiaCaixaMasterModal from "../components/GuiaCaixaMasterModal";
 
 export default function Dashboard() {
   // 1. Calculando apenas métricas dinâmicas reais que podem crescer
@@ -17,6 +18,7 @@ export default function Dashboard() {
     mediaEstrelas: 0
   });
   const [loadingMetricas, setLoadingMetricas] = useState(true);
+  const [modalCaixaMasterAberto, setModalCaixaMasterAberto] = useState(false);
 
   // 3. Efeito para buscar e agregar os dados em tempo real
   useEffect(() => {
@@ -70,22 +72,41 @@ export default function Dashboard() {
       {/* HERO BANNER (Painel de Boas-Vindas) */}
       {/* ========================================== */}
       <section className='bg-gradient-to-br from-green-900 to-green-700 rounded-2xl p-8 md:p-12 text-white shadow-xl mb-12 flex flex-col md:flex-row items-center justify-between gap-8 border-b-8 border-green-500'>
-        <div className='max-w-2xl'>
-          <span className='inline-block px-4 py-1.5 bg-green-800 text-green-100 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-green-600 shadow-sm'>
-            Projeto IFMaker Educador
-          </span>
-          <h1 className='text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight'>
+        <div className='max-w-3xl'>
+          {/* Chancela Oficial dos Logos em Fundo Escuro (Caixa Ajustada aos Logos) */}
+          <div className='inline-flex flex-wrap items-center gap-3.5 sm:gap-4 bg-green-950/85 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl shadow-xl mb-6 border border-white/20'>
+            <img
+              src='/assets/logo IF.png'
+              alt='Instituto Federal de Mato Grosso do Sul - Câmpus Jardim'
+              className='h-14 sm:h-16 md:h-20 w-auto object-contain drop-shadow'
+            />
+            <div className='h-10 sm:h-12 w-px bg-white/25 hidden sm:block' aria-hidden='true' />
+            <img
+              src='/assets/logo IFMaker.png'
+              alt='Laboratório IFMaker'
+              className='h-14 sm:h-16 md:h-20 w-auto object-contain drop-shadow'
+            />
+            <div className='h-10 sm:h-12 w-px bg-white/25 hidden sm:block' aria-hidden='true' />
+            <span className='text-xs sm:text-sm font-bold text-green-100 uppercase tracking-wider max-w-xs leading-snug'>
+              IFMS Câmpus Jardim • Laboratório IFMaker (Edital nº 054/2025 – PROPI)
+            </span>
+          </div>
+
+          <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 leading-tight tracking-tight'>
             Patrimônio de Nioaque em 3D
           </h1>
-          <p className='text-green-50 text-lg md:text-xl leading-relaxed mb-8 font-medium max-w-xl'>
-            Tecnologia Maker e Cultura Local na Educação Básica. Explore
-            metodologias ativas e computação desplugada alinhadas à BNCC para o
+          <p className='text-green-200 text-lg sm:text-xl md:text-2xl font-semibold mb-6 leading-snug'>
+            Manual pedagógico de computação e cultura maker no ensino fundamental
+          </p>
+          <p className='text-green-50 text-base md:text-lg leading-relaxed mb-8 font-medium max-w-2xl'>
+            Tecnologia Maker, Pensamento Computacional e Memória Regional de Nioaque/MS. Explore
+            metodologias ativas, réplicas táteis impressas em 3D e dinâmicas desplugadas alinhadas à BNCC para o
             5º ano do Ensino Fundamental.
           </p>
-          <div className='flex flex-col sm:flex-row gap-4'>
+          <div className='flex flex-wrap gap-4'>
             <Link
               to='/planos'
-              className='inline-flex justify-center items-center bg-white text-green-900 font-bold py-3.5 px-8 rounded-xl shadow-lg hover:bg-green-50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 transition-all duration-300'
+              className='inline-flex justify-center items-center bg-white text-green-900 font-bold py-3.5 px-7 rounded-xl shadow-lg hover:bg-green-50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 transition-all duration-300'
             >
               <span aria-hidden='true' className='mr-2'>
                 📚
@@ -93,8 +114,17 @@ export default function Dashboard() {
               Acessar Catálogo de Aulas
             </Link>
             <Link
+              to='/manual'
+              className='inline-flex justify-center items-center bg-transparent border-2 border-green-300 text-white font-bold py-3.5 px-6 rounded-xl hover:bg-green-800 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 transition-all duration-300'
+            >
+              <span aria-hidden='true' className='mr-2'>
+                📖
+              </span>{" "}
+              Ler Manual Pedagógico
+            </Link>
+            <Link
               to='/capitulos/sobre'
-              className='inline-flex justify-center items-center bg-transparent border-2 border-green-400 text-white font-bold py-3.5 px-8 rounded-xl hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 transition-all duration-300'
+              className='inline-flex justify-center items-center bg-transparent border-2 border-white/40 text-green-100 font-medium py-3.5 px-6 rounded-xl hover:bg-green-900/40 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 transition-all duration-300 text-sm'
             >
               <span aria-hidden='true' className='mr-2'>
                 🏛️
@@ -104,14 +134,15 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Ilustração / Destaque Visual */}
-        <div className='hidden lg:flex items-center justify-center bg-white/10 p-10 rounded-full border-4 border-white/20 shadow-2xl backdrop-blur-sm transform hover:rotate-6 transition-transform duration-500'>
+        {/* Ilustração Circular com Movimento Dinâmico no Hover */}
+        <div className='hidden lg:flex items-center justify-center bg-white/10 w-48 h-48 sm:w-52 sm:h-52 rounded-full border-4 border-white/20 shadow-2xl backdrop-blur-sm transform hover:rotate-6 transition-transform duration-500 flex-shrink-0'>
           <span
-            className='text-8xl'
+            className='text-5xl sm:text-6xl flex items-center justify-center gap-2 whitespace-nowrap select-none'
             role='img'
             aria-label='Tecnologia e Paleontologia'
           >
-            🦖🖨️
+            <span>🦖</span>
+            <span>🖨️</span>
           </span>
         </div>
       </section>
@@ -184,39 +215,61 @@ export default function Dashboard() {
       )}
 
       {/* ========================================== */}
-      {/* CARDS DE MÉTRICAS RÁPIDAS (Data-Driven + Regra BNCC) */}
+      {/* CARDS DE MÉTRICAS PEDAGÓGICAS (Formato Compacto alinhado ao Flow) */}
       {/* ========================================== */}
-      <section className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-16'>
-        <div className='bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow border-b-4 border-b-amber-500 flex flex-col items-center text-center'>
-          <div className='text-amber-500 text-4xl mb-3' aria-hidden='true'>
+      <section className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-16'>
+        {/* Card 1: Missões Validadas */}
+        <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4 sm:gap-5 transform hover:-translate-y-1 transition-transform border-l-4 border-l-amber-500'>
+          <div
+            className='bg-amber-50 text-amber-600 p-4 rounded-xl text-3xl font-bold flex-shrink-0'
+            aria-hidden='true'
+          >
             🎯
           </div>
-          <h3 className='text-4xl font-black text-gray-900 mb-1'>
-            {totalPlanos}
-          </h3>
-          <p className='text-gray-500 font-bold uppercase tracking-wider text-sm'>
-            Missões Validadas
-          </p>
+          <div>
+            <p className='text-gray-500 font-bold uppercase tracking-wider text-xs mb-1'>
+              Missões Validadas
+            </p>
+            <h3 className='text-3xl font-black text-gray-900'>
+              {totalPlanos} Aulas
+            </h3>
+          </div>
         </div>
 
-        <div className='bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow border-b-4 border-b-blue-500 flex flex-col items-center text-center'>
-          <div className='text-blue-500 text-4xl mb-3' aria-hidden='true'>
+        {/* Card 2: 3 Eixos BNCC */}
+        <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4 sm:gap-5 transform hover:-translate-y-1 transition-transform border-l-4 border-l-blue-500'>
+          <div
+            className='bg-blue-50 text-blue-600 p-4 rounded-xl text-3xl font-bold flex-shrink-0'
+            aria-hidden='true'
+          >
             🧩
           </div>
-          <h3 className='text-4xl font-black text-gray-900 mb-1'>3 Eixos</h3>
-          <p className='text-gray-500 font-bold uppercase tracking-wider text-sm'>
-            Da BNCC Computação
-          </p>
+          <div>
+            <p className='text-gray-500 font-bold uppercase tracking-wider text-xs mb-1'>
+              Da BNCC Computação
+            </p>
+            <h3 className='text-3xl font-black text-gray-900'>
+              3 Eixos
+            </h3>
+          </div>
         </div>
 
-        <div className='bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow border-b-4 border-b-emerald-500 flex flex-col items-center text-center'>
-          <div className='text-emerald-500 text-4xl mb-3' aria-hidden='true'>
+        {/* Card 3: 100% Local Nioaque */}
+        <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4 sm:gap-5 transform hover:-translate-y-1 transition-transform border-l-4 border-l-emerald-500'>
+          <div
+            className='bg-emerald-50 text-emerald-600 p-4 rounded-xl text-3xl font-bold flex-shrink-0'
+            aria-hidden='true'
+          >
             📍
           </div>
-          <h3 className='text-4xl font-black text-gray-900 mb-1'>100% Local</h3>
-          <p className='text-gray-500 font-bold uppercase tracking-wider text-sm'>
-            História de Nioaque
-          </p>
+          <div>
+            <p className='text-gray-500 font-bold uppercase tracking-wider text-xs mb-1'>
+              História & Paleontologia
+            </p>
+            <h3 className='text-3xl font-black text-gray-900'>
+              100% Nioaque
+            </h3>
+          </div>
         </div>
       </section>
 
@@ -239,17 +292,19 @@ export default function Dashboard() {
           <div className='hidden md:block absolute top-1/2 left-10 right-10 h-1 bg-green-100 -z-10 transform -translate-y-1/2'></div>
 
           {/* Passo 1 */}
-          <div className='bg-white p-8 rounded-2xl border border-green-100 shadow-lg text-center relative z-10'>
-            <div className='w-16 h-16 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md border-4 border-white'>
-              1
+          <div className='bg-white p-8 rounded-2xl border border-green-100 shadow-lg text-center relative z-10 flex flex-col justify-between'>
+            <div>
+              <div className='w-16 h-16 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md border-4 border-white'>
+                1
+              </div>
+              <h4 className='font-bold text-gray-900 text-xl mb-3'>
+                Base Teórica
+              </h4>
+              <p className='text-gray-600 text-sm leading-relaxed mb-6'>
+                Acesse o nosso Manual Pedagógico para entender as metodologias
+                ativas, a Taxonomia de Bloom e os combinados da Cultura Maker.
+              </p>
             </div>
-            <h4 className='font-bold text-gray-900 text-xl mb-3'>
-              Base Teórica
-            </h4>
-            <p className='text-gray-600 text-sm leading-relaxed mb-6'>
-              Acesse o nosso Manual Pedagógico para entender as metodologias
-              ativas, a Taxonomia de Bloom e os combinados da Cultura Maker.
-            </p>
             <Link
               to='/manual'
               className='text-green-700 font-bold hover:text-green-900 hover:underline'
@@ -259,17 +314,19 @@ export default function Dashboard() {
           </div>
 
           {/* Passo 2 */}
-          <div className='bg-white p-8 rounded-2xl border border-green-100 shadow-lg text-center relative z-10'>
-            <div className='w-16 h-16 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md border-4 border-white'>
-              2
+          <div className='bg-white p-8 rounded-2xl border border-green-100 shadow-lg text-center relative z-10 flex flex-col justify-between'>
+            <div>
+              <div className='w-16 h-16 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md border-4 border-white'>
+                2
+              </div>
+              <h4 className='font-bold text-gray-900 text-xl mb-3'>
+                Escolha a Missão
+              </h4>
+              <p className='text-gray-600 text-sm leading-relaxed mb-6'>
+                Navegue pelo Catálogo e selecione um plano de aula baseado na
+                habilidade da BNCC ou no eixo computacional desejado.
+              </p>
             </div>
-            <h4 className='font-bold text-gray-900 text-xl mb-3'>
-              Escolha a Missão
-            </h4>
-            <p className='text-gray-600 text-sm leading-relaxed mb-6'>
-              Navegue pelo Catálogo e selecione um plano de aula baseado na
-              habilidade da BNCC ou no eixo computacional desejado.
-            </p>
             <Link
               to='/planos'
               className='text-green-700 font-bold hover:text-green-900 hover:underline'
@@ -279,18 +336,57 @@ export default function Dashboard() {
           </div>
 
           {/* Passo 3 */}
-          <div className='bg-white p-8 rounded-2xl border border-green-100 shadow-lg text-center relative z-10'>
-            <div className='w-16 h-16 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md border-4 border-white'>
-              3
+          <div className='bg-white p-8 rounded-2xl border border-green-100 shadow-lg text-center relative z-10 flex flex-col justify-between'>
+            <div>
+              <div className='w-16 h-16 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md border-4 border-white'>
+                3
+              </div>
+              <h4 className='font-bold text-gray-900 text-xl mb-3'>
+                Mão na Massa
+              </h4>
+              <p className='text-gray-600 text-sm leading-relaxed mb-6'>
+                Imprima as rubricas, organize os artefatos 3D nas ilhas de trabalho e guie seus alunos na resolução de problemas.
+              </p>
             </div>
-            <h4 className='font-bold text-gray-900 text-xl mb-3'>
-              Mão na Massa
-            </h4>
-            <p className='text-gray-600 text-sm leading-relaxed mb-6'>
-              Imprima as rubricas curingas, organize os artefatos 3D nas "ilhas
-              de aprendizagem" e guie seus alunos na resolução de problemas.
-            </p>
+            <button
+              type='button'
+              onClick={() => setModalCaixaMasterAberto(true)}
+              className='text-emerald-700 font-bold hover:text-emerald-900 hover:underline inline-flex items-center justify-center'
+            >
+              Guia da Caixa Master →
+            </button>
           </div>
+        </div>
+
+        {/* CARD INTEGRADO: LOGÍSTICA & PRIMEIROS PASSOS COM A CAIXA MASTER */}
+        <div className='mt-10 bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-100 border-2 border-emerald-300 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5'>
+          <div className='flex items-start sm:items-center gap-4'>
+            <div className='h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-sm flex-shrink-0'>
+              🧭
+            </div>
+            <div>
+              <div className='flex items-center gap-2'>
+                <span className='bg-emerald-200 text-emerald-900 text-[10px] font-black uppercase px-2 py-0.5 rounded tracking-wide'>
+                  Logística do Passo 3
+                </span>
+                <span className='text-xs font-bold text-emerald-800'>Kit Pedagógico IFMaker</span>
+              </div>
+              <h3 className='text-lg sm:text-xl font-extrabold text-gray-900 mt-0.5'>
+                Primeiros Passos com a Caixa Master
+              </h3>
+              <p className='text-xs sm:text-sm text-gray-700 mt-1 max-w-2xl leading-relaxed'>
+                Aprenda a organizar os 8 potes das ilhas de alunos, a rotina de escrita e limpeza com canetas no Polaseal e os cuidados térmicos essenciais com os artefatos 3D.
+              </p>
+            </div>
+          </div>
+
+          <button
+            type='button'
+            onClick={() => setModalCaixaMasterAberto(true)}
+            className='whitespace-nowrap bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-extrabold py-3 px-5 rounded-xl shadow-md transition text-xs sm:text-sm flex items-center gap-2 self-stretch md:self-auto justify-center flex-shrink-0'
+          >
+            <span>🎒</span> Abrir Guia Ilustrado
+          </button>
         </div>
       </section>
 
@@ -347,6 +443,12 @@ export default function Dashboard() {
           </div>
         </div>
       </section>
+
+      {/* MODAL ILUSTRADO: PRIMEIROS PASSOS COM A CAIXA MASTER */}
+      <GuiaCaixaMasterModal
+        aberto={modalCaixaMasterAberto}
+        aoFechar={() => setModalCaixaMasterAberto(false)}
+      />
     </div>
   );
 }

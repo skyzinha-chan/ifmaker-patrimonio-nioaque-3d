@@ -1,0 +1,26 @@
+{
+  "name": "PATRIMÔNIO DE NIOAQUE EM 3D: Manual pedagógico de computação e cultura maker no ensino fundamental",
+  "short_name": "Nioaque 3D Maker",
+  "description": "Manual pedagógico de computação e cultura maker no ensino fundamental com foco no patrimônio histórico, paleontológico e ambiental de Nioaque/MS.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#166534",
+  "lang": "pt-BR",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/logo IFMaker.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo IF.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

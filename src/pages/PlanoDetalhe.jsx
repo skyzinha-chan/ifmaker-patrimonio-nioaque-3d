@@ -9,6 +9,8 @@ import { rubricas } from "../data/rubricas";
 import { getArtefatosPorPlano, isRecursoDoKitMaker } from "../data/materiaisKit";
 import { readStorage, writeStorage } from "../utils/storage";
 import ComentariosPedagogicos from "../components/ComentariosPedagogicos"; //TESTANDO COMENTARIOS DE USUARIOS
+import ModoRegenciaModal from "../components/ModoRegenciaModal";
+import { baixarPacoteCompletoDaAula } from "../utils/zipUtils";
 
 // Função auxiliar de cores da BNCC
 const getCorDoEixo = (eixo) => {
@@ -42,6 +44,8 @@ export default function PlanoDetalhe() {
   const [etapasPreparacao, setEtapasPreparacao] = useState([]);
   const [aplicadoEmSala, setAplicadoEmSala] = useState(false);
   const [mensagemCompartilhamento, setMensagemCompartilhamento] = useState("");
+  const [modoRegenciaAberto, setModoRegenciaAberto] = useState(false);
+  const [statusDownloadKit, setStatusDownloadKit] = useState(null);
 
   useEffect(() => {
     if (!plano) return;
@@ -202,6 +206,41 @@ export default function PlanoDetalhe() {
       });
     } finally {
       setVerificandoPdf(false);
+    }
+  };
+
+  // Baixa o Kit Completo em arquivo ZIP com instruções e PDFs
+  const lidarComDownloadPacoteCompleto = async () => {
+    if (!plano) return;
+    try {
+      setStatusDownloadKit({ etapa: "Preparando kit...", porcentagem: 5 });
+      await baixarPacoteCompletoDaAula(plano, (progresso) => {
+        setStatusDownloadKit(progresso);
+      });
+
+      // Registra métrica de download no Firebase
+      try {
+        const metricaRef = doc(db, "metricas_planos", plano.id);
+        await setDoc(
+          metricaRef,
+          { downloads: increment(1) },
+          { merge: true },
+        );
+        setMetricas((prev) => ({ ...prev, downloads: prev.downloads + 1 }));
+      } catch (err) {
+        console.error("Erro ao registrar download no Firebase:", err);
+      }
+
+      setTimeout(() => setStatusDownloadKit(null), 3000);
+    } catch (erro) {
+      console.error("Falha no download em lote:", erro);
+      setAvisoPdf({
+        titulo: "Aviso sobre o Kit",
+        mensagem:
+          erro.message ||
+          "Não foi possível gerar o arquivo ZIP dos materiais no momento.",
+      });
+      setStatusDownloadKit(null);
     }
   };
 
@@ -370,6 +409,14 @@ export default function PlanoDetalhe() {
         </h1>
 
         <div className='flex flex-wrap items-center gap-2 mb-5 print:hidden'>
+          <button
+            type='button'
+            onClick={() => setModoRegenciaAberto(true)}
+            className='inline-flex items-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white px-3.5 py-2 text-sm font-bold shadow-sm transition hover:scale-102 focus:outline-none focus:ring-2 focus:ring-emerald-500'
+            title='Abre o cronômetro visual em tela cheia com as etapas do plano para projetar na sala'
+          >
+            <span aria-hidden='true'>⏱️</span> Iniciar Regência em Sala
+          </button>
           <button
             type='button'
             onClick={alternarFavorito}
@@ -669,26 +716,165 @@ export default function PlanoDetalhe() {
             id='panel-roteiro'
             aria-labelledby='tab-roteiro'
             tabIndex='0'
-            className='animate-fadeIn space-y-8 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-4 rounded-xl'
+            className='animate-fadeIn space-y-6 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-4 rounded-xl'
           >
-            {plano.roteiro.map((passo, index) => (
-              <div
-                key={index}
-                className='flex gap-4 items-start border-l-4 border-blue-600 pl-4 py-2 bg-white rounded-r-lg shadow-sm'
-              >
-                <div>
-                  <span className='text-xs font-extrabold text-blue-700 uppercase tracking-widest'>
-                    {passo.parte}
-                  </span>
-                  <h3 className='font-bold text-gray-900 text-lg mt-1'>
-                    {passo.titulo}
-                  </h3>
-                  <p className='text-gray-700 mt-2 text-sm leading-relaxed'>
-                    {passo.descricao}
+            {/* 1. DICA DE MEDIAÇÃO RÁPIDA & GESTÃO DO TEMPO */}
+            <div className='bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 text-white p-4 sm:p-5 rounded-2xl shadow-sm border border-blue-800 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4'>
+              <div className='flex-1 min-w-0 space-y-1'>
+                <div className='flex flex-wrap items-center justify-between gap-2'>
+                  <div className='flex items-center gap-2'>
+                    <span className='text-lg sm:text-xl' aria-hidden='true'>⏱️</span>
+                    <h3 className='font-bold text-sm sm:text-base text-blue-100'>
+                      Dica de Mediação Rápida & Gestão do Tempo ({plano.duracao ? (plano.duracao.includes("/aula") ? "50 minutos" : plano.duracao) : "50 minutos"})
+                    </h3>
+                  </div>
+                  <button
+                    type='button'
+                    onClick={() => setModoRegenciaAberto(true)}
+                    className='bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 font-extrabold text-[11px] sm:text-xs px-2.5 py-1 rounded-lg shadow-sm transition flex items-center gap-1.5'
+                    title='Abrir o cronômetro visual em tela cheia para a lousa'
+                  >
+                    <span>▶️</span> Projetar Timer em Sala
+                  </button>
+                </div>
+                <p className='text-[11px] sm:text-xs text-blue-200 leading-relaxed'>
+                  Mantenha a dinâmica fluida nos esquadrões evitando que os grupos fiquem presos em impasses lógicos.
+                </p>
+              </div>
+
+              {/* Linha do Tempo da Aula (Dinâmica conforme o roteiro do plano) */}
+              <div className='flex-shrink-0 flex flex-nowrap items-center gap-1.5 sm:gap-2 self-stretch sm:self-auto justify-between sm:justify-start select-none whitespace-nowrap overflow-x-auto'>
+                {plano.roteiro.map((passo, idx) => {
+                  const tempoMatch = passo.parte?.match(/(\d+\s*min)/i);
+                  const tempoTexto = tempoMatch ? tempoMatch[1] : `${idx + 1}ª Etapa`;
+
+                  let rotulo = "Etapa";
+                  if (/context/i.test(passo.titulo)) rotulo = "Aquecimento";
+                  else if (/experim/i.test(passo.titulo)) rotulo = "Missão Maker";
+                  else if (/avalia/i.test(passo.titulo)) rotulo = "Avaliação";
+                  else rotulo = passo.titulo.split(" ")[0];
+
+                  const paletaCores = [
+                    { tempo: "text-blue-300", label: "text-blue-100" },
+                    { tempo: "text-emerald-300", label: "text-emerald-100" },
+                    { tempo: "text-amber-300", label: "text-amber-100" }
+                  ];
+                  const corAtual = paletaCores[idx % paletaCores.length];
+
+                  return (
+                    <React.Fragment key={idx}>
+                      {idx > 0 && (
+                        <span className='text-blue-300/80 text-xs sm:text-sm font-bold flex-shrink-0' aria-hidden='true'>
+                          →
+                        </span>
+                      )}
+                      <div className='bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg border border-white/15 text-center flex-1 sm:flex-initial min-w-[68px] sm:min-w-[76px]'>
+                        <span className={`block text-[11px] sm:text-xs font-extrabold ${corAtual.tempo} leading-tight`}>
+                          {tempoTexto}
+                        </span>
+                        <span className={`text-[9px] sm:text-[10px] ${corAtual.label} uppercase tracking-wide leading-tight block`}>
+                          {rotulo}
+                        </span>
+                      </div>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 2. ALERTA VISUAL: MODO DE EMERGÊNCIA / PLANO B (CONTINGÊNCIAS NA SALA) */}
+            <details className='group bg-amber-50/90 border-2 border-amber-300 rounded-2xl p-5 shadow-sm open:bg-amber-50 transition-colors'>
+              <summary className='cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-lg'>
+                <div className='flex items-center gap-2.5'>
+                  <span className='text-2xl' aria-hidden='true'>🚨</span>
+                  <div>
+                    <h3 className='text-base font-extrabold text-amber-900'>
+                      Modo de Emergência / Plano B: E se a aula fugir do planejado?
+                    </h3>
+                    <p className='text-xs text-amber-800 font-normal mt-0.5'>
+                      Estratégias de contingência imediata caso peças quebrem, o tempo aperte ou a turma trave.
+                    </p>
+                  </div>
+                </div>
+                <span className='text-amber-800 text-xs font-bold uppercase tracking-wider bg-amber-200/80 px-2.5 py-1 rounded-full group-open:hidden'>
+                  Ver soluções rápidas ▾
+                </span>
+                <span className='text-amber-800 text-xs font-bold uppercase tracking-wider bg-amber-200/80 px-2.5 py-1 rounded-full hidden group-open:inline'>
+                  Ocultar ▴
+                </span>
+              </summary>
+
+              <div className='mt-4 pt-4 border-t border-amber-200 grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs text-amber-950'>
+                <div className='bg-white/80 p-3.5 rounded-xl border border-amber-200/80 space-y-1'>
+                  <strong className='font-bold text-amber-900 flex items-center gap-1.5'>
+                    <span>🧩</span> Peça 3D quebrou ou está indisponível?
+                  </strong>
+                  <p className='text-amber-850 leading-relaxed'>
+                    {(() => {
+                      const artefatos = getArtefatosPorPlano(plano.id);
+                      if (artefatos.length > 0 && artefatos[0].substituicaoPossivel) {
+                        return (
+                          <>
+                            <strong>Plano B imediato: </strong>
+                            {artefatos[0].substituicaoPossivel} Ou utilize a peça ilustrada 2D plastificada da Pasta Sanfonada.
+                          </>
+                        );
+                      }
+                      return "Substitua a réplica pelo elemento 2D plastificado correspondente da Pasta Sanfonada ou por uma silhueta desenhada em papel cartão com apoio de tampinha plástica.";
+                    })()}
+                  </p>
+                </div>
+
+                <div className='bg-white/80 p-3.5 rounded-xl border border-amber-200/80 space-y-1'>
+                  <strong className='font-bold text-amber-900 flex items-center gap-1.5'>
+                    <span>⏰</span> O tempo está acabando e a missão não concluiu?
+                  </strong>
+                  <p className='text-amber-850 leading-relaxed'>
+                    Reduza o tabuleiro (ex.: corte o grid para 3x3) ou desafie o grupo a resolver apenas a primeira curva da rota. A aprendizagem do processo e a depuração valem mais do que terminar a rota completa.
+                  </p>
+                </div>
+
+                <div className='bg-white/80 p-3.5 rounded-xl border border-amber-200/80 space-y-1'>
+                  <strong className='font-bold text-amber-900 flex items-center gap-1.5'>
+                    <span>🔊</span> Turma agitada ou com excesso de ruído?
+                  </strong>
+                  <p className='text-amber-850 leading-relaxed'>
+                    Acione o <strong>"Modo Furtivo"</strong>: levante a mão em sinal de silêncio tático. Os esquadrões passam a ter que transmitir comandos apenas por código gestual ou sussurros militares.
+                  </p>
+                </div>
+
+                <div className='bg-white/80 p-3.5 rounded-xl border border-amber-200/80 space-y-1'>
+                  <strong className='font-bold text-amber-900 flex items-center gap-1.5'>
+                    <span>🐛</span> Grupo travou e começou a entrar em conflito?
+                  </strong>
+                  <p className='text-amber-850 leading-relaxed'>
+                    Aplique a regra do <em>"Caçador de Bugs"</em>: pare o robô, leia o código em voz alta comando a comando e troque as funções dos membros da ilha (quem era robô vira mestre do código).
                   </p>
                 </div>
               </div>
-            ))}
+            </details>
+
+            {/* Passos do roteiro prático */}
+            <div className='space-y-4'>
+              {plano.roteiro.map((passo, index) => (
+                <div
+                  key={index}
+                  className='flex gap-4 items-start border-l-4 border-blue-600 pl-4 py-3 bg-white rounded-r-xl shadow-xs'
+                >
+                  <div className='flex-1'>
+                    <span className='text-xs font-extrabold text-blue-700 uppercase tracking-widest'>
+                      {passo.parte}
+                    </span>
+                    <h4 className='font-bold text-gray-900 text-base mt-0.5'>
+                      {passo.titulo}
+                    </h4>
+                    <p className='text-gray-700 mt-1.5 text-sm leading-relaxed'>
+                      {passo.descricao}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -1256,6 +1442,37 @@ export default function PlanoDetalhe() {
           Central de Impressão e Materiais
         </h3>
 
+        {/* BANNER DE DESTAQUE: PACOTE COMPLETO DA AULA EM 1 CLIQUE */}
+        <div className='max-w-2xl mx-auto mb-8 bg-gradient-to-r from-emerald-800 via-green-800 to-emerald-900 text-white p-5 rounded-2xl shadow-lg border border-emerald-700 flex flex-col sm:flex-row items-center justify-between gap-4'>
+          <div className='flex items-center gap-3.5'>
+            <div className='h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center text-2xl flex-shrink-0 border border-white/15'>
+              📦
+            </div>
+            <div>
+              <span className='text-[10px] font-black uppercase tracking-widest text-emerald-300 block'>
+                Download em Lote
+              </span>
+              <h4 className='font-extrabold text-base text-white'>
+                Pacote Completo da Aula (.ZIP em 1 Clique)
+              </h4>
+              <p className='text-xs text-emerald-200 mt-0.5 leading-relaxed'>
+                Baixe o Plano Completo, Rubrica, Atividades e Instruções Técnicas reunidos em um único arquivo compactado.
+              </p>
+            </div>
+          </div>
+          <button
+            type='button'
+            onClick={lidarComDownloadPacoteCompleto}
+            disabled={Boolean(statusDownloadKit && statusDownloadKit.porcentagem < 100)}
+            className='whitespace-nowrap bg-white text-emerald-950 hover:bg-emerald-50 active:bg-emerald-100 font-extrabold py-3 px-5 rounded-xl shadow-md text-xs sm:text-sm flex items-center gap-2 transition transform active:scale-95 disabled:opacity-60 disabled:cursor-wait flex-shrink-0'
+          >
+            <span>📥</span>
+            <span>
+              {statusDownloadKit ? statusDownloadKit.etapa : "Baixar Kit Completo (.ZIP)"}
+            </span>
+          </button>
+        </div>
+
         <div className='flex flex-wrap justify-center gap-4'>
           {/* 1. PDF DA AULA COMPLETA */}
           {plano.pdfUrl ? (
@@ -1419,6 +1636,14 @@ export default function PlanoDetalhe() {
           <div />
         )}
       </footer>
+
+      {/* MODAL MODO AULA / TIMER DA MISSÃO EM TELA CHEIA */}
+      {modoRegenciaAberto && (
+        <ModoRegenciaModal
+          plano={plano}
+          aoFechar={() => setModoRegenciaAberto(false)}
+        />
+      )}
     </article>
   );
 }

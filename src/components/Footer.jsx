@@ -13,16 +13,16 @@ export default function Footer() {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6'>
           {/* Coluna 1: Identidade do Projeto */}
           <div className='flex flex-col space-y-3'>
-            <h2 className='text-2xl font-extrabold tracking-tight text-white flex items-center gap-2'>
-              <span aria-hidden='true' className='text-3xl'>
+            <div className='flex items-center gap-2.5'>
+              <span aria-hidden='true' className='text-3xl select-none'>
                 🦖
-              </span>{" "}
-              IFMAKER
-            </h2>
-            <p className='text-green-100/80 text-sm leading-relaxed font-medium'>
-              Patrimônio de Nioaque em 3D. Tecnologia Maker, Computação
-              Desplugada e História Local alinhadas à BNCC para transformar a
-              Educação Básica.
+              </span>
+              <h2 className='text-lg sm:text-xl font-extrabold tracking-tight text-white leading-snug'>
+                Patrimônio de Nioaque em 3D
+              </h2>
+            </div>
+            <p className='text-green-300 text-xs sm:text-sm font-semibold leading-snug'>
+              Manual pedagógico de computação e cultura maker no ensino fundamental
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Coluna 3: Fomento Científico (Isolado) */}
+          {/* Coluna 3: Fomento Científico (Mesclado) */}
           <div className='flex flex-col'>
             <h3 className='text-green-400 font-bold uppercase tracking-widest text-xs mb-4'>
               Fomento Científico
@@ -76,8 +76,10 @@ export default function Footer() {
                 .
               </p>
               <p>
-                Desenvolvido no Instituto Federal de Educação, Ciência e
-                Tecnologia de Mato Grosso do Sul (IFMS) — Campus Jardim.
+                Produto educacional e tecnológico desenvolvido pelo Instituto
+                Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul
+                (IFMS) — Câmpus Jardim e Laboratório IFMaker, em parceria com a
+                Escola Municipal Guilherme Corrêa da Silva (Nioaque/MS).
               </p>
             </div>
           </div>
@@ -131,9 +133,9 @@ export default function Footer() {
 
         {/* Linha Inferior: Copyright e Autoria (Reduzi a margem superior para economizar espaço) */}
         <div className='border-t border-green-800/50 mt-6 pt-5 text-center md:flex md:justify-between md:text-left'>
-          <p className='text-sm text-green-100/60 font-medium'>
-            &copy; {anoAtual} IFMaker Educador. Produto educacional. Todos os
-            direitos reservados.
+          <p className='text-xs sm:text-sm text-green-100/70 font-medium'>
+            &copy; {anoAtual} Patrimônio de Nioaque em 3D. Todos os direitos
+            reservados.
           </p>
           <p className='text-sm text-green-400 mt-2 md:mt-0 font-bold tracking-wide'>
             Criado por Talita Marques & Leonardo Vinicius
