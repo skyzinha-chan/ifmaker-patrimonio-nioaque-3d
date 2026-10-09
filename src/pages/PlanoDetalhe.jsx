@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { doc, setDoc, getDoc, increment } from "firebase/firestore";
 import { db } from "../services/firebase";
 
-
 import { planosDeAula } from "../data/planos";
 import { rubricas } from "../data/rubricas";
 import ComentariosPedagogicos from "../components/ComentariosPedagogicos"; //TESTANDO COMENTARIOS DE USUARIOS
@@ -33,8 +32,8 @@ export default function PlanoDetalhe() {
   const plano = planosDeAula[currentIndex];
 
   const [avisoPdf, setAvisoPdf] = useState(null);
-  const [ verificandoPdf, setVerificandoPdf ] = useState( false );
-  
+  const [verificandoPdf, setVerificandoPdf] = useState(false);
+
   const [metricas, setMetricas] = useState({ visualizacoes: 0, downloads: 0 });
 
   useEffect(() => {
@@ -137,24 +136,88 @@ export default function PlanoDetalhe() {
 
   return (
     <article className='p-6 md:p-10 max-w-5xl mx-auto bg-white min-h-screen'>
+      {/* NAVEGAÇÃO LATERAL ENTRE PLANOS */}
+      <div className='fixed inset-y-0 left-3 xl:left-[calc(50%_-_35rem)] z-30 flex items-center print:hidden'>
+        <button
+          type='button'
+          onClick={() =>
+            planoAnterior && navigate(`/planos/${planoAnterior.id}`)
+          }
+          disabled={!planoAnterior}
+          aria-label={
+            planoAnterior
+              ? `Ir para o plano anterior: ${planoAnterior.titulo}`
+              : "Este é o primeiro plano"
+          }
+          title={planoAnterior ? "Plano anterior" : "Este é o primeiro plano"}
+          className='flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-300 bg-white/95 text-2xl md:text-3xl text-gray-700 shadow-md transition hover:bg-green-50 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30'
+        >
+          <span aria-hidden='true'>←</span>
+        </button>
+      </div>
+      <div className='fixed inset-y-0 right-3 xl:right-[calc(50%_-_35rem)] z-30 flex items-center print:hidden'>
+        <button
+          type='button'
+          onClick={() => planoProximo && navigate(`/planos/${planoProximo.id}`)}
+          disabled={!planoProximo}
+          aria-label={
+            planoProximo
+              ? `Ir para o próximo plano: ${planoProximo.titulo}`
+              : "Este é o último plano"
+          }
+          title={planoProximo ? "Próximo plano" : "Este é o último plano"}
+          className='flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-300 bg-white/95 text-2xl md:text-3xl text-gray-700 shadow-md transition hover:bg-green-50 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30'
+        >
+          <span aria-hidden='true'>→</span>
+        </button>
+      </div>
+
       {/* NAVEGAÇÃO DE VOLTA & CONTROLE SUPERIOR */}
-      <div className='mb-6 flex justify-between items-center print:hidden'>
+      <div className='mb-6 flex flex-wrap justify-between items-center gap-3 print:hidden'>
         <Link
           to='/planos'
           className='text-green-700 hover:text-green-900 flex items-center gap-2 font-medium text-sm'
         >
           ← Voltar para o Catálogo Geral
         </Link>
-        <span className='text-xs font-bold text-gray-400 uppercase tracking-wider'>
-          Plano {currentIndex + 1} de {planosDeAula.length}
-        </span>
+        <div
+          className='flex items-center gap-2'
+          aria-label='Navegação entre planos de aula'
+        >
+          <button
+            type='button'
+            onClick={() =>
+              planoAnterior && navigate(`/planos/${planoAnterior.id}`)
+            }
+            disabled={!planoAnterior}
+            aria-label='Plano anterior'
+            title='Plano anterior'
+            className='flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 bg-white text-xl text-gray-700 transition hover:bg-green-50 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30'
+          >
+            <span aria-hidden='true'>←</span>
+          </button>
+          <span className='text-xs font-bold text-gray-400 uppercase tracking-wider'>
+            Plano {currentIndex + 1} de {planosDeAula.length}
+          </span>
+          <button
+            type='button'
+            onClick={() =>
+              planoProximo && navigate(`/planos/${planoProximo.id}`)
+            }
+            disabled={!planoProximo}
+            aria-label='Próximo plano'
+            title='Próximo plano'
+            className='flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 bg-white text-xl text-gray-700 transition hover:bg-green-50 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30'
+          >
+            <span aria-hidden='true'>→</span>
+          </button>
+        </div>
       </div>
       {/* ========================================================= */}
       {/* CABEÇALHO DO PLANO (RESTAURO DAS TAGS E TÍTULO) */}
       {/* ========================================================= */}
       <header className='border-b-4 border-green-800 pb-6 mt-6 mb-8'>
         <div className='flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4'>
-          
           <div className='flex flex-wrap gap-3'>
             <span className='bg-gray-100 text-gray-800 border border-gray-300 px-3 py-1 rounded-full text-xs font-bold tracking-wide shadow-sm'>
               {plano.ano || "5º Ano (Ensino Fundamental)"}
@@ -169,15 +232,18 @@ export default function PlanoDetalhe() {
           {/* PAINEL DE MÉTRICAS (Agora no fluxo normal, sem sobrepor o conteúdo abaixo) */}
           <div className='flex gap-4 text-xs font-bold text-slate-500 bg-white p-2 px-4 rounded-full border border-gray-200 shadow-sm print:hidden'>
             <div className='flex items-center gap-1.5'>
-              <span className='text-sm' aria-hidden='true'>👁️</span>
+              <span className='text-sm' aria-hidden='true'>
+                👁️
+              </span>
               <span>{metricas.visualizacoes} Views</span>
             </div>
             <div className='flex items-center gap-1.5 border-l border-gray-200 pl-4'>
-              <span className='text-sm' aria-hidden='true'>📥</span>
+              <span className='text-sm' aria-hidden='true'>
+                📥
+              </span>
               <span>{metricas.downloads} Downloads</span>
             </div>
           </div>
-          
         </div>
 
         <h1 className='text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight'>
@@ -255,6 +321,56 @@ export default function PlanoDetalhe() {
             tabIndex='0'
             className='animate-fadeIn space-y-8 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-4 rounded-xl'
           >
+            {plano.pilarComputacional && (
+              <section
+                aria-labelledby='pilar-computacional-titulo'
+                className='bg-amber-50 border border-amber-200 p-5 rounded-xl'
+              >
+                <h2
+                  id='pilar-computacional-titulo'
+                  className='text-lg font-bold text-amber-900 mb-2'
+                >
+                  🧠 Pilar Computacional
+                </h2>
+                <h3 className='font-bold text-amber-900'>
+                  {plano.pilarComputacional.titulo}
+                </h3>
+                <p className='text-amber-900/80 text-sm leading-relaxed mt-1'>
+                  {plano.pilarComputacional.descricao}
+                </p>
+              </section>
+            )}
+
+            {plano.competenciasGerais &&
+              plano.competenciasGerais.length > 0 && (
+                <section aria-labelledby='competencias-gerais-titulo'>
+                  <h2
+                    id='competencias-gerais-titulo'
+                    className='text-xl font-bold text-gray-800 mb-4 uppercase tracking-wider text-sm'
+                  >
+                    📌 Competências gerais da Educação
+                  </h2>
+                  <ul className='space-y-3'>
+                    {plano.competenciasGerais.map((competencia, index) => (
+                      <li
+                        key={index}
+                        className='flex flex-col md:flex-row gap-2 bg-white p-4 border border-gray-200 rounded shadow-sm'
+                      >
+                        <span className='font-bold text-green-700 min-w-max'>
+                          [{competencia.codigo}]
+                        </span>
+                        <p className='text-gray-700 text-sm leading-relaxed'>
+                          <strong className='text-gray-900'>
+                            {competencia.titulo}:{" "}
+                          </strong>
+                          {competencia.descricao}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
             {/* Habilidades BNCC */}
             {plano.habilidades && (
               <section>
@@ -311,11 +427,10 @@ export default function PlanoDetalhe() {
               </section>
             )}
 
-            {/* NOVA SESSÃO: TAXONOMIA DE BLOOM */}
             {plano.taxonomiaBloom && (
               <section className='bg-white p-6 rounded-xl border border-gray-200 shadow-sm mt-8'>
                 <h2 className='text-xl font-bold text-gray-800 mb-5 flex items-center gap-2'>
-                  🧠 Progressão Cognitiva (Taxonomia de Bloom)
+                  🧠 Progressão Cognitiva da Aula (Taxonomia de Bloom)
                 </h2>
                 <div className='space-y-4'>
                   {plano.taxonomiaBloom.map((item, index) => (
@@ -409,6 +524,32 @@ export default function PlanoDetalhe() {
             tabIndex='0'
             className='animate-fadeIn space-y-8 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-4 rounded-xl'
           >
+            {plano.avaliacao && plano.avaliacao.length > 0 && (
+              <section aria-labelledby='avaliacao-titulo'>
+                <h2
+                  id='avaliacao-titulo'
+                  className='text-xl font-bold text-gray-800 mb-4 uppercase tracking-wider text-sm'
+                >
+                  🔎 Avaliação: o que observar na criança
+                </h2>
+                <ul className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
+                  {plano.avaliacao.map((item, index) => (
+                    <li
+                      key={index}
+                      className='bg-white p-4 border border-gray-200 rounded shadow-sm'
+                    >
+                      <h3 className='font-bold text-gray-900 text-sm mb-2'>
+                        {item.titulo}
+                      </h3>
+                      <p className='text-gray-700 text-sm leading-relaxed'>
+                        {item.descricao}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             {/* Piloto (Guia Direto) */}
             {plano.guiaObservacao && (
               <div className='bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden'>

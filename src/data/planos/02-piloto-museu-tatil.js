@@ -7,8 +7,8 @@ export const plano02 = {
   ano: "5º Ano",
   eixo: "MUNDO DIGITAL / CULTURA MAKER",
   titulo: "Plano Piloto 2: Cultura Maker e Prototipagem – Museu Tátil de Nioaque",
-  contexto: "História e Paleontologia",
-  duracao: "4 HORAS",
+  contexto: "Artes Visuais e História",
+  duracao: "4 horas (240 min)",
   objetoConhecimento: "Uso de artefatos computacionais (Cultura Digital); Materialidades (Artes Visuais); Os patrimônios materiais e imateriais da humanidade (Foco local: preservação dos marcos de memória e paleontologia de Nioaque).",
   habilidades: [
     {
@@ -21,7 +21,7 @@ export const plano02 = {
     },
     {
       codigo: "(EF15AR04)",
-      descricao: "Experimentar diferentes formas de expressão artística, fazendo uso sustentável de materiais, instrumentos, recursos e técnicas convencionais e não convencionais."
+      descricao: "Experimentar diferentes formas de expressão artística (desenho, pintura, colagem, quadrinhos, dobradura, escultura, modelagem, instalação, vídeo, fotografia etc.), fazendo uso sustentável de materiais, instrumentos, recursos e técnicas convencionais e não convencionais."
     },
     {
       codigo: "(EF05HI10)",
@@ -29,14 +29,32 @@ export const plano02 = {
     },
     {
       codigo: "(CD05LD03)",
-      descricao: "Experimentar as mídias digitais e suas convergências. Referência CIEB opcional."
+      descricao: "Experimentar as mídias digitais e suas convergências."
     }
   ],
   recursos: [
     "Sala de aula com mesas forradas",
     "Massinha de modelar de várias cores",
     "Palitos de dente para estruturas de sustentação",
-    "Réplicas impressas em 3D: Canhão Histórico, Pegadas do Vale dos Dinossauros, Jacaré e Tatu-bola"
+    "Réplicas impressas em 3D: Canhão Histórico, Pegadas do Vale dos Dinossauros, Jacaré e Tatu-bola",
+    "Lousa, folhas de papel sulfite e lápis de cor"
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 03",
+      titulo: "Repertório Cultural",
+      descricao: "Fruir e valorizar o patrimônio paleontológico e histórico de Nioaque por meio da recriação artística e tecnológica."
+    },
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender e manipular artefatos computacionais tridimensionais de forma reflexiva e investigativa."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Exercitar o compartilhamento equilibrado de insumos físicos e a escuta ativa durante o trabalho em equipe nas ilhas de modelagem."
+    }
   ],
   ideiaPratica: "Modelagem física (massinha e palitos) do patrimônio de Nioaque e transição para o ambiente digital.",
   roteiro: [
@@ -99,6 +117,11 @@ export const plano02 = {
         nome: "🤝 Colaboração Maker",
         pergunta: "(Dividiu tarefas e não criou 'Cinza-Lixo'?)",
         criterioAvaliador: "Marcar SIM se o grupo respeitou a Regra de Ouro, não misturou as cores do bloco inteiro e se os três alunos participaram ativamente."
+      },
+      {
+        nome: "📱 Transposição Físico-Digital",
+        pergunta: "(Relacionou o protótipo físico ao modelo digital?)",
+        criterioAvaliador: "Marcar SIM se o grupo comparou o protótipo com o modelo digital, registrou os ângulos na ficha e explicou como o objeto seria impresso em 3D."
       }
     ]
   },

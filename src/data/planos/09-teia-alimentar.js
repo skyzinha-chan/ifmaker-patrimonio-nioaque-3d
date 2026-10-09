@@ -8,6 +8,10 @@ export const plano09 = {
   titulo: "Decomposição e Lógica Condicional: O Código da Natureza na Teia Alimentar",
   contexto: "Contexto Interdisciplinar: Ciências da Natureza",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Decomposição",
+    descricao: "Quebrar a imensa complexidade de um ecossistema inteiro em regras lógicas condicionais menores e interações individuais simples de presa-predador."
+  },
   objetoConhecimento: "Pilar da Decomposição. (Aplicação prática em: Relações alimentares, cadeia/teia alimentar e desequilíbrios nos ecossistemas).",
   habilidades: [
     {
@@ -32,6 +36,37 @@ export const plano09 = {
     "Tatus-bola articulados 3D e Jacarés articulados 3D",
     "Kit de Programação Tangível (Blocos lógicos de 'Se/Então')",
     "Cartões ilustrativos de peixes/plantas e barbante para ligar a teia"
+  ],
+  avaliacao: [
+    {
+      titulo: "Decomposição do Ecossistema",
+      descricao: "Decompõe a complexidade da teia ecológica regional em regras comportamentais menores e individuais de interação presa-predador."
+    },
+    {
+      titulo: "Lógica Condicional Biológica (Se/Então)",
+      descricao: "Modela e simula comportamentos instintivos e mecanismos de defesa, como o fechamento da carapaça do tatu-bola ou o ataque do jacaré, utilizando blocos lógicos tangíveis."
+    },
+    {
+      titulo: "Depuração Ecológica (Debugging)",
+      descricao: "Reestrutura as condicionais lógicas ao ser confrontado com um fator de desequilíbrio ambiental, como a seca do leito de pesca, adaptando as regras para restabelecer o equilíbrio da cadeia alimentar."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Valorizar e utilizar os conhecimentos sobre o mundo físico e natural para entender a realidade e o meio ambiente local."
+    },
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Exercitar a curiosidade intelectual e a investigação para elaborar hipóteses biológicas."
+    },
+    {
+      codigo: "CG 10",
+      titulo: "Autonomia e Responsabilidade",
+      descricao: "Tomar decisões com base em princípios éticos e sustentáveis em relação ao cuidado com o planeta e os animais."
+    }
   ],
   ideiaPratica: "Os alunos decompõem a complexidade do bioma regional e programam a cadeia alimentar utilizando blocos lógicos. Ao definirem regras de comportamento animal (ex: 'SE o jacaré está com fome, ENTÃO ele caça peixes') e mecanismos de defesa com o tatu-bola 3D ('SE o predador chegar perto, ENTÃO ative a carapaça'), eles simulam sistemicamente as interações naturais.",
   roteiro: [

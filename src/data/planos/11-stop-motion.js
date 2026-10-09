@@ -8,19 +8,27 @@ export const plano11 = {
   titulo: "Algoritmos Visuais e Depuração: Stop Motion Patrimonial",
   contexto: "Contexto Interdisciplinar: Artes Visuais",
   duracao: "50min/aula",
-  objetoConhecimento: "Algoritmos e Depuração. (Aplicação prática em: Animação em Stop Motion, elementos da linguagem visual e uso de tecnologia na arte).",
+  pilarComputacional: {
+    titulo: "Algoritmos e Depuração",
+    descricao: "Planejar a sequência lógica e exata de fotografias que criarão a ilusão artística do movimento, identificando e corrigindo falhas na execução."
+  },
+  objetoConhecimento: "Algoritmos (loops visuais) e Depuração. Materialidades, arte e tecnologia (Foco em Animação Stop Motion, elementos da linguagem visual e integração patrimonial).",
   habilidades: [
     {
-      codigo: "(EF15CO02 / EF05CO04)",
-      descricao: "Identificar e corrigir erros em algoritmos (depuração)."
+      codigo: "(EF15CO02)",
+      descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
+    },
+    {
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
     },
     {
       codigo: "(EF15AR04)",
-      descricao: "Habilidade de Apoio: Experimentar diferentes formas de expressão artística (animação), fazendo uso sustentável de materiais, instrumentos e recursos."
+      descricao: "Experimentar diferentes formas de expressão artística (desenho, pintura, colagem, quadrinhos, dobradura, escultura, modelagem, instalação, vídeo, fotografia etc.), fazendo uso sustentável de materiais, instrumentos, recursos e técnicas convencionais e não convencionais."
     },
     {
       codigo: "(EF15AR26)",
-      descricao: "Habilidade de Apoio: Explorar diferentes tecnologias e recursos digitais nos processos de criação artística."
+      descricao: "Explorar diferentes tecnologias e recursos digitais (multimeios, animações, jogos eletrônicos, gravações em áudio e vídeo, fotografia, softwares etc.) nos processos de criação artística."
     }
   ],
   recursos: [
@@ -28,6 +36,32 @@ export const plano11 = {
     "Tatus-bola, Jacarés e Canhões impressos em 3D",
     "Tablets/Celulares para captura e tripés improvisados (suporte maker)",
     "Kit de Programação Tangível (Blocos de repetição e movimento)"
+  ],
+  avaliacao: [
+    {
+      titulo: "Sequenciamento Algorítmico Visual",
+      descricao: "Estrutura o roteiro de animação utilizando blocos tangíveis de repetição e deslocamento (ex.: Repetir 10x [Mover cauda 1 cm + Fotografar]), decompondo o movimento fluido em quadros estáticos sequenciais (frames)."
+    },
+    {
+      titulo: "Captura e Intencionalidade Maker",
+      descricao: "Opera a câmera do dispositivo sobre suporte firme, manipulando o artefato 3D com precisão milimétrica a cada captura sem alterar o enquadramento do cenário."
+    },
+    {
+      titulo: "Depuração Visual (Debugging)",
+      descricao: "Identifica falhas de continuidade, intrusões no enquadramento (como mãos na cena) ou saltos bruscos na prévia da animação, excluindo os quadros defeituosos e refazendo estritamente a tomada necessária."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação."
+    }
   ],
   ideiaPratica: "Os alunos programam o roteiro lógico de um curta-metragem em Stop Motion estruturando um algoritmo visual. Antes de fotografar no tablet/celular, eles usam os blocos tangíveis de 'repetir' e 'avançar' para sequenciar os movimentos ('frame a frame') do jacaré ou do canhão, garantindo a fluidez da animação e depurando os erros de continuidade caso ocorra um 'bug' na captura.",
   roteiro: [
@@ -40,13 +74,13 @@ export const plano11 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "O Roteiro (Algoritmo): Em duplas, os alunos planejam o movimento da peça 3D. Eles organizam os blocos tangíveis de 'Repetir' e 'Avançar' na mesa para definir o script da animação (Ex: Repetir 10x [Mover cauda 1cm + Tirar Foto]). Preparação da Cena: Montagem do cenário no espaço maker improvisado, posicionando os artefatos 3D.",
+      descricao: "Organização dos Estúdios e Preparação da Cena: Forme duplas de animadores e distribua as peças 3D (Tatu-bola, Jacaré ou Canhão), os dispositivos com suportes/tripés e os blocos tangíveis. Roteirização Algorítmica (Modo Missão): Comande as duplas com ordens claras no imperativo: Decomponham a ação do artefato patrimonial (ex.: o caminhar do jacaré ou o disparo do canhão) em microetapas motoras. Estruturem o algoritmo da tomada na bancada organizando os blocos tangíveis de comando (ex.: Repetir 10x [Mover cauda 1 cm + Fotografar]). Fixem o celular/tablet no suporte improvisado para manter o enquadramento estável durante toda a sessão.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Captura: As duplas fotografam frame a frame seguindo o algoritmo definido. Debugging Visual: Se ao visualizar a prévia o movimento estiver 'pulando' ou uma peça tiver sido movida por acidente, os alunos identificam o erro (Bug) e refazem apenas a sequência de quadros necessária.",
+      descricao: "Execução Algorítmica (Frame a Frame): Comande os animadores: Fotografem quadro a quadro seguindo com rigor a ordem dos blocos tangíveis montados na mesa. Desloquem o artefato milimetricamente entre cada disparo, mantendo mãos e corpos fora do campo visual da lente. Celebração do Bug e Depuração Visual (Debugging): Ao rodar a prévia do vídeo em velocidade contínua, caso ocorra um salto brusco, sombra ou intrusão de dedos na cena, interrompam a exibição e exclamem: 'Bug no quadro!'. Rastreiem a linha do tempo digital e isolem o número exato do frame corrompido. Animadores, depurem a cena: excluam apenas os quadros defeituosos e refaçam a captura das posições intermediárias sem reiniciar a tomada inteira.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],

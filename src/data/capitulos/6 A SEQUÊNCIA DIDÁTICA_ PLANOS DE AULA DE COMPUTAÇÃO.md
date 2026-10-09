@@ -10,6 +10,10 @@ Contudo, o verdadeiro protagonismo destas aulas pertence inteiramente à Ciênci
 
 Esta seção especial apresenta as sequências didáticas completas desenvolvidas e validadas em ambiente real de regência, demonstrando o potencial prático da Computação Desplugada e da Cultura Maker na sala de aula.
 
+### 
+
+### 
+
 ### **6.1.1 Plano piloto 1: computação desplugada – estrategistas da retirada**
 
 **Roteiro do Professor:** Diretrizes pedagógicas, gestão do tempo em 3 partes (Contextualização, Experimentação e Avaliação) e desafios práticos baseados na história de Nioaque.
@@ -29,6 +33,10 @@ Esta seção especial apresenta as sequências didáticas completas desenvolvida
 **📌 Professor(a), para esta missão, utilize o Guia de Observação (Rubrica Específica \- Plano Piloto 1), disponível para impressão no Apêndice A deste manual.** 
 
 **📋 Espaço do Aluno: Atividade Integrada – Missão do Esquadrão:** A folha de planejamento de rota (algoritmo) e diário de bordo (depuração) pronta para uso do estudante. Disponível para impressão no Apêndice A deste manual.
+
+### 
+
+### 
 
 ### **6.1.2 Plano piloto 2: cultura maker e prototipagem – museu tátil de Nioaque**
 
@@ -50,9 +58,17 @@ Esta seção especial apresenta as sequências didáticas completas desenvolvida
 
 **🏛️ Espaço do Aluno: Atividade Integrada – Ficha Catalográfica:** O documento de registro técnico, contexto histórico local e desenho de observação sob três ângulos (frente, lado e cima) para uso do estudante. Disponível para impressão no Apêndice A deste manual.
 
+## 
+
+## 
+
 ## **6.2 Catálogo de aulas – eixo 1: pensamento computacional** 
 
 As sequências didáticas reunidas neste eixo foram desenhadas para desenvolver a capacidade de decompor problemas, reconhecer padrões, abstrair propriedades essenciais e estruturar algoritmos com lógica e precisão. Utilizando as réplicas impressas em 3D do patrimônio de Nioaque e blocos tangíveis de comando, cada missão desafia o estudante a investigar hipóteses e resolver dilemas práticos de forma colaborativa e desplugada. 
+
+### 
+
+### 
 
 ### **6.2.1 Algoritmos e depuração: navegação por coordenadas** 
 
@@ -82,6 +98,10 @@ As sequências didáticas reunidas neste eixo foram desenhadas para desenvolver 
 
 **📌 Professor(a), para esta missão, utilize a Rubrica Tipo A, disponível para impressão no Apêndice A deste manual.** 
 
+### 
+
+### 
+
 ### **6.2.2 Algoritmos textuais: o manual de sobrevivência** 
 
 **Tema da Aula:** Algoritmos Textuais e Depuração: O Manual de Sobrevivência do Tatu-bola Robô 
@@ -110,6 +130,10 @@ As sequências didáticas reunidas neste eixo foram desenhadas para desenvolver 
 
 **📌 Professor(a), para esta missão, utilize a Rubrica Tipo C, disponível para impressão no Apêndice A deste manual.**
 
+### 
+
+### 
+
 ### **6.2.3 Decomposição balística: a artilharia dos ângulos** 
 
 **Tema da Aula:** Decomposição de Problemas: A Artilharia dos Ângulos 
@@ -137,6 +161,10 @@ As sequências didáticas reunidas neste eixo foram desenhadas para desenvolver 
 | **Observações**:  Segundo a Taxonomia de Bloom, as missões e desafios da atividade são projetados para que o aluno desenvolva as seguintes capacidades críticas, de forma progressiva: **1\. Conhecimento Ação:** O aluno identifica e nomeia os diferentes tipos de ângulos e os instrumentos de medida. **Resposta Esperada:** O aluno consegue definir, com suas próprias palavras, a diferença entre os ângulos apresentados. (Ex: "Um ângulo reto tem 90 graus, o agudo é mais fechado e o obtuso é mais aberto, e usamos o transferidor para medi-los"). **2\. Compreensão Ação:** O aluno compreende o pilar da decomposição e como ele se aplica ao problema complexo da artilharia. **Resposta Esperada:** O aluno explica por que não basta apenas "apontar" a peça a olho nu. (Ex: *"Para proteger o forte e acertar o alvo, precisamos dividir o problema em duas partes menores: primeiro medir a abertura do ângulo, depois medir a distância"*). **3\. Aplicação Ação:** O aluno utiliza os instrumentos de medição na prática e formaliza a instrução de rotação utilizando a linguagem tangível. **Resposta Esperada:** O aluno posiciona corretamente o transferidor na base do canhão 3D, faz a medição até o alvo de papel e monta o comando físico sobre a mesa (Ex: junta o Bloco de "Girar" com um post-it escrito "Ângulo Agudo 45º"). **4\. Análise Ação:** O aluno investiga a falha no teste físico para depurar (debug) se o erro ocorreu na medição do ângulo ou na direção do giro. **Resposta Esperada:** Ao ver a régua do professor errar o alvo, o aluno refaz o processo para encontrar a falha. (Ex: "Achamos o bug\! O canhão precisava ter girado em um ângulo obtuso de 120º, mas nós medimos errado e programamos para 60º"). **5\. Síntese (Criação) Ação:** O aluno planeja novos cenários balísticos, criando posições de alvo mais complexas para testar o algoritmo dos colegas. **Resposta Esperada:** O grupo propõe um novo desafio na mesa. (Ex: "Vamos colocar o alvo no canto da ilha e adicionar uma regra em que a outra equipe precisa usar a régua duas vezes e calcular dois ângulos diferentes para conseguir acertar"). |  |  |
 
 **📌 Professor(a), para esta missão, utilize a Rubrica Tipo A, disponível para impressão no Apêndice A deste manual.**
+
+### 
+
+### 
 
 ### **6.2.4 Lógica condicional (se/então): bifurcações narrativas** 
 

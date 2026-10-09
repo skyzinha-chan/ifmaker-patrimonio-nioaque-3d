@@ -8,19 +8,27 @@ export const plano14 = {
   titulo: "Reconhecimento de Padrões de Dados: Cidades de Concreto vs. Cidades de Escamas",
   contexto: "Contexto Interdisciplinar: Geografia",
   duracao: "50min/aula",
-  objetoConhecimento: "Reconhecimento de Padrões ao longo do tempo. (Aplicação prática em: Transformações do espaço geográfico, urbanização e impactos ambientais).",
+  pilarComputacional: {
+    titulo: "Reconhecimento de Padrões",
+    descricao: "Extrair e analisar tendências em representações gráficas para identificar o padrão histórico e contínuo de redução do habitat natural ao longo do tempo."
+  },
+  objetoConhecimento: "Organização e representação da informação (Foco: Reconhecimento de Padrões, categorização de dados, tendências históricas e correlação inversa). A evolução da sociedade, as transformações do espaço geográfico, urbanização e seus impactos ambientais.",
   habilidades: [
     {
-      codigo: "(EF15CO01 / EF05CO10)",
-      descricao: "Reconhecer que artefatos computacionais (dados visuais, simulações) são criados para atender necessidades ou expressar ideias e fatos."
+      codigo: "(EF15CO01)",
+      descricao: "Identificar as principais formas de organizar e representar a informação de maneira estruturada (matrizes, registros, listas e grafos) ou não estruturada (números, palavras, valores verdade)."
+    },
+    {
+      codigo: "(EF05CO10)",
+      descricao: "Expressar-se crítica e criativamente na compreensão das mudanças tecnológicas no mundo do trabalho e sobre a evolução da sociedade."
     },
     {
       codigo: "(CD05T501)",
-      descricao: "Pilar: Reconhecimento de Padrões - Analisar tendências históricas e dados para prever consequências."
+      descricao: "Expressar-se crítica e criativamente na compreensão das mudanças tecnológicas no mundo do trabalho e sobre a evolução da sociedade."
     },
     {
       codigo: "(EF05GE03)",
-      descricao: "Habilidade de Apoio: Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento."
+      descricao: "Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento."
     }
   ],
   recursos: [
@@ -28,6 +36,37 @@ export const plano14 = {
     "Cartolinas grandes (ou papel pardo)",
     "Tatus-bola articulados 3D, Canhões Históricos 3D, réplicas de Pegadas de Dinossauros",
     "Canetinhas coloridas e post-its"
+  ],
+  avaliacao: [
+    {
+      titulo: "Representação Visual e Organização de Dados",
+      descricao: "Constrói um gráfico comparativo (post-its e papel pardo) para mapear visualmente o uso do solo ao longo das três eras de Nioaque, categorizando dados de ocupação urbana versus ambiente natural."
+    },
+    {
+      titulo: "Reconhecimento de Padrões (Correlação Inversa)",
+      descricao: "Analisa a tendência histórica nos dados e deduz a relação causal inversa: à medida que a mancha urbana se expande, a área de refúgio da fauna nativa recua."
+    },
+    {
+      titulo: "Pensamento Crítico e Proposição Cidadã",
+      descricao: "Argumenta com base nas evidências gráficas e propõe soluções de planejamento urbano e sustentabilidade, como corredores ecológicos para o tatu-bola."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Valorizar e utilizar os conhecimentos sobre o mundo físico e social para entender e explicar a realidade de Nioaque."
+    },
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Formular perguntas sobre os impactos do desenvolvimento humano a longo prazo."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Respeitar o habitat das demais espécies e pensar em políticas de preservação."
+    }
   ],
   ideiaPratica: "Os alunos atuam como analistas de dados, usando os artefatos 3D para mapear fisicamente três épocas do uso do solo. Ao processarem as variáveis no cenário (pegadas para a era pré-histórica, canhões para a imperial e tatus para o presente), eles estruturam um quadro comparativo visual para identificar a correlação inversa: a diminuição do ambiente natural à medida que a área urbana avança.",
   roteiro: [
@@ -40,13 +79,13 @@ export const plano14 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Era 1 (O Passado Fóssil): Os alunos espalham as pegadas por todo o papel e desenham árvores. Nioaque era 100% natureza. Era 2 (A Cidade de Concreto): O professor manda os alunos desenharem o contorno de uma cidade no centro e colocar os Canhões 3D. Eles apagam ou cobrem parte da floresta para abrir espaço para o forte e as casas. Era 3 (O Refúgio das Escamas): Agora eles devem posicionar os Tatus-bola. Onde eles ficam? Apenas nas bordas verdes que sobraram.",
+      descricao: "Mapeamento Histórico por Eras (Alimentação da Base de Dados): Comande os analistas ambientais com instruções no imperativo: Era 1 (Passado Fóssil): Espalhem as Pegadas 3D por toda a extensão da cartolina/papel pardo e desenhem árvores e rios, mapeando um território de Nioaque 100% preservado. Era 2 (Avanço Urbano e Retirada da Laguna): Desenhem o contorno central da cidade e posicionem os Canhões 3D; apaguem ou cubram parte da vegetação para abrir espaço ao forte militar e às primeiras ruas. Era 3 (Refúgio das Escamas no Presente): Posicionem os Tatus-bola 3D estritamente nos fragmentos verdes que restaram nas bordas do mapa, verificando o confinamento espacial da fauna.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Análise Gráfica: O grupo observa o mapa de cima. Eles desenham um gráfico simples com post-its no quadro. Devem responder: O que diminuiu (floresta/animais)? O que aumentou (cidade/concreto)? Padrões Computacionais: O professor conecta que computadores fazem exatamente isso para alertar cientistas climáticos: analisam repetições e reconhecem padrões de desmatamento através de dados.",
+      descricao: "Construção Gráfica e Análise de Tendências: Comande: Observem o mapa de cima e quantifiquem as áreas ocupadas; colem post-its verdes para cada porção de floresta restante e post-its laranjas para cada área urbanizada. Estruturem as colunas no quadro formando um gráfico de barras comparativo entre as três eras. Celebração do Bug e Depuração de Interpretação (Debugging): Caso algum integrante afirme que o ambiente permaneceu estável ou que a cidade não afetou os animais, interrompam a discussão e exclamem: 'Bug na análise de dados!'. Rastreiem a tendência nos post-its, confrontem a diminuição da cor verde com o avanço da cor laranja e depurem a hipótese, reconhecendo o padrão computacional de correlação inversa (crescimento urbano versus retração de habitat). Registrem no caderno uma proposta de lei urbana ou corredor ecológico para proteger a fauna de Nioaque.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],

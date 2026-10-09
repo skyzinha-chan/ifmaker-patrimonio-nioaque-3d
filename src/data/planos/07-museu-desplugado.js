@@ -8,6 +8,10 @@ export const plano07 = {
   titulo: "Reconhecimento de Padrões e Repetição (Loops): O Museu Desplugado de Nioaque",
   contexto: "Contexto Interdisciplinar: Ciências Humanas - História",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Reconhecimento de Padrões e Repetição",
+    descricao: "Identificar características comuns para categorizar conjuntos de dados históricos, agrupando-os de forma eficiente por meio de loops lógicos."
+  },
   objetoConhecimento: "Conceito de Repetição (Loops), Reconhecimento de Padrões e Organização estruturada de dados. Os patrimônios materiais e imateriais da humanidade (Foco: inventário e critérios de seleção dos marcos de memória de Nioaque).",
   habilidades: [
     {
@@ -32,6 +36,37 @@ export const plano07 = {
     "Canhões Históricos 3D e Pegadas de Dinossauros 3D",
     "Blocos de Programação Tangível ('Repetir' / Loops)",
     "Fichas de cartolina (fichas catalográficas) e canetas"
+  ],
+  avaliacao: [
+    {
+      titulo: "Reconhecimento de Padrões Históricos",
+      descricao: "Analisa e agrupa os artefatos 3D por propriedades comuns (fósseis cretáceos versus armamentos imperiais), preenchendo as fichas catalográficas com critérios de época e relevância cultural."
+    },
+    {
+      titulo: "Estruturação de Repetição (Loops)",
+      descricao: "Utiliza o bloco tangível 'Repetir' para otimizar a montagem da linha do tempo da exposição (ex.: Repetir 3x [Exibir Fóssil]), eliminando comandos redundantes."
+    },
+    {
+      titulo: "Depuração Curatorial (Debugging)",
+      descricao: "Identifica e reposiciona peças atribuídas à era errada ou ajusta a contagem do multiplicador do loop ao auditar a exposição do grupo vizinho."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 03",
+      titulo: "Repertório Cultural",
+      descricao: "Valorizar e fruir as diversas manifestações artísticas e culturais, das locais às mundiais, e participar de práticas diversificadas da produção artístico-cultural."
+    },
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais."
+    },
+    {
+      codigo: "CG 07",
+      titulo: "Argumentação",
+      descricao: "Argumentar com base em fatos, dados e informações confiáveis para formular, negociar e defender ideias e pontos de vista comuns."
+    }
   ],
   ideiaPratica: "A turma atua como curadora de um museu e aplica o reconhecimento de padrões para classificar as peças 3D nos acervos de \"Patrimônio Paleontológico\" e \"Patrimônio Histórico\". Ao construírem a exposição física na mesa, os alunos criam fichas catalográficas e utilizam blocos lógicos tangíveis de \"Repetir\" (loops) para estruturar a linha do tempo. Essa organização otimiza a exibição e evita instruções redundantes, demonstrando que, independentemente da época - de milhões de anos atrás a 1867 -, a cidade de Nioaque é um ciclo contínuo de descobertas e histórias importantes.",
   roteiro: [

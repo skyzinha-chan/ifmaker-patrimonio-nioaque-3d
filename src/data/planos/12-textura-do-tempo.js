@@ -8,19 +8,23 @@ export const plano12 = {
   titulo: "Abstração: A Textura do Tempo através da Frottage",
   contexto: "Contexto Interdisciplinar: Artes Visuais",
   duracao: "50min/aula",
-  objetoConhecimento: "Pilar da Abstração. (Aplicação prática em: Elementos das artes visuais: ponto, linha, textura).",
+  pilarComputacional: {
+    titulo: "Abstração",
+    descricao: "Ignorar a forma total do dinossauro ou tatu, filtrando detalhes desnecessários para extrair e focar apenas em uma propriedade essencial: a textura da superfície."
+  },
+  objetoConhecimento: "Pilar Computacional da Abstração. Organização e extração de dados não estruturados. Elementos constitutivos das artes visuais (Foco prático: extração da propriedade essencial de textura e simplificação visual através da técnica de frottage).",
   habilidades: [
     {
-      codigo: "(EF15CO01 / EF15CO08)",
-      descricao: "Pilar: Abstração - Filtrar informações complexas para focar em uma propriedade essencial."
+      codigo: "(EF15CO01)",
+      descricao: "Identificar as principais formas de organizar e representar a informação de maneira estruturada (matrizes, registros, listas e grafos) ou não estruturada (números, palavras, valores verdade)."
     },
     {
       codigo: "(EF15CO08)",
-      descricao: "Reconhecer que artefatos computacionais são criados para expressar ideias e fatos."
+      descricao: "Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas."
     },
     {
       codigo: "(EF15AR02)",
-      descricao: "Habilidade de Apoio: Explorar e reconhecer elementos constitutivos das artes visuais (ponto, linha, forma, cor, textura)."
+      descricao: "Explorar e reconhecer elementos constitutivos das artes visuais (ponto, linha, forma, cor, espaço, movimento etc.)."
     }
   ],
   recursos: [
@@ -28,6 +32,37 @@ export const plano12 = {
     "Pegadas de dinossauros 3D, carapaça do tatu-bola 3D",
     "Papéis de gramatura fina (sulfite)",
     "Giz de cera (sem papel) ou grafite macio"
+  ],
+  avaliacao: [
+    {
+      titulo: "Abstração de Propriedades",
+      descricao: "Isola a propriedade física essencial (textura/relevo) do artefato 3D, ignorando intencionalmente a anatomia global do animal (cabeça, patas e contornos) durante o registro."
+    },
+    {
+      titulo: "Transposição Tátil-Gráfica (Frottage)",
+      descricao: "Aplica a fricção lateral do giz com pressão e angulação controladas sobre o papel fino, transferindo a textura tridimensional para o plano bidimensional sem romper o suporte."
+    },
+    {
+      titulo: "Curadoria e Depuração Visual (Debugging)",
+      descricao: "Analisa criticamente a nitidez das impressões obtidas, descartando amostras borradas por deslizamento do papel e selecionando os fragmentos nítidos para compor o mural coletivo."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação."
+    },
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Valorizar o patrimônio histórico e cultural local (Nioaque)."
+    }
   ],
   ideiaPratica: "Os alunos aplicam o conceito de abstração aos artefatos 3D utilizando a técnica de frottage. Eles ignoram intencionalmente a forma física inteira e complexa do animal para extrair (coletar dados visuais) apenas uma propriedade essencial: a textura (escamas do tatu, ranhuras do fóssil). Depois, utilizam essas 'amostras de dados' isoladas para compor uma obra abstrata coletiva focada exclusivamente na sensação tátil.",
   roteiro: [
@@ -40,13 +75,13 @@ export const plano12 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Frottage: Os alunos colocam papéis sobre os artefatos 3D. Com a técnica de esfregar o giz (esfuminho/lateral), capturam apenas os padrões de textura. Exploração: Eles coletam várias texturas da carapaça do Tatu e das ranhuras das Pegadas. Eles não estão desenhando o Tatu, estão 'extraindo dados' (texturas) do objeto 3D.",
+      descricao: "Preparação das Bancadas e Técnica de Captura: Distribua os artefatos 3D (Pegadas fósseis e Carapaça do Tatu-bola), as folhas de papel sulfite fino e os gizes sem rótulo. Comande os alunos: Fixem firmemente a folha de papel sobre o relevo da peça com uma das mãos, impedindo que o suporte deslize durante o atrito. Usem o giz deitado: esfreguem a lateral do material suavemente sobre a folha até revelar o desenho do relevo subjacente. Missão da Abstração (Extração de Dados Puros): Isolem a propriedade da textura; não tentem contornar a forma inteira do tatu nem o formato do pé do dinossauro. Extraiam amostras variadas das escamas articulares e das ranhuras das pegadas, coletando esses padrões visuais como dados puros de superfície.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Composição: Em um mural coletivo, os alunos recortam e colam essas 'amostras de textura'. A montagem deve formar uma obra abstrata. Discussão: O professor reforça: 'Vocês abstraíram o Tatu-bola. Tiramos a cabeça e o corpo, ficamos só com o código da pele dele (a textura)'.",
+      descricao: "Auditoria de Qualidade e Depuração (Debugging Artístico): Comande a triagem das amostras: Examinem as impressões obtidas; caso o papel tenha se movido ou o giz tenha rasgado o suporte gerando manchas, exclamem: 'Bug na captura!'. Depurem o material: descartem as capturas ilegíveis e recortem apenas as áreas onde o padrão geométrico das escamas e ranhuras ficou perfeitamente nítido. Composição do Mural Abstrato e Fechamento Socrático: Colem os fragmentos de textura selecionados em um grande painel coletivo de papel pardo, compondo um mosaico textural abstrato de Nioaque. Conduza a síntese: 'Conseguimos reconhecer a identidade do fóssil e do tatu apenas pela pele, sem ver a forma inteira do corpo? Isso é a abstração: focar no detalhe que realmente importa e ignorar o resto'.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],

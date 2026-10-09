@@ -8,25 +8,63 @@ export const plano13 = {
   titulo: "Hardware e Software: Como a Máquina Pensa?",
   contexto: "Contexto Interdisciplinar: Cultura Maker / Ciências da Natureza",
   duracao: "50min/aula",
-  objetoConhecimento: "Hardware e Software. (Aplicação prática em: Sistemas computacionais, processos de fabricação digital e pensamento abstrato).",
+  pilarComputacional: {
+    titulo: "Abstração e Decomposição",
+    descricao: "Separar e compreender a camada lógica da camada física de um sistema."
+  },
+  objetoConhecimento: "Hardware e Software. Integração entre componente físico (Hardware - impressora 3D) e lógico (Software - arquivo de fatiamento). Processos de fabricação digital, decomposição tridimensional e propriedades físicas dos materiais (mudanças de estado físico do filamento plástico por fusão térmica e solidificação).",
   habilidades: [
     {
-      codigo: "(EF05CO05 / EF15CO07)",
-      descricao: "Reconhecer que artefatos computacionais são criados para atender necessidades, identificando seus componentes físicos (Hardware) e lógicos (Software)."
+      codigo: "(EF05CO05)",
+      descricao: "Identificar os componentes principais de um computador (dispositivos de entrada/saída, processadores e armazenamento)."
     },
     {
-      codigo: "(EF15CO04 / TD05HS01)",
-      descricao: "Pilar: Decomposição - Dividir um sistema complexo (impressão 3D) em partes menores e gerenciáveis para entender seu funcionamento."
+      codigo: "(EF15CO07)",
+      descricao: "Conhecer o conceito de Sistema Operacional e sua importância na integração entre software e hardware."
+    },
+    {
+      codigo: "(EF15CO04)",
+      descricao: "Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções."
+    },
+    {
+      codigo: "(TD05HS01)",
+      descricao: "Conhecer sistemas operacionais."
     },
     {
       codigo: "(EF05CI01)",
-      descricao: "Habilidade de Apoio: Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento."
+      descricao: "Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais como densidade, condutibilidade térmica e elétrica, respostas a forças magnéticas, solubilidade, respostas a forças mecânicas (dureza, elasticidade etc.), entre outras."
     }
   ],
   recursos: [
     "Sala de aula",
     "Tatus-bola articulados 3D (já impressos)",
     "Lousa, folhas de papel sulfite e lápis de cor"
+  ],
+  avaliacao: [
+    {
+      titulo: "Distinção Conceitual (Hardware vs. Software)",
+      descricao: "Diferencia o componente físico palpável (a impressora e a réplica do Tatu-bola) do componente lógico intangível (o arquivo digital .stl/código de fatiamento), justificando que a máquina física depende estritamente das instruções lógicas para operar."
+    },
+    {
+      titulo: "Abstração Espacial e Engenharia Reversa",
+      descricao: "Decompõe a peça física tridimensional em camadas horizontais bidimensionais e encaixes milimétricos, registrando o esquema no papel como representação gráfica da leitura da máquina."
+    },
+    {
+      titulo: "Compreensão Sistêmica do Bug",
+      descricao: "Argumenta logicamente sobre o impacto de uma instrução corrompida no software, prevendo falhas físicas reais no hardware, como deformidades plásticas ou travamentos de extrusão."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Valorizar e utilizar os conhecimentos sobre o funcionamento do mundo digital para entender como as tecnologias são fabricadas."
+    },
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Investigar o funcionamento dos objetos e exercitar a curiosidade sobre como a máquina processa informações."
+    }
   ],
   ideiaPratica: "Os alunos investigam o Tatu-bola impresso para entender a relação de dependência entre o intangível e o tangível. O professor lidera uma dinâmica investigativa onde o arquivo 3D no computador (a 'mente/ideia') é o Software, a impressora que derrete o plástico é o atuador, e o Tatu-bola em mãos é o Hardware resultante.",
   roteiro: [
@@ -39,13 +77,13 @@ export const plano13 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "Engenharia Reversa (Decomposição): Os alunos, divididos em pequenos grupos, recebem um Tatu-bola 3D. Eles recebem o desafio de 'transformar o Hardware de volta em Software'. Para isso, devem desenhar no papel como acham que o computador 'enxerga' o tatu-bola por dentro (as linhas de impressão, as camadas fatiadas, as coordenadas e encaixes que fazem ele se articular sem precisar de parafusos).",
+      descricao: "Organização das Bancadas e Investigação Tátil: Agrupe os estudantes em equipes de engenharia reversa e entregue os Tatus-bola 3D articulados e as folhas de desenho. Missão da Engenharia Reversa (Hardware para Software): Comande os estudantes com ordens no modo imperativo: Manipulem o Tatu-bola físico (hardware) e sintam com a ponta dos dedos as linhas horizontais finas deixadas pela impressora. Decomponham mentalmente o artefato sólido em camadas empilhadas: imaginem o objeto sendo fatiado como fatias de pão milimétricas. Transponham o modelo físico para a representação lógica: desenhem no papel o esquema de como o computador 'enxerga' e comanda as articulações, destacando o espaço oco entre as escamas que permite o movimento sem parafusos.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Roda de Conversa: Os grupos apresentam seus esboços (o 'Software' desenhado). O professor pergunta: 'Se o arquivo no computador tivesse um erro (um bug no software), o que aconteceria com a pata do tatu físico (hardware)?'. Eles debatem como um problema lógico afeta o mundo real.",
+      descricao: "Apresentação dos Projetos Lógicos: Comande: 'Apresentem à turma os esboços fatiados, demonstrando onde o software delimitou o contorno externo e os espaços vazios das juntas articuladas'. Simulação Mental de Bugs e Debate Socrático: Provoque os grupos com situações-problema: 'Se o programador cometer um bug no software e digitar uma espessura errada, o que o hardware da impressora vai produzir?'. Identifiquem as consequências: os alunos devem apontar que o plástico fundiria as articulações, gerando uma peça rígida e travada. Concluam em consenso: 'O hardware é o corpo executor, mas o software é a instrução mandatória; um erro invisível no código gera uma falha visível no mundo físico'.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],

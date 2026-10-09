@@ -8,6 +8,10 @@ export const plano03 = {
   titulo: "Algoritmos e Depuração: O Tesouro Perdido do Vale dos Dinossauros",
   contexto: "Contexto Interdisciplinar: Matemática",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Algoritmos e Depuração",
+    descricao: "Criar, testar e corrigir uma sequência finita e exata de passos lógicos para solucionar um problema de rota."
+  },
   objetoConhecimento: "Algoritmos e lógica de programação desplugada. (Aplicação prática em: Plano Cartesiano e coordenadas geográficas).",
   habilidades: [
     {
@@ -20,11 +24,11 @@ export const plano03 = {
     },
     {
       codigo: "(PC05AL01)",
-      descricao: "Conhecer e utilizar algoritmos com repetições. Habilidade Integradora de Apoio."
+      descricao: "Conhecer e utilizar algoritmos com repetições."
     },
     {
       codigo: "(EF05MA14)",
-      descricao: "Habilidade de Apoio: Utilizar e compreender diferentes representações para a localização de objetos no plano, como mapas, células em planilhas eletrônicas e coordenadas geográficas, a fim de desenvolver as primeiras noções de coordenadas cartesianas."
+      descricao: "Utilizar e compreender diferentes representações para a localização de objetos no plano, como mapas, células em planilhas eletrônicas e coordenadas geográficas, a fim de desenvolver as primeiras noções de coordenadas cartesianas."
     }
   ],
   recursos: [
@@ -32,6 +36,37 @@ export const plano03 = {
     "Fita crepe grossa para montar o plano cartesiano no chão",
     "Réplicas 3D das Pegadas de Dinossauros",
     "Kit de Programação Tangível (Blocos/Setas de Comando)"
+  ],
+  avaliacao: [
+    {
+      titulo: "Localização Espacial",
+      descricao: "Localiza e insere objetos corretamente em pares ordenados (x, y) no plano físico."
+    },
+    {
+      titulo: "Construção Algorítmica",
+      descricao: "Constrói a sequência lógica (algoritmo) correta usando os blocos tangíveis sem pular etapas."
+    },
+    {
+      titulo: "Depuração e Raciocínio Coletivo",
+      descricao: "Rastreia e substitui o bloco tangível causador da colisão ou desvio em consenso com a equipe ao confrontar o movimento físico com a coordenada da pegada."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Exercitar a curiosidade intelectual e recorrer à abordagem própria das ciências para investigar causas e elaborar e testar hipóteses."
+    },
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação."
+    }
   ],
   ideiaPratica: "Os alunos utilizam um plano cartesiano gigante no chão como malha de navegação. Enquanto uma equipe posiciona os fósseis em coordenadas específicas, a outra atua como 'paleontóloga robô' e deve construir e testar o algoritmo no quadro usando blocos tangíveis (avançar x, girar y) para guiar o robô até a coordenada exata, depurando a lógica da rota para não 'pisar' nos obstáculos mapeados.",
   roteiro: [

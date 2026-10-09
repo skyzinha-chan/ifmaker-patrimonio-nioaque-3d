@@ -8,6 +8,10 @@ export const plano08 = {
   titulo: "Algoritmos e Depuração: Rota Desplugada da Retirada da Laguna",
   contexto: "Contexto Interdisciplinar: Ciências Humanas - História",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Algoritmos e Depuração",
+    descricao: "Planejamento da rota através de passos lógicos sequenciais e correção ativa do código tático ao encontrar novos obstáculos."
+  },
   objetoConhecimento: "Sequenciamento e Algoritmos. O que forma um povo: as dinâmicas populacionais, o espaço geográfico ocupado e as transformações territoriais decorrentes de conflitos militares ou fluxos migratórios.",
   habilidades: [
     {
@@ -28,6 +32,37 @@ export const plano08 = {
     "Mapa geohistorico em formato ampliado sobre a mesa (Simulador da Retirada da Laguna)",
     "Canhões Históricos 3D e Jacarés 3D",
     "Kit de Programação Tangível (setas direcionais)"
+  ],
+  avaliacao: [
+    {
+      titulo: "Sequenciamento Tático (Algoritmo)",
+      descricao: "Enfileira e ordena os blocos tangíveis de setas direcionais sobre a bancada antes de iniciar o movimento, estabelecendo a rota lógica completa até a cidade de Nioaque."
+    },
+    {
+      titulo: "Contextualização Geo-histórica",
+      descricao: "Identifica os acidentes geográficos e limites do terreno pantaneiro no simulador (grid de mesa), justificando a escolha do caminho com base nas barreiras territoriais reais da Retirada da Laguna."
+    },
+    {
+      titulo: "Depuração Tática In Loco (Debugging)",
+      descricao: "Interrompe o avanço imediatamente ao encontrar uma variável surpresa (jacaré 3D ou cheia simulada), isolando a seta de comando incorreta e reprogramando o desvio pontual sem reiniciar todo o trajeto."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Valorizar e utilizar os conhecimentos historicamente construídos sobre o mundo físico, social, cultural e digital para entender e explicar a realidade."
+    },
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Exercitar a curiosidade intelectual e recorrer à abordagem própria das ciências, incluindo a busca de soluções para problemas complexos."
+    },
+    {
+      codigo: "CG 10",
+      titulo: "Autonomia e Responsabilidade",
+      descricao: "Agir pessoal e coletivamente com autonomia, responsabilidade, flexibilidade e resiliência, tomando decisões com base em princípios éticos."
+    }
   ],
   ideiaPratica: "Em um mapa sobre a mesa, os alunos programam o algoritmo da rota de fuga do exército (canhão) utilizando setas tangíveis. Durante a execução, o professor adiciona obstáculos surpresa (jacarés 3D ou intempéries). A cada evento, o grupo precisa pausar a execução, depurar a sequência lógica (debugging) e reprogramar as setas direcionais para desviar do perigo, simulando sistemicamente as dificuldades táticas enfrentadas na Guerra do Paraguai.",
   roteiro: [

@@ -8,6 +8,10 @@ export const plano05 = {
   titulo: "Decomposição de Problemas: A Artilharia dos Ângulos",
   contexto: "Matemática",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Decomposição",
+    descricao: "Quebrar a ação complexa do disparo balístico em partes menores e gerenciáveis: analisar e ajustar o ângulo correto e depois definir a distância da rota."
+  },
   objetoConhecimento: "Decomposição de problemas complexos no Pensamento Computacional. (Aplicação prática em: Ângulos: noções, usos e medidas).",
   habilidades: [
     {
@@ -36,6 +40,37 @@ export const plano05 = {
     "Canhões Históricos impressos em 3D (projeto IFMAKER)",
     "Kit de Programação Tangível (Blocos de Girar/Ângulo)",
     "Transferidores, réguas/fitas métricas e alvos de papel"
+  ],
+  avaliacao: [
+    {
+      titulo: "Medição e Raciocínio Geométrico",
+      descricao: "Posiciona o transferidor na base do canhão 3D e a régua para aferir a inclinação angular e a distância linear até o alvo de papel, sem recorrer a estimativas a olho nu."
+    },
+    {
+      titulo: "Decomposição do Disparo",
+      descricao: "Fraciona o disparo balístico em subproblemas gerenciáveis (primeiro calcula a rotação angular e depois a distância linear), formalizando a instrução nos blocos tangíveis antes do tiro."
+    },
+    {
+      titulo: "Depuração Balística (Debugging)",
+      descricao: "Identifica a causa do desvio do disparo (erro na amplitude em graus ou confusão entre ângulo agudo e obtuso), recalibrando o bloco de comando pontualmente."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Exercitar a curiosidade intelectual e recorrer à abordagem própria das ciências para investigar causas e elaborar e testar hipóteses."
+    },
+    {
+      codigo: "CG 03",
+      titulo: "Repertório Cultural",
+      descricao: "Valorizar as diversas manifestações artísticas e culturais, das locais às mundiais, em conexão com a História de Nioaque."
+    },
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética."
+    }
   ],
   ideiaPratica: "Os alunos recebem a missão de proteger um forte imaginário e precisam decompor a ação complexa do disparo balístico em etapas lógicas menores. Para isso, eles medem a distância, calculam o grau exato com transferidores e estruturam previamente o algoritmo do tiro montando a instrução física com os blocos de comando (ex: 'girar 45 graus') antes de testar a execução no alvo.",
   roteiro: [

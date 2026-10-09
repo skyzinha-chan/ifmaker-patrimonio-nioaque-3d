@@ -8,25 +8,64 @@ export const plano10 = {
   titulo: "Reconhecimento de Padrões: Investigação CSI do Formato dos Dentes Fósseis",
   contexto: "Contexto Interdisciplinar: Ciências da Natureza",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Reconhecimento de Padrões",
+    descricao: "Associar o padrão morfológico da pegada à dieta alimentar e, consequentemente, à fisiologia interna do animal extinto."
+  },
   objetoConhecimento: "Pilar de Reconhecimento de Padrões. (Aplicação prática em: Sistema digestório/nutrição e propriedades dos materiais na fossilização).",
   habilidades: [
     {
       codigo: "(EF15CO01)",
-      descricao: "Pilar: Reconhecimento de Padrões - Identificar características morfológicas comuns para classificar e deduzir informações ocultas."
-    },
-    {
-      codigo: "(EF05CI06 / EF05CI07)",
-      descricao: "Habilidade de Apoio: Justificar a relação entre o funcionamento do sistema digestório/circulatório e a dieta do organismo (Adaptado para a fisiologia de espécies extintas locais)."
+      descricao: "Identificar as principais formas de organizar e representar a informação de maneira estruturada (matrizes, registros, listas e grafos) ou não estruturada (números, palavras, valores verdade)."
     },
     {
       codigo: "(EF05CI01)",
-      descricao: "Habilidade de Apoio: Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais (Processo de fossilização nas rochas de Nioaque)."
+      descricao: "Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais como densidade, condutibilidade térmica e elétrica, respostas a forças magnéticas, solubilidade, respostas a forças mecânicas (dureza, elasticidade etc.), entre outras."
+    },
+    {
+      codigo: "(EF05CI06)",
+      descricao: "Selecionar argumentos que justifiquem por que os sistemas digestório e respiratório são considerados corresponsáveis pelo processo de nutrição do organismo, com base na identificação das funções desses sistemas."
+    },
+    {
+      codigo: "(EF05CI07)",
+      descricao: "Justificar a relação entre o funcionamento do sistema circulatório, a distribuição dos nutrientes pelo organismo e a eliminação dos resíduos produzidos."
     }
   ],
   recursos: [
     "Sala de aula organizada como um laboratório de investigação",
     "Réplicas impressas em 3D das Pegadas de Dinossauros (terópodes e ornitópodes do Vale de Nioaque)",
     "Lupas, réguas, pranchetas e fichas de investigação (CSI)"
+  ],
+  avaliacao: [
+    {
+      titulo: "Reconhecimento de Padrões Morfológicos",
+      descricao: "Examina as réplicas 3D com lupas e categoriza os fósseis em dois padrões estruturais distintos (pegadas tridáctilas com garras versus pegadas arredondadas)."
+    },
+    {
+      titulo: "Dedução Lógica e Fisiológica",
+      descricao: "Infere e correlaciona a anatomia invisível (dentes afiados ou planos e extensão do trato digestório) a partir dos dados observáveis da pegada, justificando a hipótese da dieta."
+    },
+    {
+      titulo: "Compreensão de Propriedades dos Materiais",
+      descricao: "Explica o processo de fossilização, diferenciando a plasticidade inicial da lama antiga da rigidez da rocha que preservou a pegada tridimensional."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Exercitar a curiosidade intelectual, investigar causas, elaborar e testar hipóteses sobre o passado."
+    },
+    {
+      codigo: "CG 03",
+      titulo: "Repertório Cultural",
+      descricao: "Valorizar o patrimônio científico e paleontológico único do município de Nioaque."
+    },
+    {
+      codigo: "CG 07",
+      titulo: "Argumentação",
+      descricao: "Argumentar com base em fatos e evidências fósseis para formular e defender conclusões morfológicas."
+    }
   ],
   ideiaPratica: "Atuando como detetives, os alunos aplicam o reconhecimento de padrões para examinar e agrupar as réplicas 3D. Ao compararem sistematicamente o formato agudo com garras (terópodes) ao formato arredondado (ornitópodes), deduzem logicamente o formato dos dentes e do trato digestório do dinossauro a partir da coleta de dados dos 'pés', justificando cientificamente suas descobertas.",
   roteiro: [
@@ -39,13 +78,13 @@ export const plano10 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "O Reconhecimento de Padrões: As crianças recebem as réplicas 3D. Com lupas, elas devem agrupar as pegadas por padrões: o Padrão A tem 3 dedos afiados com garras (terópodes). O Padrão B é mais gordinho e arredondado (ornitópodes). Hipótese Científica: Se o Padrão A precisava de garras para agarrar presas, como deveriam ser seus dentes? (Resposta: afiados para rasgar carne). Se o Padrão B andava devagar, o que ele comia? (Plantas, logo, dentes planos para mastigar).",
+      descricao: "Investigação Pericial e Reconhecimento de Padrões: Organize as bancadas como laboratórios periciais e distribua as réplicas 3D das pegadas, lupas e réguas. Comande os detetives: Examinem minuciosamente o contorno, profundidade e terminação dos dígitos em cada molde fóssil. Agrupem as evidências em dois conjuntos de dados: Padrão A (três dígitos afilados com garras - terópodes) e Padrão B (formato arredondado e largo - ornitópodes). Formulação de Hipóteses (Dedução Lógica): Comande a equipe de análise: Correlacionem as pistas dos pés à cabeça; se o Padrão A possui garras preênseis para contenção, deduzam como era sua dentição (afiada para rasgar carne). Se o Padrão B apresenta pisada plana de sustentação lenta, deduzam sua alimentação e dentição (dentes retos trituradores de folhagens). Registrem as correlações no caderno de campo da equipe.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Transposição Biológica: Com base na dedução dos dentes, os alunos devem preencher a ficha fisiológica do dinossauro. O carnívoro tem uma digestão rápida (trato curto). O herbívoro tem um estômago enorme, como uma câmara de fermentação para digerir folhas (trato longo). Debate: Como a pegada sobreviveu tanto tempo? (Introdução à propriedade dos materiais e fossilização da lama).",
+      descricao: "Sistematização Fisiológica: Comande: Mapeiem no caderno o sistema digestório inferido para cada padrão - estômago simples e intestino curto para a dieta carnívora (Padrão A) versus múltiplas câmaras fermentativas e trato longo para a quebra de fibras vegetais (Padrão B). Celebração do Bug e Depuração Pericial (Debugging): Promova a auditoria cruzada dos relatórios entre as equipes. Caso um grupo tenha associado garras a dentes herbívoros ou trato longo, exclamem: 'Bug na perícia fóssil!'. Isolem a dedução contraditória confrontando-a com a função biológica da garra. Detetives, depurem o relatório científico corrigindo a correlação anatômica. Fechamento Socrático: Provoquem a turma: Como essa pegada resistiu a milhões de anos? Por que a lama macia virou pedra dura sem apagar o desenho 3D?",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],

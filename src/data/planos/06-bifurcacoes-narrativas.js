@@ -8,19 +8,27 @@ export const plano06 = {
   titulo: "Lógica Condicional e Abstração: Caminhos Alternativos na Retirada da Laguna",
   contexto: "Contexto Interdisciplinar: Língua Portuguesa",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Abstração",
+    descricao: "Isolar os momentos-chave da narrativa para focar nas regras lógicas condicionais que determinam as mudanças de rumo do sistema."
+  },
   objetoConhecimento: "Condicionais lógicos e Abstração. (Aplicação prática em: Produção de textos narrativos (contos de aventura), progressão temporal/espacial).",
   habilidades: [
     {
-      codigo: "Pilar Computacional",
-      descricao: "Abstração: isolar características essenciais e ignorar detalhes irrelevantes na rota narrativa."
-    },
-    {
-      codigo: "(EF15CO02 / EF05CO04)",
+      codigo: "(EF15CO02)",
       descricao: "Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções."
     },
     {
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
+    },
+    {
+      codigo: "(Pilar Computacional)",
+      descricao: "Abstração (isolamento de características essenciais e ignorar detalhes irrelevantes na rota narrativa)."
+    },
+    {
       codigo: "(EF35LP25)",
-      descricao: "Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens. Habilidade Integradora de Apoio."
+      descricao: "Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens."
     }
   ],
   recursos: [
@@ -28,6 +36,37 @@ export const plano06 = {
     "Papel pardo/cartolinas",
     "Canhões Históricos 3D e Jacarés articulados 3D",
     "Blocos de Programação Tangível lógicos ('Se/Então')"
+  ],
+  avaliacao: [
+    {
+      titulo: "Abstração e Roteirização",
+      descricao: "Mapeia graficamente os momentos-chave da narrativa no papel pardo (introdução, clímax e desfechos), isolando os eventos essenciais antes da redação formal do conto."
+    },
+    {
+      titulo: "Lógica Condicional (Se/Então)",
+      descricao: "Insere o bloco tangível no ponto crítico de decisão e redige dois ramos narrativos autônomos e coerentes com a condição estabelecida (Então versus Senão)."
+    },
+    {
+      titulo: "Depuração Literária (Debugging)",
+      descricao: "Rastreia e corrige quebras de coerência ou de continuidade temporal ao simular a leitura do conto ramificado produzido pelo grupo vizinho."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 02",
+      titulo: "Pensamento Científico, Crítico e Criativo",
+      descricao: "Elaborar e testar hipóteses, resolver problemas e criar soluções, incluindo narrativas ramificadas."
+    },
+    {
+      codigo: "CG 03",
+      titulo: "Repertório Cultural",
+      descricao: "Valorizar as diversas manifestações artísticas e culturais, das locais às mundiais, em literatura baseada na História Local de Nioaque."
+    },
+    {
+      codigo: "CG 04",
+      titulo: "Comunicação",
+      descricao: "Utilizar diferentes linguagens, bem como conhecimentos da linguagem verbal, para se expressar e partilhar informações."
+    }
   ],
   ideiaPratica: "Os alunos programam o fluxo de um conto interativo ambientado na Retirada da Laguna. Ao inserirem o encontro com jacarés na trama, utilizam os blocos de lógica condicional ('se/então') para estruturar as 'bifurcações' da história (Ex: SE o jacaré atacar, ENTÃO o soldado atira com o canhão; SENÃO, ele atravessa o rio em silêncio), mapeando consequências textuais diferentes baseadas em regras lógicas.",
   roteiro: [

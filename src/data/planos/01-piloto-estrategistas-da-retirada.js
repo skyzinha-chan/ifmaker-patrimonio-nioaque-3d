@@ -8,7 +8,7 @@ export const plano01 = {
   eixo: "PENSAMENTO COMPUTACIONAL",
   titulo: "Plano Piloto 1: Computação Desplugada – Estrategistas da Retirada",
   contexto: "História Local (Nioaque)",
-  duracao: "4 HORAS",
+  duracao: "4 horas (240 min)",
   objetoConhecimento: "Algoritmos, Decomposição, Reconhecimento de Padrões através da história local (Retirada da Laguna, transformações territoriais e conflitos em Nioaque). O que forma um povo: do nomadismo aos primeiros povos sedentarizados.",
   habilidades: [
     {
@@ -21,7 +21,24 @@ export const plano01 = {
     },
     {
       codigo: "(PC05AL01)",
-      descricao: "Conhecer e utilizar algoritmos com repetições. Referência CIEB opcional de apoio."
+      descricao: "Conhecer e utilizar algoritmos com repetições."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação."
+    },
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Valorizar o patrimônio histórico e cultural local (Nioaque)."
     }
   ],
   recursos: [
@@ -82,6 +99,11 @@ export const plano01 = {
         nome: "🧩 Decomposição",
         pergunta: "(Transformou o trajeto longo em comandos curtos?)",
         criterioAvaliador: "Marcar SIM se o grupo conseguiu planejar a sequência de cartões de setas na mesa antes do 'Robô' começar a andar, demonstrando que entenderam os passos individuais."
+      },
+      {
+        nome: "🧩 Execução Algorítmica",
+        pergunta: "(Transpôs a sequência simbólica para ações exatas?)",
+        criterioAvaliador: "Marcar SIM se o estudante executou os comandos das setas com precisão no grid, sem pular etapas ou improvisar movimentos."
       },
       {
         nome: "🐛 Depuração / Debug",

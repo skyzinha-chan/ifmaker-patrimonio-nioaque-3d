@@ -8,15 +8,27 @@ export const plano15 = {
   titulo: "Segurança da Informação e Depuração: 'Fake News' e os Mitos da Guerra",
   contexto: "Contexto Interdisciplinar: História",
   duracao: "50min/aula",
-  objetoConhecimento: "Segurança e confiabilidade da informação. (Aplicação prática em: Transmissão de dados, 'Fake News' e fatos históricos locais).",
+  pilarComputacional: {
+    titulo: "Algoritmos e Raciocínio Lógico",
+    descricao: "Rastreamento de erros (Debugging) em transmissão de dados."
+  },
+  objetoConhecimento: "Segurança e responsabilidade no uso da tecnologia (Foco: Confiabilidade da informação, Fake News, boatos e ruídos na transmissão de dados). Algoritmos (Depuração). Comparação entre relatos da história local (Retirada da Laguna) e as comunicações no tempo presente.",
   habilidades: [
     {
-      codigo: "(EF05CO08 / CD05CD01)",
-      descricao: "Identificar, avaliar e diferenciar informações confiáveis de não confiáveis em ambientes digitais e cotidianos."
+      codigo: "(EF05CO08)",
+      descricao: "Acessar as informações na Internet de forma critica para distinguir os conteúdos confiáveis de não confiáveis."
     },
     {
-      codigo: "(EF05CO04 / EF05HI09)",
-      descricao: "Habilidade de Apoio: Relacionar fatos históricos locais e regionais (Guerra do Paraguai) à história nacional."
+      codigo: "(EF05CO04)",
+      descricao: "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, que incluam sequências, repetições e seleções condicionais para resolver problemas de forma independente e em colaboração."
+    },
+    {
+      codigo: "(CD05CD01)",
+      descricao: "Distinguir informações verdadeiras e falsas, conteúdos bons dos prejudiciais, e conteúdos confiáveis."
+    },
+    {
+      codigo: "(EF05HI09)",
+      descricao: "Comparar pontos de vista sobre temas que impactam a vida cotidiana no tempo presente, por meio do acesso a diferentes fontes, incluindo orais."
     }
   ],
   recursos: [
@@ -24,6 +36,32 @@ export const plano15 = {
     "Canhões Históricos 3D",
     "Blocos Tangíveis de Programação (setas de direção e lógicas)",
     "Lousa e giz"
+  ],
+  avaliacao: [
+    {
+      titulo: "Rastreamento Pericial e Depuração (Fact-Checking)",
+      descricao: "Compara a instrução terminal recebida com o código-fonte original registrado na lousa, identificando o elo exato da cadeia em que o bloco de comando foi adulterado (debugging de dados)."
+    },
+    {
+      titulo: "Simulação e Execução Fiel",
+      descricao: "Opera o Canhão 3D executando com rigor a sequência recebida, demonstrando concretamente o impacto desastroso de ordens corrompidas na tomada de decisão balística."
+    },
+    {
+      titulo: "Consciência Crítica e Cidadania Digital",
+      descricao: "Correlaciona as falhas de comunicação da Guerra do Paraguai com a disseminação rápida de Fake News no meio digital contemporâneo, propondo métodos de verificação de fontes antes do compartilhamento."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 01",
+      titulo: "Conhecimento",
+      descricao: "Mobilizar conhecimentos de história para entender o impacto das informações na tomada de decisões."
+    },
+    {
+      codigo: "CG 07",
+      titulo: "Argumentação",
+      descricao: "Formular, negociar e defender ideias com base em fatos e informações confiáveis, combatendo a desinformação."
+    }
   ],
   ideiaPratica: "Fazer um paralelo histórico. Durante a guerra, as notícias viajavam lentamente a cavalo e chegavam distorcidas. Hoje, na internet, as Fake News chegam rápido, mas também distorcidas. O professor usa o Canhão Histórico como alvo e os blocos de algoritmos como a 'notícia/código'. Os alunos jogam um 'telefone sem fio' de algoritmos, onde blocos são alterados para mostrar como a perda de confiabilidade afeta a direção do canhão no final.",
   roteiro: [
@@ -36,13 +74,13 @@ export const plano15 = {
     {
       parte: "2ª Parte (20 min)",
       titulo: "Experimentação",
-      descricao: "O Telefone Sem Fio Algorítmico: O professor cria uma 'linha de transmissão' com os alunos. O primeiro aluno cria um algoritmo seguro usando 5 blocos tangíveis de programação (ex: Seta Frente, Seta Direita, Seta Frente, Fogo!). Essa sequência (a notícia original) vai passando de mão em mão. O professor age como o 'Hacker/Boateiro' e, sem os alunos do fim da fila verem, troca silenciosamente um dos blocos tangíveis (ex: troca Frente por Trás). O último aluno deve executar o código recebido no Canhão 3D. O canhão vai apontar para o lado errado.",
+      descricao: "Formação da Linha de Transmissão (Rede Humana): Organize os alunos em fila indiana, simulando os nós de uma rede de dados e os mensageiros da guerra. Emissão do Código-Fonte e Injeção de Ruído: Comande os operadores: Primeiro estafeta (emissor), monte uma instrução segura de 5 passos com os blocos tangíveis (ex.: Avançar 2, Virar 90º à Direita, Avançar 1, Fogo!) e registre o código-fonte no quadro em sigilo. Linha de transmissão: repassem a sequência de blocos de mão em mão ao longo da fila em silêncio absoluto. Intervenção do Docente: como agente de ruído (hacker/boateiro da guerra), intercepte discretamente um bloco e substitua a direção (ex.: troque Direita por Esquerda). Execução Terminal da Artilharia: Comande o último artilheiro da fila: 'Execute cegamente apenas a sequência de blocos que chegou às suas mãos e aponte o Canhão 3D para o alvo'.",
       corStatus: "border-emerald-600 text-emerald-600"
     },
     {
       parte: "3ª Parte (15 min)",
       titulo: "Avaliação",
-      descricao: "Debugging da Desinformação: A turma precisa agir como detetive (fact-checkers). Eles pegam a sequência errada e a sequência original (que ficou registrada na lousa) e comparam. Eles devem fazer o Debugging (rastrear o erro) para descobrir em qual momento o dado virou uma Fake News e corrigir o bloco tangível. Debate final: 'Como a gente garante que uma notícia do WhatsApp é verdadeira antes de repassar?'",
+      descricao: "Celebração do Bug e Perícia de Dados (Fact-Checking): Ao constatar que a artilharia errou o alvo ou apontou em rota contrária, interrompam o teste imediatamente e exclamem: 'Bug na transmissão! Fake News detectada!'. Abram a auditoria pericial: confrontem a sequência física que chegou à ponta com o código original anotado no quadro. Rastreiem a linha humana passo a passo até isolar a carteira exata onde o bloco foi alterado. Artilheiros, depurem a mensagem: substituam o bloco adulterado pelo original e recalibrem o disparo correto do Canhão 3D. Roda Socrática de Cidadania Digital: conduza o fechamento sobre o impacto de boatos históricos e Fake News atuais, perguntando como agir como checadores de fatos antes de compartilhar.",
       corStatus: "border-blue-500 text-blue-500"
     }
   ],

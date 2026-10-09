@@ -8,6 +8,10 @@ export const plano04 = {
   titulo: "Algoritmos Textuais e Depuração: O Manual de Sobrevivência do Tatu-bola Robô",
   contexto: "Contexto Interdisciplinar: Língua Portuguesa",
   duracao: "50min/aula",
+  pilarComputacional: {
+    titulo: "Algoritmos e Depuração",
+    descricao: "Entender que um texto instrucional é o código-fonte a ser executado, e que a correção de ambiguidades funciona como resolução de bugs."
+  },
   objetoConhecimento: "Algoritmos e Depuração (Debugging). (Aplicação prática em: Textos instrucionais, coesão, uso de verbos no imperativo).",
   habilidades: [
     {
@@ -16,7 +20,7 @@ export const plano04 = {
     },
     {
       codigo: "(EF05LP12)",
-      descricao: "Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto. Habilidade Integradora de Apoio."
+      descricao: "Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto."
     }
   ],
   recursos: [
@@ -24,6 +28,37 @@ export const plano04 = {
     "Tatus-bola impressos em 3D articulados (projeto IFMAKER)",
     "Cadernos, lápis e borrachas",
     "Kit de Programação Tangível"
+  ],
+  avaliacao: [
+    {
+      titulo: "Estrutura Algorítmica Textual",
+      descricao: "Redige o passo a passo com verbos de ação no modo imperativo (ex.: gire, puxe, encaixe), ordenando as instruções para articular o tatu-bola 3D sem ambiguidades."
+    },
+    {
+      titulo: "Execução Fiel ao Código",
+      descricao: "Atua como robô executor, realizando estritamente a ação descrita no manual recebido, sem inferir ou adivinhar movimentos ausentes."
+    },
+    {
+      titulo: "Depuração Textual (Debugging)",
+      descricao: "Localiza termos vagos ou ambíguos (ex.: 'mexa o negócio') e reescreve a frase com precisão lexical e coesão ao constatar o travamento físico do artefato."
+    }
+  ],
+  competenciasGerais: [
+    {
+      codigo: "CG 04",
+      titulo: "Comunicação",
+      descricao: "Utilizar diferentes linguagens, bem como conhecimentos das linguagens verbal e matemática para se expressar e partilhar informações."
+    },
+    {
+      codigo: "CG 05",
+      titulo: "Cultura Digital",
+      descricao: "Compreender, utilizar e criar tecnologias digitais de forma crítica e reflexiva nas diversas práticas sociais, incluindo a transposição da lógica de código para texto."
+    },
+    {
+      codigo: "CG 09",
+      titulo: "Empatia e Cooperação",
+      descricao: "Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação."
+    }
   ],
   ideiaPratica: "Uma dupla atua como 'programadora', redigindo um algoritmo textual (manual de instruções) com verbos no imperativo para fazer o tatu-bola 3D se enrolar. A outra dupla (que não viu a escrita) atua como 'robô' e tenta executar o código textual ao pé da letra usando os blocos de comando; em caso de falha no movimento, eles realizam o 'debugging' (depuração), revisando e reescrevendo o texto original juntos até funcionar.",
   roteiro: [
