@@ -24,6 +24,9 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
   const [comentarios, setComentarios] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [consentimentoLGPD, setConsentimentoLGPD] = useState(false);
+  const [erroLGPD, setErroLGPD] = useState(false);
+
   // Estado de controle do Modo Administrador
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -72,6 +75,11 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
     e.preventDefault();
     if (!formData.texto.trim() || !formData.autor.trim()) return;
 
+    if (!consentimentoLGPD) {
+      setErroLGPD(true);
+      return;
+    }
+
     setLoading(true);
     try {
       await addDoc(comentariosRef, {
@@ -81,10 +89,14 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
         turma: formData.turma || "Não informada",
         texto: formData.texto,
         estrelas: estrelas, // Salvando a nota
+        consentimentoLGPD: true,
+        lgpdVersao: "1.0",
         createdAt: serverTimestamp(),
       });
       setFormData({ autor: "", turma: "", texto: "" });
       setEstrelas(5);
+      setConsentimentoLGPD(false);
+      setErroLGPD(false);
     } catch (error) {
       console.error("Erro ao salvar: ", error);
       alert("Houve um erro ao salvar o registro pedagógico.");
@@ -261,12 +273,62 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
             onChange={handleChange}
             disabled={loading}
           />
+          {/* Bloco de Privacidade e Minimização de Dados (LGPD) */}
+          <div
+            id='aviso-lgpd-docente'
+            className='mt-3 p-4 bg-sky-50/80 border border-sky-200 rounded-xl text-xs text-slate-700 space-y-2'
+          >
+            <div className='flex items-center gap-1.5 font-bold text-sky-900'>
+              <span aria-hidden='true'>🛡️</span>
+              <span>Aviso de Privacidade Pedagógica e LGPD (Lei nº 13.709/2018)</span>
+            </div>
+            <p className='leading-relaxed text-slate-600'>
+              <strong>Finalidade e Compartilhamento:</strong> Este diário é público e formativo, servindo para registrar adaptações práticas e inspirar outros educadores da rede.
+            </p>
+            <p className='leading-relaxed text-slate-600'>
+              <strong>Minimização de Dados (Proteção Integral à Criança):</strong> Não cite nomes completos de estudantes, informações particulares ou dados que identifiquem nominalmente os menores. Relate a experiência através dos esquadrões ou da turma como um todo.
+            </p>
+
+            <div className='pt-2 border-t border-sky-200/60'>
+              <label
+                htmlFor='consentimento-lgpd'
+                className={`flex items-start gap-2.5 cursor-pointer font-medium select-none ${
+                  erroLGPD ? "text-red-700 font-bold" : "text-slate-800"
+                }`}
+              >
+                <input
+                  type='checkbox'
+                  id='consentimento-lgpd'
+                  checked={consentimentoLGPD}
+                  onChange={(e) => {
+                    setConsentimentoLGPD(e.target.checked);
+                    if (e.target.checked) setErroLGPD(false);
+                  }}
+                  disabled={loading}
+                  aria-describedby='aviso-lgpd-docente'
+                  className='mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
+                />
+                <span>
+                  Declaro que este relato não identifica nominalmente estudantes e autorizo a publicação colaborativa para fins pedagógicos. *
+                </span>
+              </label>
+              {erroLGPD && (
+                <p role='alert' className='mt-1 text-xs font-bold text-red-600 flex items-center gap-1'>
+                  ⚠️ É necessário concordar com as diretrizes de privacidade e proteção de dados para publicar seu relato.
+                </p>
+              )}
+            </div>
+          </div>
+
           <button
             type='submit'
             disabled={
-              loading || !formData.texto.trim() || !formData.autor.trim()
+              loading ||
+              !formData.texto.trim() ||
+              !formData.autor.trim() ||
+              !consentimentoLGPD
             }
-            className='self-end mt-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md transition-colors shadow-sm disabled:opacity-50'
+            className='self-end mt-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-md transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm'
           >
             {loading ? "Salvando..." : "Publicar Avaliação"}
           </button>

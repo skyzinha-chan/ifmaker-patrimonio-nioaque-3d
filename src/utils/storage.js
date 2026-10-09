@@ -15,3 +15,13 @@ export function writeStorage(key, value) {
     return false;
   }
 }
+
+export function removeStorage(key) {
+  try {
+    window.localStorage.removeItem(key);
+    return true;
+  } catch {
+    return false;
+  }
+}
+

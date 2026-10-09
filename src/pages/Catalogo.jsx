@@ -36,6 +36,14 @@ export default function Catalogo() {
   const [favoritos, setFavoritos] = useState(() =>
     readStorage("ifmaker-favoritos", []),
   );
+  const [mostrarAplicados, setMostrarAplicados] = useState(false);
+  const [aplicados, setAplicados] = useState(() => {
+    const salvosGeral = readStorage("ifmaker-aplicados", []);
+    const salvosIndividuais = planosDeAula
+      .map((plano) => plano.id)
+      .filter((id) => readStorage(`ifmaker-aplicado:${id}`, false));
+    return Array.from(new Set([...salvosGeral, ...salvosIndividuais]));
+  });
 
   // Arrays auxiliares para renderizar os botões de filtro
   const eixos = [
@@ -63,6 +71,18 @@ export default function Catalogo() {
         ? atuais.filter((idFavorito) => idFavorito !== planoId)
         : [...atuais, planoId];
       writeStorage("ifmaker-favoritos", atualizados);
+      return atualizados;
+    });
+  };
+
+  const alternarAplicado = (planoId) => {
+    setAplicados((atuais) => {
+      const jaAplicado = atuais.includes(planoId);
+      const atualizados = jaAplicado
+        ? atuais.filter((id) => id !== planoId)
+        : [...atuais, planoId];
+      writeStorage("ifmaker-aplicados", atualizados);
+      writeStorage(`ifmaker-aplicado:${planoId}`, !jaAplicado);
       return atualizados;
     });
   };
@@ -98,6 +118,7 @@ export default function Catalogo() {
           (habilidade) => habilidade.codigo === filtroHabilidade,
         );
       const matchFavoritos = !mostrarFavoritos || favoritos.includes(plano.id);
+      const matchAplicados = !mostrarAplicados || aplicados.includes(plano.id);
 
       // 3. Filtro por Modalidade (Correção do Bug de Substring e Dados Implícitos)
       let matchModalidade = true;
@@ -136,7 +157,8 @@ export default function Catalogo() {
         matchAno &&
         matchHabilidade &&
         matchModalidade &&
-        matchFavoritos
+        matchFavoritos &&
+        matchAplicados
       );
     });
   }, [
@@ -147,6 +169,8 @@ export default function Catalogo() {
     filtroHabilidade,
     mostrarFavoritos,
     favoritos,
+    mostrarAplicados,
+    aplicados,
   ]);
 
   return (
@@ -195,7 +219,7 @@ export default function Catalogo() {
         {/* Filtros Combinados */}
         <div className='flex flex-col lg:flex-row gap-6'>
           {/* Filtro de Eixos */}
-          <div className='flex-1'>
+          <div className='flex-1' role='group' aria-label='Filtrar por eixo da BNCC'>
             <h3 className='text-xs font-bold text-gray-400 uppercase tracking-wider mb-3'>
               Eixos da BNCC
             </h3>
@@ -203,8 +227,10 @@ export default function Catalogo() {
               {eixos.map((eixo) => (
                 <button
                   key={eixo}
+                  type='button'
                   onClick={() => setFiltroEixo(eixo)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  aria-pressed={filtroEixo === eixo}
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 ${
                     filtroEixo === eixo
                       ? "bg-green-700 text-white shadow-md transform scale-105"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent hover:border-gray-300"
@@ -217,7 +243,7 @@ export default function Catalogo() {
           </div>
 
           {/* Filtro de Modalidade */}
-          <div>
+          <div role='group' aria-label='Filtrar por modalidade'>
             <h3 className='text-xs font-bold text-gray-400 uppercase tracking-wider mb-3'>
               Modalidade
             </h3>
@@ -225,8 +251,10 @@ export default function Catalogo() {
               {modalidades.map((mod) => (
                 <button
                   key={mod}
+                  type='button'
                   onClick={() => setFiltroModalidade(mod)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+                  aria-pressed={filtroModalidade === mod}
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-slate-500 ${
                     filtroModalidade === mod
                       ? "bg-slate-800 text-white shadow-md transform scale-105"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent hover:border-gray-300"
@@ -243,7 +271,7 @@ export default function Catalogo() {
           </div>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6'>
           <label className='flex flex-col gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider'>
             Ano / Turma
             <select
@@ -277,11 +305,34 @@ export default function Catalogo() {
 
           <button
             type='button'
-            onClick={() => setMostrarFavoritos((atual) => !atual)}
+            onClick={() => {
+              setMostrarFavoritos((atual) => !atual);
+              if (!mostrarFavoritos) setMostrarAplicados(false);
+            }}
             aria-pressed={mostrarFavoritos}
-            className={`self-end min-h-10 rounded-lg px-4 py-2 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 ${mostrarFavoritos ? "bg-amber-500 text-white" : "bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100"}`}
+            className={`self-end min-h-10 rounded-lg px-4 py-2 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+              mostrarFavoritos
+                ? "bg-amber-500 text-white shadow-sm"
+                : "bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100"
+            }`}
           >
             ⭐ {mostrarFavoritos ? "Mostrando favoritos" : "Ver favoritos"}
+          </button>
+
+          <button
+            type='button'
+            onClick={() => {
+              setMostrarAplicados((atual) => !atual);
+              if (!mostrarAplicados) setMostrarFavoritos(false);
+            }}
+            aria-pressed={mostrarAplicados}
+            className={`self-end min-h-10 rounded-lg px-4 py-2 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
+              mostrarAplicados
+                ? "bg-emerald-600 text-white shadow-sm"
+                : "bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100"
+            }`}
+          >
+            ✓ {mostrarAplicados ? "Mostrando aplicados" : "Ver aplicados em sala"}
           </button>
         </div>
       </section>
@@ -303,34 +354,81 @@ export default function Catalogo() {
       {/* ========================================== */}
       <section aria-live='polite'>
         {planosFiltrados.length === 0 ? (
-          /* EMPTY STATE (Estado Vazio Amigável) */
-          <div className='bg-amber-50 border-2 border-dashed border-amber-200 rounded-2xl p-10 text-center animate-fadeIn'>
-            <span className='text-5xl mb-4 block' aria-hidden='true'>
-              🧭
-            </span>
-            <h3 className='text-xl font-bold text-amber-900 mb-2'>
-              Nenhuma missão encontrada.
-            </h3>
-            <p className='text-amber-700 max-w-lg mx-auto'>
-              Sua busca não retornou resultados para os filtros atuais.
-              Lembre-se que nosso foco é o 5º ano! Tente buscar por termos como{" "}
-              <strong>"Algoritmos"</strong>, <strong>"Paleontologia"</strong> ou
-              limpe os filtros para ver todo o catálogo.
-            </p>
-            <button
-              onClick={() => {
-                setBusca("");
-                setFiltroEixo("Todos");
-                setFiltroModalidade("Todas");
-                setFiltroAno("Todos");
-                setFiltroHabilidade("Todas");
-                setMostrarFavoritos(false);
-              }}
-              className='mt-6 bg-amber-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-amber-700 transition-colors shadow-sm print:hidden'
-            >
-              Limpar Filtros
-            </button>
-          </div>
+          mostrarFavoritos ? (
+            /* EMPTY STATE ESPECÍFICO DE FAVORITOS */
+            <div className='bg-amber-50 border-2 border-dashed border-amber-200 rounded-2xl p-10 text-center animate-fadeIn'>
+              <span className='text-5xl mb-4 block' aria-hidden='true'>
+                ⭐
+              </span>
+              <h3 className='text-xl font-bold text-amber-900 mb-2'>
+                Você ainda não salvou nenhum plano como favorito.
+              </h3>
+              <p className='text-amber-700 max-w-lg mx-auto'>
+                Clique no ícone de estrela (☆) no card de qualquer missão para
+                guardá-la aqui e acessá-la com rapidez durante seus planejamentos.
+              </p>
+              <button
+                type='button'
+                onClick={() => setMostrarFavoritos(false)}
+                className='mt-6 bg-amber-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-amber-700 transition-colors shadow-sm print:hidden focus:outline-none focus:ring-2 focus:ring-amber-500'
+              >
+                Ver Todas as Missões
+              </button>
+            </div>
+          ) : mostrarAplicados ? (
+            /* EMPTY STATE ESPECÍFICO DE APLICADOS EM SALA */
+            <div className='bg-emerald-50 border-2 border-dashed border-emerald-200 rounded-2xl p-10 text-center animate-fadeIn'>
+              <span className='text-5xl mb-4 block' aria-hidden='true'>
+                📋
+              </span>
+              <h3 className='text-xl font-bold text-emerald-900 mb-2'>
+                Nenhum plano marcado como aplicado em sala ainda.
+              </h3>
+              <p className='text-emerald-700 max-w-lg mx-auto'>
+                Ao concluir a regência de uma missão com a sua turma, abra os
+                detalhes do plano e marque a opção <strong>"Aplicado em sala"</strong> para
+                acompanhar seu progresso escolar.
+              </p>
+              <button
+                type='button'
+                onClick={() => setMostrarAplicados(false)}
+                className='mt-6 bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm print:hidden focus:outline-none focus:ring-2 focus:ring-emerald-500'
+              >
+                Ver Todas as Missões
+              </button>
+            </div>
+          ) : (
+            /* EMPTY STATE GERAL DE PESQUISA */
+            <div className='bg-amber-50 border-2 border-dashed border-amber-200 rounded-2xl p-10 text-center animate-fadeIn'>
+              <span className='text-5xl mb-4 block' aria-hidden='true'>
+                🧭
+              </span>
+              <h3 className='text-xl font-bold text-amber-900 mb-2'>
+                Nenhuma missão encontrada.
+              </h3>
+              <p className='text-amber-700 max-w-lg mx-auto'>
+                Sua busca não retornou resultados para os filtros atuais.
+                Lembre-se que nosso foco é o 5º ano! Tente buscar por termos como{" "}
+                <strong>"Algoritmos"</strong>, <strong>"Paleontologia"</strong> ou
+                limpe os filtros para ver todo o catálogo.
+              </p>
+              <button
+                type='button'
+                onClick={() => {
+                  setBusca("");
+                  setFiltroEixo("Todos");
+                  setFiltroModalidade("Todas");
+                  setFiltroAno("Todos");
+                  setFiltroHabilidade("Todas");
+                  setMostrarFavoritos(false);
+                  setMostrarAplicados(false);
+                }}
+                className='mt-6 bg-amber-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-amber-700 transition-colors shadow-sm print:hidden focus:outline-none focus:ring-2 focus:ring-amber-500'
+              >
+                Limpar Filtros
+              </button>
+            </div>
+          )
         ) : (
           /* LISTA DE CARDS */
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -343,8 +441,8 @@ export default function Catalogo() {
                 <div className='h-2 bg-green-800 w-full group-hover:bg-green-500 transition-colors'></div>
 
                 <div className='p-6 flex-1 flex flex-col'>
-                  {/* TAGS / LABELS DINÂMICAS COM AS CORES DA BNCC */}
-                  <div className='flex flex-wrap gap-2 mb-4'>
+                  {/* TAGS / LABELS DINÂMICAS COM AS CORES DA BNCC E STATUS */}
+                  <div className='flex flex-wrap items-center gap-2 mb-4'>
                     <span
                       className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border-2 shadow-sm uppercase tracking-wide ${getCorDoEixo(plano.eixo)}`}
                     >
@@ -357,6 +455,16 @@ export default function Catalogo() {
                         {plano.tipo.includes("Desplugada")
                           ? "🔌❌ Desplugada"
                           : plano.tipo}
+                      </span>
+                    )}
+
+                    {/* Indicador Visual: Aplicado em Sala */}
+                    {aplicados.includes(plano.id) && (
+                      <span
+                        className='inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-xs'
+                        title='Esta missão já foi aplicada em sala de aula'
+                      >
+                        <span aria-hidden='true'>✓</span> Aplicado
                       </span>
                     )}
                   </div>

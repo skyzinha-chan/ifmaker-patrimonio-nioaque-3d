@@ -6,6 +6,8 @@ import { db } from "../services/firebase";
 
 import { planosDeAula } from "../data/planos";
 import { rubricas } from "../data/rubricas";
+import { getArtefatosPorPlano, isRecursoDoKitMaker } from "../data/materiaisKit";
+import { readStorage, writeStorage } from "../utils/storage";
 import ComentariosPedagogicos from "../components/ComentariosPedagogicos"; //TESTANDO COMENTARIOS DE USUARIOS
 
 // Função auxiliar de cores da BNCC
@@ -37,6 +39,7 @@ export default function PlanoDetalhe() {
   const [metricas, setMetricas] = useState({ visualizacoes: 0, downloads: 0 });
   const [favoritos, setFavoritos] = useState([]);
   const [materiaisDisponiveis, setMateriaisDisponiveis] = useState([]);
+  const [etapasPreparacao, setEtapasPreparacao] = useState([]);
   const [aplicadoEmSala, setAplicadoEmSala] = useState(false);
   const [mensagemCompartilhamento, setMensagemCompartilhamento] = useState("");
 
@@ -67,23 +70,18 @@ export default function PlanoDetalhe() {
   useEffect(() => {
     if (!plano?.id) return;
 
-    try {
-      setFavoritos(
-        JSON.parse(localStorage.getItem("ifmaker-favoritos") || "[]"),
-      );
-      setMateriaisDisponiveis(
-        JSON.parse(
-          localStorage.getItem(`ifmaker-checklist:${plano.id}`) || "[]",
-        ),
-      );
-      setAplicadoEmSala(
-        localStorage.getItem(`ifmaker-aplicado:${plano.id}`) === "true",
-      );
-    } catch {
-      setFavoritos([]);
-      setMateriaisDisponiveis([]);
-      setAplicadoEmSala(false);
-    }
+    setFavoritos(readStorage("ifmaker-favoritos", []));
+    setMateriaisDisponiveis(
+      readStorage(`ifmaker-checklist:${plano.id}`, []),
+    );
+    setEtapasPreparacao(
+      readStorage(`ifmaker-prep-etapas:${plano.id}`, []),
+    );
+
+    // Suporta tanto o boolean individual quanto a lista consolidada
+    const aplicadosGeral = readStorage("ifmaker-aplicados", []);
+    const aplicadoIndividual = readStorage(`ifmaker-aplicado:${plano.id}`, false);
+    setAplicadoEmSala(aplicadoIndividual || aplicadosGeral.includes(plano.id));
   }, [plano?.id]);
 
   const alternarFavorito = () => {
@@ -91,7 +89,7 @@ export default function PlanoDetalhe() {
       const atualizados = atuais.includes(plano.id)
         ? atuais.filter((idFavorito) => idFavorito !== plano.id)
         : [...atuais, plano.id];
-      localStorage.setItem("ifmaker-favoritos", JSON.stringify(atualizados));
+      writeStorage("ifmaker-favoritos", atualizados);
       return atualizados;
     });
   };
@@ -101,10 +99,17 @@ export default function PlanoDetalhe() {
       const atualizados = atuais.includes(material)
         ? atuais.filter((item) => item !== material)
         : [...atuais, material];
-      localStorage.setItem(
-        `ifmaker-checklist:${plano.id}`,
-        JSON.stringify(atualizados),
-      );
+      writeStorage(`ifmaker-checklist:${plano.id}`, atualizados);
+      return atualizados;
+    });
+  };
+
+  const alternarEtapaPreparacao = (etapaId) => {
+    setEtapasPreparacao((atuais) => {
+      const atualizados = atuais.includes(etapaId)
+        ? atuais.filter((id) => id !== etapaId)
+        : [...atuais, etapaId];
+      writeStorage(`ifmaker-prep-etapas:${plano.id}`, atualizados);
       return atualizados;
     });
   };
@@ -112,7 +117,15 @@ export default function PlanoDetalhe() {
   const alternarAplicadoEmSala = () => {
     setAplicadoEmSala((atual) => {
       const novoStatus = !atual;
-      localStorage.setItem(`ifmaker-aplicado:${plano.id}`, String(novoStatus));
+      writeStorage(`ifmaker-aplicado:${plano.id}`, novoStatus);
+
+      // Sincroniza também a lista consolidada para o Catálogo filtrar imediatamente
+      const aplicadosGeral = readStorage("ifmaker-aplicados", []);
+      const novosAplicados = novoStatus
+        ? Array.from(new Set([...aplicadosGeral, plano.id]))
+        : aplicadosGeral.filter((id) => id !== plano.id);
+      writeStorage("ifmaker-aplicados", novosAplicados);
+
       return novoStatus;
     });
   };
@@ -216,7 +229,7 @@ export default function PlanoDetalhe() {
       ? planosDeAula[currentIndex + 1]
       : null;
 
-  const idsAbas = ["geral", "roteiro", "rubrica"];
+  const idsAbas = ["geral", "roteiro", "rubrica", "preparacao"];
   const handleTabKeyDown = (event, abaAtual) => {
     const indexAtual = idsAbas.indexOf(abaAtual);
     let proximaAba;
@@ -456,6 +469,18 @@ export default function PlanoDetalhe() {
         >
           3. Rubrica de Avaliação
         </button>
+        <button
+          role='tab'
+          aria-selected={abaAtiva === "preparacao"}
+          aria-controls='panel-preparacao'
+          id='tab-preparacao'
+          tabIndex={abaAtiva === "preparacao" ? 0 : -1}
+          onKeyDown={(event) => handleTabKeyDown(event, "preparacao")}
+          onClick={() => setAbaAtiva("preparacao")}
+          className={`py-4 px-4 font-bold text-sm border-b-4 transition-colors ${abaAtiva === "preparacao" ? "border-green-700 text-green-800" : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"}`}
+        >
+          4. Preparação da Aula
+        </button>
       </div>
       {/* ÁREA DE CONTEÚDO DINÂMICO DAS ABAS */}
       <div className='min-h-[400px]'>
@@ -542,45 +567,28 @@ export default function PlanoDetalhe() {
               </section>
             )}
 
-            <div className='bg-slate-50 p-5 rounded-xl border border-slate-100'>
-              <h3 className='font-bold text-xs uppercase text-slate-400 tracking-wider mb-3'>
-                Checklist de Preparação e Materiais
-              </h3>
-              <ul className='space-y-2'>
-                {plano.recursos && plano.recursos.length > 0 ? (
-                  plano.recursos.map((item, index) => (
-                    <li
-                      key={index}
-                      className='flex items-start gap-3 rounded-lg border border-gray-200 bg-white p-3'
-                    >
-                      <input
-                        id={`material-${plano.id}-${index}`}
-                        type='checkbox'
-                        checked={materiaisDisponiveis.includes(item)}
-                        onChange={() => alternarMaterial(item)}
-                        className='mt-1 h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-2 focus:ring-emerald-500'
-                      />
-                      <label
-                        htmlFor={`material-${plano.id}-${index}`}
-                        className='flex-1 cursor-pointer text-sm text-slate-700'
-                      >
-                        <span className='block'>{item}</span>
-                        <span
-                          className={`mt-1 inline-block text-xs font-bold ${materiaisDisponiveis.includes(item) ? "text-emerald-700" : "text-amber-700"}`}
-                        >
-                          {materiaisDisponiveis.includes(item)
-                            ? "Disponível / separado"
-                            : "A providenciar"}
-                        </span>
-                      </label>
-                    </li>
-                  ))
-                ) : (
-                  <li className='italic text-slate-500'>
-                    Nenhum recurso específico cadastrado.
-                  </li>
-                )}
-              </ul>
+            {/* Card Direcionador para a Aba 4: Preparação da Aula */}
+            <div className='bg-emerald-50/70 border border-emerald-200 p-5 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-xs'>
+              <div>
+                <span className='text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5 mb-1'>
+                  <span aria-hidden='true'>🎒</span> Central de Preparação da Aula
+                </span>
+                <p className='text-sm text-emerald-950 leading-relaxed'>
+                  Consulte os artefatos 3D do Kit Maker, fotos reais, montagem de bancadas e o checklist completo de insumos na nova guia dedicada.
+                </p>
+              </div>
+              <button
+                type='button'
+                onClick={() => {
+                  setAbaAtiva("preparacao");
+                  requestAnimationFrame(() => {
+                    document.getElementById("tab-preparacao")?.focus();
+                  });
+                }}
+                className='whitespace-nowrap bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500'
+              >
+                Abrir Preparação (Guia 4) →
+              </button>
             </div>
 
             {/* Ideia Prática */}
@@ -875,6 +883,370 @@ export default function PlanoDetalhe() {
                 </div>
               </>
             )}
+          </div>
+        )}
+
+        {/* ==================== ABA 4: PREPARAÇÃO DA AULA ==================== */}
+        {abaAtiva === "preparacao" && (
+          <div
+            role='tabpanel'
+            id='panel-preparacao'
+            aria-labelledby='tab-preparacao'
+            tabIndex='0'
+            className='animate-fadeIn space-y-8 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-4 rounded-xl'
+          >
+            {/* 1. STATUS DE EXECUÇÃO EM SALA */}
+            <section
+              aria-labelledby='status-aplicacao-titulo'
+              className={`p-6 rounded-2xl border-2 transition-all duration-300 ${
+                aplicadoEmSala
+                  ? "bg-emerald-50/80 border-emerald-300 text-emerald-950"
+                  : "bg-slate-50 border-slate-200 text-slate-800"
+              }`}
+            >
+              <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4'>
+                <div className='space-y-1'>
+                  <div className='flex items-center gap-2'>
+                    <span className='text-2xl' aria-hidden='true'>
+                      {aplicadoEmSala ? "🎉" : "📋"}
+                    </span>
+                    <h2
+                      id='status-aplicacao-titulo'
+                      className='text-lg font-bold'
+                    >
+                      {aplicadoEmSala
+                        ? "Missão Aplicada com Sucesso em Sala"
+                        : "Status da Missão: Em Planejamento"}
+                    </h2>
+                  </div>
+                  <p className='text-sm text-slate-600 max-w-2xl leading-relaxed'>
+                    {aplicadoEmSala
+                      ? "Esta aula já foi marcada como executada com sua turma. O indicador aparece destacado no catálogo para facilitar o acompanhamento do seu cronograma."
+                      : "Marque esta opção assim que realizar a aula com seus estudantes para acompanhar o progresso pedagógico no catálogo de missões."}
+                  </p>
+                </div>
+
+                <button
+                  type='button'
+                  onClick={alternarAplicadoEmSala}
+                  aria-pressed={aplicadoEmSala}
+                  className={`whitespace-nowrap px-5 py-3 rounded-xl font-bold text-sm transition-all duration-200 flex items-center gap-2 shadow-sm focus:outline-none focus:ring-2 ${
+                    aplicadoEmSala
+                      ? "bg-emerald-700 hover:bg-emerald-800 text-white focus:ring-emerald-500"
+                      : "bg-slate-800 hover:bg-slate-900 text-white focus:ring-slate-500"
+                  }`}
+                >
+                  <span aria-hidden='true'>{aplicadoEmSala ? "✓" : "□"}</span>
+                  {aplicadoEmSala ? "Aplicado em Sala" : "Marcar como Aplicado"}
+                </button>
+              </div>
+            </section>
+
+            {/* 2. CHECKLIST OPERACIONAL PRÉ-AULA */}
+            <section
+              aria-labelledby='checklist-operacional-titulo'
+              className='bg-white p-6 rounded-2xl border border-gray-200 shadow-sm'
+            >
+              <div className='mb-6 border-b border-gray-100 pb-4'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-xl' aria-hidden='true'>
+                    🛠️
+                  </span>
+                  <h2
+                    id='checklist-operacional-titulo'
+                    className='text-lg font-extrabold text-gray-900'
+                  >
+                    Checklist Operacional Pré-Aula
+                  </h2>
+                </div>
+                <p className='text-sm text-gray-600 mt-1'>
+                  Etapas recomendadas para organizar o ambiente e a dinâmica dos
+                  estudantes antes do início das atividades.
+                </p>
+              </div>
+
+              <div className='space-y-3'>
+                {[
+                  {
+                    id: "disposicao-sala",
+                    titulo: "1. Disposição do Espaço (Ilhas de Aprendizagem)",
+                    descricao:
+                      "Afastar as carteiras tradicionais e agrupar mesas para trabalho colaborativo em esquadrões de 3 a 4 estudantes.",
+                  },
+                  {
+                    id: "papeis-esquadrao",
+                    titulo: "2. Formação dos Esquadrões & Papéis Ativos",
+                    descricao:
+                      "Definir ou sortear as funções ativas de cada aluno (Mestre do Código, Robô, Caçador de Bugs, Cartógrafo ou Engenheiro Maker) para evitar a sobrecarga de um único membro.",
+                  },
+                  {
+                    id: "fichas-atividades",
+                    titulo: "3. Impressão de Fichas e Caderno de Atividades",
+                    descricao:
+                      "Imprimir previamente a Folha de Missão do Aluno / Ficha Catalográfica e o Mapa Rápido de Observação Docente (disponíveis na Central de Impressão abaixo).",
+                  },
+                  {
+                    id: "kit-artefatos",
+                    titulo: "4. Separação dos Artefatos Físicos do Kit Maker",
+                    descricao:
+                      "Retirar da caixa do Kit IFMaker as réplicas 3D pertinentes, conferir a integridade das peças táteis e organizar os cartões ou insumos na bancada.",
+                  },
+                  {
+                    id: "modo-furtivo",
+                    titulo: "5. Alinhamento das 'Regras de Ouro' e Modo Furtivo",
+                    descricao:
+                      "Combinar previamente o 'Modo Furtivo' (comunicação em tom de sussurro tático) e o cuidado coletivo no manuseio das peças tridimensionais.",
+                  },
+                ].map((etapa) => {
+                  const checado = etapasPreparacao.includes(etapa.id);
+                  return (
+                    <div
+                      key={etapa.id}
+                      className={`flex items-start gap-3.5 p-4 rounded-xl border transition-colors ${
+                        checado
+                          ? "bg-emerald-50/60 border-emerald-200"
+                          : "bg-gray-50/60 border-gray-200 hover:bg-gray-50"
+                      }`}
+                    >
+                      <input
+                        id={`prep-${plano.id}-${etapa.id}`}
+                        type='checkbox'
+                        checked={checado}
+                        onChange={() => alternarEtapaPreparacao(etapa.id)}
+                        className='mt-1 h-5 w-5 rounded border-gray-300 text-emerald-600 focus:ring-2 focus:ring-emerald-500 cursor-pointer'
+                      />
+                      <label
+                        htmlFor={`prep-${plano.id}-${etapa.id}`}
+                        className='flex-1 cursor-pointer select-none'
+                      >
+                        <strong
+                          className={`block text-sm font-bold ${
+                            checado ? "text-emerald-950" : "text-gray-900"
+                          }`}
+                        >
+                          {etapa.titulo}
+                        </strong>
+                        <p className='text-xs text-gray-600 mt-0.5 leading-relaxed'>
+                          {etapa.descricao}
+                        </p>
+                      </label>
+                      <span
+                        className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                          checado
+                            ? "bg-emerald-100 text-emerald-800"
+                            : "bg-gray-200 text-gray-600"
+                        }`}
+                      >
+                        {checado ? "Pronto" : "Pendente"}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* 3. CHECKLIST DE MATERIAIS & INSUMOS DO PLANO */}
+            <section
+              aria-labelledby='materiais-plano-titulo'
+              className='bg-white p-6 rounded-2xl border border-gray-200 shadow-sm'
+            >
+              <div className='mb-6 border-b border-gray-100 pb-4'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-xl' aria-hidden='true'>
+                    📦
+                  </span>
+                  <h2
+                    id='materiais-plano-titulo'
+                    className='text-lg font-extrabold text-gray-900'
+                  >
+                    Checklist de Insumos da Missão
+                  </h2>
+                </div>
+                <p className='text-sm text-gray-600 mt-1'>
+                  Verifique a disponibilidade dos itens da Caixa Master e insumos da escola antes de iniciar a regência.
+                </p>
+              </div>
+
+              <ul className='space-y-3'>
+                {plano.recursos && plano.recursos.length > 0 ? (
+                  plano.recursos.map((item, index) => {
+                    const disponivel = materiaisDisponiveis.includes(item);
+                    const doKit = isRecursoDoKitMaker(item);
+
+                    return (
+                      <li
+                        key={index}
+                        className={`flex items-start gap-3 rounded-xl border p-4 transition-colors ${
+                          disponivel
+                            ? "bg-emerald-50/50 border-emerald-200"
+                            : "bg-white border-gray-200"
+                        }`}
+                      >
+                        <input
+                          id={`mat-prep-${plano.id}-${index}`}
+                          type='checkbox'
+                          checked={disponivel}
+                          onChange={() => alternarMaterial(item)}
+                          className='mt-1 h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-2 focus:ring-emerald-500 cursor-pointer'
+                        />
+                        <label
+                          htmlFor={`mat-prep-${plano.id}-${index}`}
+                          className='flex-1 cursor-pointer text-sm text-slate-800 select-none'
+                        >
+                          <div className='flex flex-wrap items-center gap-2 mb-1'>
+                            <span className='font-semibold text-gray-900'>{item}</span>
+                            <span
+                              className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${
+                                doKit
+                                  ? "bg-indigo-50 text-indigo-700 border-indigo-200"
+                                  : "bg-amber-50 text-amber-800 border-amber-200"
+                              }`}
+                            >
+                              {doKit
+                                ? "🎒 Caixa Master (Kit IFMaker)"
+                                : "🏫 Insumo da Escola / Papelaria"}
+                            </span>
+                          </div>
+                          <span
+                            className={`inline-block text-xs font-bold ${
+                              disponivel
+                                ? "text-emerald-700"
+                                : "text-amber-700"
+                            }`}
+                          >
+                            {disponivel
+                              ? "✓ Disponível / separado para a aula"
+                              : "⚠️ A conferir / providenciar"}
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })
+                ) : (
+                  <li className='italic text-slate-500 text-sm'>
+                    Nenhum recurso específico cadastrado para esta aula.
+                  </li>
+                )}
+              </ul>
+            </section>
+
+            {/* 4. MOSTRUÁRIO DE ARTEFATOS FÍSICOS DO KIT MAKER */}
+            <section
+              aria-labelledby='artefatos-kit-titulo'
+              className='bg-white p-6 rounded-2xl border border-gray-200 shadow-sm'
+            >
+              <div className='mb-6 border-b border-gray-100 pb-4'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-xl' aria-hidden='true'>
+                    🧩
+                  </span>
+                  <h2
+                    id='artefatos-kit-titulo'
+                    className='text-lg font-extrabold text-gray-900'
+                  >
+                    Artefatos Físicos do Kit Maker (Patrimônio de Nioaque)
+                  </h2>
+                </div>
+                <p className='text-sm text-gray-600 mt-1'>
+                  Fotos reais dos artefatos, detalhes táteis, quantidades na Caixa Master e alternativas de substituição (Capítulo 3 do Manual Pedagógico).
+                </p>
+
+                {/* Box de contexto da Caixa Master */}
+                <div className='mt-4 bg-emerald-50/80 border border-emerald-200 p-4 rounded-xl flex items-start gap-3 text-xs text-emerald-950'>
+                  <span className='text-xl' aria-hidden='true'>📦</span>
+                  <div>
+                    <strong className='font-bold text-emerald-900 block'>
+                      Acervo da Caixa Master (Manual Pedagógico - Seção 3.2):
+                    </strong>
+                    <p className='mt-0.5 text-emerald-800 leading-relaxed'>
+                      Dimensionado para turmas de até 30 estudantes em 8 Ilhas de Aprendizagem simultâneas. Cada ilha recebe 1 artefato 3D do dia e 1 saquinho Ziplock com blocos de programação tangível.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {(() => {
+                const artefatos = getArtefatosPorPlano(plano.id);
+                if (artefatos.length === 0) {
+                  return (
+                    <div className='bg-sky-50/70 border border-sky-200 p-5 rounded-xl text-sky-950 text-sm leading-relaxed'>
+                      <p className='font-bold mb-1'>
+                        💡 Aula com foco em materiais flexíveis ou desplugados
+                      </p>
+                      <p className='text-sky-900 text-xs leading-relaxed'>
+                        Esta aula não depende de uma réplica 3D exclusiva do kit.
+                        Os esquadrões podem utilizar cartolinas, materiais
+                        recicláveis da escola e fichas impressas da Central de
+                        Impressão.
+                      </p>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                    {artefatos.map((art) => (
+                      <article
+                        key={art.id}
+                        className='bg-slate-50/70 border border-slate-200 rounded-xl overflow-hidden flex flex-col hover:shadow-md transition-shadow'
+                      >
+                        <div className='bg-white p-4 flex items-center justify-center border-b border-slate-200 min-h-[220px]'>
+                          <img
+                            src={art.imagem}
+                            alt={art.alt}
+                            className='max-h-48 object-contain transition-transform hover:scale-105 duration-300'
+                            loading='lazy'
+                          />
+                        </div>
+                        <div className='p-5 flex-1 flex flex-col space-y-3'>
+                          <div className='flex flex-wrap items-center gap-2'>
+                            <span className='bg-indigo-100 text-indigo-900 text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-indigo-200'>
+                              {art.categoria}
+                            </span>
+                            {art.quantidadeNoKit && (
+                              <span className='bg-emerald-100 text-emerald-900 text-xs font-bold px-2.5 py-0.5 rounded-full border border-emerald-300'>
+                                📦 {art.quantidadeNoKit}
+                              </span>
+                            )}
+                            <span className='bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-0.5 rounded border border-gray-300'>
+                              {art.material}
+                            </span>
+                          </div>
+
+                          <h3 className='font-bold text-base text-gray-900'>
+                            {art.nome}
+                          </h3>
+
+                          <div className='text-xs space-y-2 text-slate-700'>
+                            <p>
+                              <strong className='text-slate-900'>Origem: </strong>
+                              {art.origem}
+                            </p>
+                            <p>
+                              <strong className='text-slate-900'>
+                                Percepção Tátil:{" "}
+                              </strong>
+                              {art.descricaoTatil}
+                            </p>
+                            <p>
+                              <strong className='text-slate-900'>
+                                Manuseio:{" "}
+                              </strong>
+                              {art.orientacoesManuseio}
+                            </p>
+                          </div>
+
+                          <div className='mt-auto pt-3 border-t border-slate-200 text-xs bg-amber-50/60 p-2.5 rounded-lg border border-amber-200 text-amber-900'>
+                            <strong>🔄 Substituição Possível (Plano B):</strong>{" "}
+                            {art.substituicaoPossivel}
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                );
+              })()}
+            </section>
           </div>
         )}
       </div>
