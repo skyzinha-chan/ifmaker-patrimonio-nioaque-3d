@@ -1,5 +1,3 @@
-// src/data/capitulos/capitulo3.js
-
 export const capitulo3 = {
   id: "catalogo-visual",
   titulo: "3. Catálogo Visual: O Que Há na Caixa?",

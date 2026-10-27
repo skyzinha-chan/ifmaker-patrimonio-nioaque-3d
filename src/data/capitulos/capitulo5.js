@@ -1,5 +1,3 @@
-// src/data/capitulos/capitulo5.js
-
 export const capitulo5 = {
   id: "avaliacao-maker",
   titulo: "5. Avaliação Maker",

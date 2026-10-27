@@ -1,11 +1,9 @@
-// src/pages/Autores.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Autores() {
   return (
     <article className='p-6 md:p-12 max-w-6xl mx-auto bg-white min-h-screen animate-fadeIn'>
-      {/* NAVEGAÇÃO DE VOLTA */}
       <div className='mb-8 print:hidden'>
         <Link
           to='/'
@@ -15,7 +13,6 @@ export default function Autores() {
         </Link>
       </div>
 
-      {/* CABEÇALHO DA PÁGINA */}
       <header className='border-b-4 border-green-800 pb-6 mb-12 text-center'>
         <span className='bg-green-100 text-green-800 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4 inline-block'>
           IFMS Campus Jardim
@@ -29,14 +26,13 @@ export default function Autores() {
         </p>
       </header>
 
-      {/* GRID DE PERFIS (OS AUTORES) */}
+      {/* Perfis dos Autores */}
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-        {/* PERFIL: TALITA MENDONÇA MARQUES */}
+        {/* Perfil: Talita Mendonça Marques */}
         <div className='bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300'>
           <div className='bg-gradient-to-r from-emerald-700 to-green-600 h-24'></div>
           <div className='px-8 pb-8'>
             <div className='relative -mt-12 mb-4'>
-              {/* Espaço para a foto (substitua o src depois pela imagem real) */}
               <img
                 src='/assets/authors/talita.jpg'
                 alt='Foto de Talita Marques'
@@ -77,9 +73,7 @@ export default function Autores() {
               </p>
             </div>
 
-            {/* LINKS SOCIAIS (Ajustados para Acessibilidade e Tamanho) */}
             <div className='flex flex-wrap items-center gap-2 mt-2'>
-              {/* LATTES */}
               <a
                 href='http://lattes.cnpq.br/3040084905845309'
                 target='_blank'
@@ -98,7 +92,6 @@ export default function Autores() {
                 Lattes
               </a>
 
-              {/* LINKEDIN */}
               <a
                 href='https://www.linkedin.com/in/talita-mendonca-marques/'
                 target='_blank'
@@ -117,7 +110,6 @@ export default function Autores() {
                 LinkedIn
               </a>
 
-              {/* GITHUB */}
               <a
                 href='https://github.com/skyzinha-chan'
                 target='_blank'
@@ -136,7 +128,6 @@ export default function Autores() {
                 GitHub
               </a>
 
-              {/* INSTAGRAM */}
               <a
                 href='https://www.instagram.com/skyzinha_chan/'
                 target='_blank'
@@ -158,12 +149,11 @@ export default function Autores() {
           </div>
         </div>
 
-        {/* PERFIL: LEONARDO VINICIUS DA COSTA GOMES */}
+        {/* Perfil: Leonardo Vinicius da Costa Gomes */}
         <div className='bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300'>
           <div className='bg-gradient-to-r from-emerald-700 to-green-600 h-24'></div>
           <div className='px-8 pb-8'>
             <div className='relative -mt-12 mb-4'>
-              {/* Espaço para a foto (substitua o src depois pela imagem real) */}
               <img
                 src='/assets/authors/leonardo.jpg'
                 alt='Foto de Leonardo Vinicius'
@@ -203,9 +193,7 @@ export default function Autores() {
               </p>
             </div>
 
-            {/* LINKS SOCIAIS (Ajustados para Acessibilidade e Tamanho) */}
             <div className='flex flex-wrap items-center gap-2 mt-2'>
-              {/* LATTES */}
               <a
                 href='http://lattes.cnpq.br/0183174611937054'
                 target='_blank'
@@ -224,7 +212,6 @@ export default function Autores() {
                 Lattes
               </a>
 
-              {/* LINKEDIN */}
               <a
                 href='https://www.linkedin.com/in/leonardo-vinicius7766/'
                 target='_blank'
@@ -243,7 +230,6 @@ export default function Autores() {
                 LinkedIn
               </a>
 
-              {/* GITHUB */}
               <a
                 href='https://github.com/leonardo-vinicius77'
                 target='_blank'
@@ -262,7 +248,6 @@ export default function Autores() {
                 GitHub
               </a>
 
-              {/* INSTAGRAM */}
               <a
                 href='https://www.instagram.com/leonardo.vinicius.gomes/'
                 target='_blank'
@@ -285,7 +270,6 @@ export default function Autores() {
         </div>
       </div>
 
-      {/* MENSAGEM FINAL DE ENGAJAMENTO */}
       <div className='mt-16 bg-green-50 rounded-xl p-8 text-center border border-green-100'>
         <h3 className='text-xl font-bold text-green-900 mb-2'>
           Vamos conversar sobre Educação Maker?

@@ -1,5 +1,3 @@
-// src/data/planos/06-bifurcacoes-narrativas.js
-
 export const plano06 = {
   id: "bifurcacoes-narrativas",
   ano: "5º Ano",

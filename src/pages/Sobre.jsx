@@ -27,7 +27,6 @@ export default function Sobre() {
       </div>
 
       <header className='border-b-4 border-green-800 pb-8 mb-10 text-center'>
-        {/* Banner Institucional dos Logos em Largura Total (com Altura Ajustada e Rente aos Logos) */}
         <div className='w-full flex items-center justify-center gap-8 sm:gap-14 bg-gradient-to-r from-green-950 via-green-900 to-green-950 px-6 py-1 sm:py-2 rounded-2xl shadow-xl mb-8 border border-green-800/80'>
           <img
             src='/assets/logo IF.png'

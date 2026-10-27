@@ -1,5 +1,3 @@
-// src/data/planos/15-fake-news.js
-
 export const plano15 = {
   id: "fake-news-mitos-guerra",
   ano: "5º Ano",

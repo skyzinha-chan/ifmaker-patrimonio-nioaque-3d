@@ -1,5 +1,3 @@
-// src/data/capitulos/capitulo6.js
-
 export const capitulo6 = {
   id: "sequencia-didatica",
   titulo: "6. A Sequência Didática",
@@ -104,7 +102,7 @@ export const capitulo6 = {
       titulo: "Pronto para a Prática?",
       texto: "Acesse o nosso Catálogo Digital Interativo. Lá você encontrará todas as missões acima detalhadas, com objetivos, matrizes de avaliação e materiais prontos para download e impressão.",
       textoBotao: "Acessar Catálogo de Aulas",
-      rota: "/planos" // Redireciona de volta para a SPA de Planos
+      rota: "/planos"
     }
   ]
 };

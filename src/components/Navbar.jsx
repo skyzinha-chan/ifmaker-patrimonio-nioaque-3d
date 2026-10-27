@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx (Que agora funciona como uma Top Navbar)
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { planosDeAula } from "../data/planos";
@@ -15,7 +14,7 @@ export default function Navbar() {
     setIsDesktopPlanosOpen(false);
   };
 
-  // Gerenciamento de clique fora e tecla Escape para acessibilidade do dropdown
+  // Fecha o menu suspenso ao clicar fora ou pressionar Escape
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -35,7 +34,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Estilos limpos para uma barra superior
   const activeStyle =
     "bg-green-900 md:bg-transparent md:text-white md:border-b-2 border-white text-green-100 font-bold px-4 py-3 md:py-1 rounded md:rounded-none transition-all";
   const inactiveStyle =
@@ -45,7 +43,6 @@ export default function Navbar() {
     <nav className='bg-green-800 text-white shadow-md print:hidden sticky top-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16 sm:h-20'>
-          {/* Título da Obra com Ícone */}
           <div className='flex-shrink-0 flex items-center gap-3'>
             <Link
               to='/'
@@ -67,7 +64,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Menu Desktop (Escondido em Telas Pequenas) */}
+          {/* Navegação Desktop */}
           <div className='hidden md:flex md:items-center md:gap-4 lg:gap-8'>
             <NavLink
               to='/'
@@ -95,7 +92,7 @@ export default function Navbar() {
               Manual Pedagógico
             </NavLink>
 
-            {/* O Dropdown do Catálogo para Desktop com Acessibilidade (Touch, Clique, Teclado & Hover) */}
+            {/* Menu suspenso do Catálogo de Aulas */}
             <div
               ref={dropdownRef}
               className='relative'
@@ -139,7 +136,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* A lista suspensa flutuante com suporte semântico */}
               <div
                 id='desktop-planos-menu'
                 role='menu'
@@ -186,7 +182,7 @@ export default function Navbar() {
             </NavLink>
           </div>
 
-          {/* Botão do Menu Hambúrguer (Mobile) */}
+          {/* Controle do Menu Mobile */}
           <div className='-mr-2 flex md:hidden'>
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -225,9 +221,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ======================================= */}
-      {/* Menu Mobile Expandido (Desce como sanfona) */}
-      {/* ======================================= */}
+      {/* Navegação Mobile */}
       <div
         className={`md:hidden ${isOpen ? "block" : "hidden"} border-t border-green-700`}
       >
@@ -282,7 +276,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Lista de Aulas no Mobile */}
             {isPlanosOpen && (
               <div className='mt-2 pl-6 pr-2 space-y-1 border-l-2 border-green-600 ml-4'>
                 {planosDeAula.map((p, idx) => (

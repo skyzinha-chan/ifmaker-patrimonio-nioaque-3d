@@ -1,5 +1,3 @@
-// src/data/planos/05-artilharia-dos-angulos.js
-
 export const plano05 = {
   id: "artilharia-dos-angulos",
   ano: "5º Ano",

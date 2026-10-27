@@ -1,4 +1,3 @@
-// src/data/planos/piloto-01-estrategistas.js
 // Dados extraídos do Manual IFMaker - Aula Piloto Validada
 
 export const plano01 = {

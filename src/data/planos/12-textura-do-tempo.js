@@ -1,5 +1,3 @@
-// src/data/planos/12-textura-do-tempo.js
-
 export const plano12 = {
   id: "textura-do-tempo",
   ano: "5º Ano",

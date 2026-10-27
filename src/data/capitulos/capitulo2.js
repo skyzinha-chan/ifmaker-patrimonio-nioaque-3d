@@ -1,5 +1,3 @@
-// src/data/capitulos/capitulo2.js
-
 export const capitulo2 = {
   id: "boas-vindas",
   titulo: "2. Boas-Vindas ao Universo Maker",

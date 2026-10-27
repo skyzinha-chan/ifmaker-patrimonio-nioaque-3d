@@ -1,5 +1,3 @@
-// src/data/planos/03-navegacao-por-coordenadas.js
-
 export const plano03 = {
   id: "navegacao-por-coordenadas",
   ano: "5º Ano",

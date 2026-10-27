@@ -1,5 +1,3 @@
-// src/data/planos/10-csi-nioaque.js
-
 export const plano10 = {
   id: "csi-nioaque",
   ano: "5º Ano",

@@ -1,5 +1,3 @@
-// src/data/planos/11-stop-motion.js
-
 export const plano11 = {
   id: "stop-motion",
   ano: "5º Ano",

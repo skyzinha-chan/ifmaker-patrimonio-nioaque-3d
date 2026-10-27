@@ -1,5 +1,3 @@
-// src/data/planos/14-cidades-de-concreto.js
-
 export const plano14 = {
   id: "cidades-de-concreto",
   ano: "5º Ano",

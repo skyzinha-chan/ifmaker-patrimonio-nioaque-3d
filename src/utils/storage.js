@@ -1,3 +1,8 @@
+/**
+ * Utilitários de acesso seguro ao localStorage com tratamento de falhas
+ * (ex.: navegação anônima restrita ou cota excedida).
+ */
+
 export function readStorage(key, fallback) {
   try {
     const value = window.localStorage.getItem(key);
@@ -24,4 +29,3 @@ export function removeStorage(key) {
     return false;
   }
 }
-

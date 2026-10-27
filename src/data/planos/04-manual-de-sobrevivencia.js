@@ -1,5 +1,3 @@
-// src/data/planos/04-manual-de-sobrevivencia.js
-
 export const plano04 = {
   id: "manual-de-sobrevivencia",
   ano: "5º Ano",

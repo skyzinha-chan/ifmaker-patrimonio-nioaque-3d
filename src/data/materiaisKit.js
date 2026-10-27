@@ -1,6 +1,7 @@
-// src/data/materiaisKit.js
-// Catálogo de Artefatos Físicos e Recursos da Caixa Master do Kit Maker Nioaque 3D
-// Alinhado rigorosamente com o Capítulo 3 ("Catálogo Visual: O Que Há na Caixa?") e a Sequência Didática do Manual Pedagógico.
+/**
+ * Catálogo de artefatos físicos e recursos da Caixa Master do Kit Maker Nioaque 3D,
+ * alinhado ao Capítulo 3 e à Sequência Didática do Manual Pedagógico.
+ */
 
 export const inventarioCaixaMaster = {
   descricao: "Caixa Organizadora Master do Projeto IFMaker Educador dimensionada para turmas de até 30 alunos divididos em 8 Ilhas de Aprendizagem.",

@@ -1,37 +1,31 @@
-// src/pages/Manual.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { manualCapitulos } from "../data/capitulos";
 
 export default function Manual() {
-  // Define o primeiro capítulo como ativo por padrão
   const [capituloAtivoId, setCapituloAtivoId] = useState(manualCapitulos[0].id);
-
-  // Criando uma referência para a aba que está ativa
   const activeTabRef = useRef(null);
 
-  // Derivação de estado para pegar os dados do capítulo atual
   const capituloAtual = manualCapitulos.find(
     (cap) => cap.id === capituloAtivoId,
   );
 
-  // Efeito que centraliza a aba ativa suavemente sempre que o estado muda
+  // Mantém a aba ativa centralizada na barra horizontal ao trocar de capítulo
   useEffect(() => {
     if (activeTabRef.current) {
       activeTabRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "nearest", // Não rola a página inteira para baixo
-        inline: "center", // Centraliza o botão ativado na horizontal
+        block: "nearest",
+        inline: "center",
       });
     }
   }, [capituloAtivoId]);
 
   return (
     <div className='min-h-screen bg-gray-50 flex flex-col'>
-      {/* NAVEGAÇÃO DE ABAS HORIZONTAIS (Escondida na impressão) */}
+      {/* Navegação horizontal de capítulos */}
       <div className='bg-white border-b border-gray-200 shadow-sm print:hidden sticky top-16 z-40'>
         <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
-          {/* overflow-x-auto permite deslizar no mobile sem quebrar o layout */}
           <nav
             className='flex space-x-4 overflow-x-auto py-3 scrollbar-hide md:scrollbar-default px-2'
             aria-label='Navegação dos capítulos do manual'
@@ -58,9 +52,8 @@ export default function Manual() {
         </div>
       </div>
 
-      {/* ÁREA DE LEITURA (Main Content) */}
+      {/* Área de leitura do capítulo */}
       <main className='flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10'>
-        {/* A classe 'prose' aplica formatação profissional de e-book automaticamente */}
         <article className='prose prose-slate md:prose-lg max-w-none bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100 print:shadow-none print:border-none print:p-0'>
           <h1 className='text-3xl md:text-4xl font-extrabold text-green-900 mb-8 border-b-2 border-green-100 pb-4'>
             {capituloAtual.titulo}
@@ -68,7 +61,6 @@ export default function Manual() {
 
           <div className='space-y-6'>
             {capituloAtual.conteudo.map((bloco, index) => {
-              // Renderização Condicional baseada na arquitetura dos dados
               switch (bloco.tipo) {
                 case "subtitulo":
                   return (
@@ -194,7 +186,6 @@ export default function Manual() {
                     >
                       {bloco.itens.map((item, idx) => (
                         <li key={idx} className='pl-2'>
-                          {/* Renderiza o título em negrito se existir */}
                           {item.titulo && (
                             <strong className='text-green-900'>
                               {item.titulo}{" "}

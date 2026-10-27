@@ -1,4 +1,3 @@
-// src/components/ComentariosPedagogicos.jsx
 import React, { useState, useEffect } from "react";
 import {
   collection,
@@ -15,36 +14,35 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-} from "firebase/auth"; // Importes de Segurança
-import { db, auth } from "../services/firebase"; 
+} from "firebase/auth";
+import { db, auth } from "../services/firebase";
 
+/**
+ * Seção de relatos pedagógicos e avaliações docentes integrada ao Firestore,
+ * com suporte a moderação autenticada via Firebase Auth e conformidade LGPD.
+ */
 export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
   const [formData, setFormData] = useState({ autor: "", turma: "", texto: "" });
-  const [estrelas, setEstrelas] = useState(5); // Inicia com 5 estrelas por padrão
+  const [estrelas, setEstrelas] = useState(5);
   const [comentarios, setComentarios] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [consentimentoLGPD, setConsentimentoLGPD] = useState(false);
   const [erroLGPD, setErroLGPD] = useState(false);
-
-  // Estado de controle do Modo Administrador
   const [isAdmin, setIsAdmin] = useState(false);
 
   const comentariosRef = collection(db, "diario_de_bordo");
 
-  // 1. Escuta silenciosa para saber se o Admin já está logado no navegador
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsAdmin(!!user); // Se tem usuário logado, isAdmin vira true
+      setIsAdmin(Boolean(user));
     });
     return () => unsubscribe();
   }, []);
 
-  // 2. Carrega os comentários
   useEffect(() => {
     if (!planoId) return;
 
-    // Busca apenas os comentários DESTE plano de aula específico
     const q = query(comentariosRef, where("planoId", "==", planoId));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -53,11 +51,11 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
         ...doc.data(),
       }));
 
-      // Ordenação no Front-end (Evita erros de indexação complexa no Firebase)
+      // Ordenação decrescente em memória para dispensar índice composto no Firestore
       listaComentarios.sort((a, b) => {
         const dataA = a.createdAt?.toMillis() || 0;
         const dataB = b.createdAt?.toMillis() || 0;
-        return dataB - dataA; // Do mais recente para o mais antigo
+        return dataB - dataA;
       });
 
       setComentarios(listaComentarios);
@@ -83,12 +81,12 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
     setLoading(true);
     try {
       await addDoc(comentariosRef, {
-        planoId: planoId, // Vínculo relacional
-        planoTitulo: planoTitulo,
+        planoId,
+        planoTitulo,
         autor: formData.autor,
         turma: formData.turma || "Não informada",
         texto: formData.texto,
-        estrelas: estrelas, // Salvando a nota
+        estrelas,
         consentimentoLGPD: true,
         lgpdVersao: "1.0",
         createdAt: serverTimestamp(),
@@ -105,26 +103,19 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
     }
   };
 
-  // ==========================================
-  // FUNÇÕES DE MODERAÇÃO (COM AUTENTICAÇÃO REAL)
-  // ==========================================
-
   const handleToggleAdmin = async () => {
     if (isAdmin) {
-      // Se já está logado, desloga
       await signOut(auth);
       alert("🔒 Modo Administrador desativado.");
       return;
     }
 
-    // Pede as credenciais para logar no Firebase
     const email = window.prompt("Acesso Restrito: E-mail de Moderação");
     if (!email) return;
     const senha = window.prompt("Senha de Acesso");
     if (!senha) return;
 
     try {
-      // O Firebase valida a senha no servidor (Segurança máxima)
       await signInWithEmailAndPassword(auth, email, senha);
       alert("✅ Bem-vindo! Acesso autorizado pelo servidor.");
     } catch (error) {
@@ -169,7 +160,6 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
       <header className='mb-6 flex justify-between items-start'>
         <div>
           <h3 className='text-2xl font-bold text-slate-800 flex items-center gap-2'>
-            {/* O Gatilho Oculto: Clicar no emoji ativa a verificação de senha */}
             <span
               aria-hidden='true'
               onClick={handleToggleAdmin}
@@ -192,7 +182,6 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
         )}
       </header>
 
-      {/* Formulário */}
       <form
         onSubmit={handleAdicionarComentario}
         className='mb-8 bg-slate-50 p-6 rounded-xl border border-slate-200'
@@ -235,7 +224,6 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
           </div>
         </div>
 
-        {/* Sistema de Estrelas */}
         <div className='mb-4'>
           <p className='font-semibold text-slate-700 text-sm block mb-2'>
             Nota da Missão *
@@ -273,7 +261,7 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
             onChange={handleChange}
             disabled={loading}
           />
-          {/* Bloco de Privacidade e Minimização de Dados (LGPD) */}
+          {/* Aviso de Privacidade e Minimização de Dados (LGPD) */}
           <div
             id='aviso-lgpd-docente'
             className='mt-3 p-4 bg-sky-50/80 border border-sky-200 rounded-xl text-xs text-slate-700 space-y-2'
@@ -335,7 +323,6 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
         </div>
       </form>
 
-      {/* Lista de Comentários deste Plano */}
       <article aria-live='polite'>
         <h4 className='text-lg font-semibold text-slate-800 mb-4 border-b pb-2'>
           Comentários da Comunidade ({comentarios.length})
@@ -351,7 +338,6 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
                 key={nota.id}
                 className='p-4 bg-white rounded-lg shadow-sm border border-slate-100 relative group'
               >
-                {/* BOTÕES DE ADMINISTRAÇÃO (Só aparecem se isAdmin for true) */}
                 {isAdmin && (
                   <div className='absolute top-4 right-4 flex gap-2'>
                     <button
@@ -380,7 +366,6 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
                     </span>
                   </div>
                   <div className='text-amber-400 text-sm'>
-                    {/* Renderiza as estrelas salvas */}
                     {"★".repeat(nota.estrelas)}
                     {"☆".repeat(5 - nota.estrelas)}
                   </div>

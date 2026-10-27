@@ -1,15 +1,17 @@
-// src/components/ModoRegenciaModal.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { getArtefatosPorPlano } from "../data/materiaisKit";
 
-// Síntese de áudio suave via Web Audio API (não necessita de arquivos mp3 externos)
+/**
+ * Sintetiza um alerta sonoro harmônico (acorde Dó Maior) via Web Audio API,
+ * dispensando ativos de áudio externos para operação offline.
+ */
 function tocarChimeSuave() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
 
-    const notas = [523.25, 659.25, 783.99, 1046.5]; // Acorde Dó Maior harmônico
+    const notas = [523.25, 659.25, 783.99, 1046.5];
     notas.forEach((freq, i) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -32,6 +34,10 @@ function tocarChimeSuave() {
   }
 }
 
+/**
+ * Modal de projeção em tela cheia para regência em sala de aula,
+ * com cronômetro progressivo sincronizado às etapas do plano de aula.
+ */
 export default function ModoRegenciaModal({ plano, aoFechar }) {
   const containerRef = useRef(null);
   const [emTelaCheia, setEmTelaCheia] = useState(false);
@@ -39,7 +45,7 @@ export default function ModoRegenciaModal({ plano, aoFechar }) {
   const [modoFurtivoAtivo, setModoFurtivoAtivo] = useState(false);
   const [mostrarPlanoB, setMostrarPlanoB] = useState(false);
 
-  // Parse das etapas do roteiro
+  // Extrai a minutagem de cada etapa a partir do texto do roteiro (fallback: 15 min)
   const etapas = (plano.roteiro || []).map((passo, idx) => {
     const matchMin = passo.parte?.match(/(\d+)\s*min/i);
     const minutos = matchMin ? parseInt(matchMin[1], 10) : 15;

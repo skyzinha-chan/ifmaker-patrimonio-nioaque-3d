@@ -1,4 +1,3 @@
-// src/data/planos/piloto-02-museu-tatil.js
 // Dados extraídos do Manual IFMaker - Aula Piloto Validada
 
 export const plano02 = {

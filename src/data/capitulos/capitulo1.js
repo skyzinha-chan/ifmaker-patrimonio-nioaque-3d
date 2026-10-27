@@ -1,5 +1,3 @@
-// src/data/capitulos/capitulo1.js
-
 export const capitulo1 = {
   id: "introducao",
   titulo: "1. Introdução",

@@ -1,10 +1,11 @@
-// src/components/GuiaCaixaMasterModal.jsx
 import React, { useState, useEffect } from "react";
 
+/**
+ * Modal de instruções logísticas e conservação dos insumos da Caixa Master.
+ */
 export default function GuiaCaixaMasterModal({ aberto, aoFechar }) {
   const [passoAtivo, setPassoAtivo] = useState(0);
 
-  // Fecha no ESC
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && aberto) aoFechar();

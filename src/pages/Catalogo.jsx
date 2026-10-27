@@ -1,32 +1,30 @@
-// src/pages/Catalogo.jsx
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { planosDeAula } from "../data/planos";
 import { readStorage, writeStorage } from "../utils/storage";
 
-// FUNÇÃO AUXILIAR DE UI/UX (Consistência do Design System da BNCC)
+/**
+ * Retorna as classes visuais do badge correspondente ao eixo da BNCC Computação.
+ */
 const getCorDoEixo = (eixo) => {
   const eixoNormalizado = eixo?.toUpperCase() || "";
 
   if (eixoNormalizado.includes("PENSAMENTO COMPUTACIONAL")) {
-    return "bg-amber-600 border-amber-200 text-white"; // Amarelo Mostarda
+    return "bg-amber-600 border-amber-200 text-white";
   }
   if (eixoNormalizado.includes("MUNDO DIGITAL")) {
-    return "bg-blue-600 border-blue-200 text-white"; // Azul Médio
+    return "bg-blue-600 border-blue-200 text-white";
   }
   if (eixoNormalizado.includes("CULTURA DIGITAL")) {
-    return "bg-green-600 border-green-200 text-white"; // Verde Folha
+    return "bg-green-600 border-green-200 text-white";
   }
   if (eixoNormalizado.includes("CULTURA MAKER")) {
-    return "bg-indigo-600 border-indigo-200 text-white"; // Roxo/Índigo harmônico
+    return "bg-indigo-600 border-indigo-200 text-white";
   }
   return "bg-gray-600 border-gray-200 text-white";
 };
 
 export default function Catalogo() {
-  // ==========================================
-  // ESTADOS DO COMPONENTE (Filtros e Busca)
-  // ==========================================
   const [busca, setBusca] = useState("");
   const [filtroEixo, setFiltroEixo] = useState("Todos");
   const [filtroModalidade, setFiltroModalidade] = useState("Todas");
@@ -45,7 +43,6 @@ export default function Catalogo() {
     return Array.from(new Set([...salvosGeral, ...salvosIndividuais]));
   });
 
-  // Arrays auxiliares para renderizar os botões de filtro
   const eixos = [
     "Todos",
     "PENSAMENTO COMPUTACIONAL",
@@ -87,14 +84,10 @@ export default function Catalogo() {
     });
   };
 
-  // ==========================================
-  // LÓGICA DE FILTRAGEM DE DADOS (Performance com useMemo)
-  // ==========================================
   const planosFiltrados = useMemo(() => {
     return planosDeAula.filter((plano) => {
       const termo = busca.toLowerCase();
 
-      // 1. Busca por Texto Livre (Título, Objeto de Conhecimento ou Habilidades)
       const habilidades = plano.habilidades || [];
       const textoHabilidades = habilidades
         .map((hab) => `${hab.codigo} ${hab.descricao}`)
@@ -106,7 +99,6 @@ export default function Catalogo() {
         plano.objetoConhecimento?.toLowerCase().includes(termo) ||
         textoHabilidades.includes(termo);
 
-      // 2. Filtro por Eixo da BNCC
       const matchEixo =
         filtroEixo === "Todos" ||
         plano.eixo?.toUpperCase().includes(filtroEixo);
@@ -120,25 +112,19 @@ export default function Catalogo() {
       const matchFavoritos = !mostrarFavoritos || favoritos.includes(plano.id);
       const matchAplicados = !mostrarAplicados || aplicados.includes(plano.id);
 
-      // 3. Filtro por Modalidade (Correção do Bug de Substring e Dados Implícitos)
       let matchModalidade = true;
       if (filtroModalidade !== "Todas") {
-        // Unimos título e tipo para analisar tudo de uma vez
         const textoAnalise =
           `${plano.tipo || ""} ${plano.titulo || ""}`.toLowerCase();
 
-        // Verifica se a palavra 'desplugada' está explícita
+        // Remove "desplugada" antes de buscar "plugada" para evitar falso positivo por substring;
+        // planos sem tipo explícito assumem modalidade desplugada por padrão.
         const isDesplugadaExplicita = textoAnalise.includes("desplugada");
-
-        // Estratégia de Arquitetura: Removemos a palavra "desplugada" para evitar falso positivo.
-        // O que sobrar contendo "plugada" ou "computador" é genuinamente uma atividade plugada.
         const textoSemDesplugada = textoAnalise.replace(/desplugada/g, "");
         const isPlugadaExplicita =
           textoSemDesplugada.includes("plugada") ||
           textoSemDesplugada.includes("computador");
 
-        // Aplicação da sua Regra de Negócio: Se não tem nenhum indicativo de ser Plugada
-        // e o professor esqueceu de preencher o campo 'tipo', assumimos como Desplugada.
         const isDesplugada =
           isDesplugadaExplicita ||
           (!isPlugadaExplicita && !isDesplugadaExplicita);
@@ -175,9 +161,7 @@ export default function Catalogo() {
 
   return (
     <main className='p-6 md:p-10 max-w-7xl mx-auto'>
-      {/* ========================================== */}
-      {/* CABEÇALHO (Oculto na impressão para economia) */}
-      {/* ========================================== */}
+      {/* Cabeçalho da página */}
       <header className='mb-8 print:hidden'>
         <h1 className='text-3xl md:text-4xl font-extrabold text-green-900 tracking-tight flex items-center gap-3'>
           <span aria-hidden='true'>📚</span> Catálogo de Missões
@@ -189,14 +173,11 @@ export default function Catalogo() {
         </p>
       </header>
 
-      {/* ========================================== */}
-      {/* BARRA DE BUSCA E FILTROS (Ocultos na impressão) */}
-      {/* ========================================== */}
+      {/* Barra de busca e filtros */}
       <section
         className='mb-10 bg-white p-6 rounded-2xl shadow-sm border border-green-100 print:hidden'
         aria-label='Ferramentas de pesquisa'
       >
-        {/* Barra de Busca Inteligente */}
         <div className='mb-6 relative'>
           <label htmlFor='buscaPlanos' className='sr-only'>
             Buscar planos de aula
@@ -216,9 +197,8 @@ export default function Catalogo() {
           />
         </div>
 
-        {/* Filtros Combinados */}
+        {/* Filtros combinados */}
         <div className='flex flex-col lg:flex-row gap-6'>
-          {/* Filtro de Eixos */}
           <div className='flex-1' role='group' aria-label='Filtrar por eixo da BNCC'>
             <h3 className='text-xs font-bold text-gray-400 uppercase tracking-wider mb-3'>
               Eixos da BNCC
@@ -242,7 +222,6 @@ export default function Catalogo() {
             </div>
           </div>
 
-          {/* Filtro de Modalidade */}
           <div role='group' aria-label='Filtrar por modalidade'>
             <h3 className='text-xs font-bold text-gray-400 uppercase tracking-wider mb-3'>
               Modalidade
@@ -337,9 +316,7 @@ export default function Catalogo() {
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* INDICADOR DE RESULTADOS PARA IMPRESSÃO */}
-      {/* ========================================== */}
+      {/* Cabeçalho exclusivo para impressão */}
       <div className='hidden print:block mb-6 border-b-2 border-green-800 pb-2'>
         <h2 className='text-2xl font-bold text-green-900'>
           Catálogo de Aulas (Documento Institucional)
@@ -349,13 +326,10 @@ export default function Catalogo() {
         </p>
       </div>
 
-      {/* ========================================== */}
-      {/* GRID DE PLANOS (OS CARDS) */}
-      {/* ========================================== */}
+      {/* Grid de planos de aula */}
       <section aria-live='polite'>
         {planosFiltrados.length === 0 ? (
           mostrarFavoritos ? (
-            /* EMPTY STATE ESPECÍFICO DE FAVORITOS */
             <div className='bg-amber-50 border-2 border-dashed border-amber-200 rounded-2xl p-10 text-center animate-fadeIn'>
               <span className='text-5xl mb-4 block' aria-hidden='true'>
                 ⭐
@@ -376,7 +350,6 @@ export default function Catalogo() {
               </button>
             </div>
           ) : mostrarAplicados ? (
-            /* EMPTY STATE ESPECÍFICO DE APLICADOS EM SALA */
             <div className='bg-emerald-50 border-2 border-dashed border-emerald-200 rounded-2xl p-10 text-center animate-fadeIn'>
               <span className='text-5xl mb-4 block' aria-hidden='true'>
                 📋
@@ -398,7 +371,6 @@ export default function Catalogo() {
               </button>
             </div>
           ) : (
-            /* EMPTY STATE GERAL DE PESQUISA */
             <div className='bg-amber-50 border-2 border-dashed border-amber-200 rounded-2xl p-10 text-center animate-fadeIn'>
               <span className='text-5xl mb-4 block' aria-hidden='true'>
                 🧭
@@ -430,18 +402,15 @@ export default function Catalogo() {
             </div>
           )
         ) : (
-          /* LISTA DE CARDS */
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {planosFiltrados.map((plano) => (
               <article
                 key={plano.id}
                 className='relative bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group'
               >
-                {/* Faixa superior neutra em verde institucional */}
                 <div className='h-2 bg-green-800 w-full group-hover:bg-green-500 transition-colors'></div>
 
                 <div className='p-6 flex-1 flex flex-col'>
-                  {/* TAGS / LABELS DINÂMICAS COM AS CORES DA BNCC E STATUS */}
                   <div className='flex flex-wrap items-center gap-2 mb-4'>
                     <span
                       className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border-2 shadow-sm uppercase tracking-wide ${getCorDoEixo(plano.eixo)}`}
@@ -449,7 +418,6 @@ export default function Catalogo() {
                       {plano.eixo}
                     </span>
 
-                    {/* Tag de Modalidade (Caso o plano tenha a propriedade 'tipo') */}
                     {plano.tipo && (
                       <span className='inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-700 border border-gray-300 uppercase tracking-wide'>
                         {plano.tipo.includes("Desplugada")
@@ -458,7 +426,6 @@ export default function Catalogo() {
                       </span>
                     )}
 
-                    {/* Indicador Visual: Aplicado em Sala */}
                     {aplicados.includes(plano.id) && (
                       <span
                         className='inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-xs'
@@ -469,7 +436,6 @@ export default function Catalogo() {
                     )}
                   </div>
 
-                  {/* TÍTULO E OBJETO DE CONHECIMENTO */}
                   <h2 className='text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-green-800 transition-colors'>
                     {plano.tituloCatalogo || plano.titulo}
                   </h2>
@@ -486,7 +452,6 @@ export default function Catalogo() {
                     {plano.objetoConhecimento}
                   </p>
 
-                  {/* CALL TO ACTION (Oculto na impressão) */}
                   <Link
                     to={`/planos/${plano.id}`}
                     className='mt-auto w-full inline-flex justify-center items-center px-4 py-3 border border-transparent text-sm font-bold rounded-md text-green-900 bg-green-100 hover:bg-green-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors shadow-sm print:hidden'

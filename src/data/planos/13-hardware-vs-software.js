@@ -1,5 +1,3 @@
-// src/data/planos/13-hardware-vs-software.js
-
 export const plano13 = {
   id: "hardware-vs-software",
   ano: "5º Ano",

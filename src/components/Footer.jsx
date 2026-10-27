@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -6,12 +5,10 @@ export default function Footer() {
   const anoAtual = new Date().getFullYear();
 
   return (
-    // Reduzi o padding vertical (py-8 em vez de py-12) para ficar mais compacto
     <footer className='bg-green-900 text-green-50 border-t-4 border-green-500 mt-auto print:hidden'>
       <div className='max-w-7xl mx-auto px-6 md:px-10 py-8'>
-        {/* GRID DE CONTEÚDO PRINCIPAL (Agora com 4 colunas em telas grandes) */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6'>
-          {/* Coluna 1: Identidade do Projeto */}
+          {/* Identidade do Projeto */}
           <div className='flex flex-col space-y-3'>
             <div className='flex items-center gap-2.5'>
               <span aria-hidden='true' className='text-3xl select-none'>
@@ -26,7 +23,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Coluna 2: Navegação Rápida */}
+          {/* Navegação Rápida */}
           <div className='flex flex-col'>
             <h3 className='text-green-400 font-bold uppercase tracking-widest text-xs mb-4'>
               Navegação
@@ -62,7 +59,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Coluna 3: Fomento Científico (Mesclado) */}
+          {/* Fomento Científico */}
           <div className='flex flex-col'>
             <h3 className='text-green-400 font-bold uppercase tracking-widest text-xs mb-4'>
               Fomento Científico
@@ -84,7 +81,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Coluna 4: Links Oficiais (Nova Coluna Lateral) */}
+          {/* Links Oficiais */}
           <div className='flex flex-col'>
             <h3 className='text-green-400 font-bold uppercase tracking-widest text-xs mb-4'>
               Links Oficiais
@@ -131,7 +128,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Linha Inferior: Copyright e Autoria (Reduzi a margem superior para economizar espaço) */}
+        {/* Direitos Autorais e Créditos */}
         <div className='border-t border-green-800/50 mt-6 pt-5 text-center md:flex md:justify-between md:text-left'>
           <p className='text-xs sm:text-sm text-green-100/70 font-medium'>
             &copy; {anoAtual} Patrimônio de Nioaque em 3D. Todos os direitos

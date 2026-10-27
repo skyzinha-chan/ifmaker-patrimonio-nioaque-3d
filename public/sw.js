@@ -1,5 +1,7 @@
-// public/sw.js - Service Worker para suporte Offline-First (PWA)
-// Garante que o professor consiga acessar planos e materiais mesmo sem sinal de internet na escola
+/**
+ * Service Worker para suporte Offline-First (PWA).
+ * Mantém ativos essenciais em cache e aplica Stale-While-Revalidate para recursos estáticos.
+ */
 
 const CACHE_NAME = "nioaque-3d-cache-v1";
 
@@ -17,7 +19,6 @@ const CORE_ASSETS = [
   "/assets/acervo-grafico-reutilizavel.svg"
 ];
 
-// Instalação: Pré-cache dos ativos estruturais
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -27,7 +28,6 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Ativação: Limpeza de caches obsoletos de versões anteriores
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
@@ -43,22 +43,22 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Interceptação de requisições
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // Ignorar requisições não-GET ou extensões do navegador
   if (request.method !== "GET" || !request.url.startsWith("http")) {
     return;
   }
 
-  // Requisições do Firebase Firestore / Auth: prioridade de rede sem bloquear offline
-  if (request.url.includes("firestore.googleapis.com") || request.url.includes("identitytoolkit.googleapis.com")) {
+  // Ignora chamadas de API do Firebase para preservar o controle nativo do SDK
+  if (
+    request.url.includes("firestore.googleapis.com") ||
+    request.url.includes("identitytoolkit.googleapis.com")
+  ) {
     return;
   }
 
-  // 1. Navegação de páginas (HTML / Rotas do React Router):
-  // Tenta a rede; se falhar (offline), entrega o index.html em cache para o SPA carregar
+  // Navegação SPA: prioriza rede e utiliza fallback para /index.html quando offline
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request).catch(() => caches.match("/index.html") || caches.match("/"))
@@ -66,13 +66,16 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 2. Recursos Estáticos (JS, CSS, Imagens, Fontes):
-  // Estratégia Stale-While-Revalidate: responde rápido do cache e atualiza em segundo plano
+  // Ativos estáticos: estratégia Stale-While-Revalidate
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       const fetchPromise = fetch(request)
         .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200 && networkResponse.type === "basic") {
+          if (
+            networkResponse &&
+            networkResponse.status === 200 &&
+            networkResponse.type === "basic"
+          ) {
             const responseToCache = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
               cache.put(request, responseToCache);
@@ -80,10 +83,11 @@ self.addEventListener("fetch", (event) => {
           }
           return networkResponse;
         })
-        .catch(() => cachedResponse); // Se offline, mantém o que tem em cache
+        .catch(() => cachedResponse);
 
       return cachedResponse || fetchPromise;
     })
   );
 });
+
 

@@ -1,5 +1,3 @@
-// src/data/planos/07-museu-desplugado.js
-
 export const plano07 = {
   id: "museu-desplugado",
   ano: "5º Ano",

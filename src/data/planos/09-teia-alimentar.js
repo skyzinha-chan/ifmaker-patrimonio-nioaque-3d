@@ -1,5 +1,3 @@
-// src/data/planos/09-teia-alimentar.js
-
 export const plano09 = {
   id: "teia-alimentar",
   ano: "5º Ano",

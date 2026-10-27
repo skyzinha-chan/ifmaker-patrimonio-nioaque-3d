@@ -1,4 +1,3 @@
-// src/pages/PlanoDetalhe.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { doc, setDoc, getDoc, increment } from "firebase/firestore";
@@ -8,11 +7,13 @@ import { planosDeAula } from "../data/planos";
 import { rubricas } from "../data/rubricas";
 import { getArtefatosPorPlano, isRecursoDoKitMaker } from "../data/materiaisKit";
 import { readStorage, writeStorage } from "../utils/storage";
-import ComentariosPedagogicos from "../components/ComentariosPedagogicos"; //TESTANDO COMENTARIOS DE USUARIOS
+import ComentariosPedagogicos from "../components/ComentariosPedagogicos";
 import ModoRegenciaModal from "../components/ModoRegenciaModal";
 import { baixarPacoteCompletoDaAula } from "../utils/zipUtils";
 
-// Função auxiliar de cores da BNCC
+/**
+ * Retorna as classes visuais do badge correspondente ao eixo da BNCC Computação.
+ */
 const getCorDoEixo = (eixo) => {
   const eixoNormalizado = eixo?.toUpperCase() || "";
   if (eixoNormalizado.includes("PENSAMENTO COMPUTACIONAL"))
@@ -159,26 +160,24 @@ export default function PlanoDetalhe() {
     }
   };
 
-  // Intercepta e valida se o arquivo físico existe no /public antes de abrir
+  /**
+   * Verifica via requisição HEAD e validação de MIME type (application/pdf) se o
+   * PDF existe fisicamente antes de abri-lo, evitando abrir o fallback HTML da SPA.
+   */
   const abrirPdfComChecagem = async (e, url, nomeMaterial) => {
     e.preventDefault();
     if (!url) return;
 
     setVerificandoPdf(true);
     try {
-      // Faz uma checagem HTTP HEAD rápida
       const resposta = await fetch(url, { method: "HEAD" });
-
-      // Lê o cabeçalho para descobrir o TIPO do arquivo devolvido
       const contentType = resposta.headers.get("content-type");
 
-      // Validação Dupla: Tem que ser status 200 (OK) E o tipo TEM que ser um PDF
       if (
         resposta.ok &&
         contentType &&
         contentType.includes("application/pdf")
       ) {
-        // Conta +1 download no Firebase quando o PDF é confirmado
         try {
           const metricaRef = doc(db, "metricas_planos", plano.id);
           await setDoc(
@@ -193,7 +192,6 @@ export default function PlanoDetalhe() {
 
         window.open(url, "_blank", "noopener,noreferrer");
       } else {
-        // Se caiu aqui, é porque deu 404 real, OU o Vite devolveu um HTML falso
         setAvisoPdf({
           titulo: `Arquivo em Diagramação`,
           mensagem: `O arquivo "${nomeMaterial}" está registrado na base pedagógica, mas o documento PDF ainda está em fase de finalização e será inserido em breve na pasta do sistema.`,
@@ -371,9 +369,7 @@ export default function PlanoDetalhe() {
           </button>
         </div>
       </div>
-      {/* ========================================================= */}
-      {/* CABEÇALHO DO PLANO (RESTAURO DAS TAGS E TÍTULO) */}
-      {/* ========================================================= */}
+      {/* Cabeçalho do Plano de Aula */}
       <header className='border-b-4 border-green-800 pb-6 mt-6 mb-8'>
         <div className='flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4'>
           <div className='flex flex-wrap gap-3'>
@@ -387,7 +383,7 @@ export default function PlanoDetalhe() {
             </span>
           </div>
 
-          {/* PAINEL DE MÉTRICAS (Agora no fluxo normal, sem sobrepor o conteúdo abaixo) */}
+          {/* Contadores de visualizações e downloads */}
           <div className='flex gap-4 text-xs font-bold text-slate-500 bg-white p-2 px-4 rounded-full border border-gray-200 shadow-sm print:hidden'>
             <div className='flex items-center gap-1.5'>
               <span className='text-sm' aria-hidden='true'>
@@ -472,9 +468,7 @@ export default function PlanoDetalhe() {
           </p>
         </div>
       </header>
-      {/* ========================================================= */}
-      {/* NOVO SISTEMA DE ABAS INTERATIVAS (TABS) */}
-      {/* ========================================================= */}
+      {/* Navegação por abas do plano */}
       <div
         role='tablist'
         aria-label='Navegação do Plano de Aula'
@@ -1609,7 +1603,7 @@ export default function PlanoDetalhe() {
         )}
       </section>
 
-      {/* COMPONENTE DE COMENTÁRIOS E AVALIAÇÃO INTEGRADO COM O TÍTULO */}
+      {/* Avaliações e relatos de experiência docente */}
       <ComentariosPedagogicos planoId={plano.id} planoTitulo={plano.titulo} />
 
       {/* BARRA DE NAVEGAÇÃO SEQUENCIAL (PRÓXIMO / ANTERIOR) */}

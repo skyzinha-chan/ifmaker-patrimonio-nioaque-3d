@@ -1,5 +1,3 @@
-// src/data/planos/08-rota-da-retirada.js
-
 export const plano08 = {
   id: "rota-da-retirada",
   ano: "5º Ano",

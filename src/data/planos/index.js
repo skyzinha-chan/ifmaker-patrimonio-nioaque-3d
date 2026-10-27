@@ -1,5 +1,3 @@
-// src/data/planos/index.js
-
 import { plano01 } from './01-piloto-estrategistas-da-retirada.js';
 import { plano02 } from './02-piloto-museu-tatil.js';
 import { plano03 } from './03-navegacao-por-coordenadas.js';
@@ -16,6 +14,9 @@ import { plano13 } from './13-hardware-vs-software.js';
 import { plano14 } from './14-cidades-de-concreto.js';
 import { plano15 } from './15-fake-news.js';
 
+/**
+ * Mapeamento de títulos resumidos para exibição nos cards do Catálogo de Missões.
+ */
 const titulosCatalogo = {
   "piloto-01-estrategistas": "Estrategistas da Retirada",
   "piloto-02-museu-tatil": "Museu Tátil de Nioaque",

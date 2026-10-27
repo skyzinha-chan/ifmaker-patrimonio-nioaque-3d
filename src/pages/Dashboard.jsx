@@ -1,4 +1,3 @@
-// src/pages/Dashboard.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
@@ -7,53 +6,51 @@ import { planosDeAula } from "../data/planos";
 import GuiaCaixaMasterModal from "../components/GuiaCaixaMasterModal";
 
 export default function Dashboard() {
-  // 1. Calculando apenas métricas dinâmicas reais que podem crescer
   const totalPlanos = planosDeAula.length;
 
-  // 2. Métricas Dinâmicas (Firebase Analytics)
   const [metricasGlobais, setMetricasGlobais] = useState({
     views: 0,
     downloads: 0,
     avaliacoes: 0,
-    mediaEstrelas: 0
+    mediaEstrelas: 0,
   });
   const [loadingMetricas, setLoadingMetricas] = useState(true);
   const [modalCaixaMasterAberto, setModalCaixaMasterAberto] = useState(false);
 
-  // 3. Efeito para buscar e agregar os dados em tempo real
+  // Agrega as métricas de visualizações, downloads e avaliações armazenadas no Firestore
   useEffect(() => {
     const fetchMetricas = async () => {
       try {
-        // Busca agregações de Visualizações e Downloads
-        const metricasSnap = await getDocs(collection(db, 'metricas_planos'));
+        const metricasSnap = await getDocs(collection(db, "metricas_planos"));
         let totalViews = 0;
         let totalDownloads = 0;
-        
-        metricasSnap.forEach(doc => {
+
+        metricasSnap.forEach((doc) => {
           const data = doc.data();
           totalViews += data.visualizacoes || 0;
           totalDownloads += data.downloads || 0;
         });
 
-        // Busca agregações do Diário de Bordo (Comentários e Estrelas)
-        const avaliacoesSnap = await getDocs(collection(db, 'diario_de_bordo'));
+        const avaliacoesSnap = await getDocs(collection(db, "diario_de_bordo"));
         let totalAvaliacoes = 0;
         let somaEstrelas = 0;
-        
-        avaliacoesSnap.forEach(doc => {
+
+        avaliacoesSnap.forEach((doc) => {
           const data = doc.data();
           totalAvaliacoes++;
-          somaEstrelas += data.estrelas || 5; // Fallback para 5 caso antigo não tenha estrela
+          somaEstrelas += data.estrelas || 5;
         });
 
-        // Calcula a média (com segurança para evitar divisão por zero)
-        const media = totalAvaliacoes > 0 ? (somaEstrelas / totalAvaliacoes).toFixed(1) : 0;
+        const media =
+          totalAvaliacoes > 0
+            ? (somaEstrelas / totalAvaliacoes).toFixed(1)
+            : 0;
 
         setMetricasGlobais({
           views: totalViews,
           downloads: totalDownloads,
           avaliacoes: totalAvaliacoes,
-          mediaEstrelas: media
+          mediaEstrelas: media,
         });
       } catch (error) {
         console.error("Erro ao buscar métricas da nuvem:", error);
@@ -65,15 +62,11 @@ export default function Dashboard() {
     fetchMetricas();
   }, []);
 
-  // A métrica de Eixos permanece estática (Hardcoded), respeitando a regra de negócio da BNCC (3 Eixos).
   return (
     <div className='p-6 md:p-10 max-w-7xl mx-auto animate-fadeIn'>
-      {/* ========================================== */}
-      {/* HERO BANNER (Painel de Boas-Vindas) */}
-      {/* ========================================== */}
+      {/* Painel de Boas-Vindas (Hero) */}
       <section className='bg-gradient-to-br from-green-900 to-green-700 rounded-2xl p-8 md:p-12 text-white shadow-xl mb-12 flex flex-col md:flex-row items-center justify-between gap-8 border-b-8 border-green-500'>
         <div className='max-w-3xl'>
-          {/* Chancela Oficial dos Logos em Fundo Escuro (Caixa Ajustada aos Logos) */}
           <div className='inline-flex flex-wrap items-center gap-3.5 sm:gap-4 bg-green-950/85 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl shadow-xl mb-6 border border-white/20'>
             <img
               src='/assets/logo IF.png'
@@ -147,10 +140,7 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* NOVO: PAINEL DE IMPACTO EM TEMPO REAL (Firebase) */}
-      {/* Escondido na impressão (print:hidden) para foco pedagógico */}
-      {/* ========================================== */}
+      {/* Painel de Métricas de Impacto (Firestore) */}
       {!loadingMetricas && (
         <section className='mb-12 print:hidden' aria-live='polite'>
           <div className='flex items-center gap-3 mb-6'>
@@ -161,7 +151,6 @@ export default function Dashboard() {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-            {/* Card Views */}
             <div className='bg-slate-800 text-white p-4 rounded-2xl shadow-lg border border-slate-700 flex items-center gap-5 transform hover:-translate-y-1 transition-transform'>
               <div
                 className='bg-slate-700 p-4 rounded-xl text-3xl'
@@ -177,7 +166,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Card Downloads */}
             <div className='bg-slate-800 text-white p-4 rounded-2xl shadow-lg border border-slate-700 flex items-center gap-5 transform hover:-translate-y-1 transition-transform'>
               <div
                 className='bg-slate-700 p-4 rounded-xl text-3xl'
@@ -195,7 +183,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Card Avaliações */}
             <div className='bg-amber-50 p-4 rounded-2xl shadow-sm border border-amber-200 flex items-center gap-5 transform hover:-translate-y-1 transition-transform'>
               <div className='bg-amber-100 text-amber-600 p-4 rounded-xl text-3xl font-bold'>
                 {metricasGlobais.mediaEstrelas}
@@ -214,11 +201,8 @@ export default function Dashboard() {
         </section>
       )}
 
-      {/* ========================================== */}
-      {/* CARDS DE MÉTRICAS PEDAGÓGICAS (Formato Compacto alinhado ao Flow) */}
-      {/* ========================================== */}
+      {/* Indicadores Pedagógicos */}
       <section className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-16'>
-        {/* Card 1: Missões Validadas */}
         <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4 sm:gap-5 transform hover:-translate-y-1 transition-transform border-l-4 border-l-amber-500'>
           <div
             className='bg-amber-50 text-amber-600 p-4 rounded-xl text-3xl font-bold flex-shrink-0'
@@ -236,7 +220,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Card 2: 3 Eixos BNCC */}
         <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4 sm:gap-5 transform hover:-translate-y-1 transition-transform border-l-4 border-l-blue-500'>
           <div
             className='bg-blue-50 text-blue-600 p-4 rounded-xl text-3xl font-bold flex-shrink-0'
@@ -254,7 +237,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Card 3: 100% Local Nioaque */}
         <div className='bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4 sm:gap-5 transform hover:-translate-y-1 transition-transform border-l-4 border-l-emerald-500'>
           <div
             className='bg-emerald-50 text-emerald-600 p-4 rounded-xl text-3xl font-bold flex-shrink-0'
@@ -273,9 +255,7 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* JORNADA DO EDUCADOR (Novo UX Onboarding) */}
-      {/* ========================================== */}
+      {/* Jornada do Educador */}
       <section className='mb-16'>
         <div className='text-center mb-10'>
           <h2 className='text-3xl font-extrabold text-gray-900 mb-4'>
