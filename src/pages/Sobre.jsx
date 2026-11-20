@@ -30,7 +30,7 @@ export default function Sobre() {
         <div className='w-full flex items-center justify-center gap-8 sm:gap-14 bg-gradient-to-r from-green-950 via-green-900 to-green-950 px-6 py-1 sm:py-2 rounded-2xl shadow-xl mb-8 border border-green-800/80'>
           <img
             src='/assets/logo IF.png'
-            alt='Instituto Federal de Mato Grosso do Sul - Câmpus Jardim'
+            alt='Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul - Câmpus Jardim'
             className='h-24 sm:h-32 md:h-36 lg:h-40 w-auto object-contain drop-shadow-md transition-transform hover:scale-105 duration-300'
           />
           <div className='h-16 sm:h-20 w-px bg-white/25 hidden sm:block' aria-hidden='true' />

@@ -21,6 +21,7 @@
 </p>
 
 <p align="center">
+  <a href="https://doi.org/10.5281/zenodo.24353731"><img alt="DOI Zenodo" src="https://zenodo.org/badge/DOI/10.5281/zenodo.24353731.svg"></a>
   <img alt="Status do Projeto" src="https://img.shields.io/badge/status-Ativo_e_Validado_em_Campo-10b981?style=flat">
   <img alt="Edital" src="https://img.shields.io/badge/Fomento-Edital_054%2F2025_PROPI%2FIFMS-15803d?style=flat">
   <img alt="Licença" src="https://img.shields.io/badge/license-MIT_%2F_CC_BY--NC--SA_4.0-blue?style=flat">
@@ -30,7 +31,9 @@
 
 ## 📖 Sobre a Plataforma
 
-O **PATRIMÔNIO DE NIOAQUE EM 3D** é um produto educacional interativo e plataforma web de código aberto desenvolvida pelo **Instituto Federal de Mato Grosso do Sul (IFMS) – Câmpus Jardim**, no âmbito do **Laboratório IFMaker** com fomento do **Edital nº 054/2025 PROPI/IFMS**.
+O **PATRIMÔNIO DE NIOAQUE EM 3D** é um produto educacional interativo e plataforma web de código aberto desenvolvida pelo **Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) – Câmpus Jardim**, no âmbito do **Laboratório IFMaker** com fomento do **Edital nº 054/2025 PROPI/IFMS**.
+
+- **Manual Pedagógico Completo (Zenodo / Acesso Aberto):** [https://doi.org/10.5281/zenodo.24353731](https://doi.org/10.5281/zenodo.24353731)
 
 A plataforma atua como guia prático digital para apoiar professores do **Ensino Fundamental (com foco no 5º ano)** a lecionarem os componentes curriculares da **BNCC Computação** (Pensamento Computacional, Mundo Digital e Cultura Digital) de forma viva, interdisciplinar e contextualizada. 
 

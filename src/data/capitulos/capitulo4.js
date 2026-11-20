@@ -109,10 +109,10 @@ export const capitulo4 = {
     {
       tipo: "lista_numerada",
       itens: [
-        { titulo: "O Programador:", texto: "Responsável por liderar a seleção e o posicionamento físico dos blocos de programação tangível (setas e comandos lógicos)." },
-        { titulo: "O Robô (Testador):", texto: "O único discente autorizado a mover o artefato 3D pelo tabuleiro demarcado, seguindo com rigor cego as instruções dispostas pelo Programador, independentemente de estarem corretas ou não." },
-        { titulo: "O Detetive (Depurador):", texto: "Encarregado de realizar a análise preditiva do algoritmo, buscando antecipar falhas de colisão ou loops infinitos antes mesmo da execução." },
-        { titulo: "O Documentador:", texto: "Responsável pelo registro oficial da sequência lógica validada nos tabuleiros (grids), cadernos da equipe ou folhas de missão (conforme a dinâmica da aula)." },
+        { titulo: "O Mestre do Código (Programador):", texto: "Responsável por liderar a seleção e o posicionamento físico dos blocos de programação tangível (setas e comandos lógicos)." },
+        { titulo: "O Robô Tático (Testador):", texto: "O único discente autorizado a mover o artefato 3D pelo tabuleiro demarcado, seguindo com rigor cego as instruções dispostas pelo Mestre do Código, independentemente de estarem corretas ou não." },
+        { titulo: "O Caçador de Bugs (Depurador):", texto: "Encarregado de realizar a análise preditiva do algoritmo, buscando antecipar falhas de colisão ou loops infinitos antes mesmo da execução." },
+        { titulo: "O Cartógrafo (Documentador):", texto: "Responsável pelo registro oficial da sequência lógica validada nos tabuleiros (grids), cadernos da equipe ou folhas de missão (conforme a dinâmica da aula)." },
         { titulo: "Deixe a Regra Clara:", texto: "Antes de entregar as peças 3D, estabeleça combinados de cuidado com o material e respeito ao tempo de fala do colega do grupo." }
       ]
     },

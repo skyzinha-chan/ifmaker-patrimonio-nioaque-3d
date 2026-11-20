@@ -129,10 +129,17 @@ export default function Footer() {
         </div>
 
         {/* Direitos Autorais e Créditos */}
-        <div className='border-t border-green-800/50 mt-6 pt-5 text-center md:flex md:justify-between md:text-left'>
-          <p className='text-xs sm:text-sm text-green-100/70 font-medium'>
-            &copy; {anoAtual} Patrimônio de Nioaque em 3D. Todos os direitos
-            reservados.
+        <div className='border-t border-green-800/50 mt-6 pt-5 text-center md:flex md:justify-between md:items-center md:text-left gap-4'>
+          <p className='text-xs sm:text-sm text-green-100/75 font-medium'>
+            &copy; {anoAtual} Patrimônio de Nioaque em 3D • Obra: CC BY-NC-SA 4.0 • Software: MIT •{" "}
+            <a
+              href='https://doi.org/10.5281/zenodo.24353731'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline text-green-300 hover:text-white transition-colors'
+            >
+              DOI: 10.5281/zenodo.24353731
+            </a>
           </p>
           <p className='text-sm text-green-400 mt-2 md:mt-0 font-bold tracking-wide'>
             Criado por Talita Marques & Leonardo Vinicius

@@ -70,7 +70,7 @@ export default function Dashboard() {
           <div className='inline-flex flex-wrap items-center gap-3.5 sm:gap-4 bg-green-950/85 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl shadow-xl mb-6 border border-white/20'>
             <img
               src='/assets/logo IF.png'
-              alt='Instituto Federal de Mato Grosso do Sul - Câmpus Jardim'
+              alt='Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul - Câmpus Jardim'
               className='h-14 sm:h-16 md:h-20 w-auto object-contain drop-shadow'
             />
             <div className='h-10 sm:h-12 w-px bg-white/25 hidden sm:block' aria-hidden='true' />
