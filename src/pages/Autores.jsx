@@ -47,8 +47,9 @@ export default function Autores() {
             </p>
             <div className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
               <p className='mb-3'>
-                Acadêmica de Licenciatura em Ciência da Computação no IFMS
-                Campus Jardim e graduada em Gestão Empreendedora de Serviços
+                Acadêmica de Licenciatura em Computação no Instituto Federal de
+                Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) –
+                Câmpus Jardim e graduada em Gestão Empreendedora de Serviços
                 (UNINTER, 2023). Possui forte atuação na área de programação e
                 trabalha profissionalmente com o treinamento e avaliação de
                 modelos de Inteligência Artificial a partir de feedback humano
@@ -56,20 +57,23 @@ export default function Autores() {
               </p>
               <p className='mb-3'>
                 Sua trajetória na extensão e pesquisa iniciou-se como voluntária
-                no projeto IDIS (Inclusão Digital para Inclusão Social), voltado
-                ao ensino de informática básica para pessoas em situação de
-                vulnerabilidade. Pela sua Iniciação Científica em Visão
-                Computacional para Educação Inclusiva (Edital 033/2024),
-                conquistou o 3º lugar na FECIOESTE 2024 e, em parceria, o 2º
-                lugar na edição de 2025.
+                no projeto IDIS (Inclusão Digital para Inclusão Social), premiado
+                na FECIOESTE 2024 e voltado ao ensino de informática básica para
+                pessoas em situação de vulnerabilidade. Pela sua Iniciação
+                Científica em Visão Computacional para Educação Inclusiva
+                (Edital nº 033/2024), conquistou o 3º lugar na FECIOESTE 2024 e,
+                em equipe, o 1º lugar na FECIOESTE 2025.
               </p>
               <p>
-                No projeto IFMAKER (Edital 054/2025), participou da curadoria de
-                modelos 3D e do desenho da estrutura pedagógica que conecta o
-                patrimônio de Nioaque à BNCC. Sua formação inclui ainda um
-                intercâmbio acadêmico no Canadá (Edital 060/2025), além de
-                experiências como estágio na Compass UOL e bootcamps Mulheres na
-                Computação, Santander Code Girls e Best Minds.
+                No projeto IFMaker Educador (Edital nº 054/2025 – PROPI/IFMS),
+                laureado com o 3º lugar na SEMICT 2026, atuou na idealização
+                metodológica, na curadoria dos modelos 3D e no desenho das
+                sequências didáticas que conectam o patrimônio de Nioaque à
+                BNCC. Sua formação inclui ainda uma imersão de 15 dias de
+                intercâmbio acadêmico no Canadá (Edital nº 060/2025, com apoio do
+                IFMS Câmpus Jardim), além de experiências como estágio na
+                Compass UOL e bootcamps Mulheres na Computação, Santander Code
+                Girls e Best Minds.
               </p>
             </div>
 
@@ -90,6 +94,24 @@ export default function Autores() {
                   <path d='M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z' />
                 </svg>
                 Lattes
+              </a>
+
+              <a
+                href='https://orcid.org/0009-0007-4311-8876'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-1.5 px-2 py-1 bg-lime-50 text-lime-800 text-[11px] font-bold rounded hover:bg-lime-100 transition-all border border-lime-300 shadow-sm'
+                title='Acessar Perfil no ORCID'
+              >
+                <svg
+                  className='w-3.5 h-3.5'
+                  viewBox='0 0 256 256'
+                  aria-hidden='true'
+                >
+                  <path fill='#A6CE39' d='M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z' />
+                  <path fill='#fff' d='M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z' />
+                </svg>
+                ORCID
               </a>
 
               <a
@@ -168,28 +190,29 @@ export default function Autores() {
             </p>
             <div className='text-gray-600 text-sm leading-relaxed mb-6 text-justify'>
               <p className='mb-3'>
-                Acadêmico de Licenciatura em Ciência da Computação no IFMS
-                Campus Jardim. Atua como coautor com participação igualitária
+                Acadêmico de Licenciatura em Computação no Instituto Federal de
+                Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) –
+                Câmpus Jardim. Atua como coautor com participação igualitária
                 nos projetos, desde a concepção metodológica até a prática.
                 Iniciou sua trajetória no IFMS como bolsista no projeto IDIS
-                (Inclusão Digital para Inclusão Social), promovendo o ensino de
-                computação básica para comunidades em vulnerabilidade.
+                (Inclusão Digital para Inclusão Social), premiado na FECIOESTE
+                2024 e voltado ao ensino de computação básica para comunidades em
+                vulnerabilidade.
               </p>
               <p className='mb-3'>
                 Em 2025, passou a integrar o projeto de Iniciação Científica em
-                Visão Computacional (Edital 033/2024), conquistando, junto com
-                Talita, o 2º lugar na FECIOESTE. Nesse mesmo projeto, foi o
-                responsável pela apresentação que garantiu o 2º lugar (Menção
-                Honrosa - CET) na SEMICT 2025.
+                Visão Computacional (Edital nº 033/2024), conquistando, junto
+                com Talita, o 1º lugar na FECIOESTE 2025 e a Menção Honrosa
+                (2º lugar) na SEMICT 2025.
               </p>
               <p>
-                Atualmente, além de integrar o Programa Institucional de Bolsas
-                de Iniciação à Docência (PIBID - Edital 23/2026), é bolsista
-                voluntário no projeto IFMAKER (Edital 054/2025). Nele, participa
-                ativamente da construção dos planos de aula, além de ser
-                responsável pela logística e infraestrutura técnica que
-                viabilizam a aplicação de aulas desplugadas e com uso de modelos
-                3D em escolas públicas.
+                Integra o Programa Institucional de Bolsas de Iniciação à
+                Docência (PIBID – Edital nº 23/2026), pelo qual conquistou o 2º
+                lugar na FECIOESTE 2026, além de atuar como pesquisador coautor e
+                bolsista voluntário no projeto IFMaker Educador (Edital nº
+                054/2025 – PROPI/IFMS), contribuindo no desenvolvimento das
+                práticas desplugadas e na logística operacional das oficinas com
+                modelos 3D em escolas públicas.
               </p>
             </div>
 
@@ -210,6 +233,24 @@ export default function Autores() {
                   <path d='M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z' />
                 </svg>
                 Lattes
+              </a>
+
+              <a
+                href='https://orcid.org/0009-0006-1657-1918'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-1.5 px-2 py-1 bg-lime-50 text-lime-800 text-[11px] font-bold rounded hover:bg-lime-100 transition-all border border-lime-300 shadow-sm'
+                title='Acessar Perfil no ORCID'
+              >
+                <svg
+                  className='w-3.5 h-3.5'
+                  viewBox='0 0 256 256'
+                  aria-hidden='true'
+                >
+                  <path fill='#A6CE39' d='M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z' />
+                  <path fill='#fff' d='M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z' />
+                </svg>
+                ORCID
               </a>
 
               <a

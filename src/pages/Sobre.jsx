@@ -119,7 +119,6 @@ export default function Sobre() {
                 Responsabilidade técnica e gestão laboratorial (Espaço IFMaker)
               </h4>
               <p className='mt-2'>Prof. Me. Ewerton da Silva Schroeder</p>
-              <p>Prof. Me. Fagner Lopes Theodoro</p>
               <p className='text-sm text-gray-600 mt-1'>IFMS Câmpus Jardim</p>
             </div>
           </div>
@@ -158,18 +157,77 @@ export default function Sobre() {
 
         <section>
           <h2 className='text-2xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-5'>
-            Identificadores da publicação
+            Identificação editorial e acesso aberto
           </h2>
-          <div className='bg-amber-50 border border-amber-200 rounded-lg p-5 text-sm'>
-            <p>
-              <strong>ISBN:</strong> em processo de solicitação.
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-sm'>
+            <div className='bg-emerald-50 border border-emerald-200 rounded-lg p-4'>
+              <p className='text-xs font-bold uppercase tracking-wider text-emerald-800'>
+                DOI do Manual (Zenodo)
+              </p>
+              <a
+                href='https://doi.org/10.5281/zenodo.24353731'
+                target='_blank'
+                rel='noreferrer'
+                className='mt-1 inline-block font-bold text-emerald-900 underline hover:text-emerald-700 break-all'
+              >
+                https://doi.org/10.5281/zenodo.24353731
+              </a>
+            </div>
+            <div className='bg-gray-50 border border-gray-200 rounded-lg p-4'>
+              <p className='text-xs font-bold uppercase tracking-wider text-emerald-800'>
+                Plataforma Web (PWA • Licença MIT)
+              </p>
+              <a
+                href='https://ifmaker-patrimonio-nioaque-3d.vercel.app/'
+                target='_blank'
+                rel='noreferrer'
+                className='mt-1 inline-block font-semibold text-emerald-800 underline hover:text-emerald-600 break-all'
+              >
+                ifmaker-patrimonio-nioaque-3d.vercel.app
+              </a>
+            </div>
+            <div className='bg-gray-50 border border-gray-200 rounded-lg p-4'>
+              <p className='text-xs font-bold uppercase tracking-wider text-emerald-800'>
+                Repositório de Código-Fonte (GitHub)
+              </p>
+              <a
+                href='https://github.com/skyzinha-chan/ifmaker-patrimonio-nioaque-3d'
+                target='_blank'
+                rel='noreferrer'
+                className='mt-1 inline-block font-semibold text-emerald-800 underline hover:text-emerald-600 break-all'
+              >
+                skyzinha-chan/ifmaker-patrimonio-nioaque-3d
+              </a>
+            </div>
+            <div className='bg-amber-50 border border-amber-200 rounded-lg p-4'>
+              <p className='text-xs font-bold uppercase tracking-wider text-amber-800'>
+                Edição e Acesso
+              </p>
+              <p className='mt-1 text-gray-800'>
+                1ª edição digital aberta (2026) • Edital nº 054/2025 – PROPI/IFMS (sem ISBN comercial).
+              </p>
+            </div>
+          </div>
+
+          <div className='mt-4 bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-justify'>
+            <strong>Nota institucional:</strong> Produto educacional de distribuição gratuita à rede pública de ensino mediante Termo de Doação educacional (Edital nº 054/2025 – PROPI/IFMS, item 3.3), sem registro ISBN comercial atribuído nesta edição.
+          </div>
+
+          <div className='mt-4 bg-gray-50 border border-gray-200 border-l-4 border-l-green-800 rounded-lg p-4 text-sm leading-relaxed'>
+            <p className='text-xs font-bold uppercase tracking-wider text-green-900 mb-1'>
+              Referência sugerida para citação (ABNT)
             </p>
-            <p>
-              <strong>DOI:</strong> em processo de solicitação.
-            </p>
-            <p>
-              <strong>Ficha CIP:</strong> pendente de emissão pela biblioteca
-              institucional e do registro do bibliotecário responsável.
+            <p className='text-justify'>
+              MARQUES, Talita Mendonça; GOMES, Leonardo Vinicius da Costa.{" "}
+              <strong>Patrimônio de Nioaque em 3D:</strong> manual pedagógico de
+              computação e cultura maker no ensino fundamental. Orientação de
+              Moacir Juliani e Rafaela Chivalski de Oliveira. Jardim, MS: IFMS
+              Câmpus Jardim, 2026. Produto educacional aberto (CC BY-NC-SA 4.0)
+              vinculado ao Edital nº 054/2025 – PROPI/IFMS.{" "}
+              <strong className='text-emerald-800'>
+                DOI: https://doi.org/10.5281/zenodo.24353731
+              </strong>
+              .
             </p>
           </div>
         </section>
