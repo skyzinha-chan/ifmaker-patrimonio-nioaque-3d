@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrimônio de Nioaque em 3D — Apêndice A (Paisagem)</title>
+  <link rel="stylesheet" href="./styles/theme.css" />
+  <style>
+    @page :first {
+      counter-reset: page 104;
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 18mm 18mm 16mm 18mm;
+
+      @top-left {
+        content: "Manual Pedagógico IFMaker • Patrimônio de Nioaque em 3D";
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 7.5pt;
+        color: #065f46;
+        font-weight: 600;
+        vertical-align: bottom;
+        border-bottom: 0.75pt solid #10b981;
+        padding-bottom: 1pt;
+        margin-bottom: 6pt;
+      }
+
+      @top-right {
+        content: "| " counter(page);
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 8pt;
+        font-weight: 700;
+        color: #065f46;
+        vertical-align: bottom;
+        border-bottom: 0.75pt solid #10b981;
+        padding-bottom: 1pt;
+        margin-bottom: 6pt;
+      }
+
+      @bottom-left {
+        content: "DOI: 10.5281/zenodo.24353731";
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 7.5pt;
+        color: #64748b;
+      }
+
+      @bottom-right {
+        content: none;
+      }
+    }
+
+    .page-break {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    .avoid-break {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    @media screen {
+      body {
+        background: #e2e8f0;
+        padding: 20px 12px 60px;
+      }
+      .toolbar {
+        max-width: 297mm;
+        margin: 0 auto 16px;
+        background: #064e3b;
+        color: #ecfdf5;
+        padding: 10px 16px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        font-size: 13px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      }
+      .btn-print {
+        background: #10b981;
+        color: #022c22;
+        border: none;
+        border-radius: 6px;
+        padding: 7px 14px;
+        font-weight: 700;
+        font-size: 12.5px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .manual-container {
+        max-width: 297mm;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 18mm 18mm;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+      }
+      .pagedjs_pages .manual-container {
+        max-width: none;
+        margin: 0;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+
+    @media print {
+      .toolbar, .no-print {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .manual-container {
+        max-width: 100%;
+        padding: 0;
+        box-shadow: none;
+      }
+      .pagedjs_pagebox,
+      .pagedjs_area,
+      .pagedjs_page_content {
+        overflow: visible !important;
+      }
+    }
+  </style>
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  <script>
+    if (window.Paged) {
+      class LandscapePageNumbers extends Paged.Handler {
+        afterRendered(pages) {
+          const urlStart = parseInt(new URLSearchParams(window.location.search).get('start'), 10);
+          let storedStart = NaN;
+          try { storedStart = parseInt(localStorage.getItem('ifmaker_apendice_start'), 10); } catch (e) {}
+          const baseStart = !Number.isNaN(urlStart) ? urlStart : (!Number.isNaN(storedStart) ? storedStart : 103);
+          pages.forEach((p, idx) => {
+            const num = baseStart + idx;
+            const style = document.createElement('style');
+            style.textContent = `[data-page-number="${idx + 1}"] .pagedjs_margin-top-right .pagedjs_margin-content::after { content: "| ${num}" !important; }`;
+            document.head.appendChild(style);
+          });
+        }
+      }
+      Paged.registerHandlers(LandscapePageNumbers);
+    }
+  </script>
+</head>
+<body>
+  <div class="toolbar no-print">
+    <div>
+      <strong>Apêndice A — Rubricas, Guias e Fichas (A4 Paisagem)</strong> · DOI: 10.5281/zenodo.24353731
+    </div>
+    <button class="btn-print" onclick="window.print()">Salvar / Imprimir PDF (Paisagem)</button>
+  </div>
+
+  <main class="manual-container" style="counter-reset: page 103;">
+<div class="avoid-break">
+  <p style="text-indent: 0; text-align: justify; font-size: 9.8pt; margin-bottom: 14mm;">
+    <em><strong>Como utilizar as Rubricas Curingas na sala de aula:</strong></em> As três rubricas detalhadas abaixo (Tipo A, B e C) servem como o seu Guia de Referência. Elas foram desenhadas para cobrir os três eixos estruturantes da Computação na BNCC e descrevem exatamente o que significa um aluno estar no nível "Adequado" ou "Avançado".
+  </p>
+  <h2 style="text-align: center; font-size: 14pt; font-weight: 800; color: #1d4ed8; margin-bottom: 3px;">
+    Rubrica Tipo A: Eixo Pensamento Computacional
+  </h2>
+  <div style="text-align: center; font-style: italic; font-size: 10pt; color: #475569; margin-bottom: 8px;">
+    (Focada em atividades de tabuleiro, codificação desplugada e resolução lógica de problemas).
+  </div>
+  <div style="border: 1.5px solid #064e3b; border-radius: 10px; overflow: hidden; margin-top: 8px;">
+  <table class="editorial-table" style="width: 100%; font-size: 10pt; line-height: 1.45; margin: 0; table-layout: fixed;">
+    <colgroup><col style="width: 22%;" /><col style="width: 26%;" /><col style="width: 26%;" /><col style="width: 26%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 22%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">Critério Avaliativo</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌱 Em Desenvolvimento</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌿 Adequado</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌳 Avançado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Decomposição e Lógica (Algoritmo)</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Tem dificuldade em ordenar os comandos físicos; precisa de ajuda constante do professor para avançar.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Consegue quebrar o trajeto em passos menores, mas comete pequenos erros de direção ou contagem.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Cria sequências precisas de forma independente, planejando todos os comandos curtos antes do "Robô" andar.</td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Depuração de Erros (Debugging)</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Frustra-se ao errar o caminho e desiste ou quer recomeçar o trajeto de forma aleatória.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Percebe o erro com ajuda dos colegas e tenta substituir a peça incorreta, retomando o raciocínio.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Identifica rapidamente onde o "bug" ocorreu, explica o porquê falhou e corrige apenas a instrução necessária.</td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Colaboração e Empatia</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Tenta dominar o material sozinho, não participa das decisões do grupo ou desrespeita os turnos de fala.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Participa da atividade, mas às vezes confunde seu papel (Ex: tenta mover a peça quando deveria apenas codificar).</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Respeita rigorosamente a divisão de tarefas (Mestre/Robô), ouve as ideias dos colegas e colabora ativamente na missão.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="page-break" style="padding-top: 18mm;">
+  <h2 style="text-align: center; font-size: 14pt; font-weight: 800; color: #047857; margin-bottom: 3px;">
+    Rubrica Tipo B: Eixo Mundo Digital
+  </h2>
+  <div style="text-align: center; font-style: italic; font-size: 10pt; color: #475569; margin-bottom: 8px;">
+    (Focada em atividades de prototipagem 3D, distinção entre hardware/software e manufatura).
+  </div>
+  <div style="border: 1.5px solid #064e3b; border-radius: 10px; overflow: hidden; margin-top: 8px;">
+  <table class="editorial-table" style="width: 100%; font-size: 10pt; line-height: 1.45; margin: 0; table-layout: fixed;">
+    <colgroup><col style="width: 22%;" /><col style="width: 26%;" /><col style="width: 26%;" /><col style="width: 26%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 22%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">Critério Avaliativo</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌱 Em Desenvolvimento</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌿 Adequado</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌳 Avançado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Abstração Espacial (Hardware)</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Observa o objeto apenas como um brinquedo inteiro, sem conseguir isolar suas partes ou características.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Consegue identificar partes do objeto, mas tem dificuldade em isolar a propriedade exigida (textura, camadas, movimento).</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Isola perfeitamente a propriedade essencial exigida (captura apenas a textura, foca nos quadros de animação ou nas fatias do design).</td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Iteração e Resiliência Maker</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Manuseia as peças de forma brusca, gerando falhas visuais (fotos tremidas, texturas rasgadas) e desiste.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Tenta corrigir os erros físicos, refazendo o desenho ou a foto quando percebe que o resultado ficou ruim.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Manipula o artefato 3D milimetricamente. Percebe falhas artísticas/físicas imediatamente e refaz o processo com paciência técnica.</td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Transposição Físico-Digital</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Não consegue explicar a relação entre o objeto em mãos e a tecnologia/conceito da aula.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Entende que o objeto tem um propósito, mas o explica de forma superficial.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 18px 12px;">Conecta com clareza o artefato físico ao seu funcionamento lógico (diferencia Hardware de Software ou explica a ilusão digital do Stop Motion).</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="page-break" style="padding-top: 18mm;">
+  <h2 style="text-align: center; font-size: 14pt; font-weight: 800; color: #b45309; margin-bottom: 3px;">
+    Rubrica Tipo C: Eixo Cultura Digital
+  </h2>
+  <div style="text-align: center; font-style: italic; font-size: 10pt; color: #475569; margin-bottom: 8px;">
+    (Focada em registro documental, cartografia, pesquisa, ética e análise de dados).
+  </div>
+  <div style="border: 1.5px solid #064e3b; border-radius: 10px; overflow: hidden; margin-top: 8px;">
+  <table class="editorial-table" style="width: 100%; font-size: 10pt; line-height: 1.45; margin: 0; table-layout: fixed;">
+    <colgroup><col style="width: 22%;" /><col style="width: 26%;" /><col style="width: 26%;" /><col style="width: 26%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 22%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">Critério Avaliativo</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌱 Em Desenvolvimento</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌿 Adequado</th><th colspan="1" style="width: 26%;padding: 14px 10px; font-size: 10.5pt; vertical-align: middle;">🌳 Avançado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Estruturação Lógica do Registro</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">O texto, manual ou história não apresenta sequência lógica (início, meio e fim estão misturados).</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">A estrutura faz sentido, mas faltam elementos lógicos conectivos (como as regras claras do "Se/Então").</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">O texto ou código escrito é autossuficiente: utiliza verbos imperativos e regras condicionais de forma perfeita e coesa.</td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Organização Viso-espacial de Dados</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">O registro no papel/cartolina é confuso, dificultando a leitura de mapas, gráficos ou fichas.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Organiza a informação de forma legível, respeitando as marcações principais do papel.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Utiliza o espaço de forma estratégica, distribuindo elementos gráficos e textuais com extrema clareza, capricho e legendas.</td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Rastreamento e Análise de Informação</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Apresenta dados equivocados, foge do tema ou não percebe informações falsas/distorcidas.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Documenta dados essenciais corretamente. Percebe ruídos de comunicação com ajuda do professor.</td><td colspan="1" style="text-align: center; vertical-align: middle; font-size: 10pt; line-height: 1.45; padding: 16px 12px;">Extrai dados precisos das atividades. Rastreia "bugs" na informação (Fake News), deduz fatos científicos ou identifica padrões (desmatamento).</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="text-indent: 0; font-size: 9.5pt; margin-top: 10px;">
+    <strong>Para o dia da aula, você não precisa imprimir os textos longos.</strong> Basta imprimir a Folha de Registro da Turma abaixo, preencher o nome dos esquadrões e usar legendas rápidas para marcar o nível de cada grupo enquanto você circula pela sala.
+  </p>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 12pt; font-weight: 800; color: #1d4ed8; margin-bottom: 3px;">
+    MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A
+  </h2>
+  <div style="font-size: 8.8pt; color: #334155; margin-bottom: 2px; text-align: center;">
+    <strong>Turma:</strong> ____________ &nbsp;&nbsp; <strong>Data:</strong> ____/____/______ &nbsp;&nbsp; <strong>Plano de Aula:</strong> ___________________________
+  </div>
+  <div style="font-size: 8.8pt; color: #1e293b; margin-bottom: 4px; text-align: center;">
+    <strong>(Foco: Eixo Pensamento Computacional - Algoritmos e Tabuleiro)</strong> &nbsp;|&nbsp;
+    <strong>Legenda: (1) 🌱 Em Desenvolvimento · (2) 🌿 Adequado · (3) 🌳 Avançado</strong>
+  </div>
+  <table class="editorial-table" style="width: 100%; font-size: 8.8pt; line-height: 1.3; margin: 6px 0 0; table-layout: fixed;">
+    <colgroup><col style="width: 11%;" /><col style="width: 16%;" /><col style="width: 16%;" /><col style="width: 16%;" /><col style="width: 41%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 11%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;"><br>Esquadrão</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 1: Decomposição e Lógica</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 2: Depuração (Debugging)</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 3: Colaboração e Empatia</th><th colspan="1" style="width: 41%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">📝 Observações Rápidas <br>(Destaques ou Dificuldades)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 1:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 2:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 3:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 4:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 5:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1 <br>( ) 2 <br>( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 6:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 7:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">Grupo 8:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 8.4pt; margin-top: 6px; line-height: 1.28;">
+    <strong>🧠 Critérios para o Avaliador (Lembrete):</strong>
+    <ul style="margin: 2px 0 0 18px;">
+      <li><strong>Decomposição e Lógica:</strong> Marcar <strong>3</strong> se o esquadrão planeja a sequência completa de comandos tangíveis antes de autorizar o robô/peça a se mover.</li>
+      <li><strong>Depuração (Debugging):</strong> Marcar <strong>3</strong> se, diante do erro ou bloqueio, o grupo localiza a instrução exata e corrige pontualmente sem desfazer o código inteiro.</li>
+      <li><strong>Colaboração e Empatia:</strong> Marcar <strong>3</strong> se os alunos respeitam rigorosamente os papéis da equipe e resolvem divergências com escuta ativa.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 12pt; font-weight: 800; color: #047857; margin-bottom: 3px;">
+    MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B
+  </h2>
+  <div style="font-size: 8.8pt; color: #334155; margin-bottom: 2px; text-align: center;">
+    <strong>Turma:</strong> ____________ &nbsp;&nbsp; <strong>Data:</strong> ____/____/______ &nbsp;&nbsp; <strong>Plano de Aula:</strong> ___________________________
+  </div>
+  <div style="font-size: 8.8pt; color: #1e293b; margin-bottom: 4px; text-align: center;">
+    <strong>(Foco: Eixo Mundo Digital - Prototipagem e Cultura Maker)</strong> &nbsp;|&nbsp;
+    <strong>Legenda: (1) 🌱 Em Desenvolvimento · (2) 🌿 Adequado · (3) 🌳 Avançado</strong>
+  </div>
+  <table class="editorial-table" style="width: 100%; font-size: 8.8pt; line-height: 1.3; margin: 6px 0 0; table-layout: fixed;">
+    <colgroup><col style="width: 11%;" /><col style="width: 16%;" /><col style="width: 16%;" /><col style="width: 16%;" /><col style="width: 41%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 11%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Esquadrão (Grupo)</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 1: Abstração de Propriedades</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 2: Iteração e Manuseio do Artefato</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 3: Transposição Físico-Digital</th><th colspan="1" style="width: 41%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">📝 Observações Rápidas <br>(Destaques ou Dificuldades)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 1:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 2:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 3:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 4:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 5:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 6:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 7:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">Grupo 8:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 8.4pt; margin-top: 6px; line-height: 1.28;">
+    <strong>🧠 Critérios para o Avaliador (Lembrete):</strong>
+    <ul style="margin: 2px 0 0 18px;">
+      <li><strong>Abstração Espacial:</strong> Marcar <strong>3</strong> se o aluno demonstra excelente noção de volume e escala, não deixando a peça achatada.</li>
+      <li><strong>Iteração:</strong> Marcar <strong>3</strong> se o aluno aceita refazer partes quando a estrutura cai ou desmorona, sem se frustrar.</li>
+      <li><strong>Transposição Físico-Digital:</strong> Marcar <strong>3</strong> se o aluno conecta com clareza o artefato físico ao seu funcionamento lógico ou tecnológico.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 12pt; font-weight: 800; color: #b45309; margin-bottom: 3px;">
+    MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C
+  </h2>
+  <div style="font-size: 8.8pt; color: #334155; margin-bottom: 2px; text-align: center;">
+    <strong>Turma:</strong> ____________ &nbsp;&nbsp; <strong>Data:</strong> ____/____/______ &nbsp;&nbsp; <strong>Plano de Aula:</strong> ___________________________
+  </div>
+  <div style="font-size: 8.8pt; color: #1e293b; margin-bottom: 4px; text-align: center;">
+    <strong>(Foco: Eixo Cultura Digital - Registros e Análise de Dados)</strong> &nbsp;|&nbsp;
+    <strong>Legenda: (1) 🌱 Em Desenvolvimento · (2) 🌿 Adequado · (3) 🌳 Avançado</strong>
+  </div>
+  <table class="editorial-table" style="width: 100%; font-size: 8.8pt; line-height: 1.3; margin: 6px 0 0; table-layout: fixed;">
+    <colgroup><col style="width: 11%;" /><col style="width: 16%;" /><col style="width: 16%;" /><col style="width: 16%;" /><col style="width: 41%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 11%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;"><br>Esquadrão (Grupo)</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 1: Estruturação Lógica do Registro</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 2: Organização Viso-espacial de Dados</th><th colspan="1" style="width: 16%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">Critério 3: Rastreamento e Análise de Informação</th><th colspan="1" style="width: 41%;padding: 6px 6px; font-size: 8.8pt; vertical-align: middle;">📝 Observações Rápidas <br>(Destaques ou Dificuldades)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 1:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 2:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 3:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 4:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 5:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 6:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 7:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"><br>Grupo 8:</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;">( ) 1</span><br /><span style="white-space: nowrap;">( ) 2</span><br /><span style="white-space: nowrap;">( ) 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 5px 6px; font-size: 8.8pt;"><span style="white-space: nowrap;"></span></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 9pt; margin-top: 8px; line-height: 1.35;">
+    <strong>🧠 Critérios para o Avaliador (Lembrete):</strong>
+    <ul style="margin: 3px 0 0 18px;">
+      <li><strong>Estruturação Lógica do Registro:</strong> Marcar <strong>3</strong> se o texto, manual ou algoritmo escrito for autossuficiente, ordenado e compreensível para qualquer leitor.</li>
+      <li><strong>Organização Viso-espacial de Dados:</strong> Marcar <strong>3</strong> se o aluno utiliza o espaço da folha de forma estratégica, legível e com capricho/legendas.</li>
+      <li><strong>Rastreamento e Análise de Informação:</strong> Marcar <strong>3</strong> se os dados documentados são precisos e se o grupo detecta ruídos, distorções (<em>Fake News</em>) ou padrões ambientais.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 11.5pt; font-weight: 800; color: #064e3b; margin-bottom: 4px;">
+    📝 GUIA DE OBSERVAÇÃO (RUBRICA) - AULA PILOTO: COMPUTAÇÃO DESPLUGADA
+  </h2>
+  <div style="font-size: 9pt; color: #334155; margin-bottom: 4px; text-align: right;">
+    <strong>Turma:</strong> 5º Ano ______ &nbsp;&nbsp; <strong>Data:</strong> ___/___/___
+  </div>
+  <div style="font-size: 9pt; color: #1e293b; margin-bottom: 6px;">
+    <strong>Pesquisadores:</strong> Talita Marques e Leonardo Vinicius<br />
+    <strong>Objetivo:</strong> Coleta de evidências sobre o desenvolvimento do raciocínio lógico e depuração de algoritmos (Meta 4).
+  </div>
+  <table class="editorial-table" style="width: 100%; font-size: 8.5pt; line-height: 1.25; margin: 6px 0 0; table-layout: fixed;">
+    <colgroup><col style="width: 11%;" /><col style="width: 17%;" /><col style="width: 17%;" /><col style="width: 17%;" /><col style="width: 38%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 11%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">Esquadrão (Grupo)</th><th colspan="1" style="width: 17%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">🧩Decomposição <br>(Transformou o trajeto longo <br>em comandos curtos?)</th><th colspan="1" style="width: 17%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">🐛 Depuração / Debug <br>(Identificou e corrigiu o erro <br>no código?)</th><th colspan="1" style="width: 17%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">🤝 Colaboração e Empatia<br>(Trabalharam em equipe e ouviram o Caçador de Bugs?)</th><th colspan="1" style="width: 38%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">📝 Observações Rápidas <br>(Dificuldades ou destaques)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 1</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial<br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial<br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 2</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 4</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 5</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 6</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 7</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 8</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial<br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 8.3pt; margin-top: 5px; line-height: 1.25;">
+    <strong>🧠 Critérios para o Avaliador:</strong>
+    <ul style="margin: 3px 0 0 18px;">
+      <li><strong>Decomposição:</strong> Marcar <strong>SIM</strong> se o grupo conseguiu planejar a sequência de cartões de setas na mesa antes do "Robô" começar a andar.</li>
+      <li><strong>Depuração (Debug):</strong> Marcar <strong>SIM</strong> se, ao cometer um erro no trajeto, o grupo conseguiu localizar exatamente qual seta estava errada e substituí-la sem apagar o código inteiro.</li>
+      <li><strong>Colaboração e Empatia:</strong> Marcar <strong>SIM</strong> se os alunos respeitaram as funções e resolveram conflitos de opinião de forma pacífica (Modo Furtivo).</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 11.5pt; font-weight: 800; color: #064e3b; margin-bottom: 4px;">
+    📝 GUIA DE OBSERVAÇÃO (RUBRICA) - AULA PILOTO: CULTURA MAKER E PROTOTIPAGEM
+  </h2>
+  <div style="font-size: 9pt; color: #334155; margin-bottom: 4px; text-align: right;">
+    <strong>Turma:</strong> 5º Ano ______ &nbsp;&nbsp; <strong>Data:</strong> ___/___/___
+  </div>
+  <div style="font-size: 9pt; color: #1e293b; margin-bottom: 6px;">
+    <strong>Pesquisadores:</strong> Talita Marques e Leonardo Vinicius<br />
+    <strong>Objetivo:</strong> Coleta de evidências sobre o desenvolvimento do raciocínio espacial e resiliência (Meta 4).
+  </div>
+  <table class="editorial-table" style="width: 100%; font-size: 8.5pt; line-height: 1.25; margin: 6px 0 0; table-layout: fixed;">
+    <colgroup><col style="width: 11%;" /><col style="width: 17%;" /><col style="width: 17%;" /><col style="width: 17%;" /><col style="width: 38%;" /></colgroup>
+    <thead>
+      <tr><th colspan="1" style="width: 11%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">Esquadrão (Grupo)</th><th colspan="1" style="width: 17%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">📐 Abstração Espacial (Transformou a foto 2D em 3D com volume?)</th><th colspan="1" style="width: 17%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">🛠️ Iteração e Resiliência <br>(Usou palitos para consertar a estrutura?)</th><th colspan="1" style="width: 17%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">🤝 Colaboração Maker (Dividiu tarefas e não criou "Cinza-Lixo"?)</th><th colspan="1" style="width: 38%;padding: 6px 5px; font-size: 8.5pt; vertical-align: middle;">📝 Observações Rápidas <br>(Dificuldades ou destaques)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 1</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 2</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 3</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 4</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 5</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 6</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 7</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+      <tr><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">Grupo 8</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;">( ) Sim <br>( ) Parcial <br>( ) Não</span></td><td colspan="1" style="text-align: center; vertical-align: middle; padding: 4px 5px; font-size: 8.5pt;"><span style="white-space: nowrap;"></span></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 8.3pt; margin-top: 5px; line-height: 1.25;">
+    <strong>🧠 Critérios para o Avaliador:</strong>
+    <ul style="margin: 3px 0 0 18px;">
+      <li><strong>Abstração Espacial:</strong> Marcar <strong>SIM</strong> se o protótipo tem profundidade (não é uma "panqueca" na mesa) e se é reconhecível como o objeto da foto.</li>
+      <li><strong>Iteração:</strong> Marcar <strong>SIM</strong> se o grupo enfrentou uma falha (peça caindo ou amolecendo) e aplicou o Plano B (esqueleto de palitos) para salvar o projeto.</li>
+      <li><strong>Colaboração:</strong> Marcar <strong>SIM</strong> se o grupo respeitou a Regra de Ouro (não misturou as cores do bloco inteiro) e se os três alunos participaram ativamente.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 11.5pt; font-weight: 800; color: #064e3b; margin-bottom: 8px;">
+    🗺️ MISSÃO: ESTRATEGISTAS DA RETIRADA (PLANO PILOTO 1)
+  </h2>
+  <div style="font-size: 9.8pt; line-height: 1.6; margin-bottom: 8px;">
+    <div><strong>ESQUADRÃO Nº:</strong> __________</div>
+    <div style="text-align: center; font-weight: 800; margin-top: 4px;">FUNÇÕES DO ESQUADRÃO</div>
+    <div><strong>Robô:</strong> ___________________________________ &nbsp;&nbsp; <strong>Mestre do Código:</strong> ___________________________________</div>
+    <div><strong>Caçador de Bugs:</strong> ___________________________ &nbsp;&nbsp; <strong>Cartógrafo:</strong> _________________________________________</div>
+  </div>
+  <div style="text-align: center; font-weight: 800; font-size: 10pt; margin: 6px 0 4px;">1. PLANEJAMENTO DA ROTA (ALGORITMO)</div>
+  <p style="text-indent: 0; font-size: 9.5pt; margin-bottom: 4px;">
+    Antes de caminhar no tabuleiro, desenhe abaixo a sequência de comandos que o seu esquadrão planejou para chegar ao Canhão de Nioaque.
+  </p>
+  <div style="text-align: center; font-style: italic; font-weight: 700; font-size: 9.5pt; margin-bottom: 6px;">
+    (Use as setas: ⬆️ para frente, ↪️ para girar à direita, ↩️ para girar à esquerda)
+  </div>
+  <table class="editorial-table" style="width: 100%; table-layout: fixed; font-size: 9pt;">
+    <thead>
+      <tr>
+        <th>PASSO 1</th><th>PASSO 2</th><th>PASSO 3</th><th>PASSO 4</th>
+        <th>PASSO 5</th><th>PASSO 6</th><th>PASSO 7</th><th>PASSO 8</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="height: 19mm;"></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th>PASSO 9</th><th>PASSO 10</th><th>PASSO 11</th><th>PASSO 12</th>
+        <th>PASSO 13</th><th>PASSO 14</th><th>PASSO 15</th><th>PASSO 16</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="height: 19mm;"></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th>PASSO 17</th><th>PASSO 18</th><th>PASSO 19</th><th>PASSO 20</th>
+        <th>PASSO 21</th><th>PASSO 22</th><th>PASSO 23</th><th>PASSO 24</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="height: 19mm;"></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="page-break">
+  <div style="text-align: center; font-weight: 800; font-size: 10.5pt; margin-bottom: 8px;">2. DIÁRIO DE BORDO (DEPURAÇÃO)</div>
+  <p style="text-indent: 0; font-size: 9.8pt; margin-bottom: 8px;">
+    <strong>Vocês encontraram algum perigo (Bug) no caminho? Se sim, em qual passo o erro aconteceu e como vocês consertaram?</strong><br />
+    <em>(Exemplo: "O erro foi no passo 4, trocamos girar direita por avançar")</em>
+  </p>
+  <div style="font-size: 10pt; line-height: 2.3; margin-bottom: 18px;">
+    <div><strong>Relatório do Caçador de Bugs:</strong> __________________________________________________________________________</div>
+    <div style="border-bottom: 1px solid #475569; height: 9mm;"></div>
+    <div style="border-bottom: 1px solid #475569; height: 9mm;"></div>
+    <div style="border-bottom: 1px solid #475569; height: 9mm;"></div>
+    <div style="border-bottom: 1px solid #475569; height: 9mm;"></div>
+  </div>
+  <div style="text-align: center; font-weight: 800; font-size: 10.5pt; margin-top: 14px;">🏅 ESPAÇO DOS EMBLEMAS</div>
+  <p style="text-indent: 0; text-align: center; font-size: 9.8pt; margin-top: 4px;">
+    Descreva aqui quais emblemas seu esquadrão conquistou durante a missão!
+  </p>
+</div>
+
+<div class="page-break">
+  <h2 style="text-align: center; font-size: 11.5pt; font-weight: 800; color: #064e3b; margin-bottom: 10px;">
+    🏛️ FICHA CATALOGRÁFICA: MUSEU TÁTIL DE NIOAQUE (PLANO PILOTO 2)
+  </h2>
+  <div style="font-size: 10pt; line-height: 1.8; margin-bottom: 10px;">
+    <div><strong>ESQUADRÃO Nº:</strong> __________</div>
+    <div><strong>ENGENHEIRO(A):</strong> ____________________________________________________________________________________</div>
+  </div>
+  <div style="text-align: center; font-weight: 800; font-size: 10pt; margin: 8px 0 4px;">1. IDENTIFICAÇÃO DO ARTEFATO</div>
+  <ul style="font-size: 9.8pt; line-height: 1.7; margin: 0 0 10px 22px;">
+    <li><strong>Nome do Objeto:</strong> _________________________________________________________________________________</li>
+    <li><strong>Data da "Descoberta":</strong> ____ / ____ / 2026</li>
+    <li><strong>Local de Origem:</strong> &nbsp; ( ) Vale dos Dinossauros &nbsp;&nbsp;|&nbsp;&nbsp; ( ) Praça dos Heróis &nbsp;&nbsp;|&nbsp;&nbsp; ( ) Pantanal</li>
+  </ul>
+  <div style="text-align: center; font-weight: 800; font-size: 10pt; margin: 8px 0 4px;">2. ANÁLISE TÉCNICA</div>
+  <ul style="font-size: 9.8pt; line-height: 1.7; margin: 0 0 10px 22px;">
+    <li><strong>Material do Protótipo:</strong> Massa base e suportes de madeira (palitos).</li>
+    <li><strong>Escala:</strong> &nbsp; ( ) Miniatura &nbsp;&nbsp;|&nbsp;&nbsp; ( ) Tamanho Real</li>
+    <li><strong>Habilidade Maker Utilizada:</strong> ________________________________________________________________________</li>
+  </ul>
+  <div style="text-align: center; font-weight: 800; font-size: 10pt; margin: 8px 0 4px;">3. CONTEXTO HISTÓRICO / NATURAL</div>
+  <p style="text-indent: 0; font-size: 9.8pt; margin-bottom: 6px;">
+    <strong>Escreva um pequeno parágrafo explicando por que este artefato é importante para a memória da cidade de Nioaque:</strong>
+  </p>
+  <div style="border-bottom: 1px solid #475569; height: 8mm;"></div>
+  <div style="border-bottom: 1px solid #475569; height: 8mm;"></div>
+  <div style="border-bottom: 1px solid #475569; height: 8mm;"></div>
+  <div style="border-bottom: 1px solid #475569; height: 8mm;"></div>
+</div>
+
+<div class="page-break">
+  <div style="text-align: center; font-weight: 800; font-size: 10.5pt; margin-bottom: 4px;">
+    4. PROJETO TÉCNICO (DESENHO DE OBSERVAÇÃO)
+  </div>
+  <div style="text-align: center; font-style: italic; font-weight: 700; font-size: 9.8pt; margin-bottom: 10px;">
+    Coloque sua escultura no centro da mesa e desenhe a partir destes três ângulos diferentes:
+  </div>
+  <table class="editorial-table" style="width: 100%; table-layout: fixed; font-size: 10pt;">
+    <thead>
+      <tr>
+        <th style="width: 33.33%;">VISTA DE FRENTE</th>
+        <th style="width: 33.33%;">VISTA DE LADO</th>
+        <th style="width: 33.33%;">VISTA DE CIMA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="height: 115mm; text-align: center; font-style: italic; font-weight: 700; color: #475569;">(Desenhe aqui)</td>
+        <td style="height: 115mm; text-align: center; font-style: italic; font-weight: 700; color: #475569;">(Desenhe aqui)</td>
+        <td style="height: 115mm; text-align: center; font-style: italic; font-weight: 700; color: #475569;">(Desenhe aqui)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,233 @@
+/* ==========================================================================
+   PRINT.CSS — Regras de Paginação A4, Cabeçalhos, Rodapés e Impressão
+   ========================================================================== */
+
+@page {
+  size: A4 portrait;
+  margin: 30mm 20mm 20mm 30mm;
+
+  @top-left {
+    content: "Manual Pedagógico IFMaker • Patrimônio de Nioaque em 3D";
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 9pt;
+    color: #065f46;
+    font-weight: 600;
+    vertical-align: bottom;
+    border-bottom: 0.75pt solid #21eb06;
+    padding-bottom: 1pt;
+    margin-bottom: 6pt;
+  }
+
+  @top-right {
+    content: "| " counter(page);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #065f46;
+    vertical-align: bottom;
+    border-bottom: 0.75pt solid #10b981;
+    padding-bottom: 1pt;
+    margin-bottom: 6pt;
+  }
+
+  @bottom-left {
+    content: "DOI: 10.5281/zenodo.24353731";
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #64748b;
+  }
+
+  @bottom-right {
+    content: none;
+  }
+}
+
+/* Folha de Rosto (página 1) sem cabeçalho/rodapé, mantendo as margens A4 padrão */
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+/* Demais páginas pré-textuais sem cabeçalho/rodapé */
+@page no-header {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+/* Página Apresentação com margens superior 2cm e inferior 1cm, sem cabeçalho/rodapé */
+@page apresentacao-page {
+  margin: 20mm 20mm 10mm 30mm;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+@page landscape {
+  size: A4 landscape;
+  margin: 18mm 20mm 18mm 20mm;
+
+  @top-left {
+    content: "Manual Pedagógico IFMaker • Patrimônio de Nioaque em 3D";
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #065f46;
+    font-weight: 600;
+    vertical-align: bottom;
+    border-bottom: 0.75pt solid #10b981;
+    padding-bottom: 1pt;
+    margin-bottom: 6pt;
+  }
+
+  @top-right {
+    content: "| " counter(page);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #065f46;
+    vertical-align: bottom;
+    border-bottom: 0.75pt solid #10b981;
+    padding-bottom: 1pt;
+    margin-bottom: 6pt;
+  }
+
+  @bottom-left {
+    content: "DOI: 10.5281/zenodo.24353731";
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #64748b;
+  }
+
+  @bottom-right {
+    content: none;
+  }
+}
+
+.page-no-header {
+  page: no-header;
+}
+
+.page-apresentacao {
+  page: apresentacao-page;
+}
+
+.page-landscape {
+  page: landscape;
+  break-before: page;
+  page-break-before: always;
+}
+
+.page-portrait {
+  page: auto;
+  break-before: page;
+  page-break-before: always;
+}
+
+.page-break {
+  break-before: page;
+  page-break-before: always;
+}
+
+.avoid-break {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Visualização em tela (fora da impressão) */
+@media screen {
+  body {
+    background: #e2e8f0;
+    padding: 20px 12px 60px;
+  }
+
+  .toolbar {
+    max-width: 210mm;
+    margin: 0 auto 16px;
+    background: #064e3b;
+    color: #ecfdf5;
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+
+  .btn-print {
+    background: #10b981;
+    color: #022c22;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-weight: 700;
+    font-size: 12.5px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn-print:hover {
+    background: #34d399;
+  }
+
+  .manual-container {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 18mm 18mm;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+  }
+
+  .pagedjs_pages .manual-container {
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+@media print {
+  .toolbar,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+
+  .manual-container {
+    max-width: 100%;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .pagedjs_pagebox,
+  .pagedjs_area,
+  .pagedjs_page_content {
+    overflow: visible !important;
+  }
+
+  .cover-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm;
+    height: 297mm;
+  }
+}
+
+@media screen {
+  .cover-page {
+    margin: -18mm -18mm 0 -18mm;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+  }
+}

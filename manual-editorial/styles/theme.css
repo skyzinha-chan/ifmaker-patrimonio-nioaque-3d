@@ -1,0 +1,519 @@
+/* ==========================================================================
+   THEME.CSS — Design System do Manual "Patrimônio de Nioaque em 3D"
+   Alinhado à plataforma web (Tailwind: pensamento, mundo, cultura) e
+   ao modelo da página de expediente.
+   ========================================================================== */
+
+:root {
+  /* Cores Institucionais (IFMS / IFMaker) */
+  --if-dark: #064e3b;
+  --if-primary: #065f46;
+  --if-accent: #047857;
+  --if-light: #ecfdf5;
+  --if-border: #a7f3d0;
+
+  /* Eixos da BNCC Computação (mesmos tokens do tailwind.config.js) */
+  --eixo-pensamento: #3b82f6;
+  --eixo-pensamento-bg: #eff6ff;
+  --eixo-pensamento-border: #bfdbfe;
+
+  --eixo-mundo: #10b981;
+  --eixo-mundo-bg: #ecfdf5;
+  --eixo-mundo-border: #a7f3d0;
+
+  --eixo-cultura: #f59e0b;
+  --eixo-cultura-bg: #fffbeb;
+  --eixo-cultura-border: #fde68a;
+
+  /* Neutros (Slate) */
+  --slate-950: #020617;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+
+  /* Tipografia */
+  --font-sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Code", Consolas, "Courier New", monospace;
+
+  /* Raios e Sombras */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--slate-800);
+  line-height: 1.5;
+  font-size: 12pt;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E TÍTULOS DE CAPÍTULO
+   ========================================================================== */
+
+h1, h2, h3, h4 {
+  color: var(--slate-900);
+  line-height: 1.25;
+  break-after: avoid;
+}
+
+p {
+  margin-bottom: 0.65em;
+  line-height: 1.5;
+  text-align: justify;
+  text-indent: 1.25cm;
+  orphans: 3;
+  widows: 3;
+}
+
+.callout p,
+.chapter-header p,
+.lesson-card p {
+  text-indent: 0;
+}
+
+.compact-page p {
+  line-height: 1.28;
+  margin-bottom: 0.35em;
+}
+
+ul, ol {
+  margin: 0.5em 0 0.85em 1.4em;
+}
+
+li {
+  margin-bottom: 0.3em;
+  orphans: 3;
+  widows: 3;
+}
+
+.chapter-header {
+  background: linear-gradient(135deg, var(--if-dark) 0%, var(--if-primary) 100%);
+  color: #ffffff;
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  margin-bottom: 18px;
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+.chapter-header .chapter-kicker {
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--if-border);
+  margin-bottom: 4px;
+}
+
+.chapter-header h1 {
+  color: #ffffff;
+  font-size: 16pt;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.chapter-header .chapter-lead {
+  color: #d1fae5;
+  font-size: 9.8pt;
+  margin-top: 6px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+/* Variantes de cabeçalho por Eixo BNCC */
+.chapter-header.eixo-pensamento {
+  background: linear-gradient(135deg, #1e3a8a 0%, var(--eixo-pensamento) 100%);
+}
+.chapter-header.eixo-mundo {
+  background: linear-gradient(135deg, var(--if-dark) 0%, var(--eixo-mundo) 100%);
+}
+.chapter-header.eixo-cultura {
+  background: linear-gradient(135deg, #92400e 0%, var(--eixo-cultura) 100%);
+}
+
+.section-heading {
+  font-size: 12.5pt;
+  font-weight: 800;
+  color: var(--if-primary);
+  border-bottom: 2px solid var(--if-border);
+  padding-bottom: 4px;
+  margin: 18px 0 10px;
+}
+
+.subsection-heading {
+  font-size: 10.8pt;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin: 14px 0 6px;
+}
+
+/* ==========================================================================
+   BADGES E ETIQUETAS (BNCC, ARTEFATOS 3D, EIXOS)
+   ========================================================================== */
+
+.badge {
+  display: inline-block;
+  font-size: 7.8pt;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+
+.badge-pensamento {
+  background: var(--eixo-pensamento-bg);
+  color: #1d4ed8;
+  border: 1px solid var(--eixo-pensamento-border);
+}
+
+.badge-mundo {
+  background: var(--eixo-mundo-bg);
+  color: #047857;
+  border: 1px solid var(--eixo-mundo-border);
+}
+
+.badge-cultura {
+  background: var(--eixo-cultura-bg);
+  color: #b45309;
+  border: 1px solid var(--eixo-cultura-border);
+}
+
+.badge-artefato {
+  background: var(--slate-100);
+  color: var(--slate-700);
+  border: 1px solid var(--slate-200);
+}
+
+/* ==========================================================================
+   CAIXAS DE DESTAQUE (CALLOUTS)
+   ========================================================================== */
+
+.callout {
+  border-radius: var(--radius-md);
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-left: 4px solid var(--if-primary);
+  background: var(--slate-50);
+  break-inside: avoid;
+}
+
+.callout-title {
+  font-size: 9.2pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.callout-dica {
+  background: var(--eixo-mundo-bg);
+  border-left-color: var(--eixo-mundo);
+}
+.callout-dica .callout-title { color: var(--if-primary); }
+
+.callout-bug {
+  background: var(--eixo-cultura-bg);
+  border-left-color: var(--eixo-cultura);
+}
+.callout-bug .callout-title { color: #b45309; }
+
+.callout-avaliacao {
+  background: var(--eixo-pensamento-bg);
+  border-left-color: var(--eixo-pensamento);
+}
+.callout-avaliacao .callout-title { color: #1d4ed8; }
+
+/* ==========================================================================
+   CARDS DE PLANO DE AULA & GRIDS
+   ========================================================================== */
+
+.lesson-card {
+  border: 1.5px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 14px 0;
+  background: #ffffff;
+  break-inside: avoid;
+}
+
+.lesson-card-header {
+  background: var(--slate-900);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.lesson-card-header h3 {
+  color: #ffffff;
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.lesson-meta {
+  padding: 8px 14px;
+  background: var(--slate-50);
+  border-bottom: 1px solid var(--slate-200);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 8.5pt;
+}
+
+.lesson-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 12px 14px;
+}
+
+.lesson-step {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
+  font-size: 8.8pt;
+}
+
+.lesson-step-title {
+  font-weight: 800;
+  font-size: 8.2pt;
+  text-transform: uppercase;
+  color: var(--if-primary);
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   TABELAS E RUBRICAS
+   ========================================================================== */
+
+table.editorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 11pt;
+  line-height: 1.25;
+}
+
+table.editorial-table thead {
+  display: table-header-group;
+}
+
+table.editorial-table th {
+  background: var(--if-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 11pt;
+  line-height: 1.25;
+  text-align: center;
+  padding: 5px 8px;
+  border: 1px solid var(--if-dark);
+}
+
+table.editorial-table td {
+  font-size: 11pt;
+  line-height: 1.25;
+  padding: 5px 8px;
+  border: 1px solid var(--slate-200);
+  vertical-align: top;
+}
+
+table.editorial-table tr:nth-child(even) td {
+  background: var(--slate-50);
+}
+
+table.editorial-table tr {
+  break-inside: avoid;
+}
+
+/* ==========================================================================
+   PLANOS DE AULA — LAYOUT EDITORIAL DINÂMICO (CAPÍTULO 6)
+   ========================================================================== */
+
+.plan-banner {
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  color: #ffffff;
+  margin: 12px 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+.plan-banner.eixo-pensamento { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); }
+.plan-banner.eixo-mundo { background: linear-gradient(135deg, #064e3b 0%, #059669 100%); }
+.plan-banner.eixo-cultura { background: linear-gradient(135deg, #92400e 0%, #d97706 100%); }
+
+.plan-banner-title {
+  font-size: 11pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.plan-banner-pill {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 8.5pt;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.plan-box {
+  background: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  margin: 8px 0;
+  font-size: 10.2pt;
+  line-height: 1.4;
+}
+
+.plan-box p {
+  text-indent: 0;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.plan-box-title {
+  font-size: 8.8pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--if-primary);
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--slate-200);
+  padding-bottom: 3px;
+}
+
+.plan-stage {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-left: 4px solid var(--if-primary);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  margin: 8px 0;
+  font-size: 10.2pt;
+  line-height: 1.4;
+}
+
+.plan-stage.stage-1 { border-left-color: #7c3aed; background: #f5f3ff; }
+.plan-stage.stage-2 { border-left-color: #ea580c; background: #fff7ed; }
+.plan-stage.stage-3 { border-left-color: #334155; background: #f1f5f9; }
+
+.plan-stage p {
+  text-indent: 0;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.plan-stage-title {
+  font-size: 9.5pt;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 5px;
+}
+
+.plan-rubric-note {
+  background: var(--if-light);
+  border: 1px solid var(--if-border);
+  border-left: 4px solid var(--if-primary);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin: 10px 0 14px;
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--if-dark);
+  break-inside: avoid;
+}
+
+.plan-rubric-note p {
+  text-indent: 0;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SUMÁRIO E LISTAS (PONTILHADO ABNT + NUMERAÇÃO AUTOMÁTICA)
+   ========================================================================== */
+
+.toc-list {
+  font-size: 9.2pt;
+  line-height: 1.32;
+}
+
+.toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.toc-title {
+  flex: 0 1 auto;
+}
+
+.toc-dots {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted #94a3b8;
+  min-width: 14px;
+  position: relative;
+  top: -2px;
+}
+
+.toc-num {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #0f172a;
+  min-width: 20px;
+  text-align: right;
+}
+
+.toc-l1 {
+  font-weight: 800;
+  color: #064e3b;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.toc-l2 {
+  padding-left: 16px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.toc-l3 {
+  padding-left: 32px;
+  font-size: 8.6pt;
+  color: #475569;
+  font-weight: 400;
+}
