@@ -201,9 +201,10 @@ export async function baixarPacoteCompletoDaAula(plano, onProgress = () => {}) {
 
   // Adiciona o arquivo de instruções pedagógicas do professor
   const textoLeiame = `====================================================================
-PATRIMÔNIO DE NIOAQUE EM 3D: MANUAL PEDAGÓGICO DE COMPUTAÇÃO E CULTURA MAKER
-Instituto Federal de Mato Grosso do Sul (IFMS) - Câmpus Jardim
-Projeto IFMaker / Fomento Edital 054/2025 PROPI/IFMS
+PATRIMÔNIO DE NIOAQUE EM 3D: MANUAL PEDAGÓGICO DE COMPUTAÇÃO E CULTURA MAKER NO ENSINO FUNDAMENTAL
+Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul (IFMS) – Câmpus Jardim
+Projeto IFMaker Educador • Edital nº 054/2025 – PROPI/IFMS
+DOI do Manual (Zenodo): https://doi.org/10.5281/zenodo.24353731
 ====================================================================
 
 Plano de Aula: ${plano.titulo}
@@ -223,10 +224,10 @@ BOAS PRÁTICAS DE MEDIAÇÃO E LOGÍSTICA DA CAIXA MASTER:
 --------------------------------------------------------------------
 1. ORGANIZAÇÃO DAS ILHAS:
    Distribua as equipes em até 8 esquadrões de 4 alunos. Atribua as 4 funções:
-   - Mestre do Código (escreve o algoritmo)
-   - Robô Tático (executa os passos físicos)
-   - Caçador de Bugs (depura e encontra inconsistências)
-   - Cartógrafo (registra as coordenadas e organiza os insumos)
+   - Mestre do Código (Programador): seleciona e ordena os blocos de comando
+   - Robô Tático (Testador): executa cegamente os passos no grid/tabuleiro
+   - Caçador de Bugs (Depurador): rastreia colisões e falhas lógicas
+   - Cartógrafo (Documentador): registra o algoritmo na folha de missão
 
 2. MATERIAL PLASTIFICADO (POLASEAL):
    Utilize exclusivamente caneta para quadro branco (marcador recarregável).
@@ -238,7 +239,10 @@ BOAS PRÁTICAS DE MEDIAÇÃO E LOGÍSTICA DA CAIXA MASTER:
    com pano levemente umedecido.
 
 --------------------------------------------------------------------
-Plataforma Interativa Online: https://ifmaker-nioaque.web.app
+Plataforma Interativa Online: https://ifmaker-patrimonio-nioaque-3d.vercel.app/
+Manual Completo (DOI Zenodo): https://doi.org/10.5281/zenodo.24353731
+Código-Fonte (GitHub):        https://github.com/skyzinha-chan/ifmaker-patrimonio-nioaque-3d
+Licença da Obra Pedagógica:   CC BY-NC-SA 4.0 (Uso didático e não comercial)
 ====================================================================`;
 
   arquivosNoZip.push({
