@@ -66,8 +66,10 @@ O projeto une tecnologias de fabricação digital (impressão 3D de artefatos hi
 ### ⚡ Performance & Carregamento Sob Demanda (Code Splitting)
 * Rotas divididas com `React.lazy()` e `Suspense`. Carregamento inicial leve (~poucos KB), garantindo fluidez mesmo em conexões 3G/4G instáveis.
 
-### 📊 Painel de Impacto em Tempo Real
-* Contadores integrados ao **Firebase Firestore** que monitoram visualizações, downloads de kits e relatos avaliativos da comunidade docente em tempo real.
+### 📊 Painel de Impacto em Tempo Real (`/dashboard`)
+* Contadores integrados ao **Firebase Firestore** que monitoram visitas ao portal (por sessão), visualizações, downloads de kits, taxa de download, marcados como útil, compartilhamentos, planos aplicados em sala e relatos avaliativos da comunidade docente em tempo real.
+* **Alcance Geográfico (IBGE):** Seleção padronizada de Estado (UF) e Cidade nos relatos docentes, exibindo estados e municípios alcançados no Dashboard.
+* **Engajamento por Eixo da BNCC, Ranking Top 5 e Exportação CSV:** Visão consolidada por eixo computacional e botão para exportar relatório em `.csv`.
 
 ---
 
@@ -89,6 +91,7 @@ O projeto une tecnologias de fabricação digital (impressão 3D de artefatos hi
 ## 🗂️ Estrutura do Projeto
 
 ```text
+├── manual-editorial/        # Código-fonte editorial para diagramação e geração do Manual em PDF
 ├── public/
 │   ├── assets/              # Réplicas ilustradas, iconografia e logos oficiais
 │   ├── pdfs/                # Acervo completo de PDFs (planos, rubricas, atividades, anexos)
