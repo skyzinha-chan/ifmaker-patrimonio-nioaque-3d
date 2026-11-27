@@ -1,10 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { manualCapitulos } from "../data/capitulos";
+import GuiaCaixaMasterModal from "../components/GuiaCaixaMasterModal";
+
+const RESUMOS_CAPITULOS = {
+  introducao:
+    "Fundamentação da Cultura Maker, do Pensamento Computacional e da Computação na Educação Básica (BNCC) aplicados ao contexto regional de Nioaque/MS.",
+  "boas-vindas":
+    "Boas-vindas ao educador, propósito do manual e como o material conecta tecnologia, memória local e sala de aula.",
+  "catalogo-visual":
+    "Apresentação do acervo de réplicas táteis impressas em 3D, seus significados históricos e paleontológicos e orientações de conservação.",
+  "guia-sobrevivencia":
+    "Metodologias ativas, organização da sala em ilhas de trabalho, uso da Caixa Master e mediação docente passo a passo.",
+  "avaliacao-maker":
+    "Avaliação formativa na Cultura Maker, Taxonomia de Bloom e uso prático das Rubricas (Tipos A, B e C) em sala de aula.",
+  "sequencia-didatica":
+    "Guia prático para navegar pelo catálogo de planos de aula, baixar os kits completos e registrar relatos no Diário de Bordo.",
+};
 
 export default function Manual() {
   const [capituloAtivoId, setCapituloAtivoId] = useState(manualCapitulos[0].id);
   const [modalRubricasAberto, setModalRubricasAberto] = useState(false);
+  const [modalCaixaMasterAberto, setModalCaixaMasterAberto] = useState(false);
   const activeTabRef = useRef(null);
 
   const capituloAtual = manualCapitulos.find(
@@ -56,9 +73,32 @@ export default function Manual() {
       {/* Área de leitura do capítulo */}
       <main className='flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10'>
         <article className='prose prose-slate md:prose-lg max-w-none bg-white p-8 md:p-12 rounded-xl shadow-xl border border-gray-200 print:shadow-none print:border-none print:p-0'>
-          <h1 className='text-3xl md:text-4xl font-extrabold text-green-900 mb-8 border-b-2 border-green-100 pb-4'>
-            {capituloAtual.titulo}
-          </h1>
+          <div className='mb-8 rounded-2xl bg-gradient-to-r from-green-900 to-emerald-800 text-white p-6 md:p-8 shadow-md border-l-8 border-emerald-400'>
+            <div className='flex flex-wrap items-start justify-between gap-4'>
+              <div>
+                <p className='text-xs font-extrabold uppercase tracking-widest text-emerald-200 mb-1 m-0'>
+                  {capituloAtual.id === "apresentacao"
+                    ? "Pré-Textual"
+                    : `Capítulo ${manualCapitulos.findIndex((c) => c.id === capituloAtual.id)}`}
+                </p>
+                <h1 className='text-2xl sm:text-3xl md:text-4xl font-extrabold text-white m-0 leading-tight'>
+                  {capituloAtual.titulo.replace(/^\d+\.\s*/, "")}
+                </h1>
+              </div>
+              <a
+                href='/pdfs/PATRIMONIO_DE_NIOAQUE_EM_3D_COMPLETO.pdf'
+                download='PATRIMONIO_DE_NIOAQUE_EM_3D_COMPLETO.pdf'
+                className='inline-flex items-center gap-2 rounded-xl bg-white hover:bg-green-50 text-green-900 font-bold px-4 py-2 text-xs sm:text-sm no-underline shadow-sm transition print:hidden'
+              >
+                📥 Baixar Manual Completo (PDF)
+              </a>
+            </div>
+            {RESUMOS_CAPITULOS[capituloAtual.id] && (
+              <p className='text-sm md:text-base text-green-50 leading-relaxed mt-3 mb-0'>
+                {RESUMOS_CAPITULOS[capituloAtual.id]}
+              </p>
+            )}
+          </div>
 
           <div className='space-y-6'>
             {capituloAtual.conteudo.map((bloco, index) => {
@@ -319,6 +359,36 @@ export default function Manual() {
             })}
           </div>
 
+          {/* Ação contextual do Capítulo 3: Guia da Caixa Master */}
+          {capituloAtual.id === "catalogo-visual" && (
+            <div className='mt-10 bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-100 border-2 border-emerald-300 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5 print:hidden'>
+              <div className='flex items-start sm:items-center gap-4'>
+                <div className='h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-sm flex-shrink-0'>
+                  🧭
+                </div>
+                <div>
+                  <span className='bg-emerald-200 text-emerald-900 text-[10px] font-black uppercase px-2 py-0.5 rounded tracking-wide'>
+                    Kit Pedagógico IFMaker
+                  </span>
+                  <h3 className='text-lg sm:text-xl font-extrabold text-gray-900 mt-1 mb-0'>
+                    Primeiros Passos com a Caixa Master
+                  </h3>
+                  <p className='text-xs sm:text-sm text-gray-700 mt-1 mb-0 max-w-2xl leading-relaxed'>
+                    Aprenda a organizar os 8 potes das ilhas de alunos, a rotina de escrita e limpeza com canetas no Polaseal e os cuidados térmicos essenciais com os artefatos 3D.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type='button'
+                onClick={() => setModalCaixaMasterAberto(true)}
+                className='whitespace-nowrap bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-extrabold py-3 px-5 rounded-xl shadow-md transition text-xs sm:text-sm flex items-center gap-2 self-stretch md:self-auto justify-center flex-shrink-0'
+              >
+                <span>🎒</span> Abrir Guia Ilustrado
+              </button>
+            </div>
+          )}
+
           {/* Ação contextual do Capítulo 5: Rubricas de Avaliação Maker */}
           {(capituloAtual.id === "capitulo-5" ||
             capituloAtual.titulo?.toLowerCase().includes("avalia")) && (
@@ -443,6 +513,10 @@ export default function Manual() {
           </div>
         </div>
       )}
+      <GuiaCaixaMasterModal
+        aberto={modalCaixaMasterAberto}
+        aoFechar={() => setModalCaixaMasterAberto(false)}
+      />
     </div>
   );
 }
