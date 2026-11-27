@@ -42,22 +42,22 @@ export default function Navbar() {
   return (
     <nav className='bg-green-800 text-white shadow-md print:hidden sticky top-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex items-center justify-between h-16 sm:h-20'>
+        <div className='flex items-center justify-between h-14 sm:h-16'>
           <div className='flex-shrink-0 flex items-center gap-3'>
             <Link
               to='/'
               onClick={closeMenu}
-              className='flex items-center gap-2.5 sm:gap-3 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 rounded-lg group'
+              className='flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-800 rounded-lg group'
               aria-label='Ir para página inicial - Patrimônio de Nioaque em 3D: Manual pedagógico de computação e cultura maker no ensino fundamental'
             >
-              <span aria-hidden='true' className='text-2xl sm:text-3xl transition-transform group-hover:scale-110 select-none'>
+              <span aria-hidden='true' className='text-xl sm:text-2xl transition-transform group-hover:scale-110 select-none'>
                 🦖
               </span>
               <div className='flex flex-col justify-center'>
-                <span className='font-extrabold text-sm sm:text-base md:text-lg tracking-tight text-white leading-tight group-hover:text-green-200 transition-colors'>
+                <span className='font-extrabold text-sm sm:text-base tracking-tight text-white leading-tight group-hover:text-green-200 transition-colors'>
                   Patrimônio de Nioaque em 3D
                 </span>
-                <span className='text-[9px] sm:text-[10px] text-green-200 font-medium tracking-normal leading-tight hidden sm:block'>
+                <span className='text-[9px] text-green-200 font-medium tracking-normal leading-tight hidden sm:block'>
                   Manual pedagógico de computação e cultura maker no ensino fundamental
                 </span>
               </div>
@@ -65,9 +65,17 @@ export default function Navbar() {
           </div>
 
           {/* Navegação Desktop */}
-          <div className='hidden md:flex md:items-center md:gap-4 lg:gap-8'>
+          <div className='hidden md:flex md:items-center md:gap-4 lg:gap-6 text-sm'>
             <NavLink
               to='/'
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              Início
+            </NavLink>
+            <NavLink
+              to='/dashboard'
               className={({ isActive }) =>
                 isActive ? activeStyle : inactiveStyle
               }

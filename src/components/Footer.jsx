@@ -36,7 +36,13 @@ export default function Footer() {
                 to='/'
                 className='text-green-100 hover:text-white hover:translate-x-1 transition-all text-sm font-medium flex items-center gap-2'
               >
-                <span aria-hidden='true'>🏠</span> Dashboard Inicial
+                <span aria-hidden='true'>🏠</span> Início
+              </Link>
+              <Link
+                to='/dashboard'
+                className='text-green-100 hover:text-white hover:translate-x-1 transition-all text-sm font-medium flex items-center gap-2'
+              >
+                <span aria-hidden='true'>📊</span> Dashboard de Métricas
               </Link>
               <Link
                 to='/manual'
