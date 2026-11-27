@@ -231,66 +231,6 @@ export default function Sobre() {
             </p>
           </div>
         </section>
-
-        <section>
-          <h2 className='text-2xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-5'>
-            Apresentação
-          </h2>
-          <div className='space-y-4 text-justify'>
-            <p>
-              É com profundo entusiasmo pedagógico e compromisso social que
-              entregamos à comunidade escolar e aos educadores da Educação
-              Básica o manual{" "}
-              <em>
-                Patrimônio de Nioaque em 3D: manual pedagógico de computação e
-                cultura maker no ensino fundamental
-              </em>
-              . Esta obra consolida uma trajetória de pesquisa aplicada e
-              extensão tecnológica financiada pelo Edital nº 054/2025 -
-              PROPI/IFMS (IFMaker Educador), integrando o IFMS - Câmpus Jardim à
-              parceria com a Escola Municipal Guilherme Corrêa da Silva
-              (Extensão Praça dos Heróis, Nioaque/MS).
-            </p>
-            <p>
-              Diante dos desafios contemporâneos da Educação 4.0 e da
-              homologação das normas da Computação na Educação Básica como
-              complemento à BNCC, este material transforma a teoria curricular
-              em práticas concretas, acessíveis e culturalmente
-              contextualizadas. Ensinar Computação não se restringe ao uso de
-              telas: trata-se de capacitar crianças para a resolução crítica de
-              problemas por meio do Pensamento Computacional.
-            </p>
-            <p>
-              O diferencial deste manual é o resgate das identidades culturais,
-              geográficas, paleontológicas e históricas de Nioaque. Por meio da
-              impressão 3D desenvolvida nos laboratórios do IFMaker, o
-              patrimônio local ganhou forma, textura e volume. Pegadas de
-              dinossauros, canhões históricos, jacaré e tatu-bola tornam-se
-              objetos para pensar com, ancorando aprendizagens de lógica,
-              algoritmos e decomposição.
-            </p>
-            <p>
-              O manual foi estruturado para que educadores de diferentes áreas e
-              escolas com diferentes níveis de infraestrutura encontrem
-              segurança metodológica. Ele reúne guia de mediação, catálogo de
-              peças, sequências didáticas, rubricas formativas e fichas prontas
-              para impressão.
-            </p>
-            <p>
-              Esperamos que esta obra seja mais que um registro técnico: uma
-              ponte viva entre a instituição pública de ensino profissional e
-              tecnológico e o chão da escola municipal, inspirando docentes e
-              estudantes a explorar a autoria digital, a cultura maker e o
-              orgulho pelas raízes de sua terra.
-            </p>
-          </div>
-          <div className='mt-6 border-l-4 border-green-700 pl-4 text-gray-700'>
-            <p>Prof. Dr. Moacir Juliani</p>
-            <p>Profª. Ma. Rafaela Chivalski de Oliveira</p>
-            <p>Talita Mendonça Marques e Leonardo Vinicius da Costa Gomes</p>
-            <p className='mt-2'>Jardim - MS, 2026.</p>
-          </div>
-        </section>
       </div>
     </article>
   );

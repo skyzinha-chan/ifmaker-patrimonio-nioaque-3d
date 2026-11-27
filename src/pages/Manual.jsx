@@ -4,6 +4,7 @@ import { manualCapitulos } from "../data/capitulos";
 
 export default function Manual() {
   const [capituloAtivoId, setCapituloAtivoId] = useState(manualCapitulos[0].id);
+  const [modalRubricasAberto, setModalRubricasAberto] = useState(false);
   const activeTabRef = useRef(null);
 
   const capituloAtual = manualCapitulos.find(
@@ -25,7 +26,7 @@ export default function Manual() {
     <div className='min-h-screen bg-gray-50 flex flex-col'>
       {/* Navegação horizontal de capítulos */}
       <div className='bg-white border-b border-gray-200 shadow-sm print:hidden sticky top-16 z-40'>
-        <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
           <nav
             className='flex space-x-4 overflow-x-auto py-3 scrollbar-hide md:scrollbar-default px-2'
             aria-label='Navegação dos capítulos do manual'
@@ -53,8 +54,8 @@ export default function Manual() {
       </div>
 
       {/* Área de leitura do capítulo */}
-      <main className='flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10'>
-        <article className='prose prose-slate md:prose-lg max-w-none bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100 print:shadow-none print:border-none print:p-0'>
+      <main className='flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10'>
+        <article className='prose prose-slate md:prose-lg max-w-none bg-white p-8 md:p-12 rounded-xl shadow-xl border border-gray-200 print:shadow-none print:border-none print:p-0'>
           <h1 className='text-3xl md:text-4xl font-extrabold text-green-900 mb-8 border-b-2 border-green-100 pb-4'>
             {capituloAtual.titulo}
           </h1>
@@ -81,6 +82,30 @@ export default function Manual() {
                       <p className='text-green-900 font-medium m-0 leading-relaxed italic'>
                         {bloco.texto}
                       </p>
+                    </div>
+                  );
+
+                case "assinatura":
+                  return (
+                    <div
+                      key={index}
+                      className='bg-green-50 border-l-4 border-green-600 p-5 rounded-r-lg my-8 text-right'
+                    >
+                      <div className='space-y-2 leading-snug'>
+                        {bloco.itens.map((item, i) => (
+                          <div key={i}>
+                            <strong className='text-[15px] text-gray-900 block'>
+                              {item.nome}
+                            </strong>
+                            <em className='text-sm text-gray-700'>{item.cargo}</em>
+                          </div>
+                        ))}
+                        {bloco.local && (
+                          <div className='text-sm text-gray-700 pt-1'>
+                            <em>{bloco.local}</em>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   );
 
@@ -293,8 +318,131 @@ export default function Manual() {
               }
             })}
           </div>
+
+          {/* Ação contextual do Capítulo 5: Rubricas de Avaliação Maker */}
+          {(capituloAtual.id === "capitulo-5" ||
+            capituloAtual.titulo?.toLowerCase().includes("avalia")) && (
+            <div className='mt-10 bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-emerald-300 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 print:hidden'>
+              <div>
+                <h3 className='text-lg font-extrabold text-green-900 m-0'>
+                  📋 Rubricas de Avaliação Maker (Tipos A, B e C)
+                </h3>
+                <p className='text-sm text-gray-700 mt-1 mb-0'>
+                  Acesse os guias explicativos de como avaliar e as fichas prontas para imprimir e marcar em sala.
+                </p>
+              </div>
+              <button
+                type='button'
+                onClick={() => setModalRubricasAberto(true)}
+                className='whitespace-nowrap bg-green-800 hover:bg-green-900 text-white font-bold py-2.5 px-5 rounded-xl shadow transition text-sm'
+              >
+                Abrir Rubricas →
+              </button>
+            </div>
+          )}
         </article>
       </main>
+      {/* Modal de Rubricas (Capítulo 5) */}
+      {modalRubricasAberto && (
+        <div
+          className='fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4'
+          role='dialog'
+          aria-modal='true'
+          aria-labelledby='modal-rubricas-titulo'
+        >
+          <div className='bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-gray-200 p-6 md:p-8'>
+            <div className='flex items-center justify-between gap-4 border-b border-gray-200 pb-4 mb-5'>
+              <h2 id='modal-rubricas-titulo' className='text-xl font-extrabold text-green-900'>
+                📋 Rubricas de Avaliação Maker
+              </h2>
+              <button
+                type='button'
+                onClick={() => setModalRubricasAberto(false)}
+                className='text-gray-500 hover:text-gray-800 font-bold text-lg px-2 py-1 rounded-lg'
+                aria-label='Fechar modal'
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className='space-y-6'>
+              <div>
+                <h3 className='text-xs font-extrabold uppercase tracking-wider text-green-800 mb-3'>
+                  1. Como Avaliar (Anexos Explicativos)
+                </h3>
+                <div className='space-y-2'>
+                  {[
+                    {
+                      nome: "Rubrica Tipo A – Eixo Pensamento Computacional",
+                      url: "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf",
+                    },
+                    {
+                      nome: "Rubrica Tipo B – Eixo Mundo Digital",
+                      url: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+                    },
+                    {
+                      nome: "Rubrica Tipo C – Eixo Cultura Digital",
+                      url: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+                    },
+                  ].map((item) => (
+                    <a
+                      key={item.url}
+                      href={encodeURI(item.url)}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-green-400 hover:bg-green-50/50 transition text-sm font-semibold text-gray-800'
+                    >
+                      <span>📄 {item.nome}</span>
+                      <span className='text-xs font-bold text-green-700'>Abrir PDF ↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className='text-xs font-extrabold uppercase tracking-wider text-emerald-800 mb-3'>
+                  2. Guias para Imprimir e Marcar em Sala
+                </h3>
+                <div className='space-y-2'>
+                  {[
+                    {
+                      nome: "Mapa de Avaliação Maker – Rubrica Tipo A",
+                      url: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A.pdf",
+                    },
+                    {
+                      nome: "Mapa de Avaliação Maker – Rubrica Tipo B",
+                      url: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B.pdf",
+                    },
+                    {
+                      nome: "Mapa de Avaliação Maker – Rubrica Tipo C",
+                      url: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
+                    },
+                    {
+                      nome: "Guia de Observação (Rubrica) – Aula Piloto 1",
+                      url: "/pdfs/rubricas/GUIA DE OBSERVAÇÃO (RUBRICA) - AULA PILOTO 1.pdf",
+                    },
+                    {
+                      nome: "Guia de Observação (Rubrica) – Aula Piloto 2",
+                      url: "/pdfs/rubricas/GUIA DE OBSERVAÇÃO (RUBRICA) - AULA PILOTO 2.pdf",
+                    },
+                  ].map((item) => (
+                    <a
+                      key={item.url}
+                      href={encodeURI(item.url)}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50/50 transition text-sm font-semibold text-gray-800'
+                    >
+                      <span>🖨️ {item.nome}</span>
+                      <span className='text-xs font-bold text-emerald-700'>Abrir PDF ↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
