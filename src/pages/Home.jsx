@@ -350,37 +350,6 @@ export default function Home() {
             </button>
           </div>
         </div>
-
-        {/* CARD INTEGRADO: LOGÍSTICA & PRIMEIROS PASSOS COM A CAIXA MASTER */}
-        <div className='mt-10 bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-100 border-2 border-emerald-300 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5'>
-          <div className='flex items-start sm:items-center gap-4'>
-            <div className='h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-sm flex-shrink-0'>
-              🧭
-            </div>
-            <div>
-              <div className='flex items-center gap-2'>
-                <span className='bg-emerald-200 text-emerald-900 text-[10px] font-black uppercase px-2 py-0.5 rounded tracking-wide'>
-                  Logística do Passo 3
-                </span>
-                <span className='text-xs font-bold text-emerald-800'>Kit Pedagógico IFMaker</span>
-              </div>
-              <h3 className='text-lg sm:text-xl font-extrabold text-gray-900 mt-0.5'>
-                Primeiros Passos com a Caixa Master
-              </h3>
-              <p className='text-xs sm:text-sm text-gray-700 mt-1 max-w-2xl leading-relaxed'>
-                Aprenda a organizar os 8 potes das ilhas de alunos, a rotina de escrita e limpeza com canetas no Polaseal e os cuidados térmicos essenciais com os artefatos 3D.
-              </p>
-            </div>
-          </div>
-
-          <button
-            type='button'
-            onClick={() => setModalCaixaMasterAberto(true)}
-            className='whitespace-nowrap bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-extrabold py-3 px-5 rounded-xl shadow-md transition text-xs sm:text-sm flex items-center gap-2 self-stretch md:self-auto justify-center flex-shrink-0'
-          >
-            <span>🎒</span> Abrir Guia Ilustrado
-          </button>
-        </div>
       </section>
 
       {/* Destaques Metodológicos */}
