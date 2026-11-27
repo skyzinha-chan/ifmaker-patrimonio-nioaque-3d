@@ -23,6 +23,12 @@ import { db, auth } from "../services/firebase";
  */
 export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
   const [formData, setFormData] = useState({ autor: "", turma: "", texto: "" });
+  const [estado, setEstado] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [estados, setEstados] = useState([]);
+  const [cidades, setCidades] = useState([]);
+  const [carregandoCidades, setCarregandoCidades] = useState(false);
+  const [aplicadoEmSala, setAplicadoEmSala] = useState(true);
   const [estrelas, setEstrelas] = useState(5);
   const [comentarios, setComentarios] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,6 +38,31 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const comentariosRef = collection(db, "diario_de_bordo");
+
+  useEffect(() => {
+    fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setEstados(data);
+      })
+      .catch((err) => console.error("Erro ao carregar estados do IBGE:", err));
+  }, []);
+
+  useEffect(() => {
+    if (!estado) {
+      setCidades([]);
+      setCidade("");
+      return;
+    }
+    setCarregandoCidades(true);
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estado}/municipios?orderBy=nome`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setCidades(data);
+      })
+      .catch((err) => console.error("Erro ao carregar cidades do IBGE:", err))
+      .finally(() => setCarregandoCidades(false));
+  }, [estado]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -85,6 +116,9 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
         planoTitulo,
         autor: formData.autor,
         turma: formData.turma || "Não informada",
+        estado: estado || "",
+        cidade: cidade || "",
+        aplicadoEmSala,
         texto: formData.texto,
         estrelas,
         consentimentoLGPD: true,
@@ -92,6 +126,9 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
         createdAt: serverTimestamp(),
       });
       setFormData({ autor: "", turma: "", texto: "" });
+      setEstado("");
+      setCidade("");
+      setAplicadoEmSala(true);
       setEstrelas(5);
       setConsentimentoLGPD(false);
       setErroLGPD(false);
@@ -222,6 +259,74 @@ export default function ComentariosPedagogicos({ planoId, planoTitulo }) {
               disabled={loading}
             />
           </div>
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
+          <div className='flex flex-col gap-1'>
+            <label
+              htmlFor='estado'
+              className='font-semibold text-slate-700 text-sm'
+            >
+              Estado (UF)
+            </label>
+            <select
+              id='estado'
+              value={estado}
+              onChange={(e) => {
+                setEstado(e.target.value);
+                setCidade("");
+              }}
+              disabled={loading}
+              className='p-2 border rounded-md bg-white focus:ring-2 focus:ring-blue-500 outline-none'
+            >
+              <option value=''>Selecione o estado...</option>
+              {estados.map((uf) => (
+                <option key={uf.id} value={uf.sigla}>
+                  {uf.nome} ({uf.sigla})
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className='flex flex-col gap-1'>
+            <label
+              htmlFor='cidade'
+              className='font-semibold text-slate-700 text-sm'
+            >
+              Cidade
+            </label>
+            <select
+              id='cidade'
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+              disabled={!estado || carregandoCidades || loading}
+              className='p-2 border rounded-md bg-white focus:ring-2 focus:ring-blue-500 outline-none disabled:bg-slate-100'
+            >
+              <option value=''>
+                {!estado
+                  ? "Selecione um estado primeiro"
+                  : carregandoCidades
+                    ? "Carregando cidades..."
+                    : "Selecione a cidade..."}
+              </option>
+              {cidades.map((mun) => (
+                <option key={mun.id} value={mun.nome}>
+                  {mun.nome}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className='mb-4'>
+          <label className='inline-flex items-center gap-2 text-sm font-semibold text-slate-700 cursor-pointer'>
+            <input
+              type='checkbox'
+              checked={aplicadoEmSala}
+              onChange={(e) => setAplicadoEmSala(e.target.checked)}
+              className='w-4 h-4 accent-green-700'
+            />
+            Já apliquei este plano em sala de aula
+          </label>
         </div>
 
         <div className='mb-4'>
