@@ -120,7 +120,7 @@ export const plano13 = {
   ],
 
   atividadesPdfUrl: null,
-  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+  anexosPdfUrl: null,
   rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B.pdf",
   pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.3.1 – HARDWARE VS. SOFTWARE.pdf"
 };

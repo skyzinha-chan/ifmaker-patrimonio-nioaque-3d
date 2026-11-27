@@ -39,7 +39,14 @@ export default function PlanoDetalhe() {
   const [avisoPdf, setAvisoPdf] = useState(null);
   const [verificandoPdf, setVerificandoPdf] = useState(false);
 
-  const [metricas, setMetricas] = useState({ visualizacoes: 0, downloads: 0 });
+  const [metricas, setMetricas] = useState({
+    visualizacoes: 0,
+    downloads: 0,
+    curtidas: 0,
+    compartilhamentos: 0,
+  });
+  const [curtido, setCurtido] = useState(false);
+  const [menuCompartilharAberto, setMenuCompartilharAberto] = useState(false);
   const [favoritos, setFavoritos] = useState([]);
   const [materiaisDisponiveis, setMateriaisDisponiveis] = useState([]);
   const [etapasPreparacao, setEtapasPreparacao] = useState([]);
@@ -51,18 +58,29 @@ export default function PlanoDetalhe() {
   useEffect(() => {
     if (!plano) return;
 
-    // Registra +1 visualização assim que o componente monta
+    // Registra +1 visualização por sessão para evitar contagem duplicada ao atualizar a página
     const registrarVisualizacao = async () => {
       const metricaRef = doc(db, "metricas_planos", plano.id);
+      const chaveSessao = `ifmaker_view_${plano.id}`;
+      const jaVisualizou = sessionStorage.getItem(chaveSessao);
       try {
-        await setDoc(
-          metricaRef,
-          { visualizacoes: increment(1) },
-          { merge: true },
-        );
+        if (!jaVisualizou) {
+          sessionStorage.setItem(chaveSessao, "1");
+          await setDoc(
+            metricaRef,
+            { visualizacoes: increment(1) },
+            { merge: true },
+          );
+        }
         const docSnap = await getDoc(metricaRef);
         if (docSnap.exists()) {
-          setMetricas(docSnap.data());
+          const data = docSnap.data();
+          setMetricas({
+            visualizacoes: data.visualizacoes || 0,
+            downloads: data.downloads || 0,
+            curtidas: data.curtidas || 0,
+            compartilhamentos: data.compartilhamentos || 0,
+          });
         }
       } catch (error) {
         console.error("Erro ao registrar métrica de view:", error);
@@ -70,7 +88,71 @@ export default function PlanoDetalhe() {
     };
 
     registrarVisualizacao();
+    setCurtido(Boolean(localStorage.getItem(`ifmaker-curtido:${plano.id}`)));
   }, [plano]);
+
+  const handleCurtir = async () => {
+    if (!plano?.id || curtido) return;
+    setCurtido(true);
+    localStorage.setItem(`ifmaker-curtido:${plano.id}`, "1");
+    setMetricas((prev) => ({ ...prev, curtidas: (prev.curtidas || 0) + 1 }));
+    try {
+      await setDoc(
+        doc(db, "metricas_planos", plano.id),
+        { curtidas: increment(1) },
+        { merge: true },
+      );
+    } catch (error) {
+      console.error("Erro ao registrar curtida:", error);
+    }
+  };
+
+  const registrarCompartilhamento = async () => {
+    if (!plano?.id) return;
+    setMetricas((prev) => ({
+      ...prev,
+      compartilhamentos: (prev.compartilhamentos || 0) + 1,
+    }));
+    try {
+      await setDoc(
+        doc(db, "metricas_planos", plano.id),
+        { compartilhamentos: increment(1) },
+        { merge: true },
+      );
+    } catch (error) {
+      console.error("Erro ao registrar compartilhamento:", error);
+    }
+  };
+
+  const handleCompartilhar = async () => {
+    if (!plano?.id) return;
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setMensagemCompartilhamento("Link copiado!");
+      setTimeout(() => setMensagemCompartilhamento(""), 2500);
+      await registrarCompartilhamento();
+    } catch (error) {
+      console.error("Erro ao compartilhar:", error);
+    }
+  };
+
+  const handleCompartilharWhatsApp = () => {
+    if (!plano?.id) return;
+    const texto = encodeURIComponent(`${plano.titulo} - ${window.location.href}`);
+    window.open(`https://wa.me/?text=${texto}`, "_blank", "noopener,noreferrer");
+    registrarCompartilhamento();
+  };
+
+  const handleCompartilharFacebook = () => {
+    if (!plano?.id) return;
+    const url = encodeURIComponent(window.location.href);
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+    registrarCompartilhamento();
+  };
 
   useEffect(() => {
     if (!plano?.id) return;
@@ -130,6 +212,13 @@ export default function PlanoDetalhe() {
         ? Array.from(new Set([...aplicadosGeral, plano.id]))
         : aplicadosGeral.filter((id) => id !== plano.id);
       writeStorage("ifmaker-aplicados", novosAplicados);
+
+      // Sincroniza também com o Firestore (metricas_planos)
+      setDoc(
+        doc(db, "metricas_planos", plano.id),
+        { aplicadosEmSala: increment(novoStatus ? 1 : -1) },
+        { merge: true },
+      ).catch((err) => console.error("Erro ao registrar aplicado em sala:", err));
 
       return novoStatus;
     });
@@ -243,7 +332,23 @@ export default function PlanoDetalhe() {
   };
 
   if (!plano) {
-    return (
+    const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
       <div className='p-10 text-center'>
         <h2 className='text-2xl font-bold text-red-600'>
           Plano de aula não encontrado!
@@ -289,6 +394,22 @@ export default function PlanoDetalhe() {
       document.getElementById(`tab-${proximaAba}`)?.focus();
     });
   };
+
+  const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
 
   return (
     <article className='p-6 md:p-10 max-w-5xl mx-auto bg-white min-h-screen'>
@@ -383,8 +504,8 @@ export default function PlanoDetalhe() {
             </span>
           </div>
 
-          {/* Contadores de visualizações e downloads */}
-          <div className='flex gap-4 text-xs font-bold text-slate-500 bg-white p-2 px-4 rounded-full border border-gray-200 shadow-sm print:hidden'>
+          {/* Contadores de visualizações, downloads, curtidas e compartilhamentos */}
+          <div className='flex flex-wrap gap-4 text-xs font-bold text-slate-500 bg-white p-2 px-4 rounded-full border border-gray-200 shadow-sm print:hidden'>
             <div className='flex items-center gap-1.5'>
               <span className='text-sm' aria-hidden='true'>
                 👁️
@@ -396,6 +517,18 @@ export default function PlanoDetalhe() {
                 📥
               </span>
               <span>{metricas.downloads} Downloads</span>
+            </div>
+            <div className='flex items-center gap-1.5 border-l border-gray-200 pl-4'>
+              <span className='text-sm' aria-hidden='true'>
+                👍
+              </span>
+              <span>{metricas.curtidas || 0} Útil</span>
+            </div>
+            <div className='flex items-center gap-1.5 border-l border-gray-200 pl-4'>
+              <span className='text-sm' aria-hidden='true'>
+                🔗
+              </span>
+              <span>{metricas.compartilhamentos || 0}</span>
             </div>
           </div>
         </div>
@@ -413,6 +546,56 @@ export default function PlanoDetalhe() {
           >
             <span aria-hidden='true'>⏱️</span> Iniciar Regência em Sala
           </button>
+          <div className='relative'>
+            <button
+              type='button'
+              onClick={() => setMenuCompartilharAberto((prev) => !prev)}
+              aria-expanded={menuCompartilharAberto}
+              className='inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-bold text-blue-800 transition hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            >
+              <span aria-hidden='true'>🔗</span> {mensagemCompartilhamento || "Compartilhar"}
+            </button>
+            {menuCompartilharAberto && (
+              <div className='absolute left-0 mt-2 w-48 rounded-xl bg-white shadow-lg border border-gray-200 py-1.5 z-30'>
+                <button
+                  type='button'
+                  onClick={() => {
+                    handleCompartilharWhatsApp();
+                    setMenuCompartilharAberto(false);
+                  }}
+                  className='w-full text-left px-4 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50 flex items-center gap-2'
+                >
+                  <svg className='w-4 h-4 fill-current' viewBox='0 0 24 24' aria-hidden='true'>
+                    <path d='M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.531.078-1.203.109-1.938-.125-.453-.141-1.031-.328-1.766-.656-3.094-1.344-5.109-4.469-5.266-4.672-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.609-.391.813-.391.203 0 .406.016.578.016.188 0 .438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.016.547-.109.203-.156.344-.313.516-.156.172-.328.391-.469.516-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.484.125.672-.078.188-.203.781-.906.984-1.219.203-.313.406-.266.688-.156.281.109 1.781.844 2.094 1 .313.156.516.234.594.359.078.125.078.734-.172 1.438z' />
+                  </svg>
+                  WhatsApp
+                </button>
+                <button
+                  type='button'
+                  onClick={() => {
+                    handleCompartilharFacebook();
+                    setMenuCompartilharAberto(false);
+                  }}
+                  className='w-full text-left px-4 py-2 text-sm font-semibold text-blue-800 hover:bg-blue-50 flex items-center gap-2'
+                >
+                  <svg className='w-4 h-4 fill-current' viewBox='0 0 24 24' aria-hidden='true'>
+                    <path d='M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z' />
+                  </svg>
+                  Facebook
+                </button>
+                <button
+                  type='button'
+                  onClick={() => {
+                    handleCompartilhar();
+                    setMenuCompartilharAberto(false);
+                  }}
+                  className='w-full text-left px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 flex items-center gap-2'
+                >
+                  <span>📋</span> Copiar link
+                </button>
+              </div>
+            )}
+          </div>
           <button
             type='button'
             onClick={alternarFavorito}
@@ -425,13 +608,6 @@ export default function PlanoDetalhe() {
             {favoritos.includes(plano.id)
               ? "Salvo nos favoritos"
               : "Salvar plano"}
-          </button>
-          <button
-            type='button'
-            onClick={compartilharPlano}
-            className='inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-bold text-blue-800 transition hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500'
-          >
-            <span aria-hidden='true'>🔗</span> Compartilhar
           </button>
           <button
             type='button'
@@ -755,7 +931,23 @@ export default function PlanoDetalhe() {
                   ];
                   const corAtual = paletaCores[idx % paletaCores.length];
 
-                  return (
+                  const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                     <React.Fragment key={idx}>
                       {idx > 0 && (
                         <span className='text-blue-300/80 text-xs sm:text-sm font-bold flex-shrink-0' aria-hidden='true'>
@@ -807,7 +999,23 @@ export default function PlanoDetalhe() {
                     {(() => {
                       const artefatos = getArtefatosPorPlano(plano.id);
                       if (artefatos.length > 0 && artefatos[0].substituicaoPossivel) {
-                        return (
+                        const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                           <>
                             <strong>Plano B imediato: </strong>
                             {artefatos[0].substituicaoPossivel} Ou utilize a peça ilustrada 2D plastificada da Pasta Sanfonada.
@@ -952,7 +1160,23 @@ export default function PlanoDetalhe() {
                     <ul className='space-y-3'>
                       {plano.ajusteFinoRubrica.map((ajuste, idx) => {
                         const splitText = ajuste.split("**");
-                        return (
+                        const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                           <li
                             key={idx}
                             className='text-sm text-blue-800 leading-relaxed'
@@ -1179,7 +1403,23 @@ export default function PlanoDetalhe() {
                   },
                 ].map((etapa) => {
                   const checado = etapasPreparacao.includes(etapa.id);
-                  return (
+                  const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                     <div
                       key={etapa.id}
                       className={`flex items-start gap-3.5 p-4 rounded-xl border transition-colors ${
@@ -1253,7 +1493,23 @@ export default function PlanoDetalhe() {
                     const disponivel = materiaisDisponiveis.includes(item);
                     const doKit = isRecursoDoKitMaker(item);
 
-                    return (
+                    const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                       <li
                         key={index}
                         className={`flex items-start gap-3 rounded-xl border p-4 transition-colors ${
@@ -1348,7 +1604,23 @@ export default function PlanoDetalhe() {
               {(() => {
                 const artefatos = getArtefatosPorPlano(plano.id);
                 if (artefatos.length === 0) {
-                  return (
+                  const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                     <div className='bg-sky-50/70 border border-sky-200 p-5 rounded-xl text-sky-950 text-sm leading-relaxed'>
                       <p className='font-bold mb-1'>
                         💡 Aula com foco em materiais flexíveis ou desplugados
@@ -1363,7 +1635,23 @@ export default function PlanoDetalhe() {
                   );
                 }
 
-                return (
+                const getGuiaRubricaUrl = (p) => {
+    const ref = `${p?.rubricaId || ""} ${p?.rubricaPdfUrl || ""}`.toLowerCase();
+    if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+      return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+    }
+    if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+      return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+    }
+    if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+      return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+    }
+    return null;
+  };
+
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
+
+  return (
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     {artefatos.map((art) => (
                       <article
@@ -1516,6 +1804,20 @@ export default function PlanoDetalhe() {
             </button>
           )}
 
+          {/* 2B. GUIA EXPLICATIVO DA RUBRICA (COMO AVALIAR) */}
+          {guiaRubricaUrl && (
+            <button
+              type='button'
+              onClick={(e) =>
+                abrirPdfComChecagem(e, guiaRubricaUrl, "Guia Explicativo da Rubrica")
+              }
+              disabled={verificandoPdf}
+              className='bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold py-3 px-6 rounded-lg shadow transition duration-300 flex items-center gap-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+            >
+              📖 Guia da Rubrica (Como Avaliar)
+            </button>
+          )}
+
           {/* 3. FOLHA DE ATIVIDADE DO ALUNO */}
           {plano.atividadesPdfUrl ? (
             <button
@@ -1604,6 +1906,56 @@ export default function PlanoDetalhe() {
       </section>
 
       {/* Avaliações e relatos de experiência docente */}
+      {/* Barra de engajamento ao final do plano */}
+      <div className='my-8 p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-4 print:hidden'>
+        <div>
+          <p className='font-bold text-gray-900 text-sm'>Este plano foi útil para a sua aula?</p>
+          <p className='text-xs text-gray-600'>Avalie ou compartilhe com outros professores.</p>
+        </div>
+        <div className='flex flex-wrap items-center gap-2.5'>
+          <button
+            type='button'
+            onClick={handleCurtir}
+            disabled={curtido}
+            aria-pressed={curtido}
+            className={`inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-green-500 ${
+              curtido
+                ? "border-green-300 bg-green-100 text-green-900 cursor-default"
+                : "border-gray-200 bg-white text-gray-700 hover:bg-green-50 hover:border-green-300"
+            }`}
+          >
+            <span aria-hidden='true'>👍</span> {curtido ? "Marcado como útil" : "Útil"} ({metricas.curtidas || 0})
+          </button>
+          <button
+            type='button'
+            onClick={handleCompartilharWhatsApp}
+            className='inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-bold text-emerald-800 transition hover:bg-emerald-100'
+          >
+            <svg className='w-4 h-4 fill-current' viewBox='0 0 24 24' aria-hidden='true'>
+              <path d='M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.531.078-1.203.109-1.938-.125-.453-.141-1.031-.328-1.766-.656-3.094-1.344-5.109-4.469-5.266-4.672-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.609-.391.813-.391.203 0 .406.016.578.016.188 0 .438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.016.547-.109.203-.156.344-.313.516-.156.172-.328.391-.469.516-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.484.125.672-.078.188-.203.781-.906.984-1.219.203-.313.406-.266.688-.156.281.109 1.781.844 2.094 1 .313.156.516.234.594.359.078.125.078.734-.172 1.438z' />
+            </svg>
+            WhatsApp
+          </button>
+          <button
+            type='button'
+            onClick={handleCompartilharFacebook}
+            className='inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-bold text-blue-800 transition hover:bg-blue-100'
+          >
+            <svg className='w-4 h-4 fill-current' viewBox='0 0 24 24' aria-hidden='true'>
+              <path d='M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z' />
+            </svg>
+            Facebook
+          </button>
+          <button
+            type='button'
+            onClick={handleCompartilhar}
+            className='inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-bold text-gray-700 transition hover:bg-gray-50'
+          >
+            📋 {mensagemCompartilhamento || "Copiar link"}
+          </button>
+        </div>
+      </div>
+
       <ComentariosPedagogicos planoId={plano.id} planoTitulo={plano.titulo} />
 
       {/* BARRA DE NAVEGAÇÃO SEQUENCIAL (PRÓXIMO / ANTERIOR) */}

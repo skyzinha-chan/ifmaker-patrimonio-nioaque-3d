@@ -122,7 +122,7 @@ export const plano14 = {
   ],
 
   atividadesPdfUrl: null,
-  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  anexosPdfUrl: null,
   rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
   pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.4.1 – CIDADES DE CONCRETO.pdf"
 };

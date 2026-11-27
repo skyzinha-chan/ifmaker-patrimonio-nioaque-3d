@@ -122,7 +122,7 @@ export const plano07 = {
   ],
 
   atividadesPdfUrl: null,
-  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  anexosPdfUrl: null,
   rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
   pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.5 – O MUSEU DESPLUGADO.pdf"
 };

@@ -118,7 +118,7 @@ export const plano12 = {
   ],
 
   atividadesPdfUrl: null,
-  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf",
+  anexosPdfUrl: null,
   rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO B.pdf",
   pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.10 – A TEXTURA DO TEMPO.pdf"
 };

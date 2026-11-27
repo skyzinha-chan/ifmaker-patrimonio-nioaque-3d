@@ -122,7 +122,7 @@ export const plano09 = {
   ],
 
   atividadesPdfUrl: null,
-  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf",
+  anexosPdfUrl: null,
   rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO A.pdf",
   pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.2.7 – A TEIA ALIMENTAR.pdf"
 };

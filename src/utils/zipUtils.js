@@ -158,13 +158,29 @@ export function dispararDownloadBlob(blob, nomeArquivo) {
  * @param {Object} plano - Objeto do plano de aula
  * @param {Function} onProgress - Callback com ({ etapa: string, porcentagem: number })
  */
+function getGuiaRubricaUrl(plano) {
+  const ref = `${plano?.rubricaId || ""} ${plano?.rubricaPdfUrl || ""}`.toLowerCase();
+  if (ref.includes("tipo-a") || ref.includes("tipo a")) {
+    return "/pdfs/anexos/Rubrica Tipo A - Eixo Pensamento Computacional.pdf";
+  }
+  if (ref.includes("tipo-b") || ref.includes("tipo b")) {
+    return "/pdfs/anexos/Rubrica Tipo B - Eixo Mundo Digital.pdf";
+  }
+  if (ref.includes("tipo-c") || ref.includes("tipo c")) {
+    return "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf";
+  }
+  return null;
+}
+
 export async function baixarPacoteCompletoDaAula(plano, onProgress = () => {}) {
+  const guiaRubricaUrl = getGuiaRubricaUrl(plano);
   const arquivosParaBaixar = [
-    { campo: "pdfUrl", nome: "01_Plano_de_Aula_Completo.pdf", rotulo: "Plano de Aula" },
-    { campo: "rubricaPdfUrl", nome: "02_Mapa_de_Avaliacao_Rubrica.pdf", rotulo: "Rubrica de Avaliação" },
-    { campo: "atividadesPdfUrl", nome: "03_Folha_de_Atividades_Missao.pdf", rotulo: "Folha da Missão" },
-    { campo: "anexosPdfUrl", nome: "04_Anexos_e_Imagens.pdf", rotulo: "Anexos e Imagens" }
-  ].filter(item => Boolean(plano[item.campo]));
+    { url: plano.pdfUrl, nome: "01_Plano_de_Aula_Completo.pdf", rotulo: "Plano de Aula" },
+    { url: plano.rubricaPdfUrl, nome: "02_Mapa_de_Avaliacao_Rubrica.pdf", rotulo: "Rubrica de Avaliação" },
+    { url: guiaRubricaUrl, nome: "03_Guia_Explicativo_Rubrica.pdf", rotulo: "Guia Explicativo da Rubrica" },
+    { url: plano.atividadesPdfUrl, nome: "04_Folha_de_Atividades_Missao.pdf", rotulo: "Folha da Missão" },
+    { url: plano.anexosPdfUrl, nome: "05_Anexos_e_Imagens.pdf", rotulo: "Anexos e Imagens" }
+  ].filter(item => Boolean(item.url));
 
   if (arquivosParaBaixar.length === 0) {
     throw new Error("Nenhum material em PDF disponível para este plano de aula.");
@@ -175,7 +191,7 @@ export async function baixarPacoteCompletoDaAula(plano, onProgress = () => {}) {
 
   for (let i = 0; i < total; i++) {
     const item = arquivosParaBaixar[i];
-    const url = plano[item.campo];
+    const url = item.url;
     const progressoAtual = Math.round(((i + 1) / (total + 1)) * 90);
 
     onProgress({

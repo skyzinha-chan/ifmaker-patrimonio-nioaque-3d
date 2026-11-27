@@ -117,7 +117,7 @@ export const plano15 = {
   ],
 
   atividadesPdfUrl: null,
-  anexosPdfUrl: "/pdfs/anexos/Rubrica Tipo C - Eixo Cultura Digital.pdf",
+  anexosPdfUrl: null,
   rubricaPdfUrl: "/pdfs/rubricas/MAPA DE AVALIAÇÃO MAKER - RUBRICA TIPO C.pdf",
   pdfUrl: "/pdfs/planoAula/PLANO DE AULA 6.4.2 – FAKE NEWS E OS MITOS DA GUERRA.pdf"
 };
